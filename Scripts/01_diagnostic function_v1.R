@@ -18,6 +18,3 @@ kurtosis<-function(x){
   print(paste("Kurtosis=", kurtosis(x), sep=""))
   print(paste("Skew=", skew(x), sep=""))
   }
-diagnostic(res)
-plot(cy_raw)
-abline(0,0, col="Red")
