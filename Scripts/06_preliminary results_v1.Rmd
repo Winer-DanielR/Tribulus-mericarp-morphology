@@ -2,11 +2,15 @@
 title: "Mericarp Morphology Preliminary Results"
 author: "Daniel Reyes"
 date: "12/3/2020"
-output: pdf_document
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_data prep_v1.R", local = knitr::knit_global())
@@ -14,22 +18,100 @@ source("03_Trait transformation dataframes_v1.R")
 source("04_Models per trait_v1.R", local = knitr::knit_global())
 ```
 
-## R Markdown
+## Preliminary data
+### Model used -> trait ~ mainland + year_collected
+This model was used per trait. These are the results of the raw data models. But transformed traits are included in the code.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r Anova tables mainland}
+Anova(length_full_raw)
+Anova(width_full_raw)
+Anova(depth_full_raw)
+Anova(spine_full_raw)
+Anova(tip_dist_full_raw)
+Anova(spine_number_full)
+Anova(lower_spines_full)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
+### Model used -> trait ~ finch_beak + year_collected
+Finch beak was defined as the islands where there was presence (1) or absence (0) of large ground finches, _G. magnirostris_. Here I am using the raw data. There are some warnings that we may need to check.
 
-You can also embed plots, for example:
+```{r ANOVA finch community}
+Anova(length_beak_raw)
+Anova(width_beak_raw)
+Anova(depth_beak_raw)
+Anova(spine_beak_raw)
+Anova(tip_dist_beak_raw)
+Anova(spine_number_beak)
+Anova(lower_spines_beak)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+For finch beaks the traits: **width**, **spine length**, and **spine distance** were not significant.
+
+
+## General summary plots
+
+
+```{r Width, echo=FALSE, fig.height=5, fig.width=7, paged.print=FALSE}
+
+library(ggplot2)
+
+ggplot(gal_length) +
+ aes(x = finch_beak, y = length) +
+ geom_boxplot(fill = "#0c4c8a") +
+ theme_minimal()
+
+ggplot(gal_width) +
+ aes(x = finch_beak, y = width) +
+ geom_boxplot(fill = "#ef562d") +
+ theme_minimal()
+
+ggplot(gal_depth) +
+ aes(x = finch_beak, y = depth) +
+ geom_boxplot(fill = "#440154") +
+ theme_minimal()
+
+ggplot(gal_spine_length) +
+ aes(x = finch_beak, y = spine_length) +
+ geom_boxplot(fill = "#26828e") +
+ theme_minimal()
+
+ggplot(gal_tip_distance) +
+ aes(x = finch_beak, y = tip_distance) +
+ geom_boxplot(fill = "#fdc926") +
+ theme_minimal()
+
+
+```
+```{r plot, echo=FALSE, fig.height=5, fig.width=7}
+
+library(ggplot2)
+
+ggplot(tribulus_mericarp) +
+ aes(x = mainland_island, y = length) +
+ geom_boxplot(fill = "#0c4c8a") +
+ theme_minimal()
+
+ggplot(tribulus_mericarp) +
+ aes(x = mainland_island, y = width) +
+ geom_boxplot(fill = "#440154") +
+ theme_minimal()
+
+ggplot(tribulus_mericarp) +
+ aes(x = mainland_island, y = depth) +
+ geom_boxplot(fill = "#cb181d") +
+ theme_minimal()
+
+ggplot(tribulus_mericarp) +
+ aes(x = mainland_island, y = spine_length) +
+ geom_boxplot(fill = "#006d2c") +
+ theme_minimal()
+
+ggplot(tribulus_mericarp) +
+ aes(x = mainland_island, y = tip_distance) +
+ geom_boxplot(fill = "#fdc926") +
+ theme_minimal()
+
+```
+
