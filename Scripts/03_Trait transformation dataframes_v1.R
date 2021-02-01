@@ -25,6 +25,7 @@ trib_lower_spines <- select(tribulus_mericarp, ID:individual_sample, lower_spine
 ##### Data transformation. Log and Square root per variable ####
 ### Log + 1 when 0 is present. (Spine_length, Tip_distance)
 ### Factor data? Spine number and lower spine? Will be transformed as any other data. Ask Marc.
+# cars binomial regression, create a variable if >0 = 1 and = 0 = 0. 
 
 # Length
 trib_length$length_log <- log(trib_length$length) #log transformation
@@ -54,7 +55,8 @@ trib_tip_distance <- filter(trib_tip_distance, !is.na(tip_distance))
 
 
 
-##### Diagnostics for skewness and kurtosis ######
+##### Diagnostic of skew and kurtosis ######
+par(mfrow=c(3,3)) # To show each data transformation in a row
 
 # Length
 diagnostic(trib_length$length) #To estimate skewness and kurtosis. Used raw variable
@@ -89,20 +91,18 @@ diagnostic(trib_spine_length$spine_length) # Raw
 diagnostic(trib_spine_length$spine_length_log) # Log
 diagnostic(trib_spine_length$spine_length_sqr) # Square root
 
-hist(trib_spine_length$spine_length, main = "Spine Length Raw (mm)")
-hist(trib_spine_length$spine_length_log, main = "Spine Length Log")
-hist(trib_spine_length$spine_length_sqr, main = "Spine Length Squared Root")
+# hist(trib_spine_length$spine_length, main = "Spine Length Raw (mm)")
+# hist(trib_spine_length$spine_length_log, main = "Spine Length Log")
+# hist(trib_spine_length$spine_length_sqr, main = "Spine Length Squared Root")
 
 # Spine distance
 diagnostic(trib_tip_distance$tip_distance)
 diagnostic(trib_tip_distance$tip_distance_log)
 diagnostic(trib_tip_distance$tip_distance_sqr)
 
-hist(trib_tip_distance$tip_distance, main = "Tip distance Raw (mm)")
-hist(trib_tip_distance$tip_distance_log, main = "Tip distance Log")
-hist(trib_tip_distance$tip_distance_sqr, main = "Tip distance Square Root")
-
-
+# hist(trib_tip_distance$tip_distance, main = "Tip distance Raw (mm)")
+# hist(trib_tip_distance$tip_distance_log, main = "Tip distance Log")
+# hist(trib_tip_distance$tip_distance_sqr, main = "Tip distance Square Root")
 
 ##### To export CVS tables per trait ####
-# write_csv(trib_tip_distance, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tip distance.csv")
+#write_csv(trib_length, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Length.csv")
