@@ -2,10 +2,10 @@
 ##### Diagnostic function to evaluate assumptions for linear models ####
 
 diagnostic<-function(x){
-  plot(x)
-  abline(mean(x),0)
-  hist(x)
-  qqnorm(x)
+  plot(x) # shows index and trait
+  abline(mean(x),0) 
+  hist(x) # shows histogram distribution
+  qqnorm(x) # shows QQ plot
   qqline(x,lty=2, col="Red")
 skew<-function(x){
     m3<-sum((x-mean(x))^3)/length(x)
@@ -18,3 +18,4 @@ kurtosis<-function(x){
   print(paste("Kurtosis=", kurtosis(x), sep=""))
   print(paste("Skew=", skew(x), sep=""))
   }
+
