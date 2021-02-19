@@ -7,10 +7,104 @@
 #### Model: trait ~ mainland + year. ####
 # Is there and effect between island and mainland populations? #
 
-#### Length ####
+# Mericarp data ####
+# run simple linear mixed effect model, with ID as random effect per trait
+
+# Length ####
+names(mericarp)
+mericarp_length_m1<-lmer(length ~ mainland_island +
+                       year_collected +
+                       (1|ID),data=mericarp,REML=F)
+# type III test
+Anova(mericarp_length_m1)
+
+# Width ####
+mericarp_width_m1<-lmer(width ~ mainland_island +
+                           year_collected +
+                           (1|ID),data=mericarp,REML=F)
+# type III test
+Anova(mericarp_width_m1)
+
+# Depth ####
+mericarp_depth_m1<-lmer(depth ~ mainland_island +
+                           year_collected +
+                           (1|ID),data=mericarp,REML=F)
+# type III test
+Anova(mericarp_depth_m1)
+
+# Spine length ####
+mericarp_spine.length_m1<-lmer(spine_length ~ mainland_island +
+                           year_collected +
+                           (1|ID),data=mericarp,REML=F)
+# type III test
+Anova(mericarp_spine.length_m1)
+
+# Tip distance ####
+mericarp_tip.distance_m1<-lmer(tip_distance ~ mainland_island +
+                                 year_collected +
+                                 (1|ID),data=mericarp,REML=F)
+# type III test
+Anova(mericarp_tip.distance_m1)
+
+
+# Flower data ####
+#run simple linear mixed effect model, treating ID as random effect to account for multiple measurement per plant
+flower_m1 <- lmer(petal_length ~ mainland_island +
+               year_collected +
+               (1|ID),data=flower,REML=F)
+#type III test using lmertest
+anova(flower_m1)
+#same test in CAR
+Anova(flower_m1)
+
+# Leaves data ####
+# run simple linear mixed effects models on each leaf treat
+
+# Leaf length ####
+leaf_length_m1<-lmer(leaf_length ~ mainland_island +
+                       year_collected +
+                       (1|ID),data=leaf,REML=F)
+Anova(leaf_length_m1)
+
+# Leaflet length ####
+leaflet_length_m1<-lmer(leaflet_length ~ mainland_island +
+                          year_collected +
+                          (1|ID),data=leaf,REML=F)
+anova(leaflet_length_m1)
+
+# Leaflet number ####
+leaflet_num_m1<-lmer(number_of_leaflets ~ mainland_island +
+                       year_collected + 
+                       (1|ID),data=leaf,REML=F)
+anova(leaflet_num_m1)
+
+
+#the following estimates LS means for the mainland_island effect for each response
+emm_options(opt.digits=F)
+emmeans(flw_m1,~mainland_island)
+emmeans(lvsL_m1,~mainland_island)
+emmeans(lfletL_m1,~mainland_island)
+emmeans(lflet.no_m1,~mainland_island)
+
+
+
+
+
+
+
+
+
+
+
+# Length ####
 # Raw data
 length_full_raw <- lm(length ~ mainland_island + year_collected, data = trib_length) #Full model
 Anova(length_full_raw)
+view(trib_length)
+plot(year_collected,length)
+attach(trib_length)
+names(trib_length)
+
 #length_null_raw <- lm(length ~ year_collected, data = trib_length) #Null model without mainland effect
 
 # Log data
