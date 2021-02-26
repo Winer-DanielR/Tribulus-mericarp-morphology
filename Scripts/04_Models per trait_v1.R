@@ -1,6 +1,5 @@
 ### Analysis of mericarp data collected for the Antagonistic and Mutualistic interactions paper ####
 #By: Daniel Reyes Corral
-#Version_1
 
 #### Linear models per trait ####
 
@@ -9,53 +8,99 @@
 
 # Mericarp data ####
 # run simple linear mixed effect model, with ID as random effect per trait
+# For diagnostics you can change to trait_log or trait_sqr to test transformed data
 
 # Length ####
-names(mericarp)
-mericarp_length_m1<-lmer(length ~ mainland_island +
+meri_length_m1<-lmer(length ~ mainland_island +
                        year_collected +
-                       (1|ID),data=mericarp,REML=F)
+                       (1|ID),
+                      data = meri_length, REML = F) 
 # type III test
-Anova(mericarp_length_m1)
-hist(residuals(mericarp_length_m1),breaks = 15 )
+Anova(meri_length_m1)
 
+# Diagnostic <- this is the traditional way to diagnose models
+plot(resid(meri_depth_m1))
+plot(meri_depth_m1)
+qqmath(meri_depth_m1, id = 0.05)
+hist(resid(meri_length_m1))
 
+# DHARMA <- this is the way with DHAMa
+simulateResiduals(fittedModel = meri_length_m1, plot = T)
 
 # Width ####
-mericarp_width_m1<-lmer(width ~ mainland_island +
+meri_width_m1<-lmer(width_sqr ~ mainland_island +
                            year_collected +
-                           (1|ID),data=mericarp,REML=F)
+                           (1|ID),
+                    data=meri_width, REML = F)
 # type III test
-Anova(mericarp_width_m1)
+Anova(meri_width_m1)
+
+# Diagnostic
+plot(resid(meri_width_m1))
+plot(meri_width_m1)
+qqmath(meri_width_m1, id = 0.05)
+hist(resid(meri_width_m1))
+
+# DHARMa
+simulateResiduals(fittedModel = meri_width_m1, plot = T)
+
 
 # Depth ####
-mericarp_depth_m1<-lmer(depth ~ mainland_island +
+meri_depth_m1<-lmer(depth ~ mainland_island +
                            year_collected +
-                           (1|ID),data=mericarp,REML=F)
+                           (1|ID),
+                    data=meri_depth, REML = F)
 # type III test
-Anova(mericarp_depth_m1)
+Anova(meri_depth_m1)
+# Diagnostic
+plot(resid(meri_depth_m1))
+plot(meri_depth_m1)
+qqmath(meri_depth_m1, id = 0.05)
+hist(resid(meri_depth_m1))
+#DHARMA
+simulateResiduals(fittedModel = meri_depth_m1, plot = T)
+
 
 # Spine length ####
-mericarp_spine.length_m1<-lmer(spine_length ~ mainland_island +
+meri_spine.length_m1 <-lmer(spine_length ~ mainland_island +
                            year_collected +
-                           (1|ID),data=mericarp,REML=F)
+                           (1|ID),
+                           data=meri_spine_length,REML=F)
 # type III test
-Anova(mericarp_spine.length_m1)
+Anova(meri_spine.length_m1)
+# Diagnostic
+plot(resid(meri_spine.length_m1))
+plot(meri_spine.length_m1)
+qqmath(meri_spine.length_m1, id = 0.05)
+hist(resid(meri_spine.length_m1))
+#DHARMA
+simulateResiduals(fittedModel = meri_spine.length_m1, plot = T)
 
 # Tip distance ####
-mericarp_tip.distance_m1<-lmer(tip_distance ~ mainland_island +
+meri_tip.distance_m1 <- lmer(tip_distance ~ mainland_island +
                                  year_collected +
-                                 (1|ID),data=mericarp,REML=F)
+                                 (1|ID),
+                             data=meri_tip_distance,REML=F)
 # type III test
-Anova(mericarp_tip.distance_m1)
+Anova(meri_tip.distance_m1)
+# Diagnostic
+plot(resid(meri_tip.distance_m1))
+plot(meri_tip.distance_m1)
+qqmath(meri_tip.distance_m1, id = 0.05)
+hist(resid(meri_tip.distance_m1))
+#DHARMA
+simulateResiduals(fittedModel = meri_tip.distance_m1, plot = T)
+
 
 # Spine number ####
-mericarp_spine.number_m1 <- glm(spine_num ~ mainland_island + 
-                                  year_collected, 
-                                data = mericarp,
-                                family = "binomial")
+meri_spine.number_m1 <- glmer(spine_num ~ mainland_island + 
+                                  year_collected +
+                                (1|ID),
+                                data = meri_spine_num,
+                              family = "poisson")
+                        
 
-Anova(mericarp_spine.number_m1)
+Anova(meri_spine.number_m1)
 
 #### Lower spines ####
 mericarp_lower.spines_m1 <- glm(lower_spines ~ mainland_island + 
