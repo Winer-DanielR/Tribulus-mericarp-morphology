@@ -9,6 +9,8 @@ mericarp <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp mor
 mericarp <- as_tibble(mericarp)
 names(mericarp)
 str(mericarp)
+mericarp <- filter(mericarp, !is.na(ind_num))
+
 
 # Convert mericarp variables into factors
 mericarp <- mericarp %>% mutate_at(vars(ID,
@@ -27,8 +29,6 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
 
 str(mericarp)
 #Year is a number instead of a factor.
-
-
 
 #### Leaf data ####
 leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
