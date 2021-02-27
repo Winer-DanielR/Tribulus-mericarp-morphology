@@ -4638,7 +4638,7 @@ ind_num,ID,Herbarium,year_collected,continent,mainland_island,galapagos_other,is
 4828,Florida_300,Natural Population,2016,North_Central America,mainland,,,,,7,6.21,3.51,4.24,5.24,11.17,4,1,USA,Melbourne,
 4829,Florida_300,Natural Population,2016,North_Central America,mainland,,,,,8,6.52,3.52,4.74,5.69,13.27,4,1,USA,Melbourne,
 4830,Florida_300,Natural Population,2016,North_Central America,mainland,,,,,9,5.75,3.71,4.88,6.46,12.94,4,1,USA,Melbourne,
-4831,Florida_300,Natural Population,2016,North_Central America,mainland,,,,,10,4.28,2.53,3.95,4.6,7.06,0,2,USA,Melbourne,
+4831,Florida_300,Natural Population,2016,North_Central America,mainland,,,,,10,4.28,2.53,3.95,4.6,7.06,0,1,USA,Melbourne,
 4832,Florida_301,Natural Population,2016,North_Central America,mainland,,,,,1,4.87,2.87,4.31,4.89,8.4,4,1,USA,Boca Raton,
 4833,Florida_301,Natural Population,2016,North_Central America,mainland,,,,,2,5.1,2.82,4.4,4.15,8.75,4,1,USA,Boca Raton,
 4834,Florida_301,Natural Population,2016,North_Central America,mainland,,,,,3,5.24,2.3,2.82,4.5,8.18,4,1,USA,Boca Raton,
