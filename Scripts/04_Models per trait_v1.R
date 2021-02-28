@@ -32,15 +32,10 @@ Anova(meri_length_m3)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(meri_length$length)
-diagnostic(meri_length$length_log)
-diagnostic(meri_length$length_sqr)
-
 # Residuals histogram
-hist(resid(meri_length_m1))
-hist(resid(meri_length_m2))
-hist(resid(meri_length_m3))
+diagnostic(resid(meri_length_m1))
+diagnostic(resid(meri_length_m2))
+diagnostic(resid(meri_length_m3))
 
 # DHARMA <- this is the way with DHAMa
 testResiduals(meri_length_m1)
@@ -72,15 +67,10 @@ meri_width_m3 <- lmer(width_sqr ~ mainland_island +
 Anova(meri_width_m3)
 # Diagnostic
 
-# Diagnostic function
-diagnostic(meri_width$width)
-diagnostic(meri_width$width_log)
-diagnostic(meri_width$width_sqr)
-
 # Residual histograms
-hist(resid(meri_width_m1))
-hist(resid(meri_width_m2))
-hist(resid(meri_width_m3))
+diagnostic(resid(meri_width_m1))
+diagnostic(resid(meri_width_m2))
+diagnostic(resid(meri_width_m3))
 
 # DHARMa
 testResiduals(meri_width_m1)
@@ -110,15 +100,10 @@ Anova(meri_depth_m1)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(meri_depth$depth)
-diagnostic(meri_depth$depth_log)
-diagnostic(meri_depth$depth_sqr)
-
 # Residual histograms
-hist(resid(meri_depth_m1))
-hist(resid(meri_depth_m2))
-hist(resid(meri_depth_m3))
+diagnostic(resid(meri_depth_m1))
+diagnostic(resid(meri_depth_m2))
+diagnostic(resid(meri_depth_m3))
 
 # DHARMa
 testResiduals(meri_depth_m1)
@@ -150,15 +135,10 @@ Anova(meri_spine.length_m1)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(meri_spine.length$spine_length)
-diagnostic(meri_spine.length$spine_length_log)
-diagnostic(meri_spine.length$spine_length_sqr)
-
 # Residual histograms
-hist(resid(meri_spine.length_m1))
-hist(resid(meri_spine.length_m2))
-hist(resid(meri_spine.length_m3))
+diagnostic(resid(meri_spine.length_m1))
+diagnostic(resid(meri_spine.length_m2))
+diagnostic(resid(meri_spine.length_m3))
 
 # DHARMa
 testResiduals(meri_spine.length_m1)
@@ -188,15 +168,10 @@ meri_tip.distance_m3 <- lmer(tip_distance_sqr ~ mainland_island +
 Anova(meri_tip.distance_m3)
 # Diagnostic
 
-# Diagnostic function
-diagnostic(meri_tip.distance$tip_distance)
-diagnostic(meri_tip.distance$tip_distance_log)
-diagnostic(meri_tip.distance$tip_distance_sqr)
-
 # Residual histograms
-hist(resid(meri_tip.distance_m1))
-hist(resid(meri_tip.distance_m2))
-hist(resid(meri_tip.distance_m3))
+diagnostic(resid(meri_tip.distance_m1))
+diagnostic(resid(meri_tip.distance_m2))
+diagnostic(resid(meri_tip.distance_m3))
 
 # DHARMa
 testResiduals(meri_tip.distance_m1)
@@ -216,7 +191,7 @@ Anova(meri_spine.number_m1)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_spine.number_m1))
+diagnostic(resid(meri_spine.number_m1))
 
 # DHARMa
 testResiduals(meri_spine.number_m1)
@@ -231,7 +206,7 @@ Anova(meri_lower.spines_m1)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_lower.spines_m1))
+diagnostic(resid(meri_lower.spines_m1))
 
 # DHARMa
 testResiduals(meri_lower.spines_m1)
@@ -261,15 +236,10 @@ Anova(flower_m1)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(petal_length$petal_length)
-diagnostic(petal_length$petal_length_log)
-diagnostic(petal_length$petal_length_sqr)
-
 # Residual histograms
-hist(resid(flower_m1))
-hist(resid(flower_m2))
-hist(resid(flower_m3))
+diagnostic(resid(flower_m1))
+diagnostic(resid(flower_m2))
+diagnostic(resid(flower_m3))
 
 # DHARMa
 testResiduals(flower_m1)
@@ -297,15 +267,10 @@ Anova(leaf_length_m1)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(leaf_length$leaf_length)
-diagnostic(leaf_length$leaf_length_log)
-diagnostic(leaf_length$leaf_length_sqr)
-
 # Residual histograms
-hist(resid(leaf_length_m1))
-hist(resid(leaf_length_m2))
-hist(resid(leaf_length_m3))
+diagnostic(resid(leaf_length_m1))
+diagnostic(resid(leaf_length_m2))
+diagnostic(resid(leaf_length_m3))
 
 # DHARMa
 testResiduals(leaf_length_m1)
@@ -342,9 +307,9 @@ diagnostic(leaflet_length$leaflet_length_log)
 diagnostic(leaflet_length$leaflet_length_sqr)
 
 # Residual histograms
-hist(resid(leaflet_length_m1))
-hist(resid(leaflet_length_m2))
-hist(resid(leaflet_length_m3))
+diagnostic(resid(leaflet_length_m1))
+diagnostic(resid(leaflet_length_m2))
+diagnostic(resid(leaflet_length_m3))
 
 # DHARMa
 testResiduals(leaflet_length_m1)
@@ -362,7 +327,7 @@ Anova(leaflet_num_m1)
 
 # Diagnostic
 # Residual histograms
-hist(resid(leaflet_num_m1))
+diagnostic(resid(leaflet_num_m1))
 
 # DHARMa
 testResiduals(leaflet_num_m1)
@@ -400,9 +365,9 @@ anova(flower_m4,
 # Diagnostic
 
 # Residual histograms
-hist(resid(flower_m4))
-hist(resid(flower_m5))
-hist(resid(flower_m6))
+diagnostic(resid(flower_m4))
+diagnostic(resid(flower_m5))
+diagnostic(resid(flower_m6))
 
 # DHARMa
 testResiduals(flower_m4)
@@ -428,9 +393,9 @@ Anova(leaf_length_m5)
 # Diagnostic
 
 # Residual histograms
-hist(resid(leaf_length_m4))
-hist(resid(leaf_length_m5))
-hist(resid(leaf_length_m6))
+diagnostic(resid(leaf_length_m4))
+diagnostic(resid(leaf_length_m5))
+diagnostic(resid(leaf_length_m6))
 
 # DHARMa
 testResiduals(leaf_length_m4)
@@ -462,9 +427,9 @@ Anova(leaflet_length_m4)
 # Diagnostic
 
 # Residual histograms
-hist(resid(leaflet_length_m4))
-hist(resid(leaflet_length_m5))
-hist(resid(leaflet_length_m6))
+diagnostic(resid(leaflet_length_m4))
+diagnostic(resid(leaflet_length_m5))
+diagnostic(resid(leaflet_length_m6))
 
 # DHARMa
 testResiduals(leaflet_length_m4)
@@ -481,7 +446,7 @@ Anova(leaflet_num_m2)
 
 # Diagnostic
 # Residual histograms
-hist(resid(leaflet_num_m2))
+diagnostic(resid(leaflet_num_m2))
 
 # DHARMa
 testResiduals(leaflet_num_m2)
@@ -512,9 +477,9 @@ Anova(meri_length_m4)
 # Diagnostic
 
 # Residuals histogram
-hist(resid(meri_length_m4))
-hist(resid(meri_length_m5))
-hist(resid(meri_length_m6))
+diagnostic(resid(meri_length_m4))
+diagnostic(resid(meri_length_m5))
+diagnostic(resid(meri_length_m6))
 
 # DHARMA <- this is the way with DHAMa
 testResiduals(meri_length_m4)
@@ -548,9 +513,9 @@ Anova(meri_width_m4)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_width_m4))
-hist(resid(meri_width_m5))
-hist(resid(meri_width_m6))
+diagnostic(resid(meri_width_m4))
+diagnostic(resid(meri_width_m5))
+diagnostic(resid(meri_width_m6))
 
 # DHARMa
 testResiduals(meri_width_m4)
@@ -580,9 +545,9 @@ Anova(meri_depth_m4)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_depth_m4))
-hist(resid(meri_depth_m5))
-hist(resid(meri_depth_m6))
+diagnostic(resid(meri_depth_m4))
+diagnostic(resid(meri_depth_m5))
+diagnostic(resid(meri_depth_m6))
 
 # DHARMa
 testResiduals(meri_depth_m4)
@@ -615,9 +580,9 @@ Anova(meri_spine.length_m4)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_spine.length_m4))
-hist(resid(meri_spine.length_m5))
-hist(resid(meri_spine.length_m6))
+diagnostic(resid(meri_spine.length_m4))
+diagnostic(resid(meri_spine.length_m5))
+diagnostic(resid(meri_spine.length_m6))
 
 # DHARMa
 testResiduals(meri_spine.length_m4)
@@ -646,12 +611,10 @@ meri_tip.distance_m6 <- lmer(tip_distance_sqr ~ finch_beak +
 Anova(meri_tip.distance_m4)
 # Diagnostic
 
-# Diagnostic function
-
-# Residual histograms
-hist(resid(meri_tip.distance_m4))
-hist(resid(meri_tip.distance_m5))
-hist(resid(meri_tip.distance_m6))
+# Diagnostic of residuals
+diagnostic(resid(meri_tip.distance_m4))
+diagnostic(resid(meri_tip.distance_m5))
+diagnostic(resid(meri_tip.distance_m6))
 
 # DHARMa
 testResiduals(meri_tip.distance_m4)
@@ -670,28 +633,28 @@ Anova(meri_spine.number_m2)
 # Diagnostic
 
 # Residual histograms
-hist(resid(meri_spine.number_m2))
+diagnostic(resid(meri_spine.number_m2))
 
 # DHARMa
 testResiduals(meri_spine.number_m2)
 
 #### Lower spines ####
+# Ask about the outcomes of this model. How can I diagnose this one?
 meri_lower.spines_m2 <- glm(lower_spines ~ finch_beak + 
                               year_collected, 
                             data = gal_meri_lower.spines, 
                             family = "binomial")
 # Type III test
 Anova(meri_lower.spines_m2)
-# Diagnostic
 
-# Residual histograms
-hist(resid(meri_lower.spines_m2))
+# Diagnostic
+diagnostic(resid(meri_lower.spines_m2))
 
 # DHARMa
 testResiduals(meri_lower.spines_m2)
 
 # Petal length data ####
-# The raw data works best
+# The raw data works best. However I think there is too few datapoints.
 flower_m7 <- lmer(petal_length ~ finch_beak +
                     year_collected +
                     (1|ID),
@@ -713,12 +676,10 @@ flower_m9 <- lmer(petal_length_sqr ~ finch_beak +
 #type III test using lmertest
 Anova(flower_m9)
 
-# Diagnostic
-
-# Residual histograms
-hist(resid(flower_m7))
-hist(resid(flower_m8))
-hist(resid(flower_m9))
+# Diagnostic of residuals
+diagnostic(resid(flower_m7))
+diagnostic(resid(flower_m8))
+diagnostic(resid(flower_m9))
 
 # DHARMa
 testResiduals(flower_m7)
@@ -729,106 +690,94 @@ testResiduals(flower_m9)
 # run simple linear mixed effects models on each leaf treat
 
 # Leaf length ####
-# Log transformed data works best
-leaf_length_m7 <- lmer(leaf_length ~ mainland_island +
+# Squared transformed data works best
+leaf_length_m7 <- lmer(leaf_length ~ finch_beak +
                          year_collected +
-                         (1|ID),data=leaf_length,REML=F)
+                         (1|ID),data=gal_leaf_length,REML=F)
 
-leaf_length_m2 <- lmer(leaf_length_log ~ mainland_island +
+leaf_length_m8 <- lmer(leaf_length_log ~ finch_beak +
                          year_collected +
-                         (1|ID),data=leaf_length,REML=F)
+                         (1|ID),data=gal_leaf_length,REML=F)
 
-leaf_length_m3 <- lmer(leaf_length_sqr ~ mainland_island +
+leaf_length_m9 <- lmer(leaf_length_sqr ~ finch_beak +
                          year_collected +
-                         (1|ID),data=leaf_length,REML=F)
+                         (1|ID),data=gal_leaf_length,REML=F)
 # Type II test
-Anova(leaf_length_m1)
+Anova(leaf_length_m7)
 
 # Diagnostic
-
-# Diagnostic function
-diagnostic(leaf_length$leaf_length)
-diagnostic(leaf_length$leaf_length_log)
-diagnostic(leaf_length$leaf_length_sqr)
-
-# Residual histograms
-hist(resid(leaf_length_m1))
-hist(resid(leaf_length_m2))
-hist(resid(leaf_length_m3))
+diagnostic(resid(leaf_length_m7))
+diagnostic(resid(leaf_length_m8))
+diagnostic(resid(leaf_length_m9))
 
 # DHARMa
-testResiduals(leaf_length_m1)
-testResiduals(leaf_length_m2)
-testResiduals(leaf_length_m3)
+testResiduals(leaf_length_m7)
+testResiduals(leaf_length_m8)
+testResiduals(leaf_length_m9)
 
 # Leaflet length ####
 # Log transformed data works best
-leaflet_length_m1 <- lmer(leaflet_length ~ mainland_island +
+leaflet_length_m7 <- lmer(leaflet_length ~ finch_beak +
                             year_collected +
                             (1|ID),
-                          data=leaflet_length,
+                          data=gal_leaflet_length,
                           REML = F)
 
-leaflet_length_m2 <- lmer(leaflet_length_log ~ mainland_island +
+leaflet_length_m8 <- lmer(leaflet_length_log ~ finch_beak +
                             year_collected +
                             (1|ID),
-                          data=leaflet_length,
+                          data=gal_leaflet_length,
                           REML = F)
 
-leaflet_length_m3 <- lmer(leaflet_length_sqr ~ mainland_island +
+leaflet_length_m9 <- lmer(leaflet_length_sqr ~ finch_beak +
                             year_collected +
                             (1|ID),
-                          data=leaflet_length,
+                          data=gal_leaflet_length,
                           REML = F)
 # Type III test
-Anova(leaflet_length_m2)
+Anova(leaflet_length_m7)
 
 # Diagnostic
 
-# Diagnostic function
-diagnostic(leaflet_length$leaflet_length)
-diagnostic(leaflet_length$leaflet_length_log)
-diagnostic(leaflet_length$leaflet_length_sqr)
-
 # Residual histograms
-hist(resid(leaflet_length_m1))
-hist(resid(leaflet_length_m2))
-hist(resid(leaflet_length_m3))
+diagnostic(resid(leaflet_length_m7))
+diagnostic(resid(leaflet_length_m8))
+diagnostic(resid(leaflet_length_m9))
 
 # DHARMa
-testResiduals(leaflet_length_m1)
-testResiduals(leaflet_length_m2)
-testResiduals(leaflet_length_m3)
+testResiduals(leaflet_length_m7)
+testResiduals(leaflet_length_m8)
+testResiduals(leaflet_length_m9)
 
 
 # Leaflet number ####
-leaflet_num_m1 <- glm(number_of_leaflets ~ mainland_island +
+leaflet_num_m3 <- glm(number_of_leaflets ~ finch_beak +
                         year_collected,
                       family = poisson,
-                      data=leaf_length)
+                      data=gal_leaf_length)
 
-Anova(leaflet_num_m1)
+# Test
+Anova(leaflet_num_m3)
 
 # Diagnostic
 # Residual histograms
-hist(resid(leaflet_num_m1))
+diagnostic(resid(leaflet_num_m3))
 
 # DHARMa
-testResiduals(leaflet_num_m1)
+testResiduals(leaflet_num_m3)
 
+# LS means ####
+# Use emmeans package for this. 
 
-
-
-# Estimates of LS means ####
-
-# mainland/island effect. Model 1 ####
-
+# Using the that that worked best for each trait and model
 #the following estimates LS means for the mainland_island effect for each response
 
+# Model 1 ####
 emm_options(opt.digits=F)
 
 # Mericarp ####
-emmeans(mericarp_length_m1, ~mainland_island)
+emmeans(meri_length_m3, pairwise ~ mainland_island)
+emm_options()
 emmeans(mericarp_width_m1, ~mainland_island)
 emmeans(mericarp_depth_m1, ~mainland_island)
 emmeans(mericarp_spine.length_m1, ~mainland_island)
@@ -843,70 +792,6 @@ emmeans(flower_m1,~mainland_island)
 emmeans(leaf_length_m1,~mainland_island)
 emmeans(leaflet_length_m1,~mainland_island)
 emmeans(leaflet_num_m1,~mainland_island)
-
-
-
-
-
-
-#### Length ####
-# Raw data
-mericarp_length_m2<- lm(length ~ finch_beak + year_collected, data = gal_length) #Full model
-Anova(mericarp_length_m2)
-
-
-#### Width ####
-# Raw data
-width_beak_raw <- lm(width ~ finch_beak + year_collected, data = gal_width) #Full model
-Anova(width_beak_raw)
-
-#### Depth ####
-# Raw data
-depth_beak_raw <- lm(depth ~ finch_beak + year_collected, data = gal_depth) #Full model
-Anova(depth_beak_raw)
-
-#### Spine Length ####
-# Raw data
-spine_beak_raw <- lm(spine_length ~ finch_beak + year_collected, data = gal_spine_length) #Full model
-Anova(spine_beak_raw)
-
-#### Tip distance ####
-# Raw data
-tip_dist_beak_raw <- lm(tip_distance ~ finch_beak + year_collected, data = gal_tip_distance) #Full model
-Anova(tip_dist_beak_raw)
-
-#### Spine number ####
-spine_number_beak <- glm(spine_num ~ finch_beak + year_collected, data = gal_spine_number, family = "binomial")
-Anova(spine_number_beak)
-
-#### Lower spines ####
-lower_spines_beak <- glm(lower_spines ~ finch_beak + year_collected, data = gal_lower_spines, family = "binomial")
-Anova(lower_spines_beak)
-
-
-
-# Diagnostic for models ######
-# Model 1 mainland/island ####
-attach(mericarp)
-attach(flower)
-attach(leaf)
-hist(length)
-hist(petal_length)
-hist(leaf_length)
-
-diagnostic(length)
-plot(mericarp_length_m1)
-
-diagnostic(width)
-diagnostic(depth)
-
-diagnostic(petal_length)
-
-diagnostic(leaf_length)
-diagnostic(leaflet_length)
-diagnostic(leaf_num)
-
-
 
 
 
