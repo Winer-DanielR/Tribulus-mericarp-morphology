@@ -3,7 +3,8 @@
 #Version_1
 
 ### Data transformation ###
-### Run diagnostic function script first!
+# This script was used once to create the individual databases with transformed data
+# These databases were exported and are found in the processed data folder
 
 ##### Extract the variables into a single data frame per variable ####
 
@@ -77,18 +78,6 @@ leaflet_length <- filter(leaf, !is.na(leaflet_length))
 
 # Leaf number
 leaf$leaf_num_log <- log(leaf$leaf_num)
-
-#### Filter datasets for Galapagos only data ####
-gal_meri_length <- filter(meri_length, galapagos_other == "Galapagos")
-gal_meri_width <- filter(meri_width, galapagos_other == "Galapagos")
-gal_meri_depth <- filter(meri_depth, galapagos_other == "Galapagos")
-gal_meri_spine.length <- filter(meri_spine.length, galapagos_other == "Galapagos")
-gal_meri_tip.distance <- filter(meri_tip.distance, galapagos_other == "Galapagos")
-gal_meri_spine.number <- filter(meri_spine.number, galapagos_other == "Galapagos")
-gal_meri_lower.spines <- filter(meri_lower.spines, galapagos_other == "Galapagos")
-gal_petal_length <- filter(petal_length, galapagos_other == "Galapagos")
-gal_leaf_length <- filter(leaf_length, galapagos_other == "Galapagos")
-gal_leaflet_length <- filter(leaflet_length, galapagos_other == "Galapagos")
 
 ##### To export CVS tables per trait ####
 #write_csv(leaflet_length, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaflet Length.csv")
