@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE, include = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("03_data loading_v1.R", local = knitr::knit_global())
@@ -32,19 +32,10 @@ This is the first model that looks at the differences between *Tribulus* mericar
 ```{r Model 1. Length, echo=FALSE}
 par(mfrow = c(1,3))
 diagnostic(resid(meri_length_m3))
-# Kurtosis and Skewness
 
 par(mfrow = c(1,2))
 plotResiduals(meri_length_m3)
 plotQQunif(meri_length_m3)
-
-# Anova
-Anova(meri_length_m3)
-
-# LS Means
-EM_length
-par(mfrow = c(1,1))
-plot(EM_length)
 ```
 
 ### Model used -> trait ~ finch_beak + year_collected
