@@ -3,9 +3,9 @@ title: "Mericarp Morphology Preliminary Results"
 author: "Daniel Reyes"
 date: "3/1/2021"
 output:
-  html_document:
-    df_print: paged
-  word_document: default
+  html_document: default
+    df_print: 
+  word_document: default 
   pdf_document: default
 ---
 
@@ -46,6 +46,28 @@ EM_length
 par(mfrow = c(1,1))
 plot(EM_length)
 ```
+
+### Width -> sqrt-transformed
+
+```{r Model 1. Width, echo=FALSE}
+par(mfrow = c(1,3))
+diagnostic(resid(meri_width_m3))
+# Kurtosis and Skewness
+
+par(mfrow = c(1,2))
+plotResiduals(meri_width_m3)
+plotQQunif(meri_width_m3)
+
+# Anova
+Anova(meri_width_m3)
+
+# LS Means
+EM_width
+par(mfrow = c(1,1))
+plot(EM_width)
+```
+
+### Depth <- Nottransformed
 
 ### Model used -> trait ~ finch_beak + year_collected
 Finch beak was defined as the islands where there was presence (1) or absence (0) of large ground finches, _G. magnirostris_. Here I am using the raw data. There are some warnings that we may need to check.
