@@ -1,36 +1,50 @@
 ---
 title: "Mericarp Morphology Preliminary Results"
 author: "Daniel Reyes"
-date: "12/3/2020"
+date: "3/1/2021"
 output:
-  pdf_document: default
-  word_document: default
   html_document:
     df_print: paged
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(eval = FALSE, include = FALSE)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
-source("02_data prep_v1.R", local = knitr::knit_global())
-source("03_Trait transformation dataframes_v1.R")
+source("03_data loading_v1.R", local = knitr::knit_global())
 source("04_Models per trait_v1.R", local = knitr::knit_global())
 ```
 
-## Preliminary data
-### Model used -> trait ~ mainland + year_collected
-This model was used per trait. These are the results of the raw data models. But transformed traits are included in the code.
+# Univariate analysis
 
-```{r Anova tables mainland}
-Anova(length_full_raw)
-Anova(width_full_raw)
-Anova(depth_full_raw)
-Anova(spine_full_raw)
-Anova(tip_dist_full_raw)
-Anova(spine_number_full)
-Anova(lower_spines_full)
+I ran different models per trait with un-transformed data, log-transformed and sqrt-transformed data. Then I used a custom *diagnostic* function and the package *DHARMa* to compare between models.
+Then I selected the model that better fit the assumptions. The model I will show here are the ones selected.
+Finally, I used the package *emmeans* to estimate the marginal means per model.
 
+## Model 1: trait ~ mainland/island + year + (1|ID)
+
+This is the first model that looks at the differences between *Tribulus* mericarps, flowers and leaves from mainland and island populations.
+
+### Length -> Sqrt-transformed
+
+```{r Model 1. Length, echo=FALSE}
+par(mfrow = c(1,3))
+diagnostic(resid(meri_length_m3))
+# Kurtosis and Skewness
+
+par(mfrow = c(1,2))
+plotResiduals(meri_length_m3)
+plotQQunif(meri_length_m3)
+
+# Anova
+Anova(meri_length_m3)
+
+# LS Means
+EM_length
+par(mfrow = c(1,1))
+plot(EM_length)
 ```
 
 ### Model used -> trait ~ finch_beak + year_collected
