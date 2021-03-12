@@ -3,20 +3,14 @@ title: "Mericarp Morphology Preliminary Results"
 author: "Daniel Reyes"
 date: "3/1/2021"
 output:
-<<<<<<< HEAD
-  html_document: default
-    df_print: 
-  word_document: default 
-=======
   html_document:
     df_print: paged
   word_document: default
->>>>>>> lv_flw_mer
   pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE, include = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("03_data loading_v1.R", local = knitr::knit_global())
@@ -24,7 +18,6 @@ source("04_Models per trait_v1.R", local = knitr::knit_global())
 ```
 
 # Univariate analysis
-<<<<<<< HEAD
 
 I ran different models per trait with un-transformed data, log-transformed and sqrt-transformed data. Then I used a custom *diagnostic* function and the package *DHARMa* to compare between models.
 Then I selected the model that better fit the assumptions. The model I will show here are the ones selected.
@@ -39,67 +32,11 @@ This is the first model that looks at the differences between *Tribulus* mericar
 ```{r Model 1. Length, echo=FALSE}
 par(mfrow = c(1,3))
 diagnostic(resid(meri_length_m3))
-# Kurtosis and Skewness
 
 par(mfrow = c(1,2))
 plotResiduals(meri_length_m3)
 plotQQunif(meri_length_m3)
-
-# Anova
-Anova(meri_length_m3)
-
-=======
-
-I ran different models per trait with un-transformed data, log-transformed and sqrt-transformed data. Then I used a custom *diagnostic* function and the package *DHARMa* to compare between models.
-Then I selected the model that better fit the assumptions. The model I will show here are the ones selected.
-Finally, I used the package *emmeans* to estimate the marginal means per model.
-
-## Model 1: trait ~ mainland/island + year + (1|ID)
-
-This is the first model that looks at the differences between *Tribulus* mericarps, flowers and leaves from mainland and island populations.
-
-### Length -> Sqrt-transformed
-
-```{r Model 1. Length, echo=FALSE}
-par(mfrow = c(1,3))
-diagnostic(resid(meri_length_m3))
-# Kurtosis and Skewness
-
-par(mfrow = c(1,2))
-plotResiduals(meri_length_m3)
-plotQQunif(meri_length_m3)
-
-# Anova
-Anova(meri_length_m3)
-
->>>>>>> lv_flw_mer
-# LS Means
-EM_length
-par(mfrow = c(1,1))
-plot(EM_length)
 ```
-
-### Width -> sqrt-transformed
-
-```{r Model 1. Width, echo=FALSE}
-par(mfrow = c(1,3))
-diagnostic(resid(meri_width_m3))
-# Kurtosis and Skewness
-
-par(mfrow = c(1,2))
-plotResiduals(meri_width_m3)
-plotQQunif(meri_width_m3)
-
-# Anova
-Anova(meri_width_m3)
-
-# LS Means
-EM_width
-par(mfrow = c(1,1))
-plot(EM_width)
-```
-
-### Depth <- Nottransformed
 
 ### Model used -> trait ~ finch_beak + year_collected
 Finch beak was defined as the islands where there was presence (1) or absence (0) of large ground finches, _G. magnirostris_. Here I am using the raw data. There are some warnings that we may need to check.
