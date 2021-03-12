@@ -106,9 +106,10 @@ meri_depth_m3 <- lmer(depth_sqr ~ mainland_island +
 # diagnostic(resid(meri_depth_m3))
 # 
 # # DHARMa
-# testResiduals(meri_depth_m1)
+testResiduals(meri_depth_m1)
 # testResiduals(meri_depth_m2)
 # testResiduals(meri_depth_m3)
+plotResiduals(meri_depth_m1)
 
 # Spine length ####
 # I think the untransformed works best but the 0s may affect the results
@@ -136,15 +137,17 @@ meri_spine.length_m3 <-lmer(spine_length_sqr ~ mainland_island +
 # # Diagnostic
 # 
 # # Residual histograms
-# diagnostic(resid(meri_spine.length_m1))
-# diagnostic(resid(meri_spine.length_m2))
-# diagnostic(resid(meri_spine.length_m3))
+diagnostic(resid(meri_spine.length_m1))
+diagnostic(resid(meri_spine.length_m2))
+diagnostic(resid(meri_spine.length_m3))
+hist(resid(meri_spine.length_m1), breaks = 20)
+hist(meri_spine.length$spine_length, breaks = 20)
 # 
 # # DHARMa
-# testResiduals(meri_spine.length_m1)
-# testResiduals(meri_spine.length_m2)
-# testResiduals(meri_spine.length_m3)
-# testZeroInflation(meri_depth_m1)
+testResiduals(meri_spine.length_m1)
+testResiduals(meri_spine.length_m2)
+testResiduals(meri_spine.length_m3)
+testZeroInflation(meri_depth_m1)
 
 # Tip distance ####
 # Raw data looks the best
@@ -167,7 +170,8 @@ meri_tip.distance_m3 <- lmer(tip_distance_sqr ~ mainland_island +
 # # type III test
 # Anova(meri_tip.distance_m3)
 # # Diagnostic
-# 
+hist(resid(meri_spine.length_m1), breaks = 20)
+hist(meri_spine.length$spine_length, breaks = 20)
 # # Residual histograms
 # diagnostic(resid(meri_tip.distance_m1))
 # diagnostic(resid(meri_tip.distance_m2))
@@ -186,8 +190,18 @@ meri_spine.number_m1 <- glm(spine_num ~ mainland_island +
                               data = meri_spine.number,
                               family = poisson)
 
+meri_spine.number_glmm <- glmmTMB(spine_num ~ mainland_island +
+                                    year_collected +
+                                    (1|ID),
+                                  data = meri_spine.number,
+                                  family = nbinom1)
+
+fixef(meri_spine.number_glmm)
+summary(meri_spine.number_glmm)
+?glmFamily
+diagnostic(resid(meri_spine.number_glmm))
 # # type III test
-# Anova(meri_spine.number_m1)
+Anova(meri_spine.number_glmm)
 # # Diagnostic
 # 
 # # Residual histograms
@@ -201,12 +215,21 @@ meri_lower.spines_m1 <- glm(lower_spines ~ mainland_island +
                                   year_collected, 
                             data = meri_lower.spines, 
                             family = "binomial")
+
+meri_lower.spines_m1_glmm <- glmmTMB(lower_spines ~ mainland_island +
+                                       (1|ID),
+                                     data = meri_lower.spines,
+                                     family = binomial)
+
 # # Type III test
 # Anova(meri_lower.spines_m1)
+Anova(meri_lower.spines_m1_glmm)
+
 # # Diagnostic
 # 
 # # Residual histograms
-# diagnostic(resid(meri_lower.spines_m1))
+diagnostic(resid(meri_lower.spines_m1_glmm))
+
 # 
 # # DHARMa
 # testResiduals(meri_lower.spines_m1)
@@ -235,14 +258,20 @@ flower_m3 <- lmer(petal_length_sqr ~ mainland_island +
 # Anova(flower_m1)
 # 
 # # Diagnostic
-# 
+hist(petal_length$petal_length, breaks = 20)
+
+petal_length$residuals <- resid(flower_m1) 
+
+petal_resid<-data.frame(petal_length,res=residuals(flower_m1))
+
+
 # # Residual histograms
-# diagnostic(resid(flower_m1))
+diagnostic(resid(flower_m1))
 # diagnostic(resid(flower_m2))
 # diagnostic(resid(flower_m3))
 # 
 # # DHARMa
-# testResiduals(flower_m1)
+testResiduals(flower_m1)
 # testResiduals(flower_m2)
 # testResiduals(flower_m3)
 
