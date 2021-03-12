@@ -3,9 +3,9 @@ title: "Univariate Analysis"
 author: "Daniel Reyes"
 date: "3/1/2021"
 output:
+  html_document: default
   pdf_document: 
     toc: yes
-  html_document: default
 editor_options: 
   chunk_output_type: console
 ---
