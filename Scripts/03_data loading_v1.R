@@ -150,7 +150,6 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
                                         island_group,
                                         galapagos_island,
                                         finch_beak,
-                                        spine_num,
                                         lower_spines,
                                         country,
                                         location), list(factor))
@@ -158,10 +157,60 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
 #str(mericarp)
 #Year is a number instead of a factor.
 
+# Mericarp1 removed all NAs for ALL traits. 
+# This resulted in half of the mericarp data removed 
+# because spine length was not measured for most of the herbarium data
+# mericarp1 <- as.tibble(mericarp)
+# mericarp1 <- filter(mericarp1, !is.na(mericarp1[,18]))
+# mericarp1 <- select(mericarp1, !notes)
+# str(mericarp1)
+# write_csv(mericarp1, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs all traits.csv")
+
+mericarp1 <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs all traits.csv")
+str(mericarp1)
+names(mericarp1)
+mericarp1 <- mericarp1 %>% mutate_at(vars(ID,
+                                        Herbarium,
+                                        continent,
+                                        island_group,
+                                        mainland_island,
+                                        galapagos_other,
+                                        island_group,
+                                        galapagos_island,
+                                        finch_beak,
+                                        country,
+                                        location), list(factor))
+
+
+# Mericarp 2 removes spine length from the analysis to include most of the mericarp data
+# mericarp2 <- select(mericarp, !spine_length)
+# mericarp2 <- filter(mericarp2, !is.na(mericarp2$lower_spines))
+# write_csv(mericarp2, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs spine lenght removed.csv")
+
+mericarp2 <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs spine lenght removed.csv")
+str(mericarp2)
+names(mericarp2)
+mericarp2 <- mericarp2 %>% mutate_at(vars(ID,
+                                          Herbarium,
+                                          continent,
+                                          island_group,
+                                          mainland_island,
+                                          galapagos_other,
+                                          island_group,
+                                          galapagos_island,
+                                          finch_beak,
+                                          country,
+                                          location), list(factor))
+mericarp2 <- filter(mericarp2, !is.na(mericarp2$year_collected))
+
+### Removing spine length we have more locaiton for multivariate analysis
+### For all traits we have mainly Florida and Galapagos
+
 #### Leaf data ####
 leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
 leaf <- as_tibble(leaf)
-names(leaf)
+
+# It is important to remove NAs
 
 # Convert leaf variables into factors
 leaf <- leaf %>% mutate_at(vars(ID,
@@ -176,6 +225,8 @@ leaf <- leaf %>% mutate_at(vars(ID,
                                 herbarium), list(factor))
 
 #str(leaf)
+leaf <- filter(leaf, !is.na(leaf$number_of_leaflets))
+
 
 #### Flower data ####
 flower <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
@@ -194,4 +245,6 @@ flower <- flower %>% mutate_at(vars(ID,
                                     province_state,
                                     Herbarium), list(factor))
 #str(flower)
-
+# FLower does not have NAs
+# Mericarp data has two datasets. Leaf data has one. Flower data has one.
+  
