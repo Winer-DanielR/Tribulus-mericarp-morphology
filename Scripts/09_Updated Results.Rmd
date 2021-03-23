@@ -1,0 +1,785 @@
+---
+title: "Updated Results Diagnostics"
+author: "Daniel Reyes"
+date: "3/22/2021"
+output: 
+  pdf_document:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("00_packages_v1.R", local = knitr::knit_global())
+source("01_diagnostic function_v1.R", local = knitr::knit_global())
+source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
+source("04_Models per trait_v1.R", local = knitr::knit_global())
+tinytex::parse_packages(log = "~/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Scripts/09_Updated-Results.log")
+```
+# Model 1: trait \~ mainland/island + year + (1\|ID)
+
+This model looks at the differences between *Tribulus* mericarps, flowers and leaves from mainland and island populations.
+
+## Mericarp traits:
+
+### Length
+
+Best fitted data: Untransformed data
+
+```{r mericarp length diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_length_m1))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_length_m1)
+plotQQunif(meri_length_m1)
+```
+
+```{r mericarp length anova, echo=FALSE}
+Anova(meri_length_m1)
+```
+
+#### Emmeans: Length
+
+```{r mericarp length EM, echo=FALSE, fig.align='left'}
+plot(EM_length) + labs(title = "Mericarp Length")
+```
+
+\newpage
+
+### Width
+
+Best fitted data: Square root transformed data
+
+```{r mericarp width diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_width_m3))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_width_m3)
+plotQQunif(meri_width_m3)
+```
+
+```{r mericarp width anova, echo=FALSE}
+Anova(meri_width_m3)
+```
+
+#### Emmeans: Width
+
+```{r mericarp width EM, echo=FALSE, fig.align='left'}
+plot(EM_width) + labs(title = "Mericarp Width")
+```
+
+\newpage
+
+### Depth
+
+Best fitted data: Untransformed data
+
+```{r mericarp depth diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_depth_m1))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_depth_m1)
+plotQQunif(meri_depth_m1)
+```
+
+```{r mericarp depth anova, echo=FALSE}
+Anova(meri_depth_m1)
+```
+
+#### Emmeans: Depth
+
+```{r mericarp depth EM, echo=FALSE, fig.align='left'}
+plot(EM_depth) + labs(title = "Mericarp Depth")
+```
+
+\newpage
+
+### Spine length
+
+Spine length had a lot zeroes that were removed, also I filter the data again because the residual distribution was skewed. I removed spines larger than 10 mm. This filter removed some individuals from Baltra Island. Here I show the best model fit after filtering.
+
+The histograms show the distribution of spine length measurements. The residual distribution of the unfiltered model, and the spine length distribution of the filtered data.
+
+Best fitted data: Untransformed data.
+
+```{r mericarp spine diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+hist(meri_spine_length_wozero$spine_length, breaks = 20)
+hist(resid(meri_spine_length_wozero_m3), breaks = 20)
+hist(spine_length_filter$spine_length, breaks = 20)
+
+diagnostic(resid(spine_length_filter_m1))
+
+par(mfrow = c(1,2))
+plotResiduals(spine_length_filter_m1)
+plotQQunif(spine_length_filter_m1)
+```
+
+```{r mericarp spine anova, echo=FALSE}
+Anova(spine_length_filter_m1)
+```
+
+**Mainland/island groups non significant**
+
+#### Emmeans: Spine length
+
+```{r mericarp spine EM, echo=FALSE, fig.align='left'}
+plot(EM_spine) + labs(title = "Mericarp Spine Length")
+```
+
+\newpage
+
+### Tip distance
+
+In a similar way, tip distance had a lot zeroes that were removed. I show three histograms with the distributions of tip distance measurements with zeros included. The residuals of the original model and the residuals distribution after filtering.
+
+The diagnostic function shows the residuals distribution after removing zeros and filtering residuals that were lower than -5. This removed specimen 383.
+
+Best fitted data: Untransformed data.
+
+```{r mericarp tip diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+hist(meri_tip_distance$tip_distance, breaks = 20)
+hist(resid(meri_tip_distance_m4), breaks = 20)
+hist(meri_tip_distance_wozero_filter$residuals, breaks = 20)
+
+diagnostic(resid(meri_tip_distance_m7))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_tip_distance_m7)
+plotQQunif(meri_tip_distance_m7)
+```
+
+```{r mericarp tip anova, echo=FALSE}
+Anova(meri_tip_distance_m7)
+```
+
+**Mainland/island groups non significant**
+
+**Year groups non significant**
+
+#### Emmeans: Tip distance
+
+```{r mericarp tip EM, echo=FALSE, fig.align='left'}
+plot(EM_tip_dist) + labs(title = "Mericarp Tip Distance")
+```
+
+\newpage
+
+### Lower spines
+
+Presence/absence of lower spines is a binomial trait for this one I used two models that showed different outcomes. The first one is a glm: **glm(lower_spines \~ mainland_island + year_collected)**.
+
+This model includes year as a factor but does not contain ID as a random effect.
+
+The second one using the *glmmTMB* package: **glmmTMB(lower_spines \~ mainland_island + (1\|ID)**
+
+The glmmTMB model does not include the year factor but does include the random ID effect.
+
+```{r mericarp lower spines anova, echo=FALSE, fig.cap="First ANOVA, glm model. Second ANOVA glmmTMB model."}
+Anova(meri_lower_spines_m1)
+Anova(meri_lower_spines_m1_glmm)
+```
+
+#### Emmeans: Lower spines
+
+```{r mericarp lower spines EM, echo=FALSE, fig.align='left', fig.cap="First plot, glm model. Second plot, glmmTMB model."}
+plot(EM_lower) + labs(title = "Mericarp Lower Spines")
+
+plot(EM_lower1) + labs(title = "Mericarp Lower Spines")
+```
+
+\newpage
+
+### Upper spines
+
+Presence/absence of upper spines is a binomial trait that replaced spine number. Similar as lower spines, I used two models that showed different outcomes. The first one is a glm: **glm(upper_spines \~ mainland_island + year_collected)**.
+
+This model includes year as a factor but does not contain ID as a random effect.
+
+The second one using the *glmmTMB* package: **glmmTMB(upper_spines \~ mainland_island + (1\|ID)**
+
+The glmmTMB model does not include the year factor but does include the random ID effect.
+
+```{r mericarp upper spines anova, echo=FALSE, fig.cap="First ANOVA, glm model. Second ANOVA glmmTMB model."}
+Anova(meri_upper_spines_m1)
+Anova(meri_upper_spines_m1_glmm)
+```
+
+**Here, for the glm model the results are significant, but for the glmmTMB the differences between mainland and island populations are not signigicant.**
+
+#### Emmeans: Lower spines
+
+```{r mericarp upper spines EM, echo=FALSE, fig.align='left', fig.cap="First plot, glm model. Second plot, glmmTMB model."}
+plot(EM_upper) + labs(title = "Mericarp Upper Spines")
+
+plot(EM_upper1) + labs(title = "Mericarp Upper Spines")
+```
+
+\newpage
+
+## Flower traits:
+
+### Petal length
+
+Best fitted data: Untransformed data
+Filter residuals. This filter removed specimens 240, 351, 320 (<-5) and 454, 319, 207, 249, 340 (>5)
+
+```{r mericarp petal length diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+hist(flower$petal_length, breaks = 20)
+hist(resid(flower_m1), breaks = 20)
+hist(flower_filter$residuals, breaks = 20)
+diagnostic(resid(flower_m4))
+
+par(mfrow = c(1,2))
+plotResiduals(flower_m4)
+plotQQunif(flower_m4)
+```
+
+```{r mericarp petal length anova, echo=FALSE}
+Anova(flower_m1)
+```
+
+**Mainland and island differences are not significant. Year differences are significant.**
+
+#### Emmeans: Petal length
+
+```{r mericarp petal length EM, echo=FALSE, fig.align='left'}
+plot(EM_flower) + labs(title = "Mericarp Length")
+```
+
+\newpage
+
+## Leaf traits:
+
+### Leaf length
+
+Best fitted data: Square root transformed data
+
+```{r mericarp leaf length diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaf_length_m3))
+
+par(mfrow = c(1,2))
+plotResiduals(leaf_length_m3)
+plotQQunif(leaf_length_m3)
+```
+
+```{r mericarp leaf length anova, echo=FALSE}
+Anova(leaf_length_m3)
+```
+
+**Mainland and island differences and year differences are significant.**
+
+#### Emmeans: Leaf length
+
+```{r mericarp leaf length EM, echo=FALSE, fig.align='left'}
+plot(EM_leaf) + labs(title = "Leaf Length")
+```
+
+\newpage
+
+### Leaflet number
+
+For this trait I used a glm model with a Poisson distribution:
+
+**glm(number_of_leaflets \~ mainland_island + year_collected)**
+
+```{r mericarp leaf number diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_num_m1))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_num_m1)
+plotQQunif(leaflet_num_m1)
+```
+
+```{r mericarp leaf number anova, echo=FALSE}
+Anova(leaflet_num_m1)
+```
+
+**Mainland and island differences are significant.**
+
+#### Emmeans: Leaflet number
+
+```{r mericarp leaf number EM, echo=FALSE, fig.align='left'}
+plot(EM_leaflet_num) + labs(title = "Leaflet Number")
+```
+
+\newpage
+
+### Leaflet length
+
+Best fitted data: Log transformed data
+
+```{r mericarp leaflet length diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_length_m2))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_length_m2)
+plotQQunif(leaflet_length_m2)
+```
+
+```{r mericarp leaflet length anova, echo=FALSE}
+Anova(leaflet_length_m2)
+```
+
+**Mainland and island differences and year differences are significant.**
+
+#### Emmeans: Leaflet length
+
+```{r mericarp leaflet length EM, echo=FALSE, fig.align='left'}
+plot(EM_leaflet) + labs(title = "Leaflet Length")
+```
+
+\newpage
+
+# Model 2: trait \~ galapagos/other + year + (1\|ID)
+
+This model looks at the differences between *Tribulus* flowers and leaves from Galapagos and other island systems. We do not have mericarp data from other islands so they are not included.
+
+## Flower traits:
+
+### Petal length
+
+Best fitted data: Squared root data
+
+```{r mericarp petal length 2 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(flower_m9))
+
+par(mfrow = c(1,2))
+plotResiduals(flower_m9)
+plotQQunif(flower_m9)
+```
+
+```{r mericarp petal length 2 anova, echo=FALSE}
+Anova(flower_m9)
+```
+
+**Mainland and island differences are significant. Year differences are significant.**
+
+#### Emmeans: Petal length
+
+```{r mericarp petal length EM 2, echo=FALSE, fig.align='left'}
+plot(EM_flower2) + labs(title = "Mericarp Length")
+```
+
+\newpage
+
+## Leaf traits:
+
+### Leaf length
+
+Best fitted data: Log transformed data
+
+```{r mericarp leaf length 2 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaf_length_m5))
+
+par(mfrow = c(1,2))
+plotResiduals(leaf_length_m5)
+plotQQunif(leaf_length_m5)
+```
+
+```{r mericarp leaf length 2 anova, echo=FALSE}
+Anova(leaf_length_m5)
+```
+
+**Differences between galapagos and other islands are significant**
+
+#### Emmeans: Leaf length
+
+```{r mericarp leaf length EM 2, echo=FALSE, fig.align='left'}
+plot(EM_leaf2) + labs(title = "Leaf Length")
+```
+
+\newpage
+
+### Leaflet number
+
+For this trait I used a glm model with a Poisson distribution:
+
+**glm(number_of_leaflets \~ mainland_island + year_collected)**
+
+```{r mericarp leaf number 2 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_num_m2))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_num_m2)
+plotQQunif(leaflet_num_m2)
+```
+
+```{r mericarp leaf number 2 anova, echo=FALSE}
+Anova(leaflet_num_m2)
+```
+
+**Mainland and island differences are *barely* significant.**
+
+#### Emmeans: Leaflet number
+
+```{r mericarp leaf number 2 EM, echo=FALSE, fig.align='left'}
+plot(EM_leaflet_num2) + labs(title = "Leaflet Number")
+```
+
+\newpage
+
+### Leaflet length
+
+Best fitted data: Log transformed data
+
+```{r mericarp leaflet length 2 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_length_m5))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_length_m5)
+plotQQunif(leaflet_length_m5)
+```
+
+```{r mericarp leaflet length anova 2, echo=FALSE}
+Anova(leaflet_length_m5)
+```
+
+**Galapagos and other island differences are significant.**
+
+#### Emmeans: Leaflet length
+
+```{r mericarp leaflet length EM 2, echo=FALSE, fig.align='left'}
+plot(EM_leaflet2) + labs(title = "Leaflet Length")
+```
+
+\newpage
+
+# Model 3: trait \~ finch beak + year + (1\|ID)
+
+This model looks at the differences between *Tribulus* mericarps, flowers and leaves within the Galapagos islands that differ in the distribution of seed predators *G. magnirostis* and *G. cornirostris.* Darwin's finches that are known to easily predate mericarps.
+
+| Presence of *G. magnirostris* and *G. Cornirrostris* | Absence of *G. magnirostris* and *G. Cornirrostris* |
+|------------------------------------------------------|-----------------------------------------------------|
+| Daphne Major                                         | Floreana                                            |
+| Daphne Minor                                         | San Cristobal                                       |
+| Darwin                                               | Santa Fe                                            |
+| Fernandina                                           | Champion                                            |
+| Genovesa                                             | Baltra                                              |
+| Guy Fawkes Oeste                                     | Enderby                                             |
+| Isabela                                              | Gardner                                             |
+| Pinta                                                | Daphne Major \<1983                                 |
+| Plaza Norte                                          |                                                     |
+| Rabida                                               |                                                     |
+| Santa Cruz                                           |                                                     |
+| Santiago                                             |                                                     |
+| Seymour Norte                                        |                                                     |
+| Espanola                                             |                                                     |
+
+: Finch Island distribution. \*Magnirostris arrived to Daphne Major after 1984
+
+## Mericarp traits:
+
+### Length
+
+Best fitted data: Untransformed data
+
+```{r mericarp length 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_length_m4))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_length_m4)
+plotQQunif(meri_length_m4)
+```
+
+```{r mericarp length 3 anova, echo=FALSE}
+Anova(meri_length_m4)
+```
+
+#### Emmeans: Length
+
+```{r mericarp length 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_length3) + labs(title = "Mericarp Length")
+```
+
+\newpage
+
+### Width
+
+Best fitted data: Square root transformed data
+
+```{r mericarp width 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_width_m6))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_width_m6)
+plotQQunif(meri_width_m6)
+```
+
+```{r mericarp width 3 anova, echo=FALSE}
+Anova(meri_width_m6)
+```
+
+#### Emmeans: Width
+
+```{r mericarp width 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_width3) + labs(title = "Mericarp Width")
+```
+
+\newpage
+
+### Depth
+
+Best fitted data: Untransformed data
+
+```{r mericarp depth 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_depth_m4))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_depth_m4)
+plotQQunif(meri_depth_m4)
+```
+
+```{r mericarp depth 3 anova, echo=FALSE}
+Anova(meri_depth_m4)
+```
+
+#### Emmeans: Depth
+
+```{r mericarp depth 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_depth3) + labs(title = "Mericarp Depth")
+```
+
+\newpage
+
+### Spine length
+
+Spine length had a lot zeroes that were removed.
+
+Best fitted data: Untransformed data.
+
+```{r mericarp spine 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(meri_spine_length_m7))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_spine_length_m7)
+plotQQunif(meri_spine_length_m7)
+```
+
+```{r mericarp spine 3 anova, echo=FALSE}
+Anova(meri_spine_length_m7)
+```
+
+**Mainland/island groups non significant**
+
+#### Emmeans: Spine length
+
+```{r mericarp spine 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_spine3) + labs(title = "Mericarp Spine Length")
+```
+
+\newpage
+
+### Tip distance
+
+In a similar way, tip distance had a lot zeroes that were removed. I show three histograms with the distributions of tip distance measurements with zeros included. The residuals of the original model and the residuals distribution after filtering.
+
+The diagnostic function shows the residuals distribution after removing zeros and filtering residuals that were lower than -9.
+
+Best fitted data: Untransformed data.
+
+```{r mericarp tip 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+hist(gal_meri_tip_distance_wozero$tip_distance, breaks = 20)
+hist(resid(meri_tip_distance_m13), breaks = 20)
+hist(resid(meri_tip_distance_m16), breaks = 20)
+diagnostic(resid(meri_tip_distance_m16))
+
+par(mfrow = c(1,2))
+plotResiduals(meri_tip_distance_m16)
+plotQQunif(meri_tip_distance_m16)
+```
+
+```{r mericarp tip 3 anova, echo=FALSE}
+Anova(meri_tip_distance_m16)
+```
+
+**Finch beak groups significant**
+
+#### Emmeans: Tip distance
+
+```{r mericarp tip 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_tip_dist3) + labs(title = "Mericarp Tip Distance")
+```
+
+\newpage
+
+### Lower spines
+
+Presence/absence of lower spines is a binomial trait for this one I used two models that showed different outcomes. The first one is a glm: **glm(lower_spines \~ mainland_island + year_collected)**.
+
+This model includes year as a factor but does not contain ID as a random effect.
+
+The second one using the *glmmTMB* package: **glmmTMB(lower_spines \~ mainland_island + (1\|ID)**
+
+The glmmTMB model does not include the year factor but does include the random ID effect.
+
+```{r mericarp lower spines 3 anova, echo=FALSE, fig.cap="First ANOVA, glm model. Second ANOVA glmmTMB model."}
+Anova(meri_lower_spines_m2)
+Anova(meri_lower_spines_m2_glmm)
+```
+
+#### Emmeans: Lower spines
+
+```{r mericarp lower spines 3 EM, echo=FALSE, fig.align='left', fig.cap="First plot, glm model. Second plot, glmmTMB model."}
+plot(EM_lower3) + labs(title = "Mericarp Lower Spines")
+
+plot(EM_lower4) + labs(title = "Mericarp Lower Spines")
+```
+
+\newpage
+
+### Upper spines
+
+Presence/absence of upper spines is a binomial trait that replaced spine number. Similar as lower spines, I used two models that showed different outcomes. The first one is a glm: **glm(upper_spines \~ mainland_island + year_collected)**.
+
+This model includes year as a factor but does not contain ID as a random effect.
+
+The second one using the *glmmTMB* package: **glmmTMB(upper_spines \~ mainland_island + (1\|ID)**
+
+The glmmTMB model does not include the year factor but does include the random ID effect.
+
+```{r mericarp upper spines 3 anova, echo=FALSE, fig.cap="First ANOVA, glm model. Second ANOVA glmmTMB model."}
+Anova(meri_upper_spines_m2)
+Anova(meri_upper_spines_m2_glmm)
+```
+
+**Here, for the glm model the results are significant, but for the glmmTMB the differences between mainland and island populations are not signigicant.**
+
+#### Emmeans: Lower spines
+
+```{r mericarp upper spines 3 EM, echo=FALSE, fig.align='left', fig.cap="First plot, glm model. Second plot, glmmTMB model."}
+plot(EM_upper3) + labs(title = "Mericarp Upper Spines")
+
+plot(EM_upper4) + labs(title = "Mericarp Upper Spines")
+```
+
+\newpage
+
+## Flower traits:
+
+### Petal length
+
+Best fitted data: Square root data
+
+```{r mericarp petal length 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(flower_m12))
+
+par(mfrow = c(1,2))
+plotResiduals(flower_m12)
+plotQQunif(flower_m12)
+```
+
+```{r mericarp petal length 3 anova, echo=FALSE}
+Anova(flower_m12)
+```
+
+**Year differences are significant.**
+
+#### Emmeans: Petal length
+
+```{r mericarp petal length 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_flower) + labs(title = "Mericarp Length")
+```
+
+\newpage
+
+## Leaf traits:
+
+### Leaf length
+
+Best fitted data: Square root transformed data
+
+```{r mericarp leaf length 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaf_length_m9))
+
+par(mfrow = c(1,2))
+plotResiduals(leaf_length_m9)
+plotQQunif(leaf_length_m9)
+```
+
+```{r mericarp leaf length 3 anova, echo=FALSE}
+Anova(leaf_length_m9)
+```
+
+**Year differences are significant.**
+
+#### Emmeans: Leaf length
+
+```{r mericarp leaf length 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_leaf3) + labs(title = "Leaf Length")
+```
+
+\newpage
+
+### Leaflet number
+
+For this trait I used a glm model with a Poisson distribution:
+
+**glm(number_of_leaflets \~ mainland_island + year_collected)**
+
+```{r mericarp leaf number 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_num_m3))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_num_m3)
+plotQQunif(leaflet_num_m3)
+```
+
+```{r mericarp leaf number 3 anova, echo=FALSE}
+Anova(leaflet_num_m3)
+```
+
+#### Emmeans: Leaflet number
+
+```{r mericarp leaf number 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_leaflet_num3) + labs(title = "Leaflet Number")
+```
+
+\newpage
+
+### Leaflet length
+
+Best fitted data: Log transformed data
+
+```{r mericarp leaflet length 3 diagnostic, echo=FALSE, fig.align='left'}
+par(mfrow = c(1, 3))
+diagnostic(resid(leaflet_length_m8))
+
+par(mfrow = c(1,2))
+plotResiduals(leaflet_length_m8)
+plotQQunif(leaflet_length_m8)
+```
+
+```{r mericarp leaflet length 3 anova, echo=FALSE}
+Anova(leaflet_length_m8)
+```
+
+**Mainland and island differences and year differences are significant.**
+
+#### Emmeans: Leaflet length
+
+```{r mericarp leaflet length 3 EM, echo=FALSE, fig.align='left'}
+plot(EM_leaflet3) + labs(title = "Leaflet Length")
+```
+
+\newpage
