@@ -81,7 +81,7 @@ flower <- filter(flower, !is.na(petal_length))
 
 leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
 leaf <- leaf %>% mutate_at(vars(ID,
-                                    Herbarium,
+                                    herbarium,
                                     continent,
                                     island_group,
                                     mainland_island,
