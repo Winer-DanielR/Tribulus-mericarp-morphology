@@ -39,11 +39,12 @@ diagnostic(resid(meri_length_m1))
 # diagnostic(resid(meri_length_m3))
 
 # DHARMA <- this is the way with DHAMa
-testResiduals(meri_length_m1)
+# testResiduals(meri_length_m1)
 # testResiduals(meri_length_m2)
 # testResiduals(meri_length_m3)
 # 
-# plotResiduals(meri_length_m1)
+plotResiduals(meri_length_m1)
+plotQQunif(meri_length_m1)
 # plotResiduals(meri_length_m2)
 # plotResiduals(meri_length_m3)
 
@@ -100,7 +101,8 @@ meri_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
 Anova(meri_depth_m1)
 # 
 # # Diagnostic
-# 
+hist(resid(meri_depth_m1), breaks = 20)
+
 # # Residual histograms
 diagnostic(resid(meri_depth_m1))
 # diagnostic(resid(meri_depth_m2))
@@ -219,8 +221,8 @@ Anova(spine_length_filter_m1)
 
 # # Residual histograms
 diagnostic(resid(spine_length_filter_m1))
-# diagnostic(resid(spine_length_filter_m2))
-# diagnostic(resid(spine_length_filter_m3))
+diagnostic(resid(spine_length_filter_m2))
+diagnostic(resid(spine_length_filter_m3))
 
 # # DHARMa
 testResiduals(spine_length_filter_m1)
@@ -299,7 +301,7 @@ Anova(meri_tip_distance_m4)
 # testResiduals(meri_tip_distance_m3)
 
 # Filter residuals
-meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_wozero_m1)
+meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_m4)
 hist(resid(meri_tip_distance_m4), breaks = 20)
 hist(meri_tip_distance_wozero$tip_distance, breaks = 20)
 
@@ -335,8 +337,8 @@ meri_tip_distance_m9 <- lmer(sqrt(tip_distance) ~ mainland_island +
 
 # Diagnostic
 diagnostic(resid(meri_tip_distance_m7))
-# diagnostic(resid(meri_tip_distance_m8))
-# diagnostic(resid(meri_tip_distance_m9))
+diagnostic(resid(meri_tip_distance_m8))
+diagnostic(resid(meri_tip_distance_m9))
 
 #Anova
 Anova(meri_tip_distance_m7)
@@ -874,31 +876,31 @@ Anova(meri_spine_length_m4)
  
 ##### Tip distance ####
 # Raw data looks the best
-meri_tip_distance_m4 <- lmer(tip_distance ~ finch_beak +
+meri_tip_distance_m10 <- lmer(tip_distance ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance,REML=F)
 
-meri_tip_distance_m5 <- lmer(log(tip_distance + 1) ~ finch_beak +
+meri_tip_distance_m11 <- lmer(log(tip_distance + 1) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance,REML=F)
 
-meri_tip_distance_m6 <- lmer(sqrt(tip_distance) ~ finch_beak +
+meri_tip_distance_m12 <- lmer(sqrt(tip_distance) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance,REML=F)
 
 
 # # type III test
-Anova(meri_tip_distance_m4)
+Anova(meri_tip_distance_m10)
 # # Diagnostic
 hist(gal_meri_tip_distance$tip_distance, breaks = 20)
 
 # # Diagnostic of residuals
-diagnostic(resid(meri_tip_distance_m4))
-diagnostic(resid(meri_tip_distance_m5))
-diagnostic(resid(meri_tip_distance_m6))
+diagnostic(resid(meri_tip_distance_m10))
+diagnostic(resid(meri_tip_distance_m11))
+diagnostic(resid(meri_tip_distance_m12))
 # 
 # # DHARMa
 # testResiduals(meri_tip_distance_m4)
@@ -907,69 +909,69 @@ diagnostic(resid(meri_tip_distance_m6))
 
 ##### No zero tip distance ####
 
-meri_tip_distance_m7 <- lmer(tip_distance ~ finch_beak +
+meri_tip_distance_m13 <- lmer(tip_distance ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero,
                              REML=F)
 
-meri_tip_distance_m8 <- lmer(log(tip_distance + 1) ~ finch_beak +
+meri_tip_distance_m14 <- lmer(log(tip_distance + 1) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero,
                              REML=F)
 
-meri_tip_distance_m9 <- lmer(sqrt(tip_distance) ~ finch_beak +
+meri_tip_distance_m15 <- lmer(sqrt(tip_distance) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero,
                              REML=F)
 
 # # type III test
-Anova(meri_tip_distance_m7)
+Anova(meri_tip_distance_m13)
 # # Diagnostic
 hist(gal_meri_tip_distance_wozero$tip_distance, breaks = 20)
 
 # # Diagnostic of residuals
-diagnostic(resid(meri_tip_distance_m7))
-# diagnostic(resid(meri_tip_distance_m8))
-# diagnostic(resid(meri_tip_distance_m9))
+diagnostic(resid(meri_tip_distance_m13))
+# diagnostic(resid(meri_tip_distance_m14))
+# diagnostic(resid(meri_tip_distance_m15))
 
 # Filter residuals no zero data
 # Create a column with model residuals to filter the dataset
-gal_meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_m7) 
-hist(resid(meri_tip_distance_m7), breaks = 20)
+gal_meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_m13) 
+hist(resid(meri_tip_distance_m13), breaks = 20)
 # Filter residuals -9
 gal_meri_tip_distance_wozero_filter <- 
   filter(gal_meri_tip_distance_wozero, !residuals <= -9)
 
 ##### Filter Tip distance ####
 # Raw data works best
-meri_tip_distance_m10 <- lmer(tip_distance ~ finch_beak +
+meri_tip_distance_m16 <- lmer(tip_distance ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero_filter,
                              REML=F)
 
-meri_tip_distance_m11 <- lmer(log(tip_distance + 1) ~ finch_beak +
+meri_tip_distance_m17 <- lmer(log(tip_distance + 1) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero_filter,
                              REML=F)
 
-meri_tip_distance_m12 <- lmer(sqrt(tip_distance) ~ finch_beak +
+meri_tip_distance_m18 <- lmer(sqrt(tip_distance) ~ finch_beak +
                                year_collected +
                                (1|ID),
                              data=gal_meri_tip_distance_wozero_filter,
                              REML=F)
 
 # # type III test
-Anova(meri_tip_distance_m10)
+Anova(meri_tip_distance_m16)
 
 # # Diagnostic of residuals
-diagnostic(resid(meri_tip_distance_m10))
-# diagnostic(resid(meri_tip_distance_m11))
-# diagnostic(resid(meri_tip_distance_m12))
+diagnostic(resid(meri_tip_distance_m16))
+# diagnostic(resid(meri_tip_distance_m17))
+# diagnostic(resid(meri_tip_distance_m18))
 
 ##### Lower spines ####
 # Ask about the outcomes of this model_ How can I diagnose this one?
