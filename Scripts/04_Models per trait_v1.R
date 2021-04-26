@@ -521,7 +521,7 @@ leaflet_length_m3 <- lmer(sqrt(leaflet_length) ~ mainland_island +
                         data=leaflet_length,
                         REML = F)
 # # Type III test
-# Anova(leaflet_length_m2)
+Anova(leaflet_length_m2)
 # 
 # # Diagnostic
 # 
@@ -537,16 +537,34 @@ diagnostic(resid(leaflet_length_m2))
 
 
 #### Leaflet number ####
-leaflet_num_m1 <- glm(number_of_leaflets ~ mainland_island +
-                       year_collected,
-                       family = poisson,
-                       data=leaf_length)
+leaflet_num_m1 <- lmer(number_of_leaflets ~ mainland_island +
+                         year_collected +
+                         (1|ID),data=leaf_length,REML=F)
 
-Anova(leaflet_num_m1)
+leaflet_num_m2 <- lmer(log(number_of_leaflets) ~ mainland_island +
+                         year_collected +
+                         (1|ID),data=leaf_length,REML=F)
+
+leaflet_num_m3 <- lmer((number_of_leaflets)**2 ~ mainland_island +
+                         year_collected +
+                         (1|ID),data=leaf_length,REML=F)
+
+leaflet_num_m4 <- glm(number_of_leaflets ~ mainland_island +
+                        year_collected,
+                      family = gaussian,
+                      data=leaf_length)
+
+leaflet_num_m5 <- glmmTMB(number_of_leaflets ~ mainland_island +
+                            (1|ID), data = leaf_length,
+                          family = nbinom1())
+
+plot(leaflet_num_m3)
+
+Anova(leaflet_num_m5)
 
 # # Diagnostic
 # # Residual histograms
-diagnostic(resid(leaflet_num_m1))
+diagnostic(resid(leaflet_num_m5))
 # 
 # # DHARMa
 # testResiduals(leaflet_num_m1)
@@ -655,16 +673,26 @@ diagnostic(resid(leaflet_length_m5))
 # testResiduals(leaflet_length_m6)
 
 #### Leaflet number ####
-leaflet_num_m2 <- glm(number_of_leaflets ~ galapagos_other +
+leaflet_num_m6 <- glm(number_of_leaflets ~ galapagos_other +
                         year_collected,
                       family = poisson,
                       data=leaf_length)
 
-Anova(leaflet_num_m2)
+leaflet_num_m7 <- glm(number_of_leaflets ~ galapagos_other +
+                        year_collected,
+                      family = gaussian,
+                      data=leaf_length)
+
+leaflet_num_m8 <- glmmTMB(number_of_leaflets ~ galapagos_other +
+                            (1|ID), data = leaf_length,
+                          family = nbinom1())
+
+
+Anova(leaflet_num_m7)
  
 # # Diagnostic
 # # Residual histograms
-# diagnostic(resid(leaflet_num_m2))
+ diagnostic(resid(leaflet_num_m8))
 # 
 # # DHARMa
 # testResiduals(leaflet_num_m2)
@@ -1114,13 +1142,23 @@ Anova(leaflet_length_m8)
 
 
 ##### Leaflet number ####
-leaflet_num_m3 <- glm(number_of_leaflets ~ finch_beak +
+leaflet_num_m9 <- glm(number_of_leaflets ~ finch_beak +
                         year_collected,
                       family = poisson,
                       data=gal_leaf_length)
+ 
+ leaflet_num_m10 <- glm(number_of_leaflets ~ finch_beak +
+                         year_collected,
+                       family = gaussian,
+                       data=gal_leaf_length)
+ 
+ leaflet_num_m11 <- glmmTMB(number_of_leaflets ~ finch_beak +
+                             (1|ID), data = gal_leaf_length,
+                           family = nbinom1())
+ 
 
 # # Test
-Anova(leaflet_num_m3)
+Anova(leaflet_num_m11)
 # 
 # # Diagnostic
 # # Residual histograms
@@ -1140,34 +1178,45 @@ Anova(leaflet_num_m3)
 #### Mericarp ####
 # Seems that mericarps in islands are larger_ Well defended?
 ##### Length ####
-EM_length <- emmeans(meri_length_m1, ~ mainland_island) # Is transformed data
-plot(EM_length) + labs(title = "Mericarp Length")
+EM_length <- emmeans(meri_length_m1, ~ mainland_island)
+plot(EM_length, comparisons = TRUE) + labs(title = "Mericarp Length")
+pwpp(EM_length)
+# ((island mean/mainland mean)-1)*100%
+((6.15/5.75 - 1)* 100) # Mericarps ~ 7% longer on islands
+a <- transform(EM_length, CI.width = asymp.LCL - asymp.UCL)
+a <- select(a, !df)
 
 ##### Width ####
 EM_width <- emmeans(meri_width_m3, ~ mainland_island, type = "response")
-plot(EM_width) + labs(title = "Mericarp Width")
+plot(EM_width, comparisons = T) + labs(title = "Mericarp Width")
+pwpp(EM_width)
+((3.12/2.95 - 1)*100) # Mericarps ~ 5.76% wider on islands
 
 ##### Depth ####
 EM_depth <- emmeans(meri_depth_m1, ~ mainland_island)
-plot(EM_depth) + labs(title = "Mericarp Depth")
+plot(EM_depth, comparisons = T) + labs(title = "Mericarp Depth")
+pwpp(EM_depth)
+((4.75/4.25 - 1)*100) # Mericarps ~ 11.76% deeper on islands
 
 ##### Spine Length ####
 # Zero filter data
 EM_spine <- emmeans(meri_spine_length_wozero_m3, ~ mainland_island)
-plot(EM_spine) + labs(title = "Mericarp Spine Length")
+plot(EM_spine, comparisons = T) + labs(title = "Mericarp Spine Length")
 
 ##### Tip distance ####
 # Zero filter data
 EM_tip_dist <- emmeans(meri_tip_distance_m7, ~ mainland_island)
-plot(EM_tip_dist) + labs(title = "Mericarp Tip distance")
+plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
 
 ##### Lower Spine ####
-EM_lower <- emmeans(meri_lower_spines_m1_glmm, ~ mainland_island)
-plot(EM_lower) + labs(title = "Mericarp Lower Spines")
+EM_lower <- emmeans(meri_lower_spines_m1_glmm, ~ mainland_island, type = "response")
+plot(EM_lower, comparisons = T) + labs(title = "Mericarp Lower Spines")
+pwpp(EM_lower)
 
 #Glm
-EM_lower1 <- emmeans(meri_lower_spines_m1, ~ mainland_island)
-plot(EM_lower1) + labs(title = "Mericarp Lower Spines")
+EM_lower1 <- emmeans(meri_lower_spines_m1, ~ mainland_island, type = "response")
+plot(EM_lower1, comparisons = T) + labs(title = "Mericarp Lower Spines")
+pwpp(EM_lower1)
 
 ##### Upper Spines ####
 EM_upper <- emmeans(meri_upper_spines_m1_glmm, ~ mainland_island)
@@ -1179,58 +1228,81 @@ plot(EM_upper1) + labs(title = "Mericarp Lower Spines")
 
 #### Flower ####
 EM_flower <- emmeans(flower_m1, ~ mainland_island)
-plot(EM_flower) + labs(title = "Flower Length")
+plot(EM_flower, comparisons = T) + labs(title = "Flower Length")
+pwpp(EM_flower)
+((16.3/16.7 - 1)*100) # Flowers are -2% smaller on islands
 
 #### Leaf ####
 ##### Leaf length ####
 EM_leaf <- emmeans(leaf_length_m3, ~ mainland_island, type = "response")
-plot(EM_leaf) + labs(title = "Leaf Length")
+plot(EM_leaf, comparisons = T) + labs(title = "Leaf Length")
+pwpp(EM_leaf)
+((30.4/25.2 - 1)*100) # Leafs on islands are ~ 20% longer than mainland
 
 ##### Leaflet length ####
 EM_leaflet <- emmeans(leaflet_length_m2, ~ mainland_island, type = "response")
-plot(EM_leaflet) + labs(title = "Leaflet Length")
+plot(EM_leaflet, comparisons = T) + labs(title = "Leaflet Length")
+pwpp(EM_leaflet)
+((8.23/7.65 - 1)*100) # Leaflets are ~ 7.5% larger on islands
 
 ##### Leaflet Number ####
-EM_leaflet_num <- emmeans(leaflet_num_m1, ~ mainland_island)
-plot(EM_leaflet_num) + labs(title = "Leaflet Number")
+EM_leaflet_num <- emmeans(leaflet_num_m5, ~ mainland_island)
+plot(EM_leaflet_num, comparisons = T) + labs(title = "Leaflet Number")
+pwpp(EM_leaflet_num)
+((14.2/12.8 - 1)*100) # Leaflet number are ~11% higher on islands
 
 # Model 2: Galapagos and other islands ####
 # Seems that in Galapagos the flowers and the leaves are smaller compared to other islands_
 #### Flower ####
 EM_flower2 <- emmeans(flower_m9, ~ galapagos_other, type = "response")
-plot(EM_flower2) + labs(title = "Flower Length")
+plot(EM_flower2, comparisons = T) + labs(title = "Flower Length")
+pwpp(EM_flower2)
+((9.18/17.04 - 1)*100) #FLowers in Galapagos are 46% shorter than other islands
 
 #### Leaf ####
 ##### Leaf length ####
 EM_leaf2 <- emmeans(leaf_length_m5, ~ galapagos_other, type = "response")
-#plot(EM_leaf2) + labs(title = "Leaf Length")
+plot(EM_leaf2, comparisons = T) + labs(title = "Leaf Length")
+pwpp(EM_leaf2)
+((23.9/30.9 - 1)*100) #Flowers in Galapagos are 22.6% shorter than in other islands
 
 ##### Leaflet length ####
 EM_leaflet2 <- emmeans(leaflet_length_m5, ~ galapagos_other, type = "response")
-#plot(EM_leaflet2) + labs(title = "Leaflet Length")
+plot(EM_leaflet2, comparisons = T) + labs(title = "Leaflet Length")
+pwpp(EM_leaflet2)
+((7.06/8.67 - 1)*100) # Leaflet length in Galpagos is 18.56% smaller than in other islands
 
 ##### Leaflet number ####
-EM_leaflet_num2 <- emmeans(leaflet_num_m2, ~ galapagos_other)
-#plot(EM_leaflet_num2) + labs(title = "Leaflet Number")
+EM_leaflet_num2 <- emmeans(leaflet_num_m8, ~ galapagos_other, type = "response")
+plot(EM_leaflet_num2, comparisons = T) + labs(title = "Leaflet Number")
+pwpp(EM_leaflet_num2)
+((14.1/14.4 - 1)*100) # Leaflet number are 2% fewer in Galapagos than other islands
 
 # Model 3: Finch communities within Galapagos ####
 
 #### Mericarp ####
 ##### Length ####
 EM_length3 <- emmeans(meri_length_m4, ~ finch_beak)
-#plot(EM_length3) + labs(title = "Mericarp Length")
+plot(EM_length3, comparisons = T) + labs(title = "Mericarp Length")
+pwpp(EM_length3)
+((6.40/5.97 - 1)*100) # Mericarps are 7.20% longer on islands with large seed predators than on islands wihtout
 
 ##### Width ####
 EM_width3 <- emmeans(meri_width_m6, ~ finch_beak, type = "response")
-#plot(EM_width3) + labs(title = "Mericarp Width")
+plot(EM_width3, comparisons = T) + labs(title = "Mericarp Width")
+pwpp(EM_width3)
+contrast(regrid(EM_width3))
+((3.14/3.11 - 1)*100)
 
 ##### Depth ####
 EM_depth3 <- emmeans(meri_depth_m4, ~ finch_beak)
-#plot(EM_depth3) + labs(title = "Mericarp Depth")
+plot(EM_depth3, comparisons = T) + labs(title = "Mericarp Depth")
+pwpp(EM_depth3)
+((4.76/4.83 - 1)*100) # - 1.45%
 
 ##### Spine Length ####
 EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
-plot(EM_spine3) + labs(title = "Mericarp Spine Length")
+plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
 
 ##### Tip distance ####
 EM_tip_dist3 <- emmeans(meri_tip_distance_m10, ~ finch_beak)
@@ -1238,11 +1310,15 @@ plot(EM_tip_dist3) + labs(title = "Mericarp Tip Distance")
 
 ##### Lower Spines ####
 EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
-plot(EM_lower3) + labs(title = "Mericarp Lower Spine")
+plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
+pwpp(EM_lower3)
+((0.3081/0.0696 - 1)*100)
 
 #Glm
 EM_lower4 <- emmeans(meri_lower_spines_m2, ~ finch_beak)
-plot(EM_lower4) + labs(title = "Mericarp Lower Spines")
+plot(EM_lower4, comparisons = T) + labs(title = "Mericarp Lower Spines")
+pwpp(EM_lower4)
+((0.472/-0.542 - 1)*100)
 
 ##### Upper Spines ####
 EM_upper3 <- emmeans(meri_upper_spines_m2_glmm, ~ finch_beak, type = "response")
@@ -1253,19 +1329,25 @@ EM_upper4 <- emmeans(meri_upper_spines_m2, ~ finch_beak)
 plot(EM_upper4) + labs(title = "Mericarp Lower Spines")
 
 #### Flower ####
-EM_flower3 <- emmeans(flower_m12, ~ finch_beak)
-plot(EM_flower3) + labs(title = "Flower Length")
+EM_flower3 <- emmeans(flower_m12, ~ finch_beak, type = "response")
+plot(EM_flower3, comparisons = T) + labs(title = "Flower Length")
+pwpp(EM_flower3)
+((9.12/8.59 - 1)*100) # 6.16%
 
 #### Leaf ####
 
 ##### Leaf length ####
 EM_leaf3 <- emmeans(leaf_length_m9, ~ finch_beak, type = "response")
-#plot(EM_leaf3) + labs(title = "Leaf Length")
+plot(EM_leaf3, comparisons = T) + labs(title = "Leaf Length")
+pwpp(EM_length3)
+((6.40/5.97 - 1)*100) # 7.20%
 
 ##### Leaflet length ####
 EM_leaflet3 <- emmeans(leaflet_length_m8, ~ finch_beak, type = "response")
-#plot(EM_leaflet3) + labs(title = "Leaflet Length")
+plot(EM_leaflet3, comparisons = T) + labs(title = "Leaflet Length")
+pwpp(EM_leaflet3)
+((7.05/6.17 - 1)*100) # 14.26%
 
 ##### Leaflet number ####
-EM_leaflet_num3 <- emmeans(leaflet_num_m3, ~ finch_beak)
-#plot(EM_leaflet_num3) + labs(title = "Leaflet Number")
+EM_leaflet_num3 <- emmeans(leaflet_num_m10, ~ finch_beak)
+plot(EM_leaflet_num3) + labs(title = "Leaflet Number")
