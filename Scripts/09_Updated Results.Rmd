@@ -6,6 +6,7 @@ output:
   pdf_document:
     toc: true
     number_sections: true
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -14,8 +15,8 @@ source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
 source("04_Models per trait_v1.R", local = knitr::knit_global())
-tinytex::parse_packages(log = "~/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Scripts/09_Updated-Results.log")
 ```
+
 # Model 1: trait \~ mainland/island + year + (1\|ID)
 
 This model looks at the differences between *Tribulus* mericarps, flowers and leaves from mainland and island populations.
@@ -225,8 +226,7 @@ plot(EM_upper1) + labs(title = "Mericarp Upper Spines")
 
 ### Petal length
 
-Best fitted data: Untransformed data
-Filter residuals. This filter removed specimens 240, 351, 320 (<-5) and 454, 319, 207, 249, 340 (>5)
+Best fitted data: Untransformed data Filter residuals. This filter removed specimens 240, 351, 320 (\<-5) and 454, 319, 207, 249, 340 (\>5)
 
 ```{r mericarp petal length diagnostic, echo=FALSE, fig.align='left'}
 par(mfrow = c(1, 3))
