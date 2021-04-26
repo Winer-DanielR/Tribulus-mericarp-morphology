@@ -10,6 +10,7 @@ mericarp <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp mor
 mericarp <- mericarp %>% mutate_at(vars(ID,
                                               Herbarium,
                                               continent,
+                                              country,
                                               island_group,
                                               mainland_island,
                                               galapagos_other,
@@ -21,40 +22,40 @@ str(mericarp)
 ### Mericarp data ####
 
 # Length
-meri_length <- select(mericarp, ind_num:mericarp_num, length)
+meri_length <- dplyr::select(mericarp, ind_num:mericarp_num, length)
 meri_length <- filter(meri_length, !is.na(length))
 
 # Width
-meri_width <- select(mericarp, ind_num:mericarp_num, width)
+meri_width <- dplyr::select(mericarp, ind_num:mericarp_num, width)
 meri_width <- filter(meri_width, !is.na(width))
 
 # Depth
-meri_depth <- select(mericarp, ind_num:mericarp_num, depth)
+meri_depth <- dplyr::select(mericarp, ind_num:mericarp_num, depth)
 meri_depth <- filter(meri_depth, !is.na(depth))
 
 # Spine length
-meri_spine_length <- select(mericarp, ind_num:mericarp_num, spine_length) #Has zeroes in the data
+meri_spine_length <- dplyr::select(mericarp, ind_num:mericarp_num, spine_length) #Has zeroes in the data
 meri_spine_length <- filter(meri_spine_length, !is.na(spine_length))
 
 # Spine length without zero
-meri_spine_length_wozero <- filter(meri_spine_length, !spine_length == 0)
+meri_spine_length_wozero <- dplyr::filter(meri_spine_length, !spine_length == 0)
 
 # Tip distance
-meri_tip_distance <- select(mericarp, ind_num:mericarp_num, tip_distance) #Has zeroes in the data
+meri_tip_distance <- dplyr::select(mericarp, ind_num:mericarp_num, tip_distance) #Has zeroes in the data
 meri_tip_distance <- filter(meri_tip_distance, !is.na(tip_distance))
 
 # Spine tip distance without zero
-meri_tip_distance_wozero <- filter(meri_tip_distance, !tip_distance == 0)
+meri_tip_distance_wozero <- dplyr::filter(meri_tip_distance, !tip_distance == 0)
 
 # # Spine number
 # meri_spine_num <- select(mericarp, ind_num:mericarp_num, spine_num) #As factor
 
 # Lower spines
-meri_lower_spines <- select(mericarp, ind_num:mericarp_num, lower_spines) #As factor
+meri_lower_spines <- dplyr::select(mericarp, ind_num:mericarp_num, lower_spines) #As factor
 meri_lower_spines <- filter(meri_lower_spines, !is.na(lower_spines))
 
 # Upper spines
-meri_upper_spines <- select(mericarp, ind_num:mericarp_num, upper_spines) #As factor
+meri_upper_spines <- dplyr::select(mericarp, ind_num:mericarp_num, upper_spines) #As factor
 meri_upper_spines <- filter(meri_upper_spines, !is.na(upper_spines))
 
 # Flower data ####
@@ -63,6 +64,7 @@ flower <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morph
 flower <- flower %>% mutate_at(vars(ID,
                                         Herbarium,
                                         continent,
+                                        country,
                                         island_group,
                                         mainland_island,
                                         galapagos_other,
@@ -83,6 +85,7 @@ leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphol
 leaf <- leaf %>% mutate_at(vars(ID,
                                     herbarium,
                                     continent,
+                                    country,
                                     island_group,
                                     mainland_island,
                                     galapagos_other,
@@ -91,6 +94,7 @@ leaf <- leaf %>% mutate_at(vars(ID,
                                     finch_beak), list(factor))
 
 
+str(leaf)
 # Leaf length
 leaf_length <- filter(leaf, !is.na(leaf_length))
 # leaf$leaf_length_log <- log(leaf$leaf_length) #log transformation
@@ -106,6 +110,9 @@ leaflet_length <- filter(leaf, !is.na(leaflet_length))
 # leaf$leaf_num_log <- log(leaf$leaf_num)
 
 # Galapagos only data ####
+
+gal_mericarp <- filter(mericarp, galapagos_other == "Galapagos")
+
 gal_meri_length <- filter(meri_length, galapagos_other == "Galapagos")
 
 gal_meri_width <- filter(meri_width, galapagos_other == "Galapagos")
@@ -155,4 +162,4 @@ gal_leaflet_length <- filter(leaflet_length, galapagos_other == "Galapagos")
 # meri_tip_distance$tip_distance_log <- log(meri_tip_distance$tip_distance + 1) #Zeroes present
 # meri_tip_distance$tip_distance_sqr <- sqrt(meri_tip_distance$tip_distance)
 # To export CVS tables per trait ####
-#write_csv(leaflet_length, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaflet Length.csv")
+#write_csv(gal_mericarp, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Galapagos Mericarp.csv")
