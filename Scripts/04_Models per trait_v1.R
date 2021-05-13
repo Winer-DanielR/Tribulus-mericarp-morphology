@@ -1183,8 +1183,6 @@ plot(EM_length, comparisons = TRUE) + labs(title = "Mericarp Length")
 pwpp(EM_length)
 # ((island mean/mainland mean)-1)*100%
 ((6.15/5.75 - 1)* 100) # Mericarps ~ 7% longer on islands
-a <- transform(EM_length, CI.width = asymp.LCL - asymp.UCL)
-a <- select(a, !df)
 
 ##### Width ####
 EM_width <- emmeans(meri_width_m3, ~ mainland_island, type = "response")
@@ -1351,3 +1349,4 @@ pwpp(EM_leaflet3)
 ##### Leaflet number ####
 EM_leaflet_num3 <- emmeans(leaflet_num_m10, ~ finch_beak)
 plot(EM_leaflet_num3) + labs(title = "Leaflet Number")
+
