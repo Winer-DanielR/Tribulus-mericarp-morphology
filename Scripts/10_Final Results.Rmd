@@ -1,0 +1,16 @@
+---
+title: "10_Final Results"
+author: "Daniel Reyes"
+date: "5/13/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("00_packages_v1.R", local = knitr::knit_global())
+source("01_diagnostic function_v1.R", local = knitr::knit_global())
+source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
+source("04_Models per trait_v1.R", local = knitr::knit_global())
+source("05_Summary plots.R", local = knitr::knit_global())
+source("08_RDA_v1.R", local = knitr::knit_global())
+```
