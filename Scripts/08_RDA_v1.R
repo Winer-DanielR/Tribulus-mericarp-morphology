@@ -7,158 +7,75 @@ library(vegan3d)
 library(MASS)
 library(rrcov)
 
-# Mainland Island ####
+# Model 1: Mainland/Island ####
 ## Mericarps #####
 # Check mericarp data for NAs per trait:
 colSums(is.na(mericarp)) #It seems that tip distance and depth have NAs. 286 and 346
-
+### Remove NAs of traits ####
 # Remove tip distance NAs:
 mericarp <- filter(mericarp, !is.na(tip_distance))
-
 # Remove depth NAs after removing tip distance:
 mericarp <- filter(mericarp, !is.na(depth))
 
 ### Create mericarp traits matrix ####
 mericarp_traits <- dplyr::select(mericarp, 1,12:14,16,19)
 mericarp_traits <- mericarp_traits %>% column_to_rownames("ind_num")
-# mericarp_traits <- mericarp_traits %>% mutate_at(vars(lower_spines), list(factor))
-
-### Transform the data Z-scores estimates:####
-mericarp_traits_z <- sapply(mericarp_traits, 
-                            function(mericarp_traits)(mericarp_traits-mean(mericarp_traits)/sd(mericarp_traits)))
-# Edit the table to be ID same as mericarp1
-mericarp_traits_z <- as.tibble(mericarp_traits_z)
-mericarp_traits_z <- bind_cols(mericarp, mericarp_traits_z)
-mericarp_traits_z <- dplyr::select(mericarp_traits_z, 1,23:27)
-str(mericarp_traits_z)
-
-mericarp_traits_z <- rename(mericarp_traits_z, length = length...23,
-                            width = width...24,
-                            depth = depth...25,
-                            tip_distance = tip_distance...26,
-                            lower_spines = lower_spines...27
-                            )
-
-mericarp_traits_z <- mericarp_traits_z %>% column_to_rownames("ind_num")
-
-### Explanatory matrix, mainland/island and year ####
-mericarp1 <- dplyr::select(mericarp, 1,4,6)
-mericarp1 <- mericarp1 %>% column_to_rownames("ind_num")
-str(mericarp1)
-
-# Mericarp traits is the response matrix, mericarp1 is the explanatory variables
-# Separate variables from explanatory variables.
+mericarp_traits <- mericarp_traits %>% mutate_at(vars(lower_spines), list(factor))
+# [mericarp_traits] is the response matrix, 
+# [mericarp] has the the explanatory variables
 
 ## RDA Mericarp Mainland Island ####
-
-meri_RDA_mainland <- rda(scale(mericarp_traits) ~ mainland_island + Condition(year_collected), data = mericarp1)
+meri_RDA_mainland <- rda(scale(mericarp_traits) ~ mainland_island + Condition(year_collected), data = mericarp)
 summary(meri_RDA_mainland)
 
-### Global test of the RDA results ####
+### RDA mericarp ANOVA Global test ####
 anova(meri_RDA_mainland, permutations = how(nperm = 999))
 # Test of all canonical axes
 anova(meri_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
-## Mericarp Triplot Mainland Island ####
-# source("triplot_RDA_Borcard2018.R") # This function can improve the look of the triplots
+## RDA mericarp. Variance partition ####
+# Generate matrix per variables
+mericarp_exp_matrix <- dplyr::select(mericarp, year_collected, mainland_island)
+mainland_island_matrix <- dplyr::select(mericarp, mainland_island)
+year_collected_matrix <- dplyr::select(mericarp, year_collected)
 
-#biplot(meri_RDA_mainland)
+# Variance partition
+mericarp.varpart <- varpart(scale(mericarp_traits), mainland_island_matrix, year_collected_matrix)
 
-scl <- 2
-colvec <- c("red2", "green4")
-
-### Scaling 1 ####
-plot(meri_RDA_mainland,
-     scaling = 1,
-     display = c("sp",
-                 "lc",
-                 "cn"
-                 ),
-     type = "points",
-     main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 1 - lc scores"
-     )
-spe.sc1 <- scores(meri_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 1,
-                  display = "sp"
-                  )
-arrows(0,0,
-      spe.sc1[,1] * 0.92,
-      spe.sc1[,2] * 0.92,
-      length = 0,
-      lty = 1,
-      col = "red"
-      )
-
-### Scaling 2 ####
-plot(meri_RDA_mainland,
-     display = c("sp",
-                 "lc",
-                 "cn"
-     ),
-     scaling = 2,
-     type = "points",
-     main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 2 - lc scores"
-)
-spe.sc1 <- scores(meri_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 2,
-                  display = "cn"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
-)
-
-
-## Variance partition ####
-mainland_island_matrix <- dplyr::select(mericarp1, mainland_island)
-year_collected_matrix <- dplyr::select(mericarp1, year_collected)
-
-mericarp.part <- varpart(mericarp_traits_z, mainland_island_matrix, year_collected_matrix)
-mericarp.part <- varpart(meri_RDA_mainland)
-plot(mericarp.part, 
+### Variance partition plot ####
+plot(mericarp.varpart, 
      digits = 2, 
      bg = c("red", "blue"),
      Xnames = c("Population", "Year"),
      id.size = 1
 )
 
-# Tests of all testable fractions
+### Tests of all testable fractions ####
 # Test of fraction [a+b]
-anova(rda(mericarp_traits_z, mericarp1$year_collected), permutations = how(nperm = 999))
+anova(rda(scale(mericarp_traits), year_collected_matrix), permutations = how(nperm = 999))
 # Test of fraction [b+c]
-anova(rda(mericarp_traits_z, mericarp1$mainland_island), permutations = how(nperm = 999))
+anova(rda(scale(mericarp_traits), mainland_island_matrix), permutations = how(nperm = 999))
 # Test of fraction [a+b+c]
-anova(rda(mericarp_traits_z, mericarp1), permutations = how(nperm = 999))
+anova(rda(scale(mericarp_traits), mericarp_exp_matrix), permutations = how(nperm = 999))
 # Test of fraction [a]
-anova(rda(mericarp_traits_z, mericarp1$year_collected, mericarp1$mainland_island), 
-      permutations = how(nperm = 999)
-)
+anova(rda(scale(mericarp_traits), year_collected_matrix, mainland_island_matrix), 
+      permutations = how(nperm = 999))
 # Test of fraction [c]
-anova(rda(mericarp_traits_z, mericarp1$mainland_island, mericarp1$year_collected), 
-      permutations = how(nperm = 999)
-)
+anova(rda(scale(mericarp_traits), mainland_island_matrix, year_collected_matrix), 
+      permutations = how(nperm = 999))
 
 ## Flowers ####
 ### Create flower datasets ####
-
 # Check flower data for NAs per trait:
-
 colSums(is.na(flower)) # It seems there are no NAs for petal length, but there are NAs on year collected
-
 # Remove year collected NAs:
-
 flower <- filter(flower, !is.na(year_collected))
 
 ### Flower traits matrix. Petal length ####
 flower_traits <- dplyr::select(flower, petal_length)
 
 ## RDA flower Mainland island comparison ####
-flower_RDA_mainland <- rda(flower_traits ~ mainland_island
+flower_RDA_mainland <- rda(scale(flower_traits) ~ mainland_island
     + Condition(year_collected), data = flower)
 
 ### Global test of the RDA results ####
@@ -167,54 +84,83 @@ anova(flower_RDA_mainland, permutations = how(nperm = 999))
 anova(flower_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
 ## Flower Triplot Mainland Island ####
-source("triplot_RDA_Borcard2018.R")
-# This function can improve the look of the triplots
-
-### Scaling 1 ####
-plot(flower_RDA_mainland,
-     scaling = 1,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Flower traits ~ Mainland/Island - scaling 1 - lc scores"
-)
-spe.sc1 <- scores(flower_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 1,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
-)
-
+# 
+# ### Scaling 1 ####
+# plot(flower_RDA_mainland,
+#      scaling = 1,
+#      display = c(#"sp",
+#                  "lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Flower traits ~ Mainland/Island - scaling 1 - lc scores"
+# )
+# spe.sc1 <- scores(flower_RDA_mainland,
+#                   choices = 1:2,
+#                   scaling = 1,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+# 
 ### Scaling 2 ####
-plot(flower_RDA_mainland,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Flower traits ~ Mainland/Island - scaling 2 - lc scores"
-)
-spe.sc1 <- scores(flower_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 2,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
+# plot(flower_RDA_mainland,
+#      display = c(#"sp",
+#                  "lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Flower traits ~ Mainland/Island - scaling 2 - lc scores"
+# )
+# spe.sc1 <- scores(flower_RDA_mainland,
+#                   choices = 1:2,
+#                   scaling = 2,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+
+
+## RDA Flower. Variance partition ####
+# Generate matrix per variables
+flower_exp_matrix <- dplyr::select(flower, year_collected, mainland_island)
+flower_mainland_island_matrix <- dplyr::select(flower, mainland_island)
+flower_year_collected_matrix <- dplyr::select(flower, year_collected)
+
+# Variance partition
+flower.varpart <- varpart(scale(flower_traits), flower_mainland_island_matrix, flower_year_collected_matrix)
+
+### Variance partition plot ####
+plot(flower.varpart, 
+     digits = 2, 
+     bg = c("red", "blue"),
+     Xnames = c("Population", "Year"),
+     id.size = 1
 )
 
+### Tests of all testable fractions ####
+# Test of fraction [a+b]
+anova(rda(scale(flower_traits), flower_year_collected_matrix), permutations = how(nperm = 999))
+# Test of fraction [b+c]
+anova(rda(scale(flower_traits), flower_mainland_island_matrix), permutations = how(nperm = 999))
+# Test of fraction [a+b+c]
+anova(rda(scale(flower_traits), flower_exp_matrix), permutations = how(nperm = 999))
+# Test of fraction [a]
+anova(rda(scale(flower_traits), flower_year_collected_matrix, flower_mainland_island_matrix), 
+      permutations = how(nperm = 999))
+# Test of fraction [c]
+anova(rda(scale(flower_traits), flower_mainland_island_matrix, flower_year_collected_matrix), 
+      permutations = how(nperm = 999))
 
 ## Leaves ####
 ### Create leaf datasets ####
@@ -236,13 +182,8 @@ leaf_traits <- dplyr::select(leaf, leaf_length,
                                    number_of_leaflets)
 
 
-### Leaf traits z scoring. ####
-leaf_traits_z <- sapply(leaf_traits, 
-                            function(leaf_traits)(leaf_traits-mean(leaf_traits)/sd(leaf_traits)))
-leaf_traits_z <- as.tibble(leaf_traits_z)
-
 ## RDA leaf Mainland island comparison ####
-leaf_RDA_mainland <- rda(leaf_traits_z ~ mainland_island
+leaf_RDA_mainland <- rda(scale(leaf_traits) ~ mainland_island
                            + Condition(year_collected), data = leaf)
 
 ### Global test of the RDA results ####
@@ -250,55 +191,89 @@ anova(leaf_RDA_mainland, permutations = how(nperm = 999))
 # Test of all canonical axes
 anova(leaf_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
-## Leaf Triplot Mainland Island ####
+# ## Leaf Triplot Mainland Island ####
+# 
+# ### Scaling 1 ####
+# plot(leaf_RDA_mainland,
+#      scaling = 1,
+#      display = c(#"sp",
+#                  "lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Leaf traits ~ Mainland/Island - scaling 1 - lc scores"
+# )
+# spe.sc1 <- scores(leaf_RDA_mainland,
+#                   choices = 1:2,
+#                   scaling = 1,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+# 
+# ### Scaling 2 ####
+# plot(leaf_RDA_mainland,
+#      display = c(#"sp",
+#                  "lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Leaf traits ~ Mainland/Island - scaling 2 - lc scores"
+# )
+# spe.sc1 <- scores(flower_RDA_mainland,
+#                   choices = 1:2,
+#                   scaling = 2,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+# 
+# 
 
-### Scaling 1 ####
-plot(leaf_RDA_mainland,
-     scaling = 1,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Leaf traits ~ Mainland/Island - scaling 1 - lc scores"
-)
-spe.sc1 <- scores(leaf_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 1,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
-)
+## RDA Leaves Variance partition ####
+# Generate matrix per variables
+leaf_exp_matrix <- dplyr::select(leaf, year_collected, mainland_island)
+leaf_mainland_island_matrix <- dplyr::select(leaf, mainland_island)
+leaf_year_collected_matrix <- dplyr::select(leaf, year_collected)
 
-### Scaling 2 ####
-plot(leaf_RDA_mainland,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Leaf traits ~ Mainland/Island - scaling 2 - lc scores"
-)
-spe.sc1 <- scores(flower_RDA_mainland,
-                  choices = 1:2,
-                  scaling = 2,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
-)
+# Variance partition
+leaf.varpart <- varpart(scale(leaf_traits), leaf_mainland_island_matrix, leaf_year_collected_matrix)
+
+### Variance partition plot ####
+plot(leaf.varpart, 
+     digits = 2, 
+     bg = c("red", "blue"),
+     Xnames = c("Population", "Year"),
+     id.size = 1,
+     )
+
+### Tests of all testable fractions ####
+# Test of fraction [a+b]
+anova(rda(scale(leaf_traits), leaf_year_collected_matrix), permutations = how(nperm = 999))
+# Test of fraction [b+c]
+anova(rda(scale(leaf_traits), leaf_mainland_island_matrix), permutations = how(nperm = 999))
+# Test of fraction [a+b+c]
+anova(rda(scale(leaf_traits), leaf_exp_matrix), permutations = how(nperm = 999))
+# Test of fraction [a]
+anova(rda(scale(leaf_traits), leaf_year_collected_matrix, leaf_mainland_island_matrix), 
+      permutations = how(nperm = 999))
+# Test of fraction [c]
+anova(rda(scale(leaf_traits), leaf_mainland_island_matrix, leaf_year_collected_matrix), 
+      permutations = how(nperm = 999))
 
 
-# Galapagos and other islands ####
+
+# Model 2: Galapagos and other islands ####
 
 ## Flower ####
 # Filter database for islands only
@@ -319,50 +294,82 @@ anova(flower_RDA_Galapagos, by = "terms", permutations = how(nperm = 999))
 ## Flower Triplot Galapagos other Island ####
 
 ### Scaling 1 ####
-plot(flower_RDA_Galapagos,
-     scaling = 1,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Flower traits ~ Galapagos/Other Islands - scaling 1 - lc scores"
-)
-spe.sc1 <- scores(flower_RDA_Galapagos,
-                  choices = 1:2,
-                  scaling = 1,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
+# plot(flower_RDA_Galapagos,
+#      scaling = 1,
+#      display = c("sp",
+#                  #"lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Flower traits ~ Galapagos/Other Islands - scaling 1 - lc scores"
+# )
+# spe.sc1 <- scores(flower_RDA_Galapagos,
+#                   choices = 1:2,
+#                   scaling = 1,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+# 
+# ### Scaling 2 ####
+# plot(flower_RDA_Galapagos,
+#      display = c("sp",
+#                  #"lc",
+#                  "cn"
+#      ),
+#      type = "text",
+#      main = "Triplot RDA Flowers traits ~ Galapagos/Other Islands - scaling 2 - lc scores"
+# )
+# spe.sc1 <- scores(flower_RDA_Galapagos,
+#                   choices = 1:2,
+#                   scaling = 2,
+#                   display = "sp"
+# )
+# arrows(0,0,
+#        spe.sc1[,1] * 0.92,
+#        spe.sc1[,2] * 0.92,
+#        length = 0,
+#        lty = 1,
+#        col = "red"
+# )
+# 
+# 
+
+## RDA flowers 2 Variance partition ####
+# Generate matrix per variables
+flower_islands_matrix <- dplyr::select(flower_islands, year_collected, galapagos_other)
+flower_galapagos_other_matrix <- dplyr::select(flower_islands, galapagos_other)
+flower_year_collected_matrix2 <- dplyr::select(flower_islands, year_collected)
+
+# Variance partition
+flower.varpart.islands <- varpart(scale(flower_islands_traits), flower_galapagos_other_matrix, flower_year_collected_matrix2)
+
+### Variance partition plot ####
+plot(flower.varpart.islands, 
+     digits = 2, 
+     bg = c("darksalmon", "blue"),
+     Xnames = c("Island", "Year"),
+     id.size = 1,
 )
 
-### Scaling 2 ####
-plot(flower_RDA_Galapagos,
-     display = c("sp",
-                 #"lc",
-                 "cn"
-     ),
-     type = "text",
-     main = "Triplot RDA Flowers traits ~ Galapagos/Other Islands - scaling 2 - lc scores"
-)
-spe.sc1 <- scores(flower_RDA_Galapagos,
-                  choices = 1:2,
-                  scaling = 2,
-                  display = "sp"
-)
-arrows(0,0,
-       spe.sc1[,1] * 0.92,
-       spe.sc1[,2] * 0.92,
-       length = 0,
-       lty = 1,
-       col = "red"
-)
-
+### Tests of all testable fractions ####
+# Test of fraction [a+b]
+anova(rda(scale(flower_islands_traits), flower_year_collected_matrix2), permutations = how(nperm = 999))
+# Test of fraction [b+c]
+anova(rda(scale(flower_islands_traits), flower_galapagos_other_matrix), permutations = how(nperm = 999))
+# Test of fraction [a+b+c]
+anova(rda(scale(flower_islands_traits), flower_islands_matrix), permutations = how(nperm = 999))
+# Test of fraction [a]
+anova(rda(scale(flower_islands_traits), flower_year_collected_matrix2, flower_galapagos_other_matrix), 
+      permutations = how(nperm = 999))
+# Test of fraction [c]
+anova(rda(scale(flower_islands_traits), flower_galapagos_other_matrix, flower_year_collected_matrix2), 
+      permutations = how(nperm = 999))
 
 
 ## Leaves ####
@@ -373,13 +380,8 @@ leaf_islands <- filter(leaf, mainland_island == "island")
 leaf_islands_traits <- dplyr::select(leaf_islands, leaf_length,
                                                    leaflet_length,
                                                    number_of_leaflets)
-### Transformation of Leaf data: z-scoring ####
-leaf_islands_traits_z <- sapply(leaf_islands_traits, 
-                        function(leaf_islands_traits)(leaf_islands_traits-mean(leaf_islands_traits)/sd(leaf_islands_traits)))
-leaf_islands_traits_z <- as.tibble(leaf_islands_traits_z)
-
 ## RDA Leaf Galapagos and other islands ####
-leaf_RDA_Galapagos <- rda(leaf_islands_traits_z ~ galapagos_other
+leaf_RDA_Galapagos <- rda(scale(leaf_islands_traits) ~ galapagos_other
                             + Condition(year_collected), data = leaf_islands)
 
 ### Global test of the RDA results ####
