@@ -11,8 +11,8 @@ source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
 source("04_Models per trait_v1.R", local = knitr::knit_global())
-source("05_Summary plots.R", local = knitr::knit_global())
 source("08_RDA_v1.R", local = knitr::knit_global())
+source("05_Summary plots.R", local = knitr::knit_global())
 ```
 
 # Results
