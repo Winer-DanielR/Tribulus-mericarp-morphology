@@ -5,16 +5,11 @@ library(adespatial)
 library(vegan)
 library(vegan3d)
 library(MASS)
-library(ellipse)
-library(FactoMineR)
-library(factoextra)
 library(rrcov)
-library(easyCODA)
 
 # Mainland Island ####
 ## Mericarps #####
 # Check mericarp data for NAs per trait:
-
 colSums(is.na(mericarp)) #It seems that tip distance and depth have NAs. 286 and 346
 
 # Remove tip distance NAs:
@@ -49,14 +44,14 @@ mericarp_traits_z <- mericarp_traits_z %>% column_to_rownames("ind_num")
 ### Explanatory matrix, mainland/island and year ####
 mericarp1 <- dplyr::select(mericarp, 1,4,6)
 mericarp1 <- mericarp1 %>% column_to_rownames("ind_num")
+str(mericarp1)
 
 # Mericarp traits is the response matrix, mericarp1 is the explanatory variables
 # Separate variables from explanatory variables.
 
 ## RDA Mericarp Mainland Island ####
 
-meri_RDA_mainland <- rda(mericarp_traits ~ mainland_island
-                 + Condition(year_collected), data = mericarp1)
+meri_RDA_mainland <- rda(scale(mericarp_traits) ~ mainland_island + Condition(year_collected), data = mericarp1)
 summary(meri_RDA_mainland)
 
 ### Global test of the RDA results ####
@@ -69,14 +64,17 @@ anova(meri_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
 #biplot(meri_RDA_mainland)
 
+scl <- 2
+colvec <- c("red2", "green4")
+
 ### Scaling 1 ####
 plot(meri_RDA_mainland,
      scaling = 1,
      display = c("sp",
-                 #"lc",
+                 "lc",
                  "cn"
                  ),
-     type = "text",
+     type = "points",
      main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 1 - lc scores"
      )
 spe.sc1 <- scores(meri_RDA_mainland,
@@ -95,16 +93,17 @@ arrows(0,0,
 ### Scaling 2 ####
 plot(meri_RDA_mainland,
      display = c("sp",
-                 #"lc",
+                 "lc",
                  "cn"
      ),
-     type = "text",
+     scaling = 2,
+     type = "points",
      main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 2 - lc scores"
 )
 spe.sc1 <- scores(meri_RDA_mainland,
                   choices = 1:2,
                   scaling = 2,
-                  display = "sp"
+                  display = "cn"
 )
 arrows(0,0,
        spe.sc1[,1] * 0.92,
@@ -114,43 +113,35 @@ arrows(0,0,
        col = "red"
 )
 
-# triplot.rda(mainland_island_rda,
-#             scaling = 1,
-#             ax1 = 1,
-#             ax2 = 2,
-#             plot.sites = F,
-#             arrows.only = T,
-#             silent = F)
-# 
-# triplot.rda(mainland_island_rda,
-#             site.sc = "lc",
-#             scaling = 1,
-#             cex.char2 = 0.7,
-#             pos.env = 3,
-#             pos.centr = 1,
-#             mult.arrow = 1.1,
-#             mar.percent = 0.05,
-#             #select.spe = sel_sp,
-#             plot.sites = T,
-#             arrows.only = F,
-#             label.sites = F,
-#             label.centr = F
-# )
-# triplot.rda(mainland_island_rda,
-#             site.sc = "lc",
-#             scaling = 2,
-#             cex.char2 = 0.7,
-#             pos.env = 3,
-#             pos.centr = 1,
-#             mult.arrow = 1.1,
-#             mar.percent = 0.05,
-#             #select.spe = sel_sp,
-#             plot.sites = T,
-#             arrows.only = F,
-#             label.sites = F,
-#             label.centr = F
-# )
 
+## Variance partition ####
+mainland_island_matrix <- dplyr::select(mericarp1, mainland_island)
+year_collected_matrix <- dplyr::select(mericarp1, year_collected)
+
+mericarp.part <- varpart(mericarp_traits_z, mainland_island_matrix, year_collected_matrix)
+mericarp.part <- varpart(meri_RDA_mainland)
+plot(mericarp.part, 
+     digits = 2, 
+     bg = c("red", "blue"),
+     Xnames = c("Population", "Year"),
+     id.size = 1
+)
+
+# Tests of all testable fractions
+# Test of fraction [a+b]
+anova(rda(mericarp_traits_z, mericarp1$year_collected), permutations = how(nperm = 999))
+# Test of fraction [b+c]
+anova(rda(mericarp_traits_z, mericarp1$mainland_island), permutations = how(nperm = 999))
+# Test of fraction [a+b+c]
+anova(rda(mericarp_traits_z, mericarp1), permutations = how(nperm = 999))
+# Test of fraction [a]
+anova(rda(mericarp_traits_z, mericarp1$year_collected, mericarp1$mainland_island), 
+      permutations = how(nperm = 999)
+)
+# Test of fraction [c]
+anova(rda(mericarp_traits_z, mericarp1$mainland_island, mericarp1$year_collected), 
+      permutations = how(nperm = 999)
+)
 
 ## Flowers ####
 ### Create flower datasets ####
@@ -260,14 +251,6 @@ anova(leaf_RDA_mainland, permutations = how(nperm = 999))
 anova(leaf_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
 ## Leaf Triplot Mainland Island ####
-# source("triplot_RDA_Borcard2018.R") # This function can improve the look of the triplots
-
-PLOT.RDA(leaf_RDA_mainland,
-         map = "symmetric",
-         main = "Triplot RDA Leaf traits ~ Mainland/Island - scaling 1 - lc scores",
-         )
-
-
 
 ### Scaling 1 ####
 plot(leaf_RDA_mainland,
@@ -452,8 +435,6 @@ arrows(0,0,
 )
 
 
-
-
 # Finch beak ####
 ## Mericarps ####
 
@@ -499,7 +480,7 @@ anova(meri_RDA_beak, by = "terms", permutations = how(nperm = 999))
 
 
 ## Triplot Mericarp Finch Beak ####
-source("triplot_RDA_Borcard2018.R")
+# source("triplot_RDA_Borcard2018.R")
 # This function can improve the look of the triplots
 
 ### Scaling 1 ####
@@ -553,7 +534,7 @@ arrows(0,0,
 flower_gal <- filter(flower, galapagos_other == "Galapagos")
 flower_traits_gal <- dplyr::select(flower_gal, petal_length)
 
-## Mericarp finch beak RDA ####
+## Flower finch beak RDA ####
 flower_RDA_beak <- rda(flower_traits_gal ~ finch_beak 
                      + Condition(year_collected)
                      , data = flower_gal)
@@ -566,8 +547,8 @@ anova(flower_RDA_beak, permutations = how(nperm = 999))
 anova(flower_RDA_beak, by = "terms", permutations = how(nperm = 999))
 
 
-## Triplot Mericarp Finch Beak ####
-source("triplot_RDA_Borcard2018.R")
+## Triplot Flower Finch Beak ####
+# source("triplot_RDA_Borcard2018.R")
 # This function can improve the look of the triplots
 
 ### Scaling 1 ####
@@ -578,7 +559,7 @@ plot(flower_RDA_beak,
                  "cn"
      ),
      type = "text",
-     main = "Triplot RDA Mericarp traits ~ Finch beak - scaling 1 - lc scores"
+     main = "Triplot RDA Flower traits ~ Finch beak - scaling 1 - lc scores"
 )
 spe.sc1 <- scores(flower_RDA_beak,
                   choices = 1:2,
@@ -600,7 +581,7 @@ plot(flower_RDA_beak,
                  "cn"
      ),
      type = "text",
-     main = "Triplot RDA Mericarp traits ~ Finch Beak - scaling 2 - lc scores"
+     main = "Triplot RDA Flower traits ~ Finch Beak - scaling 2 - lc scores"
 )
 spe.sc1 <- scores(flower_RDA_beak,
                   choices = 1:2,
@@ -615,6 +596,97 @@ arrows(0,0,
        col = "red"
 )
 
+## Leaves ####
+
+### Filter Galapagos dataset ####
+mericarp_gal <- filter(mericarp, galapagos_other == "Galapagos")
+mericarp_traits_gal <- dplyr::select(mericarp_gal, 1,12:14,16,19)
+
+### Transform the data Z-scores estimates:####
+mericarp_traits_gal_z <- sapply(mericarp_traits_gal, 
+                                function(mericarp_traits_gal)(mericarp_traits_gal-mean(mericarp_traits_gal)/sd(mericarp_traits_gal)))
+# Edit the table to be ID same as mericarp1
+mericarp_traits_gal_z <- as.tibble(mericarp_traits_gal_z)
+mericarp_traits_gal_z <- bind_cols(mericarp_gal, mericarp_traits_gal_z)
+mericarp_traits_gal_z <- dplyr::select(mericarp_traits_gal_z, 1,24:28)
+str(mericarp_traits_gal_z)
+
+mericarp_traits_gal_z <- rename(mericarp_traits_gal_z, 
+                                ind_num = ind_num...1,
+                                length = length...24,
+                                width = width...25,
+                                depth = depth...26,
+                                tip_distance = tip_distance...27,
+                                lower_spines = lower_spines...28
+)
+
+mericarp_traits_gal_z <- mericarp_traits_gal_z %>% column_to_rownames("ind_num")
+
+### Explanatory matrix: Finch beak and year ####
+mericarp1_gal <- dplyr::select(mericarp_gal, 1:10)
+mericarp1_gal <- mericarp1_gal %>% column_to_rownames("ind_num")
+
+## Mericarp finch beak RDA ####
+meri_RDA_beak <- rda(mericarp_traits_gal_z ~ finch_beak 
+                     + Condition(year_collected)
+                     , data = mericarp1_gal)
+
+summary(meri_RDA_beak)
+
+## Global test of the RDA results ####
+anova(meri_RDA_beak, permutations = how(nperm = 999))
+# Test of all canonical axes
+anova(meri_RDA_beak, by = "terms", permutations = how(nperm = 999))
+
+
+## Triplot Mericarp Finch Beak ####
+# source("triplot_RDA_Borcard2018.R")
+# This function can improve the look of the triplots
+
+### Scaling 1 ####
+plot(meri_RDA_beak,
+     scaling = 1,
+     display = c("sp",
+                 #"lc",
+                 "cn"
+     ),
+     type = "text",
+     main = "Triplot RDA Mericarp traits ~ Finch beak - scaling 1 - lc scores"
+)
+spe.sc1 <- scores(meri_RDA_beak,
+                  choices = 1:2,
+                  scaling = 1,
+                  display = "sp"
+)
+arrows(0,0,
+       spe.sc1[,1] * 0.92,
+       spe.sc1[,2] * 0.92,
+       length = 0,
+       lty = 1,
+       col = "red"
+)
+
+### Scaling 2 ####
+plot(meri_RDA_beak,
+     display = c("sp",
+                 #"lc",
+                 "cn"
+     ),
+     type = "text",
+     main = "Triplot RDA Mericarp traits ~ Finch Beak - scaling 2 - lc scores"
+)
+spe.sc1 <- scores(meri_RDA_beak,
+                  choices = 1:2,
+                  scaling = 2,
+                  display = "sp"
+)
+arrows(0,0,
+       spe.sc1[,1] * 0.92,
+       spe.sc1[,2] * 0.92,
+       length = 0,
+       lty = 1,
+       col = "red"
+)
 
 
 
