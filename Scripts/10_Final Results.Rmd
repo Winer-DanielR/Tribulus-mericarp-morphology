@@ -14,3 +14,17 @@ source("04_Models per trait_v1.R", local = knitr::knit_global())
 source("05_Summary plots.R", local = knitr::knit_global())
 source("08_RDA_v1.R", local = knitr::knit_global())
 ```
+
+# Results
+
+## Univariate analysis: trait ~ group + year
+
+### Model 1: Mainland/Island
+
+### Model 2: Galapagos/Other Islands
+
+### Model 3: Finch Beak
+
+## Multivariate analysis: trait ~ group + condition(year)
+
+### Model 1: Mainlan
