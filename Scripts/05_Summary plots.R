@@ -1,5 +1,6 @@
 
 library(ggplot2)
+library(ggvegan)
 
 # Univariate plots ####
 # Model 1: Mainland/Island comparison ####
@@ -334,48 +335,155 @@ ggplot_leaflet_num3 <- ggplot(plot_leaflet_num3, aes(x = finch_beak, y = the.emm
                                                       y = "Leaflet Number") 
 # RDA plots ####
 ## Model 1: Mainland/Island + year ####
+scl <- 2
+colvec <- c("cadetblue4", "chartreuse4")
+
 ### Mericarps ####
-triplot.rda(meri_RDA_mainland,
-            site.sc = "lc",
-            plot.sites = T,
-            label.sites = F,
-            plot.spe = F,
-            label.spe = F,
-            plot.env = F,
-            label.env = F,
-            plot.centr = F,
-            label.centr = F,
-            scaling = 1,
-            cex.point = 2,
-            mar.percent = 0.01,
-            optimum = T,
-            move.origin = c(-0.2,0)
-            )
 ####Biplot with vegan ####
 # Define factors mainland/island:
-with(mericarp1, levels(mainland_island))
-scl <- 2
-colvec <- c("red", "green4")
+with(mericarp, levels(mainland_island))
 
 #Blank plot
 plot(meri_RDA_mainland, 
      type = "n",
      scaling = scl,
      main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 2 - lc scores",
-     #xlim = c(-0.3, 0.3),
-     #ylim = c(-1,1)
+     # xlim = c(-0.3, 0.3),
+     # ylim = c(-1,1),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.8,
+     frame.plot = F
      )
 #Add points with colored factors
-with(mericarp1, points(meri_RDA_mainland, display = c("lc"), col = colvec[mainland_island],
-                       scaling = scl, pch = 25, bg = colvec[mainland_island]))
+with(mericarp, points(meri_RDA_mainland, display = c("lc"), col = "black", lwd = 2,
+                       scaling = scl, pch = 21, cex = 1.9, bg = colvec[mainland_island]))
+with(meri_RDA_mainland, legend("topright", legend = with(mericarp, levels(mainland_island)), bty = "n",
+                               col = "black", lwd = 2, pch = 21, pt.bg = colvec, cex = 1.5))
+#Add species
 text(meri_RDA_mainland, display = "species", scaling = scl, cex = 0.8, col = "darkcyan")
-with(meri_RDA_mainland, legend("topright", legend = c("Mainland", "Island"), bty = "n",
-                               col = colvec, pch = 21, pt.bg = colvec))
 
-#Ggplot RDA
-scores(meri_RDA_mainland)
-plot_scores <- scores(meri_RDA_mainland, display = c("lc"))
-plot_scores <- as.data.frame(plot_scores)
-ggplot(plot_scores) +
- aes(x = RDA1, y = PC1) +
- geom_point(size = 2)
+# #Ggplot RDA
+# scores(meri_RDA_mainland)
+# plot_scores <- scores(meri_RDA_mainland, display = c("lc"))
+# plot_scores <- as.data.frame(plot_scores)
+# ggplot(plot_scores) +
+#  aes(x = RDA1, y = PC1) +
+#  geom_point(size = 2)
+
+#GGvegan
+#ggvegan::valid_layers(meri_RDA_mainland)
+# autoplot(x, axes = c(1,2), layers = c("RDA1", "PC1"))
+# x <- fortify(meri_RDA_mainland, display = c("lc", "bp"))
+# ggplot(x, aes(RDA1, PC1)) +
+# geom_point()
+
+### Flowers ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(flower, levels(mainland_island))
+
+#Blank plot
+plot(flower_RDA_mainland, 
+     type = "n",
+     scaling = 2,
+     main = "Triplot RDA Flower trait ~ Mainland/Island - scaling 2 - lc scores",
+     xlim = c(-0.5, 0.5),
+     ylim = c(-0.8,0.8),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.8,
+     frame.plot = F
+)
+#Add points with colored factors
+with(flower, points(flower_RDA_mainland, display = c("lc"), col = "black", lwd = 2,
+                      scaling = 2, pch = 21, cex = 1.9, bg = colvec[mainland_island]))
+with(flower_RDA_mainland, legend("topright", legend = with(flower, levels(mainland_island)), bty = "n",
+                               col = "black", lwd = 2, pch = 21, pt.bg = colvec, cex = 1.5))
+#Add species
+text(flower_RDA_mainland, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
+### Leaves ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(leaf, levels(mainland_island))
+
+#Blank plot
+plot(leaf_RDA_mainland, 
+     type = "n",
+     scaling = 2,
+     main = "Triplot RDA Leaves traits ~ Mainland/Island - scaling 2 - lc scores",
+     # xlim = c(-0.5, 0.5),
+     # ylim = c(-1.2,1.2),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.8,
+     frame.plot = F
+)
+#Add points with colored factors
+with(leaf, points(leaf_RDA_mainland, display = c("lc"), col = "black", lwd = 2,
+                    scaling = 2, pch = 21, cex = 1.9, bg = colvec[mainland_island]))
+with(leaf_RDA_mainland, legend("topright", legend = with(leaf, levels(mainland_island)), bty = "n",
+                                 col = "black", lwd = 2, pch = 21, pt.bg = colvec, cex = 1.5))
+#Add species
+text(leaf_RDA_mainland, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
+# Model 2: Galapagos/Other ####
+scl <- 2
+colvec2 <- c("darkorchid3", "darksalmon")
+
+### Flowers ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(flower_islands, levels(galapagos_other))
+
+#Blank plot
+plot(flower_RDA_Galapagos, 
+     type = "n",
+     scaling = 2,
+     main = "Triplot RDA Flower: trait ~ Galapagos/Other - scaling 2 - lc scores",
+     xlim = c(-0.5, 0.5),
+     ylim = c(-2,2),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.8,
+     frame.plot = F
+)
+#Add points with colored factors
+with(flower_islands, points(flower_RDA_Galapagos, display = c("lc"), col = "black", lwd = 2,
+                  scaling = 2, pch = 21, cex = 1.9, bg = colvec2[galapagos_other]))
+with(flower_RDA_Galapagos, legend("topright", legend = with(flower_islands, levels(galapagos_other)), bty = "n",
+                               col = "black", lwd = 2, pch = 21, pt.bg = colvec2, cex = 1.5))
+#Add species
+text(flower_RDA_Galapagos, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
+### Leaves ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(leaf_islands, levels(galapagos_other))
+
+#Blank plot
+plot(leaf_RDA_Galapagos, 
+     type = "n",
+     scaling = 2,
+     main = "Triplot RDA Leaves: trait ~ Galapagos/Other - scaling 2 - lc scores",
+     xlim = c(-0.5, 0.5),
+     ylim = c(-3.5,2),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.8,
+     frame.plot = F
+)
+#Add points with colored factors
+with(leaf_islands, points(leaf_RDA_Galapagos, display = c("lc"), col = "black", lwd = 2,
+                            scaling = 2, pch = 21, cex = 1.9, bg = colvec2[galapagos_other]))
+with(leaf_RDA_Galapagos, legend("topright", legend = with(leaf_islands, levels(galapagos_other)), bty = "n",
+                                  col = "black", lwd = 2, pch = 21, pt.bg = colvec2, cex = 1.5))
+#Add species
+text(leaf_RDA_Galapagos, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
