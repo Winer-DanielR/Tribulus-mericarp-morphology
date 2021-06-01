@@ -35,8 +35,8 @@ Anova(meri_length_m1)
 # Residuals histogram
 par(mfrow = c(1, 3))
 diagnostic(resid(meri_length_m1))
-# diagnostic(resid(meri_length_m2))
-# diagnostic(resid(meri_length_m3))
+diagnostic(resid(meri_length_m2))
+diagnostic(resid(meri_length_m3))
 
 # DHARMA <- this is the way with DHAMa
 # testResiduals(meri_length_m1)
@@ -1286,7 +1286,7 @@ pwpp(EM_length3)
 ((6.40/5.97 - 1)*100) # Mericarps are 7.20% longer on islands with large seed predators than on islands wihtout
 
 ##### Width ####
-EM_width3 <- emmeans(meri_width_m6, ~ finch_beak, type = "response")
+EM_width3 <- emmeans(meri_width_m9, ~ finch_beak, type = "response")
 plot(EM_width3, comparisons = T) + labs(title = "Mericarp Width")
 pwpp(EM_width3)
 contrast(regrid(EM_width3))
@@ -1303,7 +1303,7 @@ EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
 plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
 
 ##### Tip distance ####
-EM_tip_dist3 <- emmeans(meri_tip_distance_m10, ~ finch_beak)
+EM_tip_dist3 <- emmeans(meri_tip_distance_m16, ~ finch_beak)
 plot(EM_tip_dist3) + labs(title = "Mericarp Tip Distance")
 
 ##### Lower Spines ####
