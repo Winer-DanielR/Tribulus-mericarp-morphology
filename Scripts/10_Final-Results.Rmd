@@ -1,0 +1,49 @@
+---
+title: "Results"
+author: "Daniel Reyes"
+date: "35/20/2021"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  pdf_document:
+    toc: yes
+    number_sections: yes
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("00_packages_v1.R", local = knitr::knit_global())
+source("01_diagnostic function_v1.R", local = knitr::knit_global())
+source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
+source("04_Models per trait_v1.R", local = knitr::knit_global())
+source("08_RDA_v1.R", local = knitr::knit_global())
+source("05_Summary plots.R", local = knitr::knit_global())
+```
+
+# Results
+
+## Univariate analysis: trait ~ group + year
+
+### Model 1: Mainland/Island
+
+```{r Univariate Model 1 Mericarps, echo=FALSE}
+
+par(mfrow = c(1,2))
+ggplot_length
+ggplot_width
+ggplot_depth
+ggplot_spine
+ggplot_lower
+
+```
+
+
+### Model 2: Galapagos/Other Islands
+
+### Model 3: Finch Beak
+
+## Multivariate analysis: trait ~ group + condition(year)
+
+### Model 1: Mainlan
