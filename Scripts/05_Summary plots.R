@@ -49,8 +49,8 @@ ggplot_depth <- ggplot(plot_depth, aes(x = mainland_island, y = the.emmean)) +
           panel.background = element_rect(fill = NA)) + 
     labs(title = "Mericarp: Depth Means", x = "Population", 
          y = "Mean Depth (mm)")
-### Spine length ####
-plot_spine <- plot(EM_spine, comparisons = T, plotit = F)
+### Tip distance ####
+plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
 ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) + 
     geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
@@ -61,7 +61,7 @@ ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) +
           axis.text.x = element_text(size = 17), 
           plot.title = element_text(size = 20), 
           panel.background = element_rect(fill = NA)) + 
-    labs(title = "Mericarp: Spine Length Means", x = "Population", 
+    labs(title = "Mericarp: Tip Distance Means", x = "Population", 
          y = "Mean Spine Length (mm)")
 ### Lower spines ####
 plot_lower <- plot(EM_lower1, comparisons = T, plotit = F)
@@ -243,8 +243,8 @@ ggplot_depth2 <- ggplot(plot_depth2, aes(x = finch_beak, y = the.emmean)) +
           panel.background = element_rect(fill = NA)) +    labs(title = "Mericarp: Depth Means", x = "No Large Beak Finch        Large Beak Finch", 
                                                       y = "Mean Depth (mm)") 
 
-### Spine length ####
-plot_spine2 <- plot(EM_spine3, comparisons = T, plotit = F)
+### Tip distance ####
+plot_spine2 <- plot(EM_tip_dist3, comparisons = T, plotit = F)
 
 ggplot_spine2 <- ggplot(plot_spine2, aes(x = finch_beak, y = the.emmean)) + 
     geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
@@ -255,7 +255,7 @@ ggplot_spine2 <- ggplot(plot_spine2, aes(x = finch_beak, y = the.emmean)) +
           axis.text.x = element_text(size = 17), 
           plot.title = element_text(size = 20), 
           panel.background = element_rect(fill = NA)) +
-    labs(title = "Mericarp: Spine Length Means", x = "No Large Beak Finch        Large Beak Finch", 
+    labs(title = "Mericarp: Tip Distance Means", x = "No Large Beak Finch        Large Beak Finch", 
                                                       y = "Mean Spine Length (mm)") 
 
 ### Lower spines ####
@@ -353,7 +353,7 @@ plot(meri_RDA_mainland,
      font.lab = 2,
      cex.axis = 1.5,
      cex.lab = 1.5,
-     cex.main = 1.8,
+     cex.main = 1.3,
      frame.plot = F
      )
 #Add points with colored factors
@@ -394,7 +394,7 @@ plot(flower_RDA_mainland,
      font.lab = 2,
      cex.axis = 1.5,
      cex.lab = 1.5,
-     cex.main = 1.8,
+     cex.main = 1.3,
      frame.plot = F
 )
 #Add points with colored factors
@@ -420,7 +420,7 @@ plot(leaf_RDA_mainland,
      font.lab = 2,
      cex.axis = 1.5,
      cex.lab = 1.5,
-     cex.main = 1.8,
+     cex.main = 1.3,
      frame.plot = F
 )
 #Add points with colored factors
@@ -450,7 +450,7 @@ plot(flower_RDA_Galapagos,
      font.lab = 2,
      cex.axis = 1.5,
      cex.lab = 1.5,
-     cex.main = 1.8,
+     cex.main = 1.3,
      frame.plot = F
 )
 #Add points with colored factors
@@ -476,7 +476,7 @@ plot(leaf_RDA_Galapagos,
      font.lab = 2,
      cex.axis = 1.5,
      cex.lab = 1.5,
-     cex.main = 1.8,
+     cex.main = 1.3,
      frame.plot = F
 )
 #Add points with colored factors
@@ -486,4 +486,89 @@ with(leaf_RDA_Galapagos, legend("topright", legend = with(leaf_islands, levels(g
                                   col = "black", lwd = 2, pch = 21, pt.bg = colvec2, cex = 1.5))
 #Add species
 text(leaf_RDA_Galapagos, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
+
+## Model 3: Finch Beak + year ####
+scl <- 2
+colvec3 <- c("darkcyan", "darkgoldenrod3")
+
+### Mericarps ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(mericarp_gal, levels(finch_beak))
+
+#Blank plot
+plot(meri_RDA_beak, 
+     type = "n",
+     scaling = scl,
+     main = "Triplot RDA Mericarp traits ~ Finch Beak - scaling 2 - lc scores",
+     xlim = c(-0.3, 0.3),
+     #ylim = c(-1,1),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.3,
+     frame.plot = F
+)
+#Add points with colored factors
+with(mericarp_gal, points(meri_RDA_beak, display = c("lc"), col = "black", lwd = 2,
+                      scaling = scl, pch = 21, cex = 1.9, bg = colvec3[finch_beak]))
+with(meri_RDA_beak, legend("topright", legend = with(mericarp_gal, levels(finch_beak)), bty = "n",
+                               col = "black", lwd = 2, pch = 21, pt.bg = colvec3, cex = 1.5))
+#Add species
+text(meri_RDA_beak, display = "species", scaling = scl, cex = 0.8, col = "darkcyan")
+
+### Flowers ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(flower_gal, levels(finch_beak))
+
+#Blank plot
+plot(flower_RDA_beak, 
+     type = "n",
+     scaling = scl,
+     main = "Triplot RDA Flower traits ~ Finch Beak - scaling 2 - lc scores",
+     xlim = c(-0.3, 0.3),
+     #ylim = c(-1,1),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.3,
+     frame.plot = F
+)
+#Add points with colored factors
+with(flower_gal, points(flower_RDA_beak, display = c("lc"), col = "black", lwd = 2,
+                          scaling = scl, pch = 21, cex = 1.9, bg = colvec3[finch_beak]))
+with(flower_RDA_beak, legend("topright", legend = with(flower_gal, levels(finch_beak)), bty = "n",
+                           col = "black", lwd = 2, pch = 21, pt.bg = colvec3, cex = 1.5))
+#Add species
+text(flower_RDA_beak, display = "species", scaling = scl, cex = 0.8, col = "darkcyan")
+
+
+### Leaves ####
+####Biplot with vegan ####
+# Define factors mainland/island:
+with(leaf_gal, levels(finch_beak))
+
+#Blank plot
+plot(leaf_RDA_beak, 
+     type = "n",
+     scaling = 2,
+     main = "Triplot RDA Leaves traits ~ Finch Beak - scaling 2 - lc scores",
+     xlim = c(-0.3, 0.3),
+     ylim = c(-1,1),
+     font.lab = 2,
+     cex.axis = 1.5,
+     cex.lab = 1.5,
+     cex.main = 1.3,
+     frame.plot = F
+)
+#Add points with colored factors
+with(leaf_gal, points(flower_RDA_beak, display = c("lc"), col = "black", lwd = 2,
+                        scaling = 2, pch = 21, cex = 1.9, bg = colvec3[finch_beak]))
+with(leaf_RDA_beak, legend("topright", legend = with(leaf_gal, levels(finch_beak)), bty = "n",
+                             col = "black", lwd = 2, pch = 21, pt.bg = colvec3, cex = 1.5))
+#Add species
+text(leaf_RDA_beak, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+
 
