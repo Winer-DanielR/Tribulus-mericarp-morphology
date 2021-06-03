@@ -1,14 +1,16 @@
 ---
 title: "Results"
 author: "Daniel Reyes"
-date: "35/20/2021"
+date: "6/3/2021"
 output:
-  html_document:
+  word_document:
     toc: yes
-    df_print: paged
   pdf_document:
     toc: yes
     number_sections: yes
+  html_document:
+    toc: yes
+    df_print: paged
 bibliography: references.bib
 ---
 
@@ -20,30 +22,336 @@ source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global
 source("04_Models per trait_v1.R", local = knitr::knit_global())
 source("08_RDA_v1.R", local = knitr::knit_global())
 source("05_Summary plots.R", local = knitr::knit_global())
+source("11_PCA_v1.R", local = knitr::knit_global())
+```
+
+```{r install packages, include=FALSE}
+library(xtable) #For making ANOVA outcomes dataframes and tables
+library(broom) #For making other statistical objects into Tidy Tibbles
+
 ```
 
 # Results
 
-## Univariate analysis: trait ~ group + year
+# Univariate analysis: trait \~ group + year
 
-### Model 1: Mainland/Island
+## Model 1: Mainland/Island
 
-```{r Univariate Model 1 Mericarps, echo=FALSE}
+### Mericarp
 
-par(mfrow = c(1,2))
-ggplot_length
-ggplot_width
-ggplot_depth
-ggplot_spine
-ggplot_lower
+We found that mericarps in island populations are larger but less spiny than mericarps in mainland populations. Mericarps on islands are 7% longer, 5% wider, 12% deeper than mainland populations (X^2(1)=[14.10], p = <0.001; X^2(1)=[12.43], p = <0.001; X^2(1)=[52.33], p = <0.001). Their upper spines are 6% more separated between them on island populations than on mainland (X^2(1)=[5.85], p = 0.015). However, lower spines are more common on mainland populations than on island populations (X^2(1)=[76.74], p = 0.001).
+
+
+```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between island and mainland populations.", fig.height=5}
+
+figure_mericarp_model1 <- ggarrange(ggplot_length,
+                                    ggplot_width,
+                                    ggplot_depth,
+                                    ggplot_spine,
+                                    ggplot_lower,
+                                    labels = c("A", "B", "C", "D", "E"),
+                                    ncol = 3,
+                                    nrow = 2)
+                                    
+
+figure_mericarp_model1
+```
+
+```{r anova mericarps model 1, echo=FALSE, results='asis'}
+knitr::kable(Anova(meri_length_m1), caption = "ANOVA Length (mm)")
+
+knitr::kable(Anova(meri_width_m3), caption = "ANOVA Width (mm)")
+
+knitr::kable(Anova(meri_depth_m1), caption = "ANOVA Depth (mm)")
+
+knitr::kable(Anova(meri_tip_distance_m7), caption = "ANOVA Tip Distance (mm)")
+
+knitr::kable(Anova(meri_lower_spines_m1_glmm), caption = "ANOVA Lower Spines")
+```
+
+
+\newpage
+
+### Flower
+
+We found no significant differences between mainland and island populations on petal length (p = 0.299). However, there was a significant result for year (X^2(1)=[15.89], p = <0.001) between mainland and island populations.
+
+```{r Univariate Model 1 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between island and mainland populations.", fig.height=5}
+
+ggplot_flower
+
+```
+
+```{r anova flower model 1, echo=FALSE, results='asis'}
+knitr::kable(Anova(flower_m1), caption = "ANOVA Petal Length (mm)")
+```
+
+\newpage
+
+### Leaf
+
+We found that leaves in island populations are longer, and have more leaflets than leaves in mainland populations. Leaves on islands are 20% longer, their leaflets are 7.5% larger and they have approximately 11% more leaflets than mainland populations (X^2(1)=[21.86], p = <0.001; X^2(1)=[4.86], p = 0.027; X^2(1)=[39.61], p = <0.001).
+
+```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.width= 8, fig.height=5}
+
+figure_leaf_model1 <- ggarrange(ggplot_leaf,
+                                    ggplot_leaflet,
+                                    ggplot_leaflet_num,
+                                    labels = c("A", "B", "C"),
+                                    ncol = 3,
+                                    nrow = 1)
+                                    
+
+figure_leaf_model1
+```
+
+```{r anova leaf model 1, echo=FALSE, results='asis'}
+knitr::kable(Anova(leaf_length_m3), caption = "ANOVA Leaf Length (mm)")
+
+knitr::kable(Anova(leaflet_length_m2), caption = "ANOVA Leaflet Length (mm)")
+
+knitr::kable(Anova(leaflet_num_m5), caption = "ANOVA Leaf Number")
+```
+
+\newpage
+
+## Model 2: Galapagos/Other Islands
+
+### Flower
+
+We found that *Tribulus* flowers in the Galapagos are smaller than flowers of populations from other islands. Petal length of *Tribulus* on the Galapagos is 46% shorter than petal length from other islands (X^2(1)=[156.39], p = <0.001).
+
+```{r Univariate Model 2 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between the Galapagos and other islands populations.", fig.height=5}
+
+ggplot_flower2
+
+```
+
+```{r anova flower model 2, echo=FALSE, results='asis'}
+knitr::kable(Anova(flower_m9), caption = "ANOVA Petal Length (mm)")
+```
+
+\newpage
+
+### Leaf
+
+We found that leaf length of population from the Galapagos are smaller than populations from other islands. Leaves are 22% shorter, leaflets are 18.5% shorter compared to other island populations (X^2(1)=[20.39], p = <0.001; X^2(1)=[17.20], p = <0.001). However there were not significant differences for the number of leaflets between Galapagos and other island populations (p = 0.17).
+
+```{r Univariate Model 2 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between the Galapagos and other island populations.", fig.width= 8, fig.height=5}
+
+figure_leaf_model2 <- ggarrange(ggplot_leaf2,
+                                    ggplot_leaflet2,
+                                    ggplot_leaflet_num2,
+                                    labels = c("A", "B", "C"),
+                                    ncol = 3,
+                                    nrow = 1)
+                                    
+
+figure_leaf_model2
+```
+
+```{r anova leaf model 2, echo=FALSE, results='asis'}
+knitr::kable(Anova(leaf_length_m5), caption = "ANOVA Leaf Length (mm)")
+
+knitr::kable(Anova(leaflet_length_m5), caption = "ANOVA Leaflet Length (mm)")
+
+knitr::kable(Anova(leaflet_num_m8), caption = "ANOVA Leaf Number")
+```
+
+\newpage
+
+## Model 3: Finch Beak
+
+### Mericarp
+
+The presence of large beak finch species, *Geospiza magnirrostris* and *Geospiza cornirostris* was significantly associated with the presence of lower spines (X^2(1)=[125.47], p = <0.001). However, mericarp length, width, depth and spine tip distance were not significant (p = 0.08, p = 0.58, p = 0.37, p = 0.25). 
+
+```{r Univariate Model 3 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.height=5}
+
+figure_mericarp_model3 <- ggarrange(ggplot_length2,
+                                    ggplot_width2,
+                                    ggplot_depth2,
+                                    ggplot_spine2,
+                                    ggplot_lower2,
+                                    labels = c("A", "B", "C", "D", "E"),
+                                    ncol = 3,
+                                    nrow = 2)
+                                    
+
+figure_mericarp_model3
+```
+
+```{r anova mericarps model 3, echo=FALSE, results='asis'}
+knitr::kable(Anova(meri_length_m4), caption = "ANOVA Length (mm)")
+
+knitr::kable(Anova(meri_width_m9), caption = "ANOVA Width (mm)")
+
+knitr::kable(Anova(meri_depth_m4), caption = "ANOVA Depth (mm)")
+
+knitr::kable(Anova(meri_tip_distance_m16), caption = "ANOVA Tip Distance (mm)")
+
+knitr::kable(Anova(meri_lower_spines_m2), caption = "ANOVA Lower Spines")
+```
+
+\newpage
+
+### Flower
+
+There was no statistically significant difference for petal length between islands with large beak finches present and absent (p = 0.55)
+
+```{r Univariate Model 3 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.height=5}
+
+ggplot_flower3
+
+```
+
+```{r anova flower model 3, echo=FALSE, results='asis'}
+knitr::kable(Anova(flower_m12), caption = "ANOVA Petal Length (mm)")
+```
+
+\newpage
+
+### Leaf
+
+There is not statistically significant difference between islands with large finch beak species present and absent for all three leaf traits, leaf length, leaflet length and leaf number (p = 0.17; p = p = 0.15; p = 0.73).
+
+```{r Univariate Model 3 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.width= 8, fig.height= 5}
+
+figure_leaf_model3 <- ggarrange(ggplot_leaf3,
+                                    ggplot_leaflet3,
+                                    ggplot_leaflet_num3,
+                                    labels = c("A", "B", "C"),
+                                    ncol = 3,
+                                    nrow = 1)
+                                    
+
+figure_leaf_model3
+```
+
+```{r anova leaf model 3, echo=FALSE, results='asis'}
+knitr::kable(Anova(leaf_length_m9), caption = "ANOVA Leaf Length (mm)")
+
+knitr::kable(Anova(leaflet_length_m8), caption = "ANOVA Leaflet Length (mm)")
+
+knitr::kable(Anova(leaflet_num_m10), caption = "ANOVA Leaf Number")
+```
+
+\newpage
+
+# Multivariate analysis: trait \~ group + condition(year)
+
+## Model 1: Mainland/Island
+
+### Mericarp
+
+```{r Model 1 mericarp PCA biplot, echo=F, results='asis', fig.align='right'}
+
+biplot1 <- fviz_pca_biplot(mericarp_pca, repel = T,
+                geom = c("point"),
+                habillage = mericarp_summary$mainland_island,
+                col.var = "black",
+                addEllipses = T,
+                label = "all",
+                labelsize = 4,
+                pointsize = 2,
+                ellipse.level = 0.95,
+                ) +labs(title = "Biplot - PCA Mericarps")
+
+var1 <- fviz_pca_var(mericarp_pca,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+             ) +labs(title = "Variables - PCA Mericarps")
+
+biplot1
+var1
+```
+
+### Leaf
+
+```{r Model 1 PCA Leaf, echo=F,results='asis', fig.align='right'}
+
+#Biplot
+fviz_pca_biplot(leaf_pca, repel = T,
+                geom = c("point"),
+                habillage = leaf_summary$mainland_island,
+                col.var = "black",
+                addEllipses = T
+)
+
+# Variables
+fviz_pca_var(leaf_pca,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+
 
 ```
 
 
-### Model 2: Galapagos/Other Islands
 
-### Model 3: Finch Beak
+## Model 2: Galapagos/Other
 
-## Multivariate analysis: trait ~ group + condition(year)
+### Leaf
 
-### Model 1: Mainlan
+```{r Model 2 leaf PCA biplot, echo=F, results='asis', fig.align='right'}
+
+#Biplot
+fviz_pca_biplot(leaf_pca_model2, repel = T,
+                geom = c("point"),
+                habillage = leaf_summary_model2$galapagos_other,
+                col.var = "black",
+                addEllipses = T
+)
+
+# Variables
+fviz_pca_var(leaf_pca_model2,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+
+```
+
+## Model 3: Finch Beak
+
+### Mericarp
+
+```{r Model 3 mericarp PCA biplot, echo=F, results='asis', fig.align='right'}
+#Biplot
+fviz_pca_biplot(mericarp_pca_model3, repel = T,
+                geom = c("point"),
+                habillage = mericarp_summary_model3$finch_beak,
+                col.var = "black",
+                addEllipses = T
+)
+
+# Variables
+fviz_pca_var(mericarp_pca_model3,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+
+```
+
+### Leaf
+
+```{r Model 3 leaf PCA biplot, echo=F, results='asis', fig.align='right'}
+
+#Biplot
+fviz_pca_biplot(leaf_pca_model3, repel = T,
+                geom = c("point"),
+                habillage = leaf_summary_model3$finch_beak,
+                col.var = "black",
+                addEllipses = T
+)
+# Variables
+fviz_pca_var(leaf_pca_model3,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+
+```
