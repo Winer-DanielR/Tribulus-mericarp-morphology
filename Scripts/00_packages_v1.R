@@ -19,3 +19,4 @@ library(emmeans) #For testing models
 library(car) #For model analysis
 library(DHARMa)
 
+library(ggpubr) #For arrage ggplots into a single plot
