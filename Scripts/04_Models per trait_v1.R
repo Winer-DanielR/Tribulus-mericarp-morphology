@@ -624,7 +624,7 @@ leaf_length_m6 <- lmer(sqrt(leaf_length) ~ galapagos_other +
                          year_collected +
                          (1|ID),data=leaf_length,REML=F)
 # # Type III test
-# Anova(leaf_length_m5)
+Anova(leaf_length_m5)
 # 
 # # Diagnostic
 # 
@@ -688,7 +688,7 @@ leaflet_num_m8 <- glmmTMB(number_of_leaflets ~ galapagos_other +
                           family = nbinom1())
 
 
-Anova(leaflet_num_m7)
+Anova(leaflet_num_m8)
  
 # # Diagnostic
 # # Residual histograms
@@ -1015,14 +1015,14 @@ meri_lower_spines_m2 <- glm(lower_spines ~ finch_beak +
                              family = "binomial")
 
 # # Type III test
-Anova(meri_lower_spines_m2_glmm)
+#Anova(meri_lower_spines_m2_glmm)
 Anova(meri_lower_spines_m2)
  
 # # Diagnostic
-# diagnostic(resid(meri_lower_spines_m2))
+diagnostic(resid(meri_lower_spines_m2))
 # 
 # # DHARMa
-# testResiduals(meri_lower_spines_m2)
+testResiduals(meri_lower_spines_m2)
 
 ##### Upper spines ####
 # Ask about the outcomes of this model_ How can I diagnose this one?
@@ -1194,7 +1194,7 @@ pwpp(EM_width)
 EM_depth <- emmeans(meri_depth_m1, ~ mainland_island)
 plot(EM_depth, comparisons = T) + labs(title = "Mericarp Depth")
 pwpp(EM_depth)
-((4.75/4.25 - 1)*100) # Mericarps ~ 11.76% deeper on islands
+((4.78/4.26 - 1)*100) # Mericarps ~ 12% deeper on islands
 
 ##### Spine Length ####
 # Zero filter data
@@ -1205,6 +1205,8 @@ plot(EM_spine, comparisons = T) + labs(title = "Mericarp Spine Length")
 # Zero filter data
 EM_tip_dist <- emmeans(meri_tip_distance_m7, ~ mainland_island)
 plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
+pwpp(EM_tip_dist)
+((8.96/8.40 - 1)*100) # Mericarps ~ 6.66% more separated on islands
 
 ##### Lower Spine ####
 EM_lower <- emmeans(meri_lower_spines_m1_glmm, ~ mainland_island, type = "response")
@@ -1299,18 +1301,18 @@ pwpp(EM_depth3)
 ((4.76/4.83 - 1)*100) # - 1.45%
 
 ##### Spine Length ####
-EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
-plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
+# EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
+# plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
 
 ##### Tip distance ####
 EM_tip_dist3 <- emmeans(meri_tip_distance_m16, ~ finch_beak)
 plot(EM_tip_dist3) + labs(title = "Mericarp Tip Distance")
 
 ##### Lower Spines ####
-EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
-plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
-pwpp(EM_lower3)
-((0.3081/0.0696 - 1)*100)
+# EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
+# plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
+# pwpp(EM_lower3)
+# ((0.3081/0.0696 - 1)*100)
 
 #Glm
 EM_lower4 <- emmeans(meri_lower_spines_m2, ~ finch_beak)
@@ -1319,12 +1321,12 @@ pwpp(EM_lower4)
 ((0.472/-0.542 - 1)*100)
 
 ##### Upper Spines ####
-EM_upper3 <- emmeans(meri_upper_spines_m2_glmm, ~ finch_beak, type = "response")
-plot(EM_upper3) + labs(title = "Mericarp Lower Spine")
-
-#Glm
-EM_upper4 <- emmeans(meri_upper_spines_m2, ~ finch_beak)
-plot(EM_upper4) + labs(title = "Mericarp Lower Spines")
+# EM_upper3 <- emmeans(meri_upper_spines_m2_glmm, ~ finch_beak, type = "response")
+# plot(EM_upper3) + labs(title = "Mericarp Lower Spine")
+# 
+# #Glm
+# EM_upper4 <- emmeans(meri_upper_spines_m2, ~ finch_beak)
+# plot(EM_upper4) + labs(title = "Mericarp Lower Spines")
 
 #### Flower ####
 EM_flower3 <- emmeans(flower_m12, ~ finch_beak, type = "response")
