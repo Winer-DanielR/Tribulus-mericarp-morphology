@@ -28,8 +28,8 @@ meri_length_m3<- lmer(sqrt(length) ~ mainland_island +
                       data = meri_length,
                       REML = F)
 # type III test
-Anova(meri_length_m1)
-
+ANOVA_length_m1 <-as.data.frame(Anova(meri_length_m1))
+summary(meri_length_m1)
 # Diagnostic
 
 # Residuals histogram
