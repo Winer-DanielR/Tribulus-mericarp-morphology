@@ -6,7 +6,7 @@
 # This script was used once to create the individual databases with transformed data
 # These databases were exported and are found in the processed data folder
 
-mericarp <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
+mericarp <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
 mericarp <- mericarp %>% mutate_at(vars(ID,
                                               Herbarium,
                                               continent,
@@ -60,7 +60,7 @@ meri_upper_spines <- filter(meri_upper_spines, !is.na(upper_spines))
 
 # Flower data ####
 
-flower <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
+flower <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
 flower <- flower %>% mutate_at(vars(ID,
                                         Herbarium,
                                         continent,
@@ -81,7 +81,7 @@ flower <- filter(flower, !is.na(petal_length))
 
 # Leaf data ####
 
-leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
+leaf <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
 leaf <- leaf %>% mutate_at(vars(ID,
                                     herbarium,
                                     continent,

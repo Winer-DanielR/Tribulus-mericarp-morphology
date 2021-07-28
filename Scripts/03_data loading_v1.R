@@ -7,7 +7,7 @@
 # Single trait data prep =============================================
 #### Load indvidual traits and transformed dataframes ####
 # Mericarp traits ####
-meri_length <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Length.csv")
+meri_length <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Length.csv")
 meri_length <- meri_length %>% mutate_at(vars(ID,
                                         Herbarium,
                                         continent,
@@ -17,7 +17,7 @@ meri_length <- meri_length %>% mutate_at(vars(ID,
                                         island_group,
                                         galapagos_island,
                                         finch_beak), list(factor))
-meri_width <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Width.csv")
+meri_width <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Width.csv")
 meri_width <- meri_width %>% mutate_at(vars(ID,
                                               Herbarium,
                                               continent,
@@ -27,7 +27,7 @@ meri_width <- meri_width %>% mutate_at(vars(ID,
                                               island_group,
                                               galapagos_island,
                                               finch_beak), list(factor))
-meri_depth <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Depth.csv")
+meri_depth <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Depth.csv")
 meri_depth <- meri_depth %>% mutate_at(vars(ID,
                                             Herbarium,
                                             continent,
@@ -37,7 +37,7 @@ meri_depth <- meri_depth %>% mutate_at(vars(ID,
                                             island_group,
                                             galapagos_island,
                                             finch_beak), list(factor))
-meri_spine.length <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Spine Length.csv")
+meri_spine.length <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Spine Length.csv")
 meri_spine.length <- meri_spine.length %>% mutate_at(vars(ID,
                                             Herbarium,
                                             continent,
@@ -47,7 +47,7 @@ meri_spine.length <- meri_spine.length %>% mutate_at(vars(ID,
                                             island_group,
                                             galapagos_island,
                                             finch_beak), list(factor))
-meri_tip.distance <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Tip Distance.csv")
+meri_tip.distance <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Tip Distance.csv")
 meri_tip.distance <- meri_tip.distance %>% mutate_at(vars(ID,
                                             Herbarium,
                                             continent,
@@ -57,7 +57,7 @@ meri_tip.distance <- meri_tip.distance %>% mutate_at(vars(ID,
                                             island_group,
                                             galapagos_island,
                                             finch_beak), list(factor))
-meri_spine.number <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Spine Number.csv")
+meri_spine.number <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Spine Number.csv")
 meri_spine.number <- meri_spine.number %>% mutate_at(vars(ID,
                                             Herbarium,
                                             continent,
@@ -67,7 +67,7 @@ meri_spine.number <- meri_spine.number %>% mutate_at(vars(ID,
                                             island_group,
                                             galapagos_island,
                                             finch_beak), list(factor))
-meri_lower.spines <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Lower Spines.csv")
+meri_lower.spines <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp Lower Spines.csv")
 meri_lower.spines <- meri_lower.spines %>% mutate_at(vars(ID,
                                             Herbarium,
                                             continent,
@@ -80,7 +80,7 @@ meri_lower.spines <- meri_lower.spines %>% mutate_at(vars(ID,
                                             finch_beak), list(factor))
 
 # Flower traits ####
-petal_length <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Flower length.csv")
+petal_length <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Flower length.csv")
 #str(petal_length)
 petal_length <- petal_length %>% mutate_at(vars(ID,
                                                           Herbarium,
@@ -92,7 +92,7 @@ petal_length <- petal_length %>% mutate_at(vars(ID,
                                                           galapagos_island,
                                                           finch_beak), list(factor))
 # Leaf traits ####
-leaf_length <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaf length.csv")
+leaf_length <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaf length.csv")
 leaf_length <- leaf_length %>% mutate_at(vars(ID,
                                                 herbarium,
                                                 continent,
@@ -102,7 +102,7 @@ leaf_length <- leaf_length %>% mutate_at(vars(ID,
                                                 island_group,
                                                 galapagos_island,
                                                 finch_beak), list(factor))
-leaflet_length <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaflet length.csv")
+leaflet_length <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Leaflet length.csv")
 leaflet_length <- leaflet_length %>% mutate_at(vars(ID,
                                               herbarium,
                                               continent,
@@ -133,7 +133,7 @@ gal_leaflet_length <- filter(leaflet_length, galapagos_other == "Galapagos")
 # Multivariate databases ==================================================
 
 #### Mericarp data ####
-mericarp <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
+mericarp <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
 mericarp <- as_tibble(mericarp)
 names(mericarp)
 str(mericarp)
@@ -166,7 +166,7 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
 # str(mericarp1)
 # write_csv(mericarp1, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs all traits.csv")
 
-mericarp1 <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs all traits.csv")
+mericarp1 <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs all traits.csv")
 str(mericarp1)
 names(mericarp1)
 mericarp1 <- mericarp1 %>% mutate_at(vars(ID,
@@ -187,7 +187,7 @@ mericarp1 <- mericarp1 %>% mutate_at(vars(ID,
 # mericarp2 <- filter(mericarp2, !is.na(mericarp2$lower_spines))
 # write_csv(mericarp2, "C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs spine lenght removed.csv")
 
-mericarp2 <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs spine lenght removed.csv")
+mericarp2 <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Mericarp data without NAs spine lenght removed.csv")
 str(mericarp2)
 names(mericarp2)
 mericarp2 <- mericarp2 %>% mutate_at(vars(ID,
@@ -207,7 +207,7 @@ mericarp2 <- filter(mericarp2, !is.na(mericarp2$year_collected))
 ### For all traits we have mainly Florida and Galapagos
 
 #### Leaf data ####
-leaf <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
+leaf <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_leaves_data_plus CDRS herbarium_clean.csv")
 leaf <- as_tibble(leaf)
 
 # It is important to remove NAs
@@ -229,7 +229,7 @@ leaf <- filter(leaf, !is.na(leaf$number_of_leaflets))
 
 
 #### Flower data ####
-flower <- read_csv("C:/Users/Daniel/Documents/R/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
+flower <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
 flower <- as_tibble(flower)
 names(flower)
 
