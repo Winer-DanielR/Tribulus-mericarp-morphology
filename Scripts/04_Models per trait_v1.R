@@ -1,16 +1,19 @@
 ### Analysis of mericarp data collected for the Antagonistic and Mutualistic interactions paper ####
-#By: Daniel Reyes Corral
+# By: Daniel Reyes Corral
 
-#### Linear models per trait ####
+# Linear models per trait ####
 
-# Model 1: trait ~ mainland/island + year_ ####
-# Is there and effect between island and mainland populations? #
+# Model 1: trait ~ mainland/island + year ####
+# What is the effect of mericarp, flower and leaf morphology size between
+# island and mainland populations of Tribulus cistoides
 
 #### Mericarp data ####
-# run simple linear mixed effect model, with ID as random effect per trait
-# For diagnostics you can change to trait_log or trait_sqr to test transformed data
-# 
-###### Length ####
+# Run simple linear mixed effect model:
+# mainland/island and year as variables
+# with ID as random effect per trait
+# each model uses the untrasformed data, log transformed and square root transformed
+
+#### Length ####
 # For length, the untransformed data seems the best
 meri_length_m1<- lmer(length ~ mainland_island +
                        year_collected +
@@ -29,26 +32,28 @@ meri_length_m3<- lmer(sqrt(length) ~ mainland_island +
                       REML = F)
 # type III test
 ANOVA_length_m1 <-as.data.frame(Anova(meri_length_m1))
-summary(meri_length_m1)
+#summary(meri_length_m1)
+
 # Diagnostic
+# I used a custom diagnostic function and the testResiduals function
+# from the DHARMa package. This function shows the QQ residuals, dispersion test
+# and outlier tests. 
 
-# Residuals histogram
-par(mfrow = c(1, 3))
-diagnostic(resid(meri_length_m1))
-diagnostic(resid(meri_length_m2))
-diagnostic(resid(meri_length_m3))
+# Diagnostic custom function
+#par(mfrow = c(1, 3))
+#diagnostic(resid(meri_length_m1))
+#diagnostic(resid(meri_length_m2))
+#diagnostic(resid(meri_length_m3))
 
-# DHARMA <- this is the way with DHAMa
-# testResiduals(meri_length_m1)
-# testResiduals(meri_length_m2)
-# testResiduals(meri_length_m3)
-# 
-plotResiduals(meri_length_m1)
-plotQQunif(meri_length_m1)
-# plotResiduals(meri_length_m2)
-# plotResiduals(meri_length_m3)
+# Diagnostics with DHARMA
+#testResiduals(meri_length_m1)
+#testResiduals(meri_length_m2)
+#testResiduals(meri_length_m3)
 
-##### Width ####
+# After selecting the data transformation that converged the most I decided to
+# only show the output of that model.
+
+#### Width ####
 # For width, squared transformed seemed the best_
 meri_width_m1 <- lmer(width ~ mainland_island +
                      year_collected +
@@ -72,15 +77,15 @@ Anova(meri_width_m3)
 # # Residual histograms
 # diagnostic(resid(meri_width_m1))
 # diagnostic(resid(meri_width_m2))
-diagnostic(resid(meri_width_m3))
+# diagnostic(resid(meri_width_m3))
 
 # # DHARMa
 # testResiduals(meri_width_m1)
 # testResiduals(meri_width_m2)
-testResiduals(meri_width_m3)
-# plotResiduals(meri_width_m3)
+# testResiduals(meri_width_m3)
 
-##### Depth ####
+
+#### Depth ####
 # For depth untransformed data seems to work the best
 meri_depth_m1 <- lmer(depth ~ mainland_island +
                     year_collected +
@@ -97,24 +102,24 @@ meri_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
                         (1|ID),
                       data=meri_depth, 
                       REML = F)
-# # type III test
+# type III test
 Anova(meri_depth_m1)
-# 
+
 # # Diagnostic
-hist(resid(meri_depth_m1), breaks = 20)
+# hist(resid(meri_depth_m1), breaks = 20)
 
 # # Residual histograms
-diagnostic(resid(meri_depth_m1))
+# diagnostic(resid(meri_depth_m1))
 # diagnostic(resid(meri_depth_m2))
 # diagnostic(resid(meri_depth_m3))
 # 
 # # DHARMa
-testResiduals(meri_depth_m1)
+# testResiduals(meri_depth_m1)
 # testResiduals(meri_depth_m2)
 # testResiduals(meri_depth_m3)
 
 
-##### Spine length ####
+#### Spine length ####
 # I think the untransformed works best but the 0s may affect the results
 meri_spine_length_m1 <-lmer(spine_length ~ mainland_island +
                            year_collected +
@@ -138,11 +143,11 @@ meri_spine_length_m3 <-lmer(sqrt(spine_length) ~ mainland_island +
 Anova(meri_spine_length_m1)
  
 # Diagnostic
- 
 # # Residual histograms
-diagnostic(resid(meri_spine_length_m1))
+# diagnostic(resid(meri_spine_length_m1))
 # diagnostic(resid(meri_spine_length_m2))
 # diagnostic(resid(meri_spine_length_m3))
+# hist(resid(meri_spine_length_m1), breaks = 20)
 
 # # DHARMa
 # testResiduals(meri_spine_length_m1)
@@ -150,7 +155,7 @@ diagnostic(resid(meri_spine_length_m1))
 # testResiduals(meri_spine_length_m3)
 # testZeroInflation(meri_depth_m1)
 
-##### No zero Spine Length ####
+##### Removed Zero Spine Length ####
 # Square transformed data seems works best
 meri_spine_length_wozero_m1 <-lmer(spine_length ~ mainland_island +
                               year_collected +
@@ -178,10 +183,10 @@ Anova(meri_spine_length_wozero_m3)
 # # Residual histograms
 # diagnostic(resid(meri_spine_length_wozero_m1))
 # diagnostic(resid(meri_spine_length_wozero_m2))
-diagnostic(resid(meri_spine_length_wozero_m3))
+# diagnostic(resid(meri_spine_length_wozero_m3))
 
-hist(resid(meri_spine_length_wozero_m3), breaks = 20)
-hist(meri_spine_length_wozero$spine_length, breaks = 20)
+
+
 
 # # DHARMa
 # testResiduals(meri_spine_length_wozero_m1)
@@ -215,7 +220,7 @@ spine_length_filter_m3 <-lmer(sqrt(spine_length) ~ mainland_island +
                                    REML=F)
 
 # type III test
-Anova(spine_length_filter_m1)
+Anova(spine_length_filter_m3)
 
 # Diagnostic
 
@@ -231,7 +236,7 @@ testResiduals(spine_length_filter_m1)
 # # plotResiduals(spine_length_filter_m1)
 
 
-##### Tip distance ####
+#### Tip distance ####
 # Raw data looks the best
 meri_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
                                  year_collected +
@@ -253,21 +258,21 @@ meri_tip_distance_m3 <- lmer(sqrt(tip_distance) ~ mainland_island +
 Anova(meri_tip_distance_m1)
 
 # # Diagnostic
-hist(resid(meri_spine_length_m1), breaks = 20)
-hist(meri_tip_distance$tip_distance, breaks = 20)
+# hist(resid(meri_spine_length_m1), breaks = 20)
+# hist(meri_tip_distance$tip_distance, breaks = 20)
 
 # # Residual histograms
-diagnostic(resid(meri_tip_distance_m1))
+# diagnostic(resid(meri_tip_distance_m1))
 # diagnostic(resid(meri_tip_distance_m2))
 # diagnostic(resid(meri_tip_distance_m3))
 
 # # DHARMa
-testResiduals(meri_tip_distance_m1)
+# testResiduals(meri_tip_distance_m1)
 # testResiduals(meri_tip_distance_m2)
 # testResiduals(meri_tip_distance_m3)
 
 
-###### No zero Tip distance ####
+###### Removed Zero Tip distance ####
 # Raw data looks the best
 meri_tip_distance_m4 <- lmer(tip_distance ~ mainland_island +
                                year_collected +
@@ -290,24 +295,27 @@ meri_tip_distance_m6 <- lmer(sqrt(tip_distance) ~ mainland_island +
 Anova(meri_tip_distance_m4)
 
 # Diagnostic
-# diagnostic(resid(meri_tip_distance_m4))
-# diagnostic(resid(meri_tip_distance_m5))
-# diagnostic(resid(meri_tip_distance_m6))
-
+ # diagnostic(resid(meri_tip_distance_m4))
+ # diagnostic(resid(meri_tip_distance_m5))
+ # diagnostic(resid(meri_tip_distance_m6))
 
 # # DHARMa
 # testResiduals(meri_tip_distance_m1)
 # testResiduals(meri_tip_distance_m2)
 # testResiduals(meri_tip_distance_m3)
 
-# Filter residuals
+# Check residual distributions after removing mericarps without spines.
+ 
 meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_m4)
 hist(resid(meri_tip_distance_m4), breaks = 20)
 hist(meri_tip_distance_wozero$tip_distance, breaks = 20)
 
 # Filter residuals that are lower than 10
 meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero,
-                                          !residuals < -9)
+                                          !residuals < -5)
+meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero_filter,
+                                          !residuals > 5)
+
 # Removes specimen 383
 
 hist(meri_tip_distance_wozero_filter$residuals, breaks = 20)
@@ -336,21 +344,21 @@ meri_tip_distance_m9 <- lmer(sqrt(tip_distance) ~ mainland_island +
 
 
 # Diagnostic
-diagnostic(resid(meri_tip_distance_m7))
-diagnostic(resid(meri_tip_distance_m8))
-diagnostic(resid(meri_tip_distance_m9))
+ # diagnostic(resid(meri_tip_distance_m7))
+ # diagnostic(resid(meri_tip_distance_m8))
+ # diagnostic(resid(meri_tip_distance_m9))
 
 #Anova
 Anova(meri_tip_distance_m7)
 
 # DHARMa
-testResiduals(meri_tip_distance_m7)
+# testResiduals(meri_tip_distance_m7)
 
-###### Lower spines ####
-meri_lower_spines_m1 <- glm(lower_spines ~ mainland_island + 
-                                   year_collected, 
-                             data = meri_lower_spines, 
-                             family = "binomial")
+#### Lower spines ####
+# meri_lower_spines_m1 <- glm(lower_spines ~ mainland_island + 
+#                                    year_collected, 
+#                              data = meri_lower_spines, 
+#                              family = "binomial")
 
 meri_lower_spines_m1_glmm <- glmmTMB(lower_spines ~ mainland_island +
                                        (1|ID),
@@ -358,20 +366,19 @@ meri_lower_spines_m1_glmm <- glmmTMB(lower_spines ~ mainland_island +
                                      family = binomial)
 
 # # Type III test
-Anova(meri_lower_spines_m1)
+# Anova(meri_lower_spines_m1)
 Anova(meri_lower_spines_m1_glmm)
 
-# # Diagnostic
-# 
+# Diagnostic
 # # Residual histograms
 diagnostic(resid(meri_lower_spines_m1_glmm))
 
 
 ###### Upper spines ####
-meri_upper_spines_m1 <- glm(upper_spines ~ mainland_island + 
-                               year_collected, 
-                             data = meri_upper_spines, 
-                             family = "binomial")
+# meri_upper_spines_m1 <- glm(upper_spines ~ mainland_island + 
+#                                year_collected, 
+#                              data = meri_upper_spines, 
+#                              family = "binomial")
 
 meri_upper_spines_m1_glmm <- glmmTMB(upper_spines ~ mainland_island +
                                        (1|ID),
@@ -379,7 +386,7 @@ meri_upper_spines_m1_glmm <- glmmTMB(upper_spines ~ mainland_island +
                                      family = binomial)
 
 # # Type III test
-Anova(meri_upper_spines_m1)
+#Anova(meri_upper_spines_m1)
 Anova(meri_upper_spines_m1_glmm)
 
 # # Diagnostic
@@ -1009,20 +1016,20 @@ meri_lower_spines_m2_glmm <- glmmTMB(lower_spines ~ finch_beak +
                                      data = gal_meri_lower_spines,
                                      family = binomial)
 
-meri_lower_spines_m2 <- glm(lower_spines ~ finch_beak + 
-                                   year_collected, 
-                             data = gal_meri_lower_spines, 
-                             family = "binomial")
+ # meri_lower_spines_m2 <- glm(lower_spines ~ finch_beak + 
+ #                                   year_collected, 
+ #                             data = gal_meri_lower_spines, 
+ #                             family = "binomial")
 
 # # Type III test
-#Anova(meri_lower_spines_m2_glmm)
-Anova(meri_lower_spines_m2)
+Anova(meri_lower_spines_m2_glmm)
+# Anova(meri_lower_spines_m2)
  
 # # Diagnostic
-diagnostic(resid(meri_lower_spines_m2))
+diagnostic(resid(meri_lower_spines_m2_glmm))
 # 
 # # DHARMa
-testResiduals(meri_lower_spines_m2)
+testResiduals(meri_lower_spines_m2_glmm)
 
 ##### Upper spines ####
 # Ask about the outcomes of this model_ How can I diagnose this one?
@@ -1200,31 +1207,33 @@ pwpp(EM_depth)
 # Zero filter data
 EM_spine <- emmeans(meri_spine_length_wozero_m3, ~ mainland_island)
 plot(EM_spine, comparisons = T) + labs(title = "Mericarp Spine Length")
-
+pwpp(EM_spine)
+((2.12/2.08 - 1)* 100) # Upper spines are 1.92% longer on islands than on the mainland 
 ##### Tip distance ####
 # Zero filter data
 EM_tip_dist <- emmeans(meri_tip_distance_m7, ~ mainland_island)
 plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
 pwpp(EM_tip_dist)
-((8.96/8.40 - 1)*100) # Mericarps ~ 6.66% more separated on islands
+((9/8.43 - 1)*100) # Mericarps ~ 6.66% more separated on islands
 
 ##### Lower Spine ####
+#Glmm
 EM_lower <- emmeans(meri_lower_spines_m1_glmm, ~ mainland_island, type = "response")
 plot(EM_lower, comparisons = T) + labs(title = "Mericarp Lower Spines")
 pwpp(EM_lower)
 
 #Glm
-EM_lower1 <- emmeans(meri_lower_spines_m1, ~ mainland_island, type = "response")
-plot(EM_lower1, comparisons = T) + labs(title = "Mericarp Lower Spines")
-pwpp(EM_lower1)
+# EM_lower1 <- emmeans(meri_lower_spines_m1, ~ mainland_island, type = "response")
+# plot(EM_lower1, comparisons = T) + labs(title = "Mericarp Lower Spines")
+# pwpp(EM_lower1)
 
 ##### Upper Spines ####
 EM_upper <- emmeans(meri_upper_spines_m1_glmm, ~ mainland_island)
 plot(EM_lower) + labs(title = "Mericarp Lower Spines")
 
 #Glm
-EM_upper1 <- emmeans(meri_upper_spines_m1, ~ mainland_island)
-plot(EM_upper1) + labs(title = "Mericarp Lower Spines")
+# EM_upper1 <- emmeans(meri_upper_spines_m1, ~ mainland_island)
+# plot(EM_upper1) + labs(title = "Mericarp Lower Spines")
 
 #### Flower ####
 EM_flower <- emmeans(flower_m1, ~ mainland_island)
@@ -1301,24 +1310,26 @@ pwpp(EM_depth3)
 ((4.76/4.83 - 1)*100) # - 1.45%
 
 ##### Spine Length ####
-# EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
-# plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
-
+ EM_spine3 <- emmeans(meri_spine_length_m7, ~ finch_beak)
+ plot(EM_spine3, comparisons = T) + labs(title = "Mericarp Spine Length")
+ pwpp(EM_spine3)
 ##### Tip distance ####
 EM_tip_dist3 <- emmeans(meri_tip_distance_m16, ~ finch_beak)
 plot(EM_tip_dist3) + labs(title = "Mericarp Tip Distance")
-
+pwpp(EM_tip_dist3)
+((9.14/8.08 - 1)*100)
 ##### Lower Spines ####
-# EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
-# plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
-# pwpp(EM_lower3)
-# ((0.3081/0.0696 - 1)*100)
+#Glmm
+EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
+plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
+pwpp(EM_lower3)
+((0.3081/0.0696 - 1)*100)
 
 #Glm
-EM_lower4 <- emmeans(meri_lower_spines_m2, ~ finch_beak)
-plot(EM_lower4, comparisons = T) + labs(title = "Mericarp Lower Spines")
-pwpp(EM_lower4)
-((0.472/-0.542 - 1)*100)
+# EM_lower4 <- emmeans(meri_lower_spines_m2, ~ finch_beak)
+# plot(EM_lower4, comparisons = T) + labs(title = "Mericarp Lower Spines")
+# pwpp(EM_lower4)
+# ((0.472/-0.542 - 1)*100)
 
 ##### Upper Spines ####
 # EM_upper3 <- emmeans(meri_upper_spines_m2_glmm, ~ finch_beak, type = "response")
@@ -1340,7 +1351,7 @@ pwpp(EM_flower3)
 EM_leaf3 <- emmeans(leaf_length_m9, ~ finch_beak, type = "response")
 plot(EM_leaf3, comparisons = T) + labs(title = "Leaf Length")
 pwpp(EM_length3)
-((6.40/5.97 - 1)*100) # 7.20%
+((6.42/6.10 - 1)*100) # 7.20%
 
 ##### Leaflet length ####
 EM_leaflet3 <- emmeans(leaflet_length_m8, ~ finch_beak, type = "response")
@@ -1351,4 +1362,5 @@ pwpp(EM_leaflet3)
 ##### Leaflet number ####
 EM_leaflet_num3 <- emmeans(leaflet_num_m10, ~ finch_beak)
 plot(EM_leaflet_num3) + labs(title = "Leaflet Number")
-
+pwpp(EM_leaflet_num3)
+((14.04/14.10 - 1)*100)
