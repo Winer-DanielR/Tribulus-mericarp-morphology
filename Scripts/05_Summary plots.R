@@ -64,10 +64,10 @@ ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) +
     labs(title = "Tip Distance", x = "Population", 
          y = "Mean Spine Length (mm)")
 ### Lower spines ####
-plot_lower <- plot(EM_lower1, comparisons = T, plotit = F)
+plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
 ggplot_lower <- ggplot(plot_lower, aes(x = mainland_island, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
     geom_point(size = 5) + 
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
           axis.title = element_text(size = 9), 
@@ -82,14 +82,14 @@ plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
 ggplot_flower <- ggplot(plot_flower, aes(x = mainland_island, y = the.emmean)) + 
     geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 10) + 
+    geom_point(size = 8) + 
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 20), 
-          axis.text = element_text(size = 17), 
-          axis.text.x = element_text(size = 17), 
-          plot.title = element_text(size = 20), 
+          axis.title = element_text(size = 12), 
+          axis.text = element_text(size = 12), 
+          axis.text.x = element_text(size = 12), 
+          plot.title = element_text(size = 14), 
           panel.background = element_rect(fill = NA)) + 
-    labs(title = "Flower: Petal length", x = "Population", 
+    labs(title = "Petal length", x = "Population", 
          y = "Petal Legnth (mm)")
 ## Leaves ####
 ### Leaf length ####
@@ -141,12 +141,12 @@ plot_flower2 <- plot(EM_flower2, comparisons = T, plotit = F)
 
 ggplot_flower2 <- ggplot(plot_flower2, aes(x = galapagos_other, y = the.emmean)) + 
     geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 10) + 
+    geom_point(size = 8) + 
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 20), 
-          axis.text = element_text(size = 17), 
-          axis.text.x = element_text(size = 17), 
-          plot.title = element_text(size = 20), 
+          axis.title = element_text(size = 12), 
+          axis.text = element_text(size = 12), 
+          axis.text.x = element_text(size = 12), 
+          plot.title = element_text(size = 14), 
           panel.background = element_rect(fill = NA)) +
     labs(title = "Petal Length", x = "Population", 
                                          y = "Petal Length (mm)") 
@@ -259,10 +259,10 @@ ggplot_spine2 <- ggplot(plot_spine2, aes(x = finch_beak, y = the.emmean)) +
                                                       y = "Mean Spine Length (mm)") 
 
 ### Lower spines ####
-plot_lower2 <- plot(EM_lower4, comparisons = T, plotit = F)
+plot_lower2 <- plot(EM_lower3, comparisons = T, plotit = F)
 
 ggplot_lower2 <- ggplot(plot_lower2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
     geom_point(size = 5) + 
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
           axis.title = element_text(size = 9), 
