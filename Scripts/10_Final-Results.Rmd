@@ -3,12 +3,12 @@ title: "Results"
 author: "Daniel Reyes"
 date: "6/3/2021"
 output:
+  word_document:
+    toc: yes
   html_document:
     css: mystyle.css
     toc: yes
     df_print: paged
-  word_document:
-    toc: yes
   pdf_document:
     toc: yes
     number_sections: yes
@@ -17,7 +17,7 @@ always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = T)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
@@ -335,7 +335,7 @@ table16 <- (Anova(meri_depth_m4))
 
 table17 <- (Anova(meri_tip_distance_m16))
 
-table18 <- (Anova(meri_lower_spines_m2))
+table18 <- (Anova(meri_lower_spines_m2_glmm))
 
 row.names(table14)[row.names(table14) == "finch_beak"] <- "Length"
 row.names(table14)[row.names(table14) == "year_collected"] <- "Year Length"
@@ -362,12 +362,12 @@ mericarp_tables2 <- mutate(mericarp_tables2, Model = "",
 
 colnames(mericarp_tables2)[3] = "P"
 colnames(mericarp_tables2)[2] <- "Chisq"
-colnames(mericarp_tables2)[4] <- "Chisq1"
+#colnames(mericarp_tables2)[4] <- "Chisq1"
 mericarp_tables2[is.na(mericarp_tables2)] = 0
-mericarp_tables2 <- dplyr::mutate(mericarp_tables2, Chisq2 = Chisq + Chisq1)
+#mericarp_tables2 <- dplyr::mutate(mericarp_tables2, Chisq2 = Chisq + Chisq1)
 
-mericarp_tables2 <- dplyr::select(mericarp_tables2, Trait, Chisq2, P)
-colnames(mericarp_tables2)[2] <- "Chisq"
+#mericarp_tables2 <- dplyr::select(mericarp_tables2, Trait, Chisq2, P)
+#colnames(mericarp_tables2)[2] <- "Chisq"
 
 newRow6 <- data.frame(Model = "Model 3: Finch Beak Presence/Absence", Dataset = "Mericarp", Trait = "Length", Chisq = "1", P = "1")
 
@@ -550,6 +550,14 @@ var1 <- fviz_pca_var(mericarp_pca,
 biplot1
 var1
 ```
+
+```{r Mericarp RDA mainland island ANOVA results, echo=FALSE, paged.print=TRUE, results='asis'}
+
+Mericarp_RDA_Terms <- anova(meri_RDA_mainland, by = "terms", permutations = how(nperm = 999))
+
+Mericarp_RDA_Terms
+```
+
 
 ### Leaf
 
