@@ -696,7 +696,7 @@ biplot3
 The presence of lower spines is by far the trait that contributes most to the differences between groups. This means that the presence of lower spines are associated with large beak finches. Mericarp size contributes 54% of the variation but is not particularly associated with any group.
 
 ```{r Model 3 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=5, fig.width=5, results='asis'}
-#Biplo
+#Biplot
 biplot4  <- fviz_pca_biplot(mericarp_pca_model3, repel = T,
                 geom = c("point"),
                 habillage = mericarp_summary_model3$finch_beak,
