@@ -45,7 +45,7 @@ library(kableExtra)
 
 We found that mericarps in island populations are larger but less spiny than mericarps in mainland populations. Mericarps on islands are 7% longer, 5% wider, 12% deeper than mainland populations ($X^2$ = 14.10, p = \<0.001; $X^2$ = 12.43, p = \<0.001; $X^2$ = 52.33, p = \<0.001). Their upper spines are 6% more separated between them on island populations than on mainland ($X^2$ = 5.85, p = 0.015). However, lower spines are more common on mainland populations than on island populations ($X^2$ = 76.74, p = 0.001). The effect of year was significant on all traits ($X^2$ = 8.61, p = \<0.001; $X^2$ = 8.16, p = \<0.001; $X^2$ = 19.54, p = \<0.001; $X^2$ = 0.091, p = \<0.001).
 
-```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between island and mainland populations.", fig.height=5}
+```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between island and mainland populations.", fig.height=6}
 
 figure_mericarp_model1 <- ggarrange(ggplot_length,
                                     ggplot_width,
@@ -114,7 +114,7 @@ mericarp_tables <- dplyr::slice(mericarp_tables, (-c(2)))
 
 We found no significant differences between mainland and island populations on petal length (p = 0.299). However, there was a significant result for year ($X^2$ = 15.89, p = \<0.001) between mainland and island populations.
 
-```{r Univariate Model 1 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between island and mainland populations.", fig.height=5}
+```{r Univariate Model 1 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between island and mainland populations.", fig.height=5, fig.width=5}
 
 ggplot_flower
 
@@ -151,13 +151,14 @@ table7 <- dplyr::slice(table7, (-c(2)))
 
 We found that leaves in island populations are longer, and have more leaflets than leaves in mainland populations. Leaves on islands are 20% longer, their leaflets are 7.5% larger and they have approximately 11% more leaflets than mainland populations ($X^2$ = 21.86, p = \<0.001; $X^2$ = 4.86, p = 0.027; $X^2$ = 39.61, p = \<0.001). The effects of year were also significant for all three traits. ($X^2$ = 6.50 p = \<0.001; $X^2$ = 4.86, p = \<0.001).
 
-```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.width= 8, fig.height=5}
+```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.width= 10, fig.height=3}
 
-figure_leaf_model1 <- ggarrange(ggplot_leaf,
+figure_leaf_model1 <- ggarrange(ggplot_flower,
+                                ggplot_leaf,
                                     ggplot_leaflet,
                                     ggplot_leaflet_num,
-                                    labels = c("A", "B", "C"),
-                                    ncol = 3,
+                                    labels = c("A", "B", "C", "D"),
+                                    ncol = 4,
                                     nrow = 1)
                                     
 
@@ -213,7 +214,7 @@ leaf_tables <- dplyr::slice(leaf_tables, (-c(2)))
 
 We found that *Tribulus* flowers in the Galapagos are smaller than flowers of populations from other islands. Petal length of *Tribulus* on the Galapagos is 46% shorter than petals from other islands ($X^2$ = 156.39, p = \<0.001). The effect of year has also significant between the two groups ($X^2$ = 10.13, p = 0.0014)
 
-```{r Univariate Model 2 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between the Galapagos and other islands populations.", fig.height=5}
+```{r Univariate Model 2 Flowers, echo=FALSE, fig.cap= "Estimated means of petal length between the Galapagos and other islands populations.", fig.height=5, fig.width=5}
 
 ggplot_flower2
 
@@ -251,13 +252,14 @@ table10 <- dplyr::slice(table10, (-c(2)))
 
 We found that leaf length of population from the Galapagos are smaller than populations from other islands. Leaves are 22% shorter and leaflets are 18.5% shorter compared to other island populations ($X^2$ = 20.39, p = \<0.001; $X^2$ = 17.20, p = \<0.001). However there were not significant differences for the number of leaflets between Galapagos and other island populations (p = 0.17). The effect of year was not significant for both leaf and leaflet length (p = 0.44, p = 0.347).
 
-```{r Univariate Model 2 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between the Galapagos and other island populations.", fig.width= 8, fig.height=5}
+```{r Univariate Model 2 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between the Galapagos and other island populations.", fig.width= 10, fig.height=3}
 
-figure_leaf_model2 <- ggarrange(ggplot_leaf2,
+figure_leaf_model2 <- ggarrange(ggplot_flower2,
+                                ggplot_leaf2,
                                     ggplot_leaflet2,
                                     ggplot_leaflet_num2,
-                                    labels = c("A", "B", "C"),
-                                    ncol = 3,
+                                    labels = c("A", "B", "C", "D"),
+                                    ncol = 4,
                                     nrow = 1)
                                     
 
@@ -311,7 +313,7 @@ leaf_tables2 <- dplyr::slice(leaf_tables2, (-c(2)))
 
 The presence of large beak finch species, *Geospiza magnirrostris* and *Geospiza cornirostris* was significantly associated with the presence of lower spines ($X^2$ = 125.47, p = \<0.001). However, mericarp length, width, depth and spine tip distance were not significant (p = 0.08, p = 0.58, p = 0.37, p = 0.25). The effect of year was significant for lower spines ($X^2$ = 17.414, p = \<0.001) but not significant for the other traits (p = 0.69; p = 0.32; p = 0.11; p = 0.94).
 
-```{r Univariate Model 3 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.height=5}
+```{r Univariate Model 3 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.height=6}
 
 figure_mericarp_model3 <- ggarrange(ggplot_length2,
                                     ggplot_width2,
@@ -426,13 +428,14 @@ table19 <- dplyr::slice(table19, (-c(2)))
 
 There is not statistically significant difference between islands with large finch beak species present and absent for all three leaf traits, leaf length, leaflet length and leaf number (p = 0.17; p = p = 0.15; p = 0.73). However there was a significant effect of year for leaf length and leaflet number ($X^2$ = 12.85, p = \<0.001; $X^2$ = 11.98, p = \<0.001). The effect of year for leaflet length was barely significant ($X^2$ = 3.7091, p = \<0.0542).
 
-```{r Univariate Model 3 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.width= 8, fig.height= 5}
+```{r Univariate Model 3 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between finch beak communities. 1 = Presence of large finch species, *Geospiza magnirrostris* and *Geospiza cornirostris*. 0 = Absence of large finch species.", fig.width= 10, fig.height= 3}
 
-figure_leaf_model3 <- ggarrange(ggplot_leaf3,
+figure_leaf_model3 <- ggarrange(ggplot_flower3,
+                                ggplot_leaf3,
                                     ggplot_leaflet3,
                                     ggplot_leaflet_num3,
-                                    labels = c("A", "B", "C"),
-                                    ncol = 3,
+                                    labels = c("A", "B", "C", "D"),
+                                    ncol = 4,
                                     nrow = 1)
                                     
 
@@ -518,19 +521,20 @@ knitr::kable(anova_tables, format = "html")
 
 We observed that mericarps from islands and mainlands populations differed in size and number of spines. Mericarps on islands are larger than mericarps on the mainland with depth being the variable that contributes more to the variation of mericarp size. For spines, the presence of lower spines was more related to mainland populations than to island populations and was the variable that contribute to most of the variation between the two groups.
 
-```{r Model 1 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=8, fig.width=8, warning=FALSE, results='asis'}
+```{r Model 1 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=6, fig.width=5, warning=FALSE, results='asis'}
 
 biplot1  <- fviz_pca_biplot(mericarp_pca, repel = T,
                 geom = c("point"),
                 habillage = mericarp_summary$mainland_island,
                 col.var = "black",
                 addEllipses = T,
+                axes = c(1,2),
                 label = "all",
                 labelsize = 5,
                 pointsize = 2.5,
                 ellipse.level = 0.95,
-                title = "Model 1: Mericarps PCA") + scale_color_manual(values = c("#FFB90F", "#006400")) + theme_transparent() + theme(
-                  legend.position = "bottom",
+                title = "Mericarps") + scale_color_manual(values = c("#85c0f9", "#0f2080")) + theme_transparent() + theme(
+                  legend.position = "top",
                   axis.line = element_line(size = 1.2, linetype = "solid"), 
                   axis.ticks = element_line(size = 1), 
                   axis.title = element_text(size = 14), 
@@ -539,16 +543,18 @@ biplot1  <- fviz_pca_biplot(mericarp_pca, repel = T,
                   plot.title = element_text(size = 18, vjust = 2.5),
                   legend.text = element_text(size = 12, face = "bold"), 
                   legend.title = element_text(size = 14, face = "bold"), 
-                  legend.background = element_rect(fill = NA, size = 0)) + theme(plot.title = element_text(hjust = 0)) + ylim(-4.5, 4.5) + xlim(-4,6)
+                  legend.background = element_rect(fill = NA, size = 0)) + 
+  theme(plot.title = element_text(hjust = 0),
+        text = element_text(family = "Noto Sans", face = "bold")) + ylim(-4.5, 4.5) + xlim(-4,6)
 
-var1 <- fviz_pca_var(mericarp_pca,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-             ) +labs(title = "Variables - Model 1: PCA Mericarps")
+# var1 <- fviz_pca_var(mericarp_pca,
+#              col.var = "contrib",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE 
+#              ) +labs(title = "Variables - Model 1: PCA Mericarps")
 
 biplot1
-var1
+# var1
 ```
 
 ```{r Mericarp RDA mainland island ANOVA results, echo=FALSE, paged.print=TRUE, results='asis'}
@@ -556,6 +562,15 @@ var1
 Mericarp_RDA_Terms <- anova(meri_RDA_mainland, by = "terms", permutations = how(nperm = 999))
 
 Mericarp_RDA_Terms
+
+require(knitr)
+require(kableExtra)
+kable_styling(
+              kable(Mericarp_RDA_Terms, digits = 3, row.names = FALSE, align = "c",
+              caption = NULL, format = "latex"),
+        latex_options = c("striped", "basic"),
+        position = "center", full_width = FALSE) 
+
 ```
 
 
@@ -563,7 +578,7 @@ Mericarp_RDA_Terms
 
 Leaves are larger on islands than in the mainland. This size difference also contributes to the number of leaflets present, with island populations habving more. This trait is the main difference between the two groups.
 
-```{r Model 1 PCA Leaf, echo=FALSE, fig.align='right', fig.height=8, fig.width=8, results='asis'}
+```{r Model 1 PCA Leaf, echo=FALSE, fig.align='right', fig.height=5, fig.width=5, results='asis'}
 
 #Biplot
 biplot2  <- fviz_pca_biplot(leaf_pca, repel = T,
@@ -571,12 +586,13 @@ biplot2  <- fviz_pca_biplot(leaf_pca, repel = T,
                 habillage = leaf_summary$mainland_island,
                 col.var = "black",
                 addEllipses = T,
+                axes = c(1,2),
                 label = "all",
                 labelsize = 5,
                 pointsize = 2.5,
                 ellipse.level = 0.95,
-                title = "Model 1: Leaf PCA") + scale_color_manual(values = c("#FFB90F", "#006400")) + theme_transparent() + theme(
-                  legend.position = "bottom",
+                title = "Leaves") + scale_color_manual(values = c("#85c0f9", "#0f2080")) + theme_transparent() + theme(
+                  legend.position = "top",
                   axis.line = element_line(size = 1.2, linetype = "solid"), 
                   axis.ticks = element_line(size = 1), 
                   axis.title = element_text(size = 14), 
@@ -585,21 +601,23 @@ biplot2  <- fviz_pca_biplot(leaf_pca, repel = T,
                   plot.title = element_text(size = 18, vjust = 2.5),
                   legend.text = element_text(size = 12, face = "bold"), 
                   legend.title = element_text(size = 14, face = "bold"), 
-                  legend.background = element_rect(fill = NA, size = 0)) + theme(plot.title = element_text(hjust = 0)) + ylim(-4.5, 4.5)
+                  legend.background = element_rect(fill = NA, size = 0)) + 
+  theme(plot.title = element_text(hjust = 0),
+        text = element_text(family = "Noto Sans", face = "bold")) + ylim(-4.5, 4.5)
 
 
-# Variables
-var2 <- fviz_pca_var(leaf_pca,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
+# # Variables
+# var2 <- fviz_pca_var(leaf_pca,
+#              col.var = "contrib",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE 
+# )
 
 biplot2
-var2
+#var2
 ```
 
-```{r Model 1 biplots all, eval=FALSE, warning=FALSE, include=FALSE}
+```{r Model 1 biplots all, echo=FALSE, fig.align='left', fig.height=8, fig.width=13, warning=FALSE}
 model1_biplots <- ggarrange(biplot1,
                             biplot2,
                             labels = c("A", "B"),
@@ -631,7 +649,7 @@ model1_var
 
 Leaves from the Galapagos Islands are smaller than other island populations. *Tribulus* leaves in the Galapagos are smaller and have less leaflets than other Islands.
 
-```{r Model 2 leaf PCA biplot, echo=F, fig.align='right', fig.height=8, fig.width=8, results='asis'}
+```{r Model 2 leaf PCA biplot, echo=F, fig.align='right', fig.height=5, fig.width=5, results='asis'}
 
 #Biplot
 biplot3  <- fviz_pca_biplot(leaf_pca_model2, repel = T,
@@ -643,8 +661,8 @@ biplot3  <- fviz_pca_biplot(leaf_pca_model2, repel = T,
                 labelsize = 5,
                 pointsize = 2.5,
                 ellipse.level = 0.95,
-                title = "Model 2: Leaf PCA") + scale_color_manual(values = c("#9B30FF", "#4876FF")) + theme_transparent() + theme(
-                  legend.position = "bottom",
+                title = "Leaves") + scale_color_manual(values = c("#f5793a", "#a95aa1")) + theme_transparent() + theme(
+                  legend.position = "top",
                   axis.line = element_line(size = 1.2, linetype = "solid"), 
                   axis.ticks = element_line(size = 1), 
                   axis.title = element_text(size = 14), 
@@ -653,18 +671,20 @@ biplot3  <- fviz_pca_biplot(leaf_pca_model2, repel = T,
                   plot.title = element_text(size = 18, vjust = 2.5),
                   legend.text = element_text(size = 12, face = "bold"), 
                   legend.title = element_text(size = 14, face = "bold"), 
-                  legend.background = element_rect(fill = NA, size = 0)) + theme(plot.title = element_text(hjust = 0))
+                  legend.background = element_rect(fill = NA, size = 0)) + 
+  theme(plot.title = element_text(hjust = 0),
+        text = element_text(family = "Noto Sans", face = "bold"))
 
 
-# Variables
-var3 <- fviz_pca_var(leaf_pca_model2,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
+# # Variables
+# var3 <- fviz_pca_var(leaf_pca_model2,
+#              col.var = "contrib",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE 
+# )
 
 biplot3
-var3
+# var3
 ```
 
 \newpage
@@ -675,19 +695,20 @@ var3
 
 The presence of lower spines is by far the trait that contributes most to the differences between groups. This means that the presence of lower spines are associated with large beak finches. Mericarp size contributes 54% of the variation but is not particularly associated with any group.
 
-```{r Model 3 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=8, fig.width=8, results='asis'}
+```{r Model 3 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=5, fig.width=5, results='asis'}
 #Biplot
 biplot4  <- fviz_pca_biplot(mericarp_pca_model3, repel = T,
                 geom = c("point"),
                 habillage = mericarp_summary_model3$finch_beak,
                 col.var = "black",
                 addEllipses = T,
+                axes = c(1,2),
                 label = "all",
                 labelsize = 5,
                 pointsize = 2.5,
                 ellipse.level = 0.95,
-                title = "Model 3: Mericarp PCA") + scale_color_manual(values = c("dark red", " blue")) + theme_transparent() + theme(
-                  legend.position = "bottom",
+                title = "Mericarps") + scale_color_manual(values = c("#0f2080", "#a95aa1")) + theme_transparent() + theme(
+                  legend.position = "top",
                   axis.line = element_line(size = 1.2, linetype = "solid"), 
                   axis.ticks = element_line(size = 1), 
                   axis.title = element_text(size = 14), 
@@ -696,24 +717,25 @@ biplot4  <- fviz_pca_biplot(mericarp_pca_model3, repel = T,
                   plot.title = element_text(size = 18, vjust = 2.5),
                   legend.text = element_text(size = 12, face = "bold"), 
                   legend.title = element_text(size = 14, face = "bold"), 
-                  legend.background = element_rect(fill = NA, size = 0)) + theme(plot.title = element_text(hjust = 0)) + ylim(-3.5,3.5) + xlim(-5.5,5.5)
+                  legend.background = element_rect(fill = NA, size = 0),
+                  text = element_text(family = "Noto Sans", face = "bold")) + theme(plot.title = element_text(hjust = 0)) + ylim(-3.5,3.5) + xlim(-5.5,5.5)
 
-# Variables
-var4 <- fviz_pca_var(mericarp_pca_model3,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
+# # Variables
+# var4 <- fviz_pca_var(mericarp_pca_model3,
+#              col.var = "contrib",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE 
+# )
 
 biplot4
-var4
+# var4
 ```
 
 ### Leaf
 
 Leaf size and leaflet number is not particularly associated with any group of finches.
 
-```{r Model 3 leaf PCA biplot, echo=FALSE, fig.align='right', fig.height=8, fig.width=8, results='asis'}
+```{r Model 3 leaf PCA biplot, echo=FALSE, fig.align='right', fig.height=5, fig.width=5, results='asis'}
 
 #Biplot
 biplot5  <- fviz_pca_biplot(leaf_pca_model3, repel = T,
@@ -725,7 +747,7 @@ biplot5  <- fviz_pca_biplot(leaf_pca_model3, repel = T,
                 labelsize = 5,
                 pointsize = 2.5,
                 ellipse.level = 0.95,
-                title = "Model 2: Leaf PCA") + scale_color_manual(values = c("dark red", " blue")) + theme_transparent() + theme(
+                title = "Leaves") + scale_color_manual(values = c("#0f2080", "#a95aa1")) + theme_transparent() + theme(
                   legend.position = "bottom",
                   axis.line = element_line(size = 1.2, linetype = "solid"), 
                   axis.ticks = element_line(size = 1), 
@@ -735,21 +757,22 @@ biplot5  <- fviz_pca_biplot(leaf_pca_model3, repel = T,
                   plot.title = element_text(size = 18, vjust = 2.5),
                   legend.text = element_text(size = 12, face = "bold"), 
                   legend.title = element_text(size = 14, face = "bold"), 
-                  legend.background = element_rect(fill = NA, size = 0)) + theme(plot.title = element_text(hjust = 0)) + ylim(-3.5,3.5) + xlim(-5.5,5.5)
+                  legend.background = element_rect(fill = NA, size = 0),
+                  text = element_text(family = "Noto Sans", face = "bold")) + theme(plot.title = element_text(hjust = 0)) + ylim(-3.5,3.5) + xlim(-5.5,5.5)
 
-# Variables
-var5 <- fviz_pca_var(leaf_pca_model3,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
+# # Variables
+# var5 <- fviz_pca_var(leaf_pca_model3,
+#              col.var = "contrib",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE 
+# )
 
 biplot5
-var5
+#var5
 
 ```
 
-```{r Model 3 biplots all, eval=FALSE, include=FALSE}
+```{r Model 3 biplots all, echo=FALSE, fig.align='left', fig.height=8, fig.width=12}
 model3_biplots <- ggarrange(biplot4,
                             biplot5,
                             labels = c("A", "B"),
