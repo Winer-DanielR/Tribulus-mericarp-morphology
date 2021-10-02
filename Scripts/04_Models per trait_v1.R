@@ -1134,7 +1134,7 @@ leaflet_length_m9 <- lmer(sqrt(leaflet_length) ~ finch_beak +
                           REML = F)
 # # Type III test
 Anova(leaflet_length_m8)
-# 
+.# 
 # # Diagnostic
 # 
 # # Residual histograms
@@ -1221,7 +1221,7 @@ pwpp(EM_tip_dist)
 EM_lower <- emmeans(meri_lower_spines_m1_glmm, ~ mainland_island, type = "response")
 plot(EM_lower, comparisons = T) + labs(title = "Mericarp Lower Spines")
 pwpp(EM_lower)
-
+((0.407/0.998 - 1)*100)
 #Glm
 # EM_lower1 <- emmeans(meri_lower_spines_m1, ~ mainland_island, type = "response")
 # plot(EM_lower1, comparisons = T) + labs(title = "Mericarp Lower Spines")
@@ -1323,7 +1323,7 @@ pwpp(EM_tip_dist3)
 EM_lower3 <- emmeans(meri_lower_spines_m2_glmm, ~ finch_beak, type = "response")
 plot(EM_lower3, comparisons = T) + labs(title = "Mericarp Lower Spine")
 pwpp(EM_lower3)
-((0.3081/0.0696 - 1)*100)
+((0.0787/0.2489 - 1)*100)
 
 #Glm
 # EM_lower4 <- emmeans(meri_lower_spines_m2, ~ finch_beak)
