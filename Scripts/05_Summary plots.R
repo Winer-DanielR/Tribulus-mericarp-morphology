@@ -19,11 +19,9 @@ ggplot_length <- ggplot(plot_length, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = "Length
-    
-         (χ2 = 14.10, P = <0.001)
-         ", x = "Population", 
-         y = "Mean Length (mm)")
+    labs(title = expression(paste("Length (", chi,"2 = 14.10, P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Length (mm)") 
+                            
 ### Width ####
 EM_width
 plot_width <- plot(EM_width, comparisons = T, plotit = F)
@@ -38,11 +36,8 @@ ggplot_width <- ggplot(plot_width, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = "Width 
-         
-         (χ2 = 12.43, P = <0.001)
-         ", x = "Population", 
-                                          y = "Mean Width (mm)")
+    labs(title = expression(paste("Width (", chi,"2 = 12.43, P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Width (mm)")
 ### Depth ####
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
@@ -56,11 +51,8 @@ ggplot_depth <- ggplot(plot_depth, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = "Depth 
-         
-         (χ2 = 52.33, P = <0.001)
-         ", x = "Population", 
-         y = "Mean Depth (mm)")
+    labs(title = expression(paste("Depth (", chi,"2 = 52.33, P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Depth (mm)")
 ### Tip distance ####
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
@@ -74,11 +66,8 @@ ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = "Tip Distance 
-         
-         (χ2 = 5.85, P = 0.015)
-         ", x = "Population", 
-         y = "Spine Tip Distance (mm)")
+    labs(title = expression(paste("Tip distance (", chi,"2 = 5.85, P = 0.015)"))) +
+    labs(x = "Population", y = "Spine Tip Distance (mm)")
 ### Lower spines ####
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
@@ -92,11 +81,8 @@ ggplot_lower <- ggplot(plot_lower, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 13, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = "Lower Spines 
-         
-         (χ2 = 76.74, P = 0.001)
-         ", x = "Population", 
-         y = "Lower spines")
+    labs(title = expression(paste("Lower spines (", chi,"2 = 76.74, P = 0.001)"))) +
+    labs(x = "Population", y = "Lower spines")
 ## Flower ####
 plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
@@ -110,11 +96,8 @@ ggplot_flower <- ggplot(plot_flower, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = "Petal length
-    
-         (χ2 = 1.0773, P = 0.2993)
-         ", x = "Population", 
-         y = "Petal Legnth (mm)")
+    labs(title = expression(paste("Model 1 (", chi,"= 1.0773, P = 0.2993"))) +
+    labs(x = "Population", y = "Petal Legnth (mm)")
 ## Leaves ####
 ### Leaf length ####
 plot_leaf <- plot(EM_leaf, comparisons = T, plotit = F)
@@ -185,12 +168,9 @@ ggplot_flower2 <- ggplot(plot_flower2, aes(x = galapagos_other, y = the.emmean))
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = "Petal length
-         
-         (χ2 = 156.39, P = <0.001)
-         ", x = "Population", 
-                                         y = "Petal Length (mm)") 
-
+    labs(title = expression(paste("Model 2 (", chi,"2 = 156.39, P = <0.001)"))) +
+    labs(x = "Population", y = "Petal length (mm)")
+    
 ## Leaf ####
 ### Leaf Length ####
 plot_leaf2 <- plot(EM_leaf2, comparisons = T, plotit = F)
