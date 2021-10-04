@@ -3,15 +3,15 @@ title: "Results"
 author: "Daniel Reyes"
 date: "6/3/2021"
 output:
-  word_document:
+  pdf_document:
     toc: yes
+    number_sections: yes
   html_document:
     css: mystyle.css
     toc: yes
     df_print: paged
-  pdf_document:
+  word_document:
     toc: yes
-    number_sections: yes
 bibliography: references.bib
 always_allow_html: true
 ---
@@ -45,7 +45,7 @@ library(kableExtra)
 
 We found that mericarps in island populations are larger but less spiny than mericarps in mainland populations. Mericarps on islands are 7% longer, 5% wider, 12% deeper than mainland populations ($X^2$ = 14.10, p = \<0.001; $X^2$ = 12.43, p = \<0.001; $X^2$ = 52.33, p = \<0.001). Their upper spines are 6% more separated between them on island populations than on mainland ($X^2$ = 5.85, p = 0.015). However, lower spines are more common on mainland populations than on island populations ($X^2$ = 76.74, p = 0.001). The effect of year was significant on all traits ($X^2$ = 8.61, p = \<0.001; $X^2$ = 8.16, p = \<0.001; $X^2$ = 19.54, p = \<0.001; $X^2$ = 0.091, p = \<0.001).
 
-```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap= "Estimated means of mericarp traits between island and mainland populations.", fig.height=6}
+```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
 
 figure_mericarp_model1 <- ggarrange(ggplot_length,
                                     ggplot_width,
@@ -152,15 +152,13 @@ table7 <- dplyr::slice(table7, (-c(2)))
 
 We found that leaves in island populations are longer, and have more leaflets than leaves in mainland populations. Leaves on islands are 20% longer, their leaflets are 7.5% larger and they have approximately 11% more leaflets than mainland populations ($X^2$ = 21.86, p = \<0.001; $X^2$ = 4.86, p = 0.027; $X^2$ = 39.61, p = \<0.001). The effects of year were also significant for all three traits. ($X^2$ = 6.50 p = \<0.001; $X^2$ = 4.86, p = \<0.001).
 
-```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.height=6}
+```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.height=3, fig.width=7}
 
-figure_leaf_model1 <- ggarrange(    ggplot_leaf,
-                                    ggplot_leaflet,
-                                    ggplot_leaflet_num,
-                                    ggplot_flower,
-                                    labels = c("A", "B", "C", "D"),
-                                    ncol = 3,
-                                    nrow = 2)
+figure_leaf_model1 <- ggarrange(    ggplot_flower,
+                                    ggplot_flower2,
+                                    labels = c("A", "B"),
+                                    ncol = 2,
+                                    nrow = 1)
                                     
 
 figure_leaf_model1
