@@ -8,7 +8,6 @@ output:
     number_sections: true
 bibliography: references.bib
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 source("00_packages_v1.R", local = knitr::knit_global())
