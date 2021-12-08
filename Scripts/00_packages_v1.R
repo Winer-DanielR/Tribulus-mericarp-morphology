@@ -15,9 +15,9 @@ library(tidyverse) #Data wrangling and plots
 library(lme4) #For linear models
 library(glmmTMB)
 library(readr) #For uploading tables
-library(emmeans) #For testing models
+library(emmeans) #For estimating emmeans
 library(car) #For model analysis
-library(DHARMa)
+library(DHARMa) #For testing models
 
 
 
