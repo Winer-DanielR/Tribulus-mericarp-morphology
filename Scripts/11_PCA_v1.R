@@ -16,18 +16,18 @@ mericarp_traits <- scale(mericarp_traits)
 # Created a new dataset with all parameters and scaled traits
 mericarp_mainland <- cbind(mericarp, mericarp_traits)
 mericarp_mainland <- dplyr::select(mericarp_mainland, c(ID:mericarp_num, 23:27))
-mericarp_summary <- mericarp_mainland %>% group_by(ID,mainland_island) %>% summarize(mean_length = mean(length),
-                                                 mean_width = mean(width),
-                                                 mean_depth = mean(depth),
-                                                 mean_tip_distance = mean(tip_distance),
-                                                 mean_lower_spines = mean(lower_spines))
+mericarp_summary <- mericarp_mainland %>% group_by(ID,mainland_island) %>% summarize(Length = mean(length),
+                                                 Width = mean(width),
+                                                 Depth = mean(depth),
+                                                 Spine.Tip.Distance = mean(tip_distance),
+                                                 Lower.Spines = mean(lower_spines))
 
 # This is the dataframe I will use for the PCA it contains the means per ID:
-mericarp_traits_summary <- dplyr::select(mericarp_summary, mean_length,
-                                                           mean_width,
-                                                           mean_depth,
-                                                           mean_tip_distance,
-                                                           mean_lower_spines)
+mericarp_traits_summary <- dplyr::select(mericarp_summary, Length,
+                                                           Width,
+                                                           Depth,
+                                                           Spine.Tip.Distance,
+                                                           Lower.Spines)
 mericarp_traits_summary <- mericarp_traits_summary %>% column_to_rownames("ID")
 
 ### PCA of mericarp traits ####
