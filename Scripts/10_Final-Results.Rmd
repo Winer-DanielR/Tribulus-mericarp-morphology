@@ -63,6 +63,22 @@ figure_mericarp_model1 <- ggarrange(ggplot_length,
 figure_mericarp_model1
 ```
 
+```{r Univariate Model 2 Mericarps Galapagos, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
+
+figure_mericarp_model2 <- ggarrange(ggplot_length_mainland_gal,
+                                    ggplot_width_mainland_gal,
+                                    ggplot_depth_mainland_gal,
+                                    ggplot_spine_mainland_gal,
+                                    ggplot_lower_mainland_gal,
+                                    labels = c("A", "B", "C", "D","E"),
+                                    ncol = 3,
+                                    nrow = 2) + 
+  theme(text = element_text(family = "Noto Sans"))
+                                    
+
+figure_mericarp_model2
+```
+
 ```{r anova mericarps model 1, include=FALSE, results='asis'}
 table1 <- as.data.frame(Anova(meri_length_m1))
 
@@ -154,7 +170,7 @@ table7 <- dplyr::slice(table7, (-c(2)))
 
 We found that leaves in island populations are longer, and have more leaflets than leaves in mainland populations. Leaves on islands are 20% longer, their leaflets are 7.5% larger and they have approximately 11% more leaflets than mainland populations ($X^2$ = 21.86, p = \<0.001; $X^2$ = 4.86, p = 0.027; $X^2$ = 39.61, p = \<0.001). The effects of year were also significant for all three traits. ($X^2$ = 6.50 p = \<0.001; $X^2$ = 4.86, p = \<0.001).
 
-```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.height=3, fig.width=7}
+```{r Univariate Model 1 Leaf, echo=FALSE, fig.cap= "Estimated means of leaf traits between island and mainland populations.", fig.height=2, fig.width=7}
 
 figure_leaf_model1 <- ggarrange(    ggplot_flower,
                                     ggplot_flower2,
@@ -519,9 +535,9 @@ knitr::kable(anova_tables, digits = 5,  align = "c", format = "html")
 
 We observed that mericarps from islands and mainlands populations differed in size and number of spines. Mericarps on islands are larger than mericarps on the mainland with depth being the variable that contributes more to the variation of mericarp size. For spines, the presence of lower spines was more related to mainland populations than to island populations and was the variable that contribute to most of the variation between the two groups.
 
-```{r Model 1 mericarp PCA biplot, echo=FALSE, fig.align='right', fig.height=6, fig.width=9, warning=FALSE, results='asis'}
+```{r Model 1 mericarp PCA biplot, echo=FALSE, fig.align='right', warning=FALSE, results='asis', fig.width=10}
 
-biplot1 <- fviz_pca_biplot(mericarp_pca,
+biplot1 <- fviz_pca_ind(mericarp_pca,
                                  # Fill individuals by groups
                                  title = "Mericarps
                            ",
@@ -532,7 +548,7 @@ biplot1 <- fviz_pca_biplot(mericarp_pca,
                                  fill.ind = mericarp_summary$mainland_island,
                                  col.ind = "black",
                                  # Color variable by groups
-                                 legend.title = "Model 1",
+                                 legend.title = "Mainland/Island",
                                  repel = T,
                                  col.var = "black",
                                  labelsize = 5,
@@ -540,7 +556,7 @@ biplot1 <- fviz_pca_biplot(mericarp_pca,
                                  palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
                            
                                  ) + theme_transparent() + 
-      scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+      # scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
       # PCA theme, adds custom font and sizes that matches the other plots    
   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
         axis.title = element_text(size = 14, face = "bold"), 
@@ -550,12 +566,46 @@ biplot1 <- fviz_pca_biplot(mericarp_pca,
         text = element_text(family = "Noto Sans"),
         legend.text = element_text(size = 12, face = "bold"), 
         legend.title = element_text(size = 14, face = "bold"),
-        legend.position = "none",
+        legend.position = "bottom",
         legend.background = element_rect(fill = NA, size = 0))
 
-
 biplot1
-# var1
+```
+
+```{r Model 1 mericarp variable PCA biplot, echo=FALSE, fig.align='right', warning=FALSE, results='asis'}
+var1 <- fviz_pca_var(mericarp_pca,
+             col.var = "contrib",
+             title = "Variables contribution
+                           ",
+             gradient.cols = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+             repel = TRUE,
+             legend.title = "Contribution"
+             ) +
+  theme_transparent() +
+      # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "right",
+        legend.background = element_rect(fill = NA, size = 0))
+var1
+```
+
+```{r PCA arrange, echo=FALSE, fig.height= 20, fig.width=20, fig.height=10, fig.align='right',results='asis'}
+
+PCA_mericarps <- ggarrange(biplot1, var1,
+                                    labels = c("A", "B"),
+                                    ncol = 1,
+                                    nrow = 2,
+                           common.legend = T,
+                           legend = "right")
+                                    
+PCA_mericarps
 ```
 
 ```{r Mericarp RDA mainland island ANOVA results, echo=FALSE, paged.print=TRUE, results='asis'}
