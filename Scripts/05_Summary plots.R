@@ -19,7 +19,23 @@ ggplot_length <- ggplot(plot_length, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = expression(paste("Length (", chi,"2 = 14.10, P = <0.001)"))) +
+    labs(title = expression(paste("Length (P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Length (mm)")
+
+EM_length_mainland_gal
+plot_length_mainland_gal <- plot(EM_length_mainland_gal, comparisons = T, plotit = F)
+
+ggplot_length_mainland_gal <- ggplot(plot_length_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) + 
+    labs(title = expression(paste("Length (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Length (mm)") 
                             
 ### Width ####
@@ -36,8 +52,25 @@ ggplot_width <- ggplot(plot_width, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = expression(paste("Width (", chi,"2 = 12.43, P = <0.001)"))) +
+    labs(title = expression(paste("Width (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Width (mm)")
+
+EM_width_mainland_gal
+plot_width_mainland_gal <- plot(EM_width_mainland_gal, comparisons = T, plotit = F)
+
+ggplot_width_mainland_gal <- ggplot(plot_width_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) +
+    labs(title = expression(paste("Width (P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Width (mm)")
+
 ### Depth ####
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
@@ -51,8 +84,24 @@ ggplot_depth <- ggplot(plot_depth, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = expression(paste("Depth (", chi,"2 = 52.33, P = <0.001)"))) +
+    labs(title = expression(paste("Depth (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Depth (mm)")
+
+plot_depth_mainland_gal <- plot(EM_depth_mainland_gal, comparisons = T, plotit = F)
+
+ggplot_depth_mainland_gal <- ggplot(plot_depth_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) + 
+    labs(title = expression(paste("Depth (P = <0.001)"))) +
+    labs(x = "Population", y = "Mean Depth (mm)")
+
 ### Tip distance ####
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
@@ -66,8 +115,24 @@ ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = expression(paste("Tip distance (", chi,"2 = 5.85, P = 0.015)"))) +
+    labs(title = expression(paste("Tip distance (P = 0.015)"))) +
     labs(x = "Population", y = "Spine Tip Distance (mm)")
+
+plot_spine_mainland_gal <- plot(EM_tip_dist_mainland_gal, comparisons = T, plotit = F)
+
+ggplot_spine_mainland_gal <- ggplot(plot_spine_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) +
+    labs(title = expression(paste("Tip distance (P = 0.0270)"))) +
+    labs(x = "Population", y = "Spine Tip Distance (mm)")
+
 ### Lower spines ####
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
@@ -81,8 +146,24 @@ ggplot_lower <- ggplot(plot_lower, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 13, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = expression(paste("Lower spines (", chi,"2 = 76.74, P = 0.001)"))) +
+    labs(title = expression(paste("Lower spines (P = 0.001)"))) +
     labs(x = "Population", y = "Lower spines")
+
+plot_lower_mainland_gal <- plot(EM_lower_mainland_gal, comparisons = T, plotit = F)
+
+ggplot_lower_mainland_gal <- ggplot(plot_lower_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 13, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) +
+    labs(title = expression(paste("Lower spines (P = 0.001)"))) +
+    labs(x = "Population", y = "Lower spines")
+
 ## Flower ####
 plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
@@ -96,7 +177,7 @@ ggplot_flower <- ggplot(plot_flower, aes(x = mainland_island, y = the.emmean)) +
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) + 
-    labs(title = expression(paste("Model 1 (", chi,"= 1.0773, P = 0.2993"))) +
+    labs(title = expression(paste("Model 1 (P = 0.2993)"))) +
     labs(x = "Population", y = "Petal Legnth (mm)")
 ## Leaves ####
 ### Leaf length ####
@@ -168,7 +249,7 @@ ggplot_flower2 <- ggplot(plot_flower2, aes(x = galapagos_other, y = the.emmean))
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
           panel.background = element_rect(fill = NA)) +
-    labs(title = expression(paste("Model 2 (", chi,"2 = 156.39, P = <0.001)"))) +
+    labs(title = expression(paste("Model 2 (P = <0.001)"))) +
     labs(x = "Population", y = "Petal length (mm)")
     
 ## Leaf ####
