@@ -1,12 +1,12 @@
-### Data preparation ####
-#By: Daniel Reyes Corral
-### Data transformation. Script 02. ###
+# Script 02. Data loading, subsets and transformations ####
+# By: Daniel Reyes Corral
+
 # This script was used once to create the individual databases per trait
 # that later will be used for each model
 # Convert columns into factors
 # Export datasets into processed data folder
 
-# 02_01 Prepare mericarp dataset: ####
+# 02_01 Mericarp dataset: ####
 mericarp <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
 mericarp <- mericarp %>% mutate_at(vars(ID,
                                               Herbarium,
@@ -21,7 +21,7 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
                                               lower_spines), list(factor))
 str(mericarp)
 
-#### 02_01_01 Separate each trait, remove NAs ####
+# Separate each trait, remove NAs
 
 ###### Length ####
 meri_length <- dplyr::select(mericarp, ind_num:mericarp_num, length)
@@ -46,7 +46,7 @@ meri_tip_distance_wozero <- dplyr::filter(meri_tip_distance, !tip_distance == 0)
 ###### Lower spines #####
 meri_lower_spines <- dplyr::select(mericarp, ind_num:mericarp_num, lower_spines) #As factor
 meri_lower_spines <- filter(meri_lower_spines, !is.na(lower_spines))
-
+str(meri_lower_spines)
 # Spine length.
 # Spine length was another trait we collected but we did not had for all samples.
 # Herbarium data was collected by Marc and during that time we did not measured spine length.
@@ -63,7 +63,7 @@ meri_lower_spines <- filter(meri_lower_spines, !is.na(lower_spines))
 # meri_upper_spines <- filter(meri_upper_spines, !is.na(upper_spines))
 
 
-#### 02_01_02 Prepare flower dataset ####
+# 02_02 Flower dataset ####
 flower <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
 flower <- flower %>% mutate_at(vars(ID,
                                         Herbarium,
@@ -79,13 +79,13 @@ str(flower)
 
 # Petal length
 flower <- filter(flower, !is.na(petal_length))
-
+flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
 # flower$petal_length_log <- log(flower$petal_length) #log transformation
 # flower$petal_length_sqr <- sqrt(flower$petal_length) #square root transformation
 
 
   
-# 02_02 Galapagos only with mainland data ####
+# 02_03 Galapagos only with mainland data ####
 # Additional analysis to test the effect of other islands by removing them from models
 
 # Made a separate mainland only dataset
@@ -110,7 +110,7 @@ mericarp_mainland_gal <- mericarp_mainland_gal %>% mutate_at(vars(ID,
 
 str(mericarp_mainland_gal)
 
-#### 02_02_01 Mericarps ####
+
 ##### Length ####
 meri_length_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, length)
 meri_length_mainland_gal <- filter(meri_length_mainland_gal, !is.na(length))
@@ -166,3 +166,4 @@ meri_lower_spines_mainland_gal <- filter(meri_lower_spines_mainland_gal, !is.na(
 # 
 # #### 02_03_02 Flower dataset
 # gal_petal_length <- filter(flower, galapagos_other == "Galapagos")
+
