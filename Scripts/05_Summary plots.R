@@ -1,7 +1,3 @@
-
-library(ggplot2)
-library(ggvegan)
-library(extrafont)
 # Univariate plots ####
 # Model 1: Mainland/Island comparison ####
 ## Mericarps ####
@@ -37,6 +33,19 @@ ggplot_length_mainland_gal <- ggplot(plot_length_mainland_gal, aes(x = mainland_
           panel.background = element_rect(fill = NA)) + 
     labs(title = expression(paste("Length (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Length (mm)") 
+
+length_violin <- ggplot(meri_length, aes(x = mainland_island, y = length, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = T) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+        theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+          labs(x = "Population", y = "Length (mm)", title = "Length")
                             
 ### Width ####
 EM_width
@@ -71,6 +80,19 @@ ggplot_width_mainland_gal <- ggplot(plot_width_mainland_gal, aes(x = mainland_is
     labs(title = expression(paste("Width (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Width (mm)")
 
+width_violin <- ggplot(meri_width, aes(x = mainland_island, y = width, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = T) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Width (mm)", title = "Width")
+
 ### Depth ####
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
@@ -101,6 +123,19 @@ ggplot_depth_mainland_gal <- ggplot(plot_depth_mainland_gal, aes(x = mainland_is
           panel.background = element_rect(fill = NA)) + 
     labs(title = expression(paste("Depth (P = <0.001)"))) +
     labs(x = "Population", y = "Mean Depth (mm)")
+
+depth_violin <- ggplot(meri_depth, aes(x = mainland_island, y = depth, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = T) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Depth (mm)", title = "Depth")
 
 ### Tip distance ####
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
@@ -133,6 +168,19 @@ ggplot_spine_mainland_gal <- ggplot(plot_spine_mainland_gal, aes(x = mainland_is
     labs(title = expression(paste("Tip distance (P = 0.0270)"))) +
     labs(x = "Population", y = "Spine Tip Distance (mm)")
 
+tip_distance_violin <- ggplot(meri_tip_distance, aes(x = mainland_island, y = tip_distance, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = T) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Spinte tip distance (mm)", title = "Spine Tip Distance")
+
 ### Lower spines ####
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
@@ -164,6 +212,19 @@ ggplot_lower_mainland_gal <- ggplot(plot_lower_mainland_gal, aes(x = mainland_is
     labs(title = expression(paste("Lower spines (P = 0.001)"))) +
     labs(x = "Population", y = "Lower spines")
 
+lower_spines_violin <- ggplot(meri_lower_spines, aes(x = mainland_island, y = lower_spines, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = F) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Lower spines", title = "Lower Spines")
+
 ## Flower ####
 plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
@@ -179,61 +240,19 @@ ggplot_flower <- ggplot(plot_flower, aes(x = mainland_island, y = the.emmean)) +
           panel.background = element_rect(fill = NA)) + 
     labs(title = expression(paste("Model 1 (P = 0.2993)"))) +
     labs(x = "Population", y = "Petal Legnth (mm)")
-## Leaves ####
-### Leaf length ####
-plot_leaf <- plot(EM_leaf, comparisons = T, plotit = F)
 
-ggplot_leaf <- ggplot(plot_leaf, aes(x = mainland_island, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
+flower_violin <- ggplot(flower, aes(x = mainland_island, y = petal_length, fill = mainland_island)) + 
+    geom_violin(size = 1.5, trim = F) +
+    scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
           axis.title = element_text(size = 12, face = "bold"), 
           axis.text = element_text(size = 10), 
           axis.text.x = element_text(size = 11), 
           plot.title = element_text(size = 12, face = "bold"),
           text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaf Length
-         
-         (χ2 = 21.86, P = <0.001)
-         ", x = "Population", 
-         y = "Leaf Length (mm)")
-### Leaflet length ####
-plot_leaflet <- plot(EM_leaflet, comparisons = T, plotit = F)
-
-ggplot_leaflet <- ggplot(plot_leaflet, aes(x = mainland_island, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Length
-         
-         (χ2 = 4.86, P = 0.027)
-         ", x = "Population", 
-         y = "Leaflet Length (mm)")
-### Leaflet number ####
-plot_leaflet_num <- plot(EM_leaflet_num, comparisons = T, plotit = F)
-
-ggplot_leaflet_num <- ggplot(plot_leaflet_num, aes(x = mainland_island, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Number
-         
-         (χ2 = 39.61, P = <0.001)
-         ", x = "Population", 
-                                                      y = "Leaflet Number") 
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Petal Length (mm)", title = "Petal Length")
 
 # Model 2: Galapagos and other islands ####
 ## Flower ####
@@ -251,238 +270,20 @@ ggplot_flower2 <- ggplot(plot_flower2, aes(x = galapagos_other, y = the.emmean))
           panel.background = element_rect(fill = NA)) +
     labs(title = expression(paste("Model 2 (P = <0.001)"))) +
     labs(x = "Population", y = "Petal length (mm)")
+
+flower_violin2 <- ggplot(flower_galapagos_other, aes(x = galapagos_other, y = petal_length, fill = galapagos_other)) + 
+    geom_violin(size = 1.5, trim = F) +
+    scale_fill_manual(values = c("#85c0f9", "#009e73")) +
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          legend.position = "none",
+          panel.background = element_rect(fill = NA)) + 
+    labs(x = "Population", y = "Petal Length (mm)", title = "Petal Length")
     
-## Leaf ####
-### Leaf Length ####
-plot_leaf2 <- plot(EM_leaf2, comparisons = T, plotit = F)
-
-ggplot_leaf2 <- ggplot(plot_leaf2, aes(x = galapagos_other, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaf Length
-         
-         (χ2 = 20.39, P = <0.001)
-         ", x = "Population", 
-                                      y = "Leaf Length (mm)") 
-
-### Leaflet length ####
-plot_leaflet2 <- plot(EM_leaflet2, comparisons = T, plotit = F)
-
-ggplot_leaflet2 <- ggplot(plot_leaflet2, aes(x = galapagos_other, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Length
-         
-         (χ2 = 17.20, P = <0.001)
-         ", x = "Population", 
-                                         y = "Leaflet Length (mm)") 
-
-### Leaflet number ####
-plot_leaflet_num2 <- plot(EM_leaflet_num2, comparisons = T, plotit = F)
-
-ggplot_leaflet_num2 <- ggplot(plot_leaflet_num2, aes(x = galapagos_other, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Number
-         
-         (χ2 = 1.8645, P = 0.1721)
-         ", x = "Population", 
-                                         y = "Leaflet Number")
-
-# Model 3: Finch communities within Galapagos ####
-## Mericarps ####
-### Length ####
-EM_length
-plot_length2 <- plot(EM_length3, comparisons = T, plotit = F)
-
-ggplot_length2 <- ggplot(plot_length2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Length
-         
-         (χ2 = 3.0175, P = 0.08237)
-         ", x = "Absence        Presence", 
-                                           y = "Mean Length (mm)") 
-
-### Width ####
-plot_width2 <- plot(EM_width3, comparisons = T, plotit = F)
-
-ggplot_width2 <- ggplot(plot_width2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Width
-         
-         (χ2 = 0.2936, P = 0.5879)
-         ", x = "Absence        Presence", 
-                                          y = "Mean Width (mm)") 
-### Depth ####
-plot_depth2 <- plot(EM_depth3, comparisons = T, plotit = F)
-
-ggplot_depth2 <- ggplot(plot_depth2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Depth
-         
-         (χ2 = 0.7951, P = 0.3726)
-         ", x = "Absence        Presence", 
-                                                      y = "Mean Depth (mm)") 
-
-### Tip distance ####
-plot_spine2 <- plot(EM_tip_dist3, comparisons = T, plotit = F)
-
-ggplot_spine2 <- ggplot(plot_spine2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Tip Distance
-         
-         (χ2 = 1.3133, P = 0.2518)
-         ", x = "Absence        Presence", 
-                                                      y = "Spine Tip Distance (mm)") 
-
-### Lower spines ####
-plot_lower2 <- plot(EM_lower3, comparisons = T, plotit = F)
-
-ggplot_lower2 <- ggplot(plot_lower2, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Lower Spine
-         
-         (χ2 = 2.4872, P = 0.1148)
-         ", x = "Absence        Presence", 
-                                                      y = "Lower spines") 
-
-## Flower ####
-plot_flower3 <- plot(EM_flower3, comparisons = T, plotit = F)
-
-ggplot_flower3 <- ggplot(plot_flower3, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Petal Length
-         
-         (χ2 = 0.3459, P = 0.5564)
-         ", x = "Absence        Presence", 
-                                                      y = "Petal Length (mm)") 
-
-## Leaves ####
-### Leaf length ####
-plot_leaf3 <- plot(EM_leaf3, comparisons = T, plotit = F)
-
-ggplot_leaf3 <- ggplot(plot_leaf3, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaf Length
-         
-         (χ2 = 1.8787, P = 0.1704)
-         ", x = "Absence        Presence", 
-                                                      y = "Leaf Length (mm)") 
-
-### Leaflet length ####
-plot_leaflet3 <- plot(EM_leaflet3, comparisons = T, plotit = F)
-
-ggplot_leaflet3 <- ggplot(plot_leaflet3, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Length
-         
-         (χ2 = 2.0280, P = 0.1544)
-         ", x = "Absence        Presence", 
-                                                      y = "Leaflet Length (mm)") 
-
-### Leaflet number ####
-plot_leaflet_num3 <- plot(EM_leaflet_num3, comparisons = T, plotit = F)
-
-ggplot_leaflet_num3 <- ggplot(plot_leaflet_num3, aes(x = finch_beak, y = the.emmean)) + 
-    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-    geom_point(size = 6) + 
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          panel.background = element_rect(fill = NA)) +
-    labs(title = "Leaflet Number
-         
-         (χ2 = 0.1347, P = 0.7136)
-         ", x = "Absence        Presence", 
-                                                      y = "Leaflet Number") 
 # # RDA plots ####
 # # Model 1: Mainland/Island + year ####
 # scl <- 2
@@ -613,3 +414,16 @@ ggplot_leaflet_num3 <- ggplot(plot_leaflet_num3, aes(x = finch_beak, y = the.emm
 # text(leaf_RDA_beak, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
 # 
 # 
+violin_plots <- ggarrange(length_violin,
+                          width_violin,
+                          depth_violin,
+                          tip_distance_violin,
+                          lower_spines_violin,
+                          flower_violin,
+                          flower_violin2,
+                          labels = c("A", "B", "C", "D","E", "F", "G"),
+                          ncol = 3,
+                          nrow = 3) + 
+    theme(text = element_text(family = "Noto Sans"))
+
+
