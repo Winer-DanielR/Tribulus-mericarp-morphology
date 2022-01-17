@@ -18,6 +18,8 @@ library(readr) #For uploading tables
 library(emmeans) #For estimating emmeans
 library(car) #For model analysis
 library(DHARMa) #For testing models
-
-
+library(ggplot2)
+library(ggvegan)
+library(extrafont)
+library(ggpubr)
 
