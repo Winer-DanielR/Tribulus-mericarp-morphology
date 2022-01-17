@@ -17,13 +17,13 @@ always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include = T)
+knitr::opts_chunk$set(include = T, message = TRUE)
 source("00_packages_v1.R", local = knitr::knit_global())
 source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
 source("04_Models per trait_v1.R", local = knitr::knit_global())
-source("08_RDA_v1.R", local = knitr::knit_global())
 source("05_Summary plots.R", local = knitr::knit_global())
+#source("08_RDA_v1.R", local = knitr::knit_global())
 source("11_PCA_v1.R", local = knitr::knit_global())
 ```
 
@@ -78,6 +78,23 @@ figure_mericarp_model2 <- ggarrange(ggplot_length_mainland_gal,
 
 figure_mericarp_model2
 ```
+
+```{r Violin plots, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
+
+violin_plots <- ggarrange(length_violin,
+                                    width_violin,
+                                    ggplot_depth_mainland_gal,
+                                    ggplot_spine_mainland_gal,
+                                    ggplot_lower_mainland_gal,
+                                    labels = c("A", "B", "C", "D","E"),
+                                    ncol = 3,
+                                    nrow = 2) + 
+  theme(text = element_text(family = "Noto Sans"))
+                                    
+
+figure_mericarp_model2
+```
+
 
 ```{r anova mericarps model 1, include=FALSE, results='asis'}
 table1 <- as.data.frame(Anova(meri_length_m1))
