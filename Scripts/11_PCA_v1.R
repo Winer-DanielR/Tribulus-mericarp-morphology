@@ -11,7 +11,7 @@ library(FactoMineR)
 ### Mericarps ####
 # Scaled all mericarp traits first
 mericarp_traits <- scale(mericarp_traits)
-
+str(mericarp_traits)
 # Mericarp datset summarized by ID
 # Created a new dataset with all parameters and scaled traits
 mericarp_mainland <- cbind(mericarp, mericarp_traits)
