@@ -664,3 +664,44 @@ ggplot_flower3 <- ggplot(plot_flower3, aes(x = finch_beak, y = the.emmean)) +
          ", x = "Absence        Presence", 
        y = "Petal Length (mm)") 
 
+# Model 3: Finch Beak ####
+
+## Mericarps ####
+
+# Preparing the data summary by ID and mainland/island column
+mericarp_summary_model3 <- mericarp_gal %>% group_by(ID, finch_beak) %>% summarize(mean_length = mean(length),
+                                                                                   mean_width = mean(width),
+                                                                                   mean_depth = mean(depth),
+                                                                                   mean_tip_distance = mean(tip_distance),
+                                                                                   mean_lower_spines = mean(lower_spines))
+mericarp_summary_model3 <- mericarp_summary_model3 %>% column_to_rownames("ID")
+mericarp_summary_traits_model3 <- dplyr::select(mericarp_summary_model3, !finch_beak)
+
+### PCA ####
+# leaves:
+mericarp_pca_model3 <- prcomp(mericarp_summary_traits_model3, scale = T)
+
+# Visualize eigenvalues (scree plot):
+fviz_eig(mericarp_pca_model3)
+
+# Graph of individuals. Individuals with similar profile are grouped together
+fviz_pca_ind(mericarp_pca_model3, repel = T, geom = c("point"), habillage = mericarp_summary_model3$finch_beak, palette = NULL,
+             addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
+             alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
+             select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
+             gradient.cols = NULL)
+# Variables
+fviz_pca_var(mericarp_pca_model3,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+#Biplot
+fviz_pca_biplot(mericarp_pca_model3, repel = T,
+                geom = c("point"),
+                habillage = mericarp_summary_model3$finch_beak,
+                col.var = "black",
+                addEllipses = T
+)
+
+
