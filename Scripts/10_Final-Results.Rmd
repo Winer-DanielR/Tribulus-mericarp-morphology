@@ -23,16 +23,7 @@ source("01_diagnostic function_v1.R", local = knitr::knit_global())
 source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
 source("04_Models per trait_v1.R", local = knitr::knit_global())
 source("05_Summary plots.R", local = knitr::knit_global())
-#source("08_RDA_v1.R", local = knitr::knit_global())
 source("11_PCA_v1.R", local = knitr::knit_global())
-```
-
-```{r install packages, include=FALSE}
-library(xtable) #For making ANOVA outcomes dataframes and tables
-library(broom) #For making other statistical objects into Tidy Tibbles
-library(ggpubr) #For arrage ggplots into a single plot
-library(knitr)
-library(kableExtra)
 ```
 
 # Results
@@ -46,55 +37,6 @@ library(kableExtra)
 ### Mericarp
 
 We found that mericarps in island populations are larger but less spiny than mericarps in mainland populations. Mericarps on islands are 7% longer, 5% wider, 12% deeper than mainland populations ($X^2$ = 14.10, p = \<0.001; $X^2$ = 12.43, p = \<0.001; $X^2$ = 52.33, p = \<0.001). Their upper spines are 6% more separated between them on island populations than on mainland ($X^2$ = 5.85, p = 0.015). However, lower spines are more common on mainland populations than on island populations ($X^2$ = 76.74, p = 0.001). The effect of year was significant on all traits ($X^2$ = 8.61, p = \<0.001; $X^2$ = 8.16, p = \<0.001; $X^2$ = 19.54, p = \<0.001; $X^2$ = 0.091, p = \<0.001).
-
-```{r Univariate Model 1 Mericarps, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
-
-figure_mericarp_model1 <- ggarrange(ggplot_length,
-                                    ggplot_width,
-                                    ggplot_depth,
-                                    ggplot_spine,
-                                    ggplot_lower,
-                                    labels = c("A", "B", "C", "D","E"),
-                                    ncol = 3,
-                                    nrow = 2) + 
-  theme(text = element_text(family = "Noto Sans"))
-                                    
-
-figure_mericarp_model1
-```
-
-```{r Univariate Model 2 Mericarps Galapagos, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
-
-figure_mericarp_model2 <- ggarrange(ggplot_length_mainland_gal,
-                                    ggplot_width_mainland_gal,
-                                    ggplot_depth_mainland_gal,
-                                    ggplot_spine_mainland_gal,
-                                    ggplot_lower_mainland_gal,
-                                    labels = c("A", "B", "C", "D","E"),
-                                    ncol = 3,
-                                    nrow = 2) + 
-  theme(text = element_text(family = "Noto Sans"))
-                                    
-
-figure_mericarp_model2
-```
-
-```{r Violin plots, echo=FALSE, fig.cap="Estimated means of mericarp traits between island and mainland populations.", fig.height=6, warning=TRUE}
-
-violin_plots <- ggarrange(length_violin,
-                                    width_violin,
-                                    ggplot_depth_mainland_gal,
-                                    ggplot_spine_mainland_gal,
-                                    ggplot_lower_mainland_gal,
-                                    labels = c("A", "B", "C", "D","E"),
-                                    ncol = 3,
-                                    nrow = 2) + 
-  theme(text = element_text(family = "Noto Sans"))
-                                    
-
-figure_mericarp_model2
-```
-
 
 ```{r anova mericarps model 1, include=FALSE, results='asis'}
 table1 <- as.data.frame(Anova(meri_length_m1))
