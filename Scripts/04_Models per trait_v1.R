@@ -15,8 +15,8 @@
 # Using the that that worked best for each trait and model
 # the following estimates LS means for the mainland_island effect for each response
 
-# Model 1: Mainland - Island ####
-# 04_01 Mericarp data ####
+# 04_01 Model 1: Mainland - Island ####
+# 04_01_01 Mericarp data ####
 ## Length ####
 # For length, the untransformed data seems the best
 #### Raw data ####
@@ -332,6 +332,7 @@ pwpp(EM_lower)
 ### Percentage differences ####
 ((0.407/0.998 - 1)*100)
 
+# Other traits models (removed from analysis) ####
 ## Spine length (removed from analysis) ####
 # # Spine lenght was not used for the current main analysis
 # # Spine lenght was only collected for natural populations but not from herbarium
@@ -409,9 +410,6 @@ pwpp(EM_lower)
 # # diagnostic(resid(meri_spine_length_wozero_m2))
 # # diagnostic(resid(meri_spine_length_wozero_m3))
 # 
-# 
-# 
-# 
 # # # DHARMa
 # # testResiduals(meri_spine_length_wozero_m1)
 # # testResiduals(meri_spine_length_wozero_m2)
@@ -487,7 +485,7 @@ pwpp(EM_lower)
 # EM_upper <- emmeans(meri_upper_spines_m1_glmm, ~ mainland_island)
 # plot(EM_lower) + labs(title = "Mericarp Lower Spines")
 
-# 04_02 Flower dataset ####
+# 04_01_02 Flower dataset ####
 ## Petal length ####
 # The raw data works best
 ### Raw data ####
@@ -577,10 +575,10 @@ pwpp(EM_flower)
 ### Percentange difference ####
 ((16.3/16.7 - 1)*100) # Flowers are -2% smaller on islands
 
-# 04_03 Mainland-Galapagos analysis for mericarps ####
+# 04_02 Mainland-Galapagos analysis for mericarps ####
 # This analysis is for the Galapagos - mainland comparisons
 
-# Model 1: Mainland - Galapagos ####
+# 04_02_01 Model 1: Mainland - Galapagos ####
 ## Length ####
 # For length, the untransformed data seems the best
 ### Raw data ####
@@ -754,7 +752,6 @@ meri_tip_distance_mainland_galapagos_m6 <- lmer(sqrt(tip_distance) ~ mainland_is
 
 # Check residual distributions after removing mericarps without spines.
 meri_tip_distance_wozero_mainland_gal$residuals <- resid(meri_tip_distance_mainland_galapagos_m4)
-hist((meri_tip_distance_wozero_mainland_gal_filter$residuals), breaks = 20)
 
 # Filter residuals that are lower than 10
 meri_tip_distance_wozero_mainland_gal_filter <- filter(meri_tip_distance_wozero_mainland_gal,
@@ -765,6 +762,7 @@ meri_tip_distance_wozero_mainland_gal_filter <- filter(meri_tip_distance_wozero_
 
 meri_tip_distance_wozero_mainland_gal_filter <- filter(meri_tip_distance_wozero_mainland_gal_filter, !is.na(residuals))
 
+hist((meri_tip_distance_wozero_mainland_gal_filter$residuals), breaks = 20)
 
 ### Filter Tip distance mainland gal ####
 # Raw data works best
@@ -828,10 +826,10 @@ pwpp(EM_lower_mainland_gal)
 ((0.407/0.998 - 1)*100)
 
 
-# Model 2: Galapagos - Other Islands ####
+# 04_03 Model 2: Galapagos - Other Islands ####
 # Is there an effect between tribulus in galapagos compared to other island systems
 # This comparison is possible with flower and leaf datasets
-# 04_04 Flower dataset ####
+# 04_03_01 Flower dataset ####
 ## Petal length data ####
 # I used the flower filter data from before
 # The squared data seems to work best
