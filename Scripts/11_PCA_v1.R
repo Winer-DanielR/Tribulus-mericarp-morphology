@@ -1,22 +1,39 @@
-# PCA packages:
-library(RColorBrewer)
-library(ellipse)
-library(rgl)
-library(factoextra)
-library(FactoMineR)
+# Script 11 Multivariate analysis ####
 
-# Model 1: mainland/island traits PCA ####
-# Datasets used after I ran the RDA code since it removes NAs: mericarp, flower and leaves
+# I am using the mericarp dataset without NAs. I am also using lower spines as a numerical factor
+# to be able to scale it with the other traits. The PCA is only for the mericarp dataset.
+# First, I am creating a mericarp trait dataset, which selects for length, width,
+# depth, tip distance and lower spines. This dataset also selects for ind_num.
+# I did the PCA on the means per trait grouped by IDs to better vizualize the plot
+# I scaled the traits first then did the summary per ID.
 
-### Mericarps ####
+
+# 11_01 Create PCA mericarp database ####
+# Check and remove NAs
+mericarp_NA <- filter(mericarp, !is.na(length))
+mericarp_NA <- filter(mericarp_NA, !is.na(depth))
+mericarp_NA <- filter(mericarp_NA, !is.na(tip_distance))
+# Check mericarp data for NAs per trait:
+colSums(is.na(mericarp_NA))
+
+# 11_02 Scale traits used for PCA ####
+# Select the traits for the PCA
+mericarp_traits <- dplyr::select(mericarp_NA, 1,12:14,16,19)
+mericarp_traits <- mericarp_traits %>% column_to_rownames("ind_num")
+mericarp_traits$lower_spines <- as.numeric(mericarp_traits$lower_spines)
+str(mericarp_traits)
 # Scaled all mericarp traits first
 mericarp_traits <- scale(mericarp_traits)
-str(mericarp_traits)
-# Mericarp datset summarized by ID
+mericarp_traits <- as.tibble(mericarp_traits)
+
+# 11_03 Mericarp dataset summarized by ID ####
 # Created a new dataset with all parameters and scaled traits
-mericarp_mainland <- cbind(mericarp, mericarp_traits)
-mericarp_mainland <- dplyr::select(mericarp_mainland, c(ID:mericarp_num, 23:27))
-mericarp_summary <- mericarp_mainland %>% group_by(ID,mainland_island) %>% summarize(Length = mean(length),
+# Combine scaled traits with original dataset without NAs
+# This is the dataset that I am using for ploting the PCA
+mericarp_scaled <- cbind(mericarp_NA, mericarp_traits)
+# Select scaled traits
+mericarp_scaled <- dplyr::select(mericarp_scaled, c(ID:mericarp_num, 23:27))
+mericarp_summary <- mericarp_scaled %>% group_by(ID,mainland_island) %>% summarize(Length = mean(length),
                                                  Width = mean(width),
                                                  Depth = mean(depth),
                                                  Spine.Tip.Distance = mean(tip_distance),
@@ -30,14 +47,15 @@ mericarp_traits_summary <- dplyr::select(mericarp_summary, Length,
                                                            Lower.Spines)
 mericarp_traits_summary <- mericarp_traits_summary %>% column_to_rownames("ID")
 
-### PCA of mericarp traits ####
-# Mericarps:
+# 11_04 PCA mericarp summary ####
+## PCA ####
 mericarp_pca <- prcomp(mericarp_traits_summary, scale = T)
 
-# Visualize eigenvalues (scree plot):
+## Visualize eigenvalues (scree plot) ####
 fviz_eig(mericarp_pca)
 
-# Graph of individuas. Individuals with similar profile are grouped together
+## Biplot ####
+# Individuals with similar profile are grouped together
 fviz_pca_ind(mericarp_pca, repel = T, geom = c("point"), habillage = mericarp_summary$mainland_island, palette = NULL,
              addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
              alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
@@ -55,152 +73,160 @@ fviz_pca_biplot(mericarp_pca, repel = T,
                 addEllipses = T
                 )
 
-## Leaves ####
+# 11_05 Final PCA plot ####
+## Biplot ####
+biplot1 <- fviz_pca_ind(mericarp_pca,
+                        # Fill individuals by groups
+                        title = "Mericarps
+                           ",
+                        geom.ind = "point",
+                        pointshape = c(21),
+                        pointsize = 3,
+                        stroke = 1.5,
+                        fill.ind = mericarp_summary$mainland_island,
+                        col.ind = "black",
+                        # Color variable by groups
+                        legend.title = "Mainland/Island",
+                        repel = T,
+                        col.var = "black",
+                        labelsize = 5,
+                        addEllipses = T,
+                        palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+                        
+) + theme_transparent() + 
+  # scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+  # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "bottom",
+        legend.background = element_rect(fill = NA, size = 0))
 
-# Preparing the data summary by ID and mainland/island column
-leaf_summary <- leaf %>% group_by(ID, mainland_island) %>% summarize(mean_leaf_length = mean(leaf_length),
-                                                                    mean_leaflet_length = mean(leaflet_length),
-                                                                    mean_leaflet_number = mean(number_of_leaflets))
-leaf_summary <- leaf_summary %>% column_to_rownames("ID")
-leaf_summary_traits <- dplyr::select(leaf_summary, !mainland_island)
+biplot1
 
-### PCA ####
-# leaves:
-leaf_pca <- prcomp(leaf_summary_traits, scale = T)
+## Variable plots ####
 
-# Visualize eigenvalues (scree plot):
-fviz_eig(leaf_pca)
+var1 <- fviz_pca_var(mericarp_pca,
+                     col.var = "contrib",
+                     title = "Variables contribution
+                           ",
+                     gradient.cols = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+                     repel = TRUE,
+                     legend.title = "Contribution"
+) +
+  theme_transparent() +
+  # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "right",
+        legend.background = element_rect(fill = NA, size = 0))
+var1
 
-# Graph of individuals. Individuals with similar profile are grouped together
-fviz_pca_ind(leaf_pca, repel = T, geom = c("point"), habillage = leaf_summary$mainland_island, palette = NULL,
+
+# 11_06 Individual PCA - Test modeling ####
+# Length, depth and width of mericarps all differ between island and mainland samples. 
+# The three dimensions probably covary strongly. This should be mentioned and correlation coefficients supplied. 
+# I recommend performing PCA on these three dimensions and using PC1 as a size factor to document the difference between Galapagos and mainland. 
+# The results of analyzing the dimensions separately could be put in the Supplement
+
+## PCA ####
+
+
+mericarp_ind_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
+
+## Visualize eigenvalues (scree plot) ####
+fviz_eig(mericarp_ind_pca)
+
+## Biplot ####
+# Individuals with similar profile are grouped together
+fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_scaled$mainland_island, palette = NULL,
              addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
              alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
              select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
              gradient.cols = NULL)
-# Variables
-fviz_pca_var(leaf_pca,
+fviz_pca_var(mericarp_ind_pca,
              col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE 
 )
-#Biplot
-fviz_pca_biplot(leaf_pca, repel = T,
+fviz_pca_biplot(mericarp_ind_pca, repel = T,
                 geom = c("point"),
-                habillage = leaf_summary$mainland_island,
+                habillage = mericarp_scaled$mainland_island,
                 col.var = "black",
                 addEllipses = T
 )
 
-# Model 2: Galapagos Other ####
+## Extract PC values ####
+mericarp_scaled_PC <- cbind(mericarp_scaled, mericarp_ind_pca$x)
 
-## Leaves ####
-# Preparing the data summary by ID and mainland/island column
-leaf_summary_model2 <- leaf_islands %>% group_by(ID, galapagos_other) %>% summarize(mean_leaf_length = mean(leaf_length),
-                                                                     mean_leaflet_length = mean(leaflet_length),
-                                                                     mean_leaflet_number = mean(number_of_leaflets))
-leaf_summary_model2 <- leaf_summary_model2 %>% column_to_rownames("ID")
-leaf_summary_traits_model2 <- dplyr::select(leaf_summary_model2, !galapagos_other)
+# 11_07 Model testing using the PC1 axis ####
+## Model mainland island ####
+meri_PC1_m1<- lmer(PC1 ~ mainland_island +
+                        year_collected +
+                        (1|ID),
+                      data = mericarp_scaled_PC,
+                      REML = F)
 
-### PCA ####
-# leaves:
-leaf_pca_model2 <- prcomp(leaf_summary_traits_model2, scale = T)
+## ANOVA type II test ####
+# Use the Anova function from the car package
+# Anova(meri_PC1_m1)
+# summary(meri_PC1_m1)
 
-# Visualize eigenvalues (scree plot):
-fviz_eig(leaf_pca_model2)
+# Diagnostic custom function
+# par(mfrow = c(1, 3))
+# Residual histograms distributions
+# diagnostic(resid(meri_PC1_m1))
 
-# Graph of individuals. Individuals with similar profile are grouped together
-fviz_pca_ind(leaf_pca_model2, repel = T, geom = c("point"), habillage = leaf_summary_model2$galapagos_other, palette = NULL,
-             addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
-             alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
-             select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
-             gradient.cols = NULL)
-# Variables
-fviz_pca_var(leaf_pca_model2,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
-#Biplot
-fviz_pca_biplot(leaf_pca_model2, repel = T,
-                geom = c("point"),
-                habillage = leaf_summary_model2$galapagos_other,
-                col.var = "black",
-                addEllipses = T
-)
+# Diagnostics with DHARMA
+# testResiduals(meri_PC1_m1)
 
+## Emmeans estimates: Length ####
+EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island, type = "response")
 
-# Model 3: Finch Beak ####
+### Emmean plot: Length ####
+plot(EM_PC1, comparisons = TRUE) + labs(title = "Mericarp Size")
+pwpp(EM_PC1)
 
-## Mericarps ####
+## Summary plots ####
+#### Mainland Galapos plot ####
+EM_PC1
+plot_PC1 <- plot(EM_PC1, comparisons = T, plotit = F)
 
-# Preparing the data summary by ID and mainland/island column
-mericarp_summary_model3 <- mericarp_gal %>% group_by(ID, finch_beak) %>% summarize(mean_length = mean(length),
-                                                                                  mean_width = mean(width),
-                                                                                  mean_depth = mean(depth),
-                                                                                  mean_tip_distance = mean(tip_distance),
-                                                                                  mean_lower_spines = mean(lower_spines))
-mericarp_summary_model3 <- mericarp_summary_model3 %>% column_to_rownames("ID")
-mericarp_summary_traits_model3 <- dplyr::select(mericarp_summary_model3, !finch_beak)
-
-### PCA ####
-# leaves:
-mericarp_pca_model3 <- prcomp(mericarp_summary_traits_model3, scale = T)
-
-# Visualize eigenvalues (scree plot):
-fviz_eig(mericarp_pca_model3)
-
-# Graph of individuals. Individuals with similar profile are grouped together
-fviz_pca_ind(mericarp_pca_model3, repel = T, geom = c("point"), habillage = mericarp_summary_model3$finch_beak, palette = NULL,
-             addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
-             alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
-             select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
-             gradient.cols = NULL)
-# Variables
-fviz_pca_var(mericarp_pca_model3,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
-#Biplot
-fviz_pca_biplot(mericarp_pca_model3, repel = T,
-                geom = c("point"),
-                habillage = mericarp_summary_model3$finch_beak,
-                col.var = "black",
-                addEllipses = T
-)
+ggplot_PC1 <- ggplot(plot_PC1, aes(x = mainland_island, y = the.emmean)) + 
+  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+  geom_point(size = 6) + 
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 12, face = "bold"), 
+        axis.text = element_text(size = 10), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 12, face = "bold"),
+        text = element_text(family = "Noto Sans"),
+        panel.background = element_rect(fill = NA)) + 
+  labs(title = expression(paste("Mericarp Size (P = <0.001)"))) +
+  labs(x = "Population", y = "Mericarp Size (PC1)") 
 
 
-## Leaves ####
-# Preparing the data summary by ID and mainland/island column
-leaf_summary_model3 <- leaf_gal %>% group_by(ID, finch_beak) %>% summarize(mean_leaf_length = mean(leaf_length),
-                                                                                    mean_leaflet_length = mean(leaflet_length),
-                                                                                    mean_leaflet_number = mean(number_of_leaflets))
-leaf_summary_model3 <- leaf_summary_model3 %>% column_to_rownames("ID")
-leaf_summary_traits_model3 <- dplyr::select(leaf_summary_model3, !finch_beak)
-
-### PCA ####
-# leaves:
-leaf_pca_model3 <- prcomp(leaf_summary_traits_model3, scale = T)
-
-# Visualize eigenvalues (scree plot):
-fviz_eig(leaf_pca_model3)
-
-# Graph of individuals. Individuals with similar profile are grouped together
-fviz_pca_ind(leaf_pca_model3, repel = T, geom = c("point"), habillage = leaf_summary_model3$finch_beak, palette = NULL,
-             addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
-             alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
-             select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
-             gradient.cols = NULL)
-# Variables
-fviz_pca_var(leaf_pca_model3,
-             col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE 
-)
-#Biplot
-fviz_pca_biplot(leaf_pca_model3, repel = T,
-                geom = c("point"),
-                habillage = leaf_summary_model3$finch_beak,
-                col.var = "black",
-                addEllipses = T
-)
+#### Violing plot ####
+PC1_violin <- ggplot(mericarp_scaled_PC, aes(x = mainland_island, y = PC1, fill = mainland_island)) + 
+  geom_violin(size = 1.5, trim = T) +
+  scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 12, face = "bold"), 
+        axis.text = element_text(size = 10), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 12, face = "bold"),
+        text = element_text(family = "Noto Sans"),
+        legend.position = "none",
+        panel.background = element_rect(fill = NA)) + 
+  labs(x = "Population", y = "Mericarp Size (PC1)", title = "Mericarp Size")
