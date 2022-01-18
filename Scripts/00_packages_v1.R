@@ -23,3 +23,16 @@ library(ggvegan)
 library(extrafont)
 library(ggpubr)
 
+# PCA packages:
+library(RColorBrewer)
+library(ellipse)
+library(rgl)
+library(factoextra)
+library(FactoMineR)
+
+# Results editing
+library(xtable) #For making ANOVA outcomes dataframes and tables
+library(broom) #For making other statistical objects into Tidy Tibbles
+library(ggpubr) #For arrage ggplots into a single plot
+library(knitr)
+library(kableExtra)
