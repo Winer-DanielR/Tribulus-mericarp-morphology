@@ -6,7 +6,9 @@
 # Convert columns into factors
 # Export datasets into processed data folder
 
-# 02_01 Mericarp dataset: ####
+## 02_01 Mericarp dataset: ####
+# Tribulus_mericarp_data_clean.csv
+
 mericarp <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
 mericarp <- mericarp %>% mutate_at(vars(ID,
                                               Herbarium,
@@ -23,40 +25,41 @@ str(mericarp)
 
 # Separate each trait, remove NAs
 
-###### Length ####
+### Length ####
 meri_length <- dplyr::select(mericarp, ind_num:mericarp_num, length)
 meri_length <- filter(meri_length, !is.na(length))
 
-######  Width ####
+###  Width ####
 meri_width <- dplyr::select(mericarp, ind_num:mericarp_num, width)
 meri_width <- filter(meri_width, !is.na(width))
 
-###### Depth ####
+### Depth ####
 meri_depth <- dplyr::select(mericarp, ind_num:mericarp_num, depth)
 meri_depth <- filter(meri_depth, !is.na(depth))
 
-###### Spine tip distance ####
+### Spine tip distance ####
 meri_tip_distance <- dplyr::select(mericarp, ind_num:mericarp_num, tip_distance) #Has zeroes in the data
 meri_tip_distance <- filter(meri_tip_distance, !is.na(tip_distance))
 
-###### Spine tip distance without zero #####
+### Spine tip distance without zero #####
 # We removed mericarps without upper spines from analysis.These mericarps had a tip distance of 0.
 meri_tip_distance_wozero <- dplyr::filter(meri_tip_distance, !tip_distance == 0)
 
-###### Lower spines #####
+### Lower spines #####
 meri_lower_spines <- dplyr::select(mericarp, ind_num:mericarp_num, lower_spines) #As factor
 meri_lower_spines <- filter(meri_lower_spines, !is.na(lower_spines))
-str(meri_lower_spines)
-# Spine length.
+
+## Traits not used in the analysis ####
+### Spine length #####
 # Spine length was another trait we collected but we did not had for all samples.
 # Herbarium data was collected by Marc and during that time we did not measured spine length.
 # meri_spine_length <- dplyr::select(mericarp, ind_num:mericarp_num, spine_length) #Has zeroes in the data
 # meri_spine_length <- filter(meri_spine_length, !is.na(spine_length))
 # Spine length without zero
 # meri_spine_length_wozero <- dplyr::filter(meri_spine_length, !spine_length == 0)
-# # Spine number
+### Spine number ####
 # meri_spine_num <- select(mericarp, ind_num:mericarp_num, spine_num) #As factor
-# Upper spines
+### Upper spines ####
 # Upper spines was another trait we considered just to test a similar model as lower spines
 # and to include the mericarps without upper spines in the analysis.
 # meri_upper_spines <- dplyr::select(mericarp, ind_num:mericarp_num, upper_spines) #As factor
@@ -64,6 +67,7 @@ str(meri_lower_spines)
 
 
 # 02_02 Flower dataset ####
+# Tribulus_flower_data_clean.csv
 flower <- read_csv("~/R/02. Thesis/Tribulus/Tribulus mericarp morphology/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
 flower <- flower %>% mutate_at(vars(ID,
                                         Herbarium,
@@ -77,14 +81,12 @@ flower <- flower %>% mutate_at(vars(ID,
                                         finch_beak), list(factor))
 str(flower)
 
-# Petal length
+# Remove NAs Petal length
 flower <- filter(flower, !is.na(petal_length))
+
+### Flower for Galapagos and Other Islands ####
 flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
-# flower$petal_length_log <- log(flower$petal_length) #log transformation
-# flower$petal_length_sqr <- sqrt(flower$petal_length) #square root transformation
 
-
-  
 # 02_03 Galapagos only with mainland data ####
 # Additional analysis to test the effect of other islands by removing them from models
 
@@ -134,14 +136,7 @@ meri_tip_distance_wozero_mainland_gal <- dplyr::filter(meri_tip_distance_mainlan
 meri_lower_spines_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, lower_spines) #As factor
 meri_lower_spines_mainland_gal <- filter(meri_lower_spines_mainland_gal, !is.na(lower_spines))
 
-# ##### Spine length
-# meri_spine_length_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, spine_length) #Has zeroes in the data
-# meri_spine_length_mainland_gal <- filter(meri_spine_length_mainland_gal, !is.na(spine_length))
-# # Spine length without zero
-# meri_spine_length_wozero_mainland_gal <- dplyr::filter(meri_spine_length_mainland_gal, !spine_length == 0)
-
-
-
+# Other datasets: Galapagos only data ####
 # # 02_03 Galapagos only data
 # # Filter Galapagos only data for aditional analysis
 # # I did not use this as the finch community analysis did not showed significant results
