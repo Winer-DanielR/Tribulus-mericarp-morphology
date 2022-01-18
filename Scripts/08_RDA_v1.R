@@ -20,7 +20,8 @@ mericarp <- filter(mericarp, !is.na(depth))
 ### Create mericarp traits matrix ####
 mericarp_traits <- dplyr::select(mericarp, 1,12:14,16,19)
 mericarp_traits <- mericarp_traits %>% column_to_rownames("ind_num")
-#mericarp_traits <- mericarp_traits %>% mutate_at(vars(lower_spines), list(factor))
+mericarp_traits <- mericarp_traits %>% mutate_at(vars(lower_spines), list(factor))
+str(mericarp_traits)
 # [mericarp_traits] is the response matrix, 
 # [mericarp] has the the explanatory variables
 
@@ -476,6 +477,134 @@ anova(rda(scale(leaf_traits_gal), leaf_finch_matrix_a, leaf_year_collected_matri
 anova(rda(scale(leaf_traits_gal), leaf_year_collected_matrix3_c, leaf_finch_matrix_a), 
       permutations = how(nperm = 999))
 
+# # RDA plots ####
+# # Model 1: Mainland/Island + year ####
+# scl <- 2
+# colvec <- c("cadetblue4", "chartreuse4")
+# 
+# ### Mericarps ####
+# ####Biplot with vegan ####
+# # Define factors mainland/island:
+# with(mericarp, levels(mainland_island))
+# 
+# #Blank plot
+# plot(meri_RDA_mainland,
+#      type = "n",
+#      scaling = scl,
+#      main = "Triplot RDA Mericarp traits ~ Mainland/Island - scaling 2 - lc scores",
+#      # xlim = c(-0.3, 0.3),
+#      # ylim = c(-1,1),
+#      font.lab = 2,
+#      cex.axis = 1.5,
+#      cex.lab = 1.5,
+#      cex.main = 1.3,
+#      frame.plot = F
+#      )
+# #Add points with colored factors
+# with(mericarp, points(meri_RDA_mainland, display = c("lc"), col = "black", lwd = 2,
+#                        scaling = scl, pch = 21, cex = 1.9, bg = colvec[mainland_island]))
+# with(meri_RDA_mainland, legend("topright", legend = with(mericarp, levels(mainland_island)), bty = "n",
+#                                col = "black", lwd = 2, pch = 21, pt.bg = colvec, cex = 1.5))
+# #Add species
+# text(meri_RDA_mainland, display = "species", scaling = scl, cex = 0.8, col = "darkcyan")
+# # 
+# # # #Ggplot RDA
+# # # scores(meri_RDA_mainland)
+# # # plot_scores <- scores(meri_RDA_mainland, display = c("lc"))
+# # # plot_scores <- as.data.frame(plot_scores)
+# # # ggplot(plot_scores) +
+# # #  aes(x = RDA1, y = PC1) +
+# # #  geom_point(size = 2)
+# # 
+# # #GGvegan
+# # #ggvegan::valid_layers(meri_RDA_mainland)
+# # # autoplot(x, axes = c(1,2), layers = c("RDA1", "PC1"))
+# # # x <- fortify(meri_RDA_mainland, display = c("lc", "bp"))
+# # # ggplot(x, aes(RDA1, PC1)) +
+# # # geom_point()
+# # 
+# # ### Leaves ####
+# ####Biplot with vegan ####
+# # Define factors mainland/island:
+# with(leaf_islands, levels(galapagos_other))
+# 
+# #Blank plot
+# plot(leaf_RDA_mainland,
+#      type = "n",
+#      scaling = 2,
+#      main = "Triplot RDA Leaves: trait ~ Galapagos/Other - scaling 2 - lc scores",
+#      #xlim = c(-0.5, 0.5),
+#      #ylim = c(-3.5,2),
+#      font.lab = 2,
+#      cex.axis = 1.5,
+#      cex.lab = 1.5,
+#      cex.main = 1.3,
+#      frame.plot = F
+# )
+# #Add points with colored factors
+# with(leaf, points(leaf_RDA_Galapagos, display = c("lc"), col = "black", lwd = 2,
+#                             scaling = 2, pch = 21, cex = 1.9, bg = colvec[mainland_island]))
+# with(leaf_RDA_mainland, legend("topright", legend = with(leaf, levels(mainland_island)), bty = "n",
+#                                   col = "black", lwd = 2, pch = 21, pt.bg = colvec, cex = 1.5))
+# #Add species
+# text(leaf_RDA_mainland, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
+# # 
+# 
+# ## Model 3: Finch Beak + year ####
+# scl <- 2
+# colvec3 <- c("darkcyan", "darkgoldenrod3")
+# 
+# ### Mericarps ####
+# ####Biplot with vegan ####
+# # Define factors mainland/island:
+# with(mericarp_gal, levels(finch_beak))
+# 
+# #Blank plot
+# plot(meri_RDA_beak, 
+#      type = "n",
+#      scaling = scl,
+#      main = "Triplot RDA Mericarp traits ~ Finch Beak - scaling 2 - lc scores",
+#      xlim = c(-0.3, 0.3),
+#      #ylim = c(-1,1),
+#      font.lab = 2,
+#      cex.axis = 1.5,
+#      cex.lab = 1.5,
+#      cex.main = 1.3,
+#      frame.plot = F
+# )
+# #Add points with colored factors
+# with(mericarp_gal, points(meri_RDA_beak, display = c("lc"), col = "black", lwd = 2,
+#                       scaling = scl, pch = 21, cex = 1.9, bg = colvec3[finch_beak]))
+# with(meri_RDA_beak, legend("topright", legend = with(mericarp_gal, levels(finch_beak)), bty = "n",
+#                                col = "black", lwd = 2, pch = 21, pt.bg = colvec3, cex = 1.5))
+# #Add species
+# text(meri_RDA_beak, display = "species", scaling = scl, cex = 0.8, col = "darkcyan")
+# 
+# ### Leaves ####
+# ####Biplot with vegan ####
+# # Define factors mainland/island:
+# with(leaf_gal, levels(finch_beak))
+# 
+# #Blank plot
+# plot(leaf_RDA_beak, 
+#      type = "n",
+#      scaling = 2,
+#      main = "Triplot RDA Leaves traits ~ Finch Beak - scaling 2 - lc scores",
+#      xlim = c(-0.3, 0.3),
+#      ylim = c(-1,1),
+#      font.lab = 2,
+#      cex.axis = 1.5,
+#      cex.lab = 1.5,
+#      cex.main = 1.3,
+#      frame.plot = F
+# )
+# #Add points with colored factors
+# with(leaf_gal, points(flower_RDA_beak, display = c("lc"), col = "black", lwd = 2,
+#                         scaling = 2, pch = 21, cex = 1.9, bg = colvec3[finch_beak]))
+# with(leaf_RDA_beak, legend("topright", legend = with(leaf_gal, levels(finch_beak)), bty = "n",
+#                              col = "black", lwd = 2, pch = 21, pt.bg = colvec3, cex = 1.5))
+# #Add species
+# text(leaf_RDA_beak, display = "species", scaling = 2, cex = 0.8, col = "darkcyan")
 
 
 
