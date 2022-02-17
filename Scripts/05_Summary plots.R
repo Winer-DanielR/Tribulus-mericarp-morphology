@@ -171,6 +171,22 @@ ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) +
     labs(title = expression(paste("Tip distance (P = 0.015)"))) +
     labs(x = "Population", y = "Spine Tip Distance (mm)")
 
+#### Lower spines plot ####
+plot_tip_lower <- plot(EM_tip_dist_lower, comparisons = T, plotit = F)
+
+ggplot_tip_lower <- ggplot(plot_tip_lower, aes(x = lower_spines, y = the.emmean)) + 
+    geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+    geom_point(size = 6) + 
+    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+          axis.title = element_text(size = 12, face = "bold"), 
+          axis.text = element_text(size = 10), 
+          axis.text.x = element_text(size = 11), 
+          plot.title = element_text(size = 12, face = "bold"),
+          text = element_text(family = "Noto Sans"),
+          panel.background = element_rect(fill = NA)) +
+    labs(title = expression(paste("Tip distance (P = 0.015)"))) +
+    labs(x = "Lower Spines", y = "Spine Tip Distance (mm)")
+
 #### Mainland Galapagos plot ####
 plot_spine_mainland_gal <- plot(EM_tip_dist_mainland_gal, comparisons = T, plotit = F)
 
@@ -235,8 +251,9 @@ ggplot_lower_mainland_gal <- ggplot(plot_lower_mainland_gal, aes(x = mainland_is
     labs(x = "Population", y = "Lower spines")
 
 #### Violin plot ####
-lower_spines_violin <- ggplot(meri_lower_spines, aes(x = mainland_island, y = lower_spines, fill = mainland_island)) + 
-    geom_violin(size = 1.5, trim = F) +
+str(meri_lower_spines)
+lower_spines_violin <- ggplot(meri_lower_spines, aes(x = mainland_island, y = lower_spines)) + 
+    geom_violin(size = 1.5) +
     scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
           axis.title = element_text(size = 12, face = "bold"), 
@@ -312,39 +329,5 @@ flower_violin2 <- ggplot(flower_galapagos_other, aes(x = galapagos_other, y = pe
           panel.background = element_rect(fill = NA)) + 
     labs(x = "Population", y = "Petal Length (mm)", title = "Petal Length")
 
-# 05_03 Mainland Island plots summary ####
-figure_mericarp_model1 <- ggarrange(ggplot_length,
-                                    ggplot_width,
-                                    ggplot_depth,
-                                    ggplot_spine,
-                                    ggplot_lower,
-                                    labels = c("A", "B", "C", "D","E"),
-                                    ncol = 3,
-                                    nrow = 2) + 
-    theme(text = element_text(family = "Noto Sans"))
-
-# 05_04 Mainland Galapagos Island plots summary ####
-figure_mericarp_mainland_gal <- ggarrange(ggplot_length_mainland_gal,
-                                    ggplot_width_mainland_gal,
-                                    ggplot_depth_mainland_gal,
-                                    ggplot_spine_mainland_gal,
-                                    ggplot_lower_mainland_gal,
-                                    labels = c("A", "B", "C", "D","E"),
-                                    ncol = 3,
-                                    nrow = 2) + 
-    theme(text = element_text(family = "Noto Sans"))
-
-# 05_03 Violin plots summary ####
-violin_plots <- ggarrange(length_violin,
-                          width_violin,
-                          depth_violin,
-                          tip_distance_violin,
-                          lower_spines_violin,
-                          flower_violin,
-                          flower_violin2,
-                          labels = c("A", "B", "C", "D","E", "F", "G"),
-                          ncol = 3,
-                          nrow = 3) + 
-    theme(text = element_text(family = "Noto Sans"))
 
 
