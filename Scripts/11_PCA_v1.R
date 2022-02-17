@@ -19,12 +19,17 @@ colSums(is.na(mericarp_NA))
 # 11_02 Scale traits used for PCA ####
 # Select the traits for the PCA
 mericarp_traits <- dplyr::select(mericarp_NA, 1,12:14,16,19)
+# Filter upper spines remove zeroes
+mericarp_traits <- dplyr::filter(mericarp_traits, !tip_distance == 0)
 mericarp_traits <- mericarp_traits %>% column_to_rownames("ind_num")
 mericarp_traits$lower_spines <- as.numeric(mericarp_traits$lower_spines)
 str(mericarp_traits)
 # Scaled all mericarp traits first
 mericarp_traits <- scale(mericarp_traits)
 mericarp_traits <- as.tibble(mericarp_traits)
+
+
+
 
 # 11_03 Mericarp dataset summarized by ID ####
 # Created a new dataset with all parameters and scaled traits
@@ -46,6 +51,9 @@ mericarp_traits_summary <- dplyr::select(mericarp_summary, Length,
                                                            Spine.Tip.Distance,
                                                            Lower.Spines)
 mericarp_traits_summary <- mericarp_traits_summary %>% column_to_rownames("ID")
+# Mericarp scaled removed upper spines zeroes:
+mericarp_NA_wozero <- dplyr::filter(mericarp_NA, !tip_distance == 0)
+
 
 # 11_04 PCA mericarp summary ####
 ## PCA ####
@@ -73,8 +81,8 @@ fviz_pca_biplot(mericarp_pca, repel = T,
                 addEllipses = T
                 )
 
-# 11_05 Final PCA plot ####
-## Biplot ####
+# 11_05 Summary PCA plot ####
+##  Theme summary Biplot ####
 biplot1 <- fviz_pca_ind(mericarp_pca,
                         # Fill individuals by groups
                         title = "Mericarps
@@ -86,7 +94,7 @@ biplot1 <- fviz_pca_ind(mericarp_pca,
                         fill.ind = mericarp_summary$mainland_island,
                         col.ind = "black",
                         # Color variable by groups
-                        legend.title = "Mainland/Island",
+                        legend.title = "Lower Spines",
                         repel = T,
                         col.var = "black",
                         labelsize = 5,
@@ -109,7 +117,7 @@ biplot1 <- fviz_pca_ind(mericarp_pca,
 
 biplot1
 
-## Variable plots ####
+## Theme summary plots ####
 
 var1 <- fviz_pca_var(mericarp_pca,
                      col.var = "contrib",
@@ -142,15 +150,42 @@ var1
 
 ## PCA ####
 
+#### Mericarp size PCA excludes lower spines and only uses length, width, depth
+# and spine tip distance.
 
-mericarp_ind_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
+mericarp_size_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
+
+#### Mericarp individual data. PCA ####
+mericarp_ind_pca <- prcomp(mericarp_traits, scale = T)
 
 ## Visualize eigenvalues (scree plot) ####
+### Size PCA ####
+fviz_eig(mericarp_size_pca)
+### Individual PCA ####
 fviz_eig(mericarp_ind_pca)
 
 ## Biplot ####
-# Individuals with similar profile are grouped together
-fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_scaled$mainland_island, palette = NULL,
+### Size PCA ####
+fviz_pca_ind(mericarp_size_pca, repel = T, geom = c("point"), habillage = mericarp_NA_wozero$mainland_island, palette = NULL,
+             addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
+             alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
+             select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
+             gradient.cols = NULL)
+fviz_pca_var(mericarp_size_pca,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE 
+)
+fviz_pca_biplot(mericarp_size_pca, repel = T,
+                geom = c("point"),
+                habillage = mericarp_NA_wozero$lower_spines,
+                col.var = "black",
+                addEllipses = T
+)
+
+### Individual PCA ####
+# It uses mericarp_NA as habillage because lower spines there is a factor.
+fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_NA$lower_spines, palette = NULL,
              addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
              alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
              select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
@@ -162,13 +197,110 @@ fviz_pca_var(mericarp_ind_pca,
 )
 fviz_pca_biplot(mericarp_ind_pca, repel = T,
                 geom = c("point"),
-                habillage = mericarp_scaled$mainland_island,
+                habillage = mericarp_NA$mainland_island,
                 col.var = "black",
                 addEllipses = T
 )
 
+## Theme individual Biplot ####
+### Mainland island comparison ####
+biplot2 <- fviz_pca_biplot(mericarp_size_pca,
+                        # Fill individuals by groups
+                        title = "Mericarps
+                           ",
+                        geom.ind = "point",
+                        pointshape = c(21),
+                        pointsize = 4,
+                        stroke = 0.5,
+                        fill.ind = mericarp_NA_wozero$mainland_island,
+                        col.ind = "black",
+                        # Color variable by groups
+                        legend.title = "Lower Spines",
+                        repel = T,
+                        col.var = "black", 
+                        labelsize = 5,
+                        addEllipses = T,
+                        palette = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73"),
+                        
+) + theme_transparent() + 
+  scale_color_manual(values = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73")) +
+  # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "bottom",
+        legend.background = element_rect(fill = NA, size = 0))
+
+biplot2
+
+
+#### Lower spines comparison
+biplot3 <- fviz_pca_biplot(mericarp_ind_pca,
+                        # Fill individuals by groups
+                        title = "Mericarps
+                           ",
+                        geom.ind = "point",
+                        pointshape = c(21),
+                        pointsize = 4,
+                        stroke = 0.5,
+                        fill.ind = mericarp_NA$lower_spines,
+                        col.ind = "black",
+                        # Color variable by groups
+                        legend.title = "Lower Spines",
+                        repel = T,
+                        col.var = "black",
+                        labelsize = 5,
+                        addEllipses = T,
+                        palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+                        
+) + theme_transparent() + 
+  scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+  # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "bottom",
+        legend.background = element_rect(fill = NA, size = 0))
+
+biplot3
+
+## Theme individual Variable plots ####
+
+var2 <- fviz_pca_var(mericarp_ind_pca,
+                     col.var = "contrib",
+                     title = "Variables contribution
+                           ",
+                     gradient.cols = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+                     repel = TRUE,
+                     legend.title = "Contribution"
+) +
+  theme_transparent() +
+  # PCA theme, adds custom font and sizes that matches the other plots    
+  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+        axis.title = element_text(size = 14, face = "bold"), 
+        axis.text = element_text(size = 12), 
+        axis.text.x = element_text(size = 11), 
+        plot.title = element_text(size = 16, face = "bold", hjust = 0),
+        text = element_text(family = "Noto Sans"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
+        legend.position = "right",
+        legend.background = element_rect(fill = NA, size = 0))
+var2
+
+
 ## Extract PC values ####
-mericarp_scaled_PC <- cbind(mericarp_scaled, mericarp_ind_pca$x)
+mericarp_scaled_PC <- cbind(mericarp_NA_wozero, mericarp_size_pca$x)
 
 # 11_07 Model testing using the PC1 axis ####
 ## Model mainland island ####
@@ -180,7 +312,7 @@ meri_PC1_m1<- lmer(PC1 ~ mainland_island +
 
 ## ANOVA type II test ####
 # Use the Anova function from the car package
-# Anova(meri_PC1_m1)
+ Anova(meri_PC1_m1)
 # summary(meri_PC1_m1)
 
 # Diagnostic custom function
@@ -192,7 +324,7 @@ meri_PC1_m1<- lmer(PC1 ~ mainland_island +
 # testResiduals(meri_PC1_m1)
 
 ## Emmeans estimates: Length ####
-EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island, type = "response")
+EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island)
 
 ### Emmean plot: Length ####
 plot(EM_PC1, comparisons = TRUE) + labs(title = "Mericarp Size")
@@ -230,3 +362,65 @@ PC1_violin <- ggplot(mericarp_scaled_PC, aes(x = mainland_island, y = PC1, fill 
         legend.position = "none",
         panel.background = element_rect(fill = NA)) + 
   labs(x = "Population", y = "Mericarp Size (PC1)", title = "Mericarp Size")
+
+# 11_08 Mainland Island plots summary ####
+## Mericarps ####
+# Used in the main text
+figure_mericarp_PC1_lower <- ggarrange(ggplot_PC1,
+                                    ggplot_lower,
+                                    labels = c("A", "B"),
+                                    ncol = 2,
+                                    nrow = 1) + 
+  theme(text = element_text(family = "Noto Sans"))
+## Flowers ####
+# Flowers have model 1 and 2
+figure_flower <- ggarrange(ggplot_flower,
+                           ggplot_flower2,
+                                    labels = c("A", "B"),
+                                    ncol = 2,
+                                    nrow = 1)
+
+
+## Individual traits figure ####
+# Supplemental figure with individual mericarp traits. From the PCA.
+figure_mericarp_ind_traits <- ggarrange(ggplot_length,
+                                    ggplot_width,
+                                    ggplot_depth,
+                                    ggplot_spine,
+                                    labels = c("A", "B", "C", "D"),
+                                    ncol = 3,
+                                    nrow = 2) + 
+  theme(text = element_text(family = "Noto Sans"))
+
+# 11_09 Mainland Galapagos Island plots summary ####
+figure_mericarp_mainland_gal <- ggarrange(ggplot_length_mainland_gal,
+                                          ggplot_width_mainland_gal,
+                                          ggplot_depth_mainland_gal,
+                                          ggplot_spine_mainland_gal,
+                                          ggplot_lower_mainland_gal,
+                                          labels = c("A", "B", "C", "D","E"),
+                                          ncol = 3,
+                                          nrow = 2) + 
+  theme(text = element_text(family = "Noto Sans"))
+
+# 11_10 Violin plots summary ####
+# Supplmental figure with data distribution of all traits.
+violin_plots <- ggarrange(length_violin,
+                          width_violin,
+                          depth_violin,
+                          tip_distance_violin,
+                          #lower_spines_violin,
+                          flower_violin,
+                          flower_violin2,
+                          labels = c("A", "B", "C", "D","E", "F", "G"),
+                          ncol = 3,
+                          nrow = 2) + 
+  theme(text = element_text(family = "Noto Sans"))
+
+# 11_11 PCA biplots ####
+figure_biplots <- ggarrange(biplot2,
+                           biplot3,
+                           labels = c("A", "B"),
+                           ncol = 2,
+                           nrow = 1)
+
