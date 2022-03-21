@@ -13,16 +13,16 @@
 mericarp_NA <- filter(mericarp, !is.na(length))
 mericarp_NA <- filter(mericarp_NA, !is.na(depth))
 mericarp_NA <- filter(mericarp_NA, !is.na(tip_distance))
+mericarp_NA <- dplyr::filter(mericarp_NA, !tip_distance == 0)
 # Check mericarp data for NAs per trait:
 colSums(is.na(mericarp_NA))
 
 # 11_02 Scale traits used for PCA ####
 # Select the traits for the PCA
-mericarp_traits <- dplyr::select(mericarp_NA, 1,12:14,16,19)
+mericarp_traits <- dplyr::select(mericarp_NA, 1,12:14,16)
 # Filter upper spines remove zeroes
 mericarp_traits <- dplyr::filter(mericarp_traits, !tip_distance == 0)
 mericarp_traits <- mericarp_traits %>% column_to_rownames("ind_num")
-mericarp_traits$lower_spines <- as.numeric(mericarp_traits$lower_spines)
 str(mericarp_traits)
 # Scaled all mericarp traits first
 mericarp_traits <- scale(mericarp_traits)
@@ -37,19 +37,17 @@ mericarp_traits <- as.tibble(mericarp_traits)
 # This is the dataset that I am using for ploting the PCA
 mericarp_scaled <- cbind(mericarp_NA, mericarp_traits)
 # Select scaled traits
-mericarp_scaled <- dplyr::select(mericarp_scaled, c(ID:mericarp_num, 23:27))
+mericarp_scaled <- dplyr::select(mericarp_scaled, c(ID:mericarp_num, 23:26))
 mericarp_summary <- mericarp_scaled %>% group_by(ID,mainland_island) %>% summarize(Length = mean(length),
                                                  Width = mean(width),
                                                  Depth = mean(depth),
-                                                 Spine.Tip.Distance = mean(tip_distance),
-                                                 Lower.Spines = mean(lower_spines))
+                                                 Spine.Tip.Distance = mean(tip_distance))
 
 # This is the dataframe I will use for the PCA it contains the means per ID:
 mericarp_traits_summary <- dplyr::select(mericarp_summary, Length,
                                                            Width,
                                                            Depth,
-                                                           Spine.Tip.Distance,
-                                                           Lower.Spines)
+                                                           Spine.Tip.Distance)
 mericarp_traits_summary <- mericarp_traits_summary %>% column_to_rownames("ID")
 
 
@@ -238,42 +236,6 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
 
 biplot2
 
-
-#### Lower spines comparison
-biplot3 <- fviz_pca_biplot(mericarp_ind_pca,
-                        # Fill individuals by groups
-                        title = "Mericarps
-                           ",
-                        geom.ind = "point",
-                        pointshape = c(21),
-                        pointsize = 4,
-                        stroke = 0.5,
-                        fill.ind = mericarp_NA$lower_spines,
-                        col.ind = "black",
-                        # Color variable by groups
-                        legend.title = "Lower Spines",
-                        repel = T,
-                        col.var = "black",
-                        labelsize = 5,
-                        addEllipses = T,
-                        palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
-                        
-) + theme_transparent() + 
-  scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
-  # PCA theme, adds custom font and sizes that matches the other plots    
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 14, face = "bold"), 
-        axis.text = element_text(size = 12), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 16, face = "bold", hjust = 0),
-        text = element_text(family = "Noto Sans"),
-        legend.text = element_text(size = 12, face = "bold"), 
-        legend.title = element_text(size = 14, face = "bold"),
-        legend.position = "bottom",
-        legend.background = element_rect(fill = NA, size = 0))
-
-biplot3
-
 ## Theme individual Variable plots ####
 
 var2 <- fviz_pca_var(mericarp_ind_pca,
@@ -417,10 +379,5 @@ violin_plots <- ggarrange(length_violin,
                           nrow = 2) + 
   theme(text = element_text(family = "Noto Sans"))
 
-# 11_11 PCA biplots ####
-figure_biplots <- ggarrange(biplot2,
-                           biplot3,
-                           labels = c("A", "B"),
-                           ncol = 2,
-                           nrow = 1)
+
 
