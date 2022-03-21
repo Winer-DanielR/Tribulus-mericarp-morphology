@@ -51,8 +51,6 @@ mericarp_traits_summary <- dplyr::select(mericarp_summary, Length,
                                                            Spine.Tip.Distance,
                                                            Lower.Spines)
 mericarp_traits_summary <- mericarp_traits_summary %>% column_to_rownames("ID")
-# Mericarp scaled removed upper spines zeroes:
-mericarp_NA_wozero <- dplyr::filter(mericarp_NA, !tip_distance == 0)
 
 
 # 11_04 PCA mericarp summary ####
@@ -152,6 +150,8 @@ var1
 
 #### Mericarp size PCA excludes lower spines and only uses length, width, depth
 # and spine tip distance.
+# Mericarp scaled removed upper spines zeroes:
+mericarp_NA_wozero <- dplyr::filter(mericarp_NA, !tip_distance == 0)
 
 mericarp_size_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
 
@@ -215,7 +215,7 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                         fill.ind = mericarp_NA_wozero$mainland_island,
                         col.ind = "black",
                         # Color variable by groups
-                        legend.title = "Lower Spines",
+                        legend.title = "Population",
                         repel = T,
                         col.var = "black", 
                         labelsize = 5,
