@@ -1,0 +1,43 @@
+---
+title: "Tribulus morphology Scripts"
+author: "Daniel Reyes"
+date: "3/21/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = TRUE, include = T)
+source("00_packages_v1.R", local = knitr::knit_global())
+source("01_diagnostic function_v1.R", local = knitr::knit_global())
+source("02_Trait transformations and data prep_v1.R", local = knitr::knit_global())
+source("04_Models per trait_v1.R", local = knitr::knit_global())
+source("05_Summary plots.R", local = knitr::knit_global())
+source("11_PCA_v1.R", local = knitr::knit_global())
+source("08_RDA_v1.R", local = knitr::knit_global())
+```
+
+Use the code above to call and run all scripts used in the analysis. You can check specific results on each script. Set the script folder as working directory.
+
+# Script descriptions
+## 00_packages
+List of all packages used for analysis
+
+## 01_diagnostic function
+Custom function that uses base R to diagnose univariate model outputs. Is used on script 04.
+
+## 02_Trait transformations and data prep
+This script was used once to create the individual databases per trait that later will be used for each model. Converts columns into factors.Export datasets into processed data folder.
+
+## 04_Models per trait_v1
+This script uses the individual datasets per trait from script 02 to run the models. Models are organized by group comparisons and datasets.
+
+## 05_Summary plots.R
+This scripts uses the emmean outputs from the univariate models. It also includes violin plots of the distributions of the data for each trait.
+
+## 11_PCA_v1.R
+PCA analysis and summary plots of the paper. Includes final figure of univariate analysis and violing plots.
+
+## 08_RDA_v1.R
+RDA code, based on the PCA dataset.
+
+
