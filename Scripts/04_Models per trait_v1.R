@@ -138,7 +138,7 @@ meri_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
                       data=meri_depth, 
                       REML = F)
 #### ANOVA type II test ####
-# Anova(meri_depth_m1)
+Anova(meri_depth_m1)
 
 #### Model Diagnostics ####
 # hist(resid(meri_depth_m1), breaks = 20)
@@ -226,7 +226,7 @@ meri_tip_distance_m6 <- lmer(sqrt(tip_distance) ~ mainland_island +
 
 
 # ANOVA type II test
-# Anova(meri_tip_distance_m4)
+Anova(meri_tip_distance_m4)
 
 # Model Diagnostics
 # diagnostic(resid(meri_tip_distance_m4))
@@ -288,7 +288,7 @@ meri_tip_distance_m9 <- lmer(sqrt(tip_distance) ~ mainland_island +
 # diagnostic(resid(meri_tip_distance_m9))
 
 #Anova
-# Anova(meri_tip_distance_m7)
+Anova(meri_tip_distance_m7)
 
 # DHARMa
 # testResiduals(meri_tip_distance_m7)
