@@ -27,8 +27,9 @@ source("11_PCA_v1.R", local = knitr::knit_global())
 ```
 
 # Results
-- #Results 
-- [[22.01 Chapter. Tribulus phenotypic variation]]
+
+-   \#Results
+-   [[22.01 Chapter. Tribulus phenotypic variation]]
 
 # Univariate analysis: trait \~ group + year
 
@@ -582,7 +583,6 @@ kable_styling(
         position = "center", full_width = FALSE) 
 
 ```
-
 
 ### Leaf
 
