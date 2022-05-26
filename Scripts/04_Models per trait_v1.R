@@ -21,7 +21,11 @@
 # For length, the untransformed data seems the best
 #### Raw data ####
 meri_length_m1<- lmer(length ~ mainland_island +
-                       year_collected +
+                       year_collected + 
+                        Temp +
+                        Temp_S +
+                        Prec +
+                        varP +
                       (1|ID),
                       data = meri_length,
                       REML = F)
