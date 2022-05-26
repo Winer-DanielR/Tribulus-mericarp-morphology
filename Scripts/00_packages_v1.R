@@ -10,7 +10,6 @@
 ### 
 
 ### Package script
-
 library(tidyverse) #Data wrangling and plots
 library(lme4) #For linear models
 library(glmmTMB)
@@ -36,3 +35,4 @@ library(broom) #For making other statistical objects into Tidy Tibbles
 library(ggpubr) #For arrage ggplots into a single plot
 library(knitr)
 library(kableExtra)
+
