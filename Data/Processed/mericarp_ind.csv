@@ -1,0 +1,562 @@
+ID,Herb_name,Herb_number,Herbarium,year_collected,continent,mainland_island,galapagos_other,island_group,galapagos_island,finch_beak,country,location,length,width,depth,tip_distance,Temp,Temp_S,Prec,varP
+CAS_324635,CAS,324635,Herbarium,1942,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,NA,5.06,3.642,4.508,NA,24.35000038,155.2710266,188,96.07951355
+CAS_34021,CAS,34021,Herbarium,1899,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,NA,5.154285714285714,3.341428571428571,4.722857142857142,NA,19.799999239999998,128.2752686,345,83.07010651
+CAS_34022,CAS,34022,Herbarium,1899,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,NA,6.408571428571428,2.8385714285714285,4.727142857142857,NA,23.25,179.684082,547,76.27940369
+CAS_34024,CAS,34024,Herbarium,1899,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,NA,7.496666666666666,3.93,6.27,12.94,21.97916603,178.1656189,519,46.81369019
+CAS_461168,CAS,461168,Herbarium,1932,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,NA,6.442,3.291,5.438,NA,24.35000038,155.2710266,188,96.07951355
+CAS_461169,CAS,461169,Herbarium,1932,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,NA,4.7780000000000005,3.206,4.462,NA,22.69583321,151.0637817,247,78.51528931
+CAS_461173,CAS,461173,Herbarium,1932,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,NA,7.318,4.03,6.388,9.509,22.69583321,151.0637817,247,78.51528931
+CAS_461174,CAS,461174,Herbarium,1932,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,NA,7.847,3.419,5.588,11.502,21.97916603,178.1656189,519,46.81369019
+CAS_461175,CAS,461175,Herbarium,1932,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,NA,5.048,2.834,4.754,9.653,19.799999239999998,128.2752686,345,83.07010651
+CAS_496955,CAS,496955,Herbarium,1967,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,6.83,3.36,5.28,7.47,23.75833321,175.4841919,365,65.91323853
+CAS_56623,CAS,56623,Herbarium,1905,South America,island,Galapagos,Galapagos,Fernandina,1,Ecuador,NA,5.45125,3.1437500000000003,NA,NA,22.37916756,130.9312439,310,79.1166153
+CAS_56634,CAS,56634,Herbarium,1905,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,NA,7.3475,3.50375,5.505,NA,21.97916603,178.1656189,519,46.81369019
+CAS_741302,CAS,741302,Herbarium,1964,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,NA,4.093333333333334,2.398888888888889,3.427777777777778,NA,23.87083435,182.3141632,279,86.23344421
+CDRS_12628,CDRS,12628,Herbarium,2001,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Bainbridge,4.665,1.8399999999999999,4.17,2.685,24.60941696,151.0727997,177.7751617,102.5722046
+CDRS_13775,CDRS,13775,Herbarium,1998,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Cerro Punta Pitt,6.027692307692307,3.6523076923076925,5.031538461538461,6.751538461538462,24.07222176,169.8041534,483.6666565,85.86229706
+CDRS_16045,CDRS,16045,Herbarium,2001,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Botadero,6.13,2.52,3.98,8.285,22.32083321,170.2732544,239,97.56349945
+CDRS_16356,CDRS,16356,Herbarium,2004,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Puerto Villamil,4.7540000000000004,2.862,4.076,0,24.09583282,158.6083984,318,84.72167206
+CDRS_16359,CDRS,16359,Herbarium,2004,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Volcan Sierra Negra,5.1579999999999995,2.0780000000000003,3.866,5.326,24.09583282,158.6083984,318,84.72167206
+CDRS_3183,CDRS,3183,Herbarium,1983,South America,island,Galapagos,Galapagos,Darwin,1,Ecuador,Culpepper,12.83,5.28,5.2,0,24.950000760000002,122.3445053,790,75.03526306
+CDRS_43184,CDRS,43184,Herbarium,2008,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,Baltra Airport,6.421428571428572,3.587142857142857,5.287142857142857,5.51,24.31666756,154.6599579,163,104.3817749
+CDRS_43798,CDRS,43798,Herbarium,1998,South America,island,Galapagos,Galapagos,Enderby,0,Ecuador,North,5.926666666666667,2.845,4.706666666666667,4.725,23.74770927,174.5269775,377.46521,64.77494812
+CDRS_4711,CDRS,4711,Herbarium,1985,South America,island,Galapagos,Galapagos,Pinta,1,Ecuador,Camp site,5.855,2.555833333333333,4.504166666666666,5.968333333333334,22.99583244,135.8049622,488,64.10809326
+CDRS_5632,CDRS,5632,Herbarium,2014,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Academy Bay,7.955,3.425,4.715,9.11,23.87083435,182.3141632,279,86.23344421
+CDRS_57135,CDRS,57135,Herbarium,2016,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Punta Suarez,5.783125,3.225625,4.9425,10.305,23.64365005,179.6233673,471.0172119,80.98109436
+CDRS_57136,CDRS,57136,Herbarium,2016,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Punta Suarez,6.154186046511628,3.073953488372093,5.0341860465116275,9.47906976744186,23.64365005,179.6233673,471.0172119,80.98109436
+CDRS_57138,CDRS,57138,Herbarium,2016,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Punta Suarez,4.68,5.08,5.26,11.61,23.64365005,179.6233673,471.0172119,80.98109436
+CDRS_57138,CDRS,57138,Herbarium,2016,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Playa Negra,6.813,3.7653333333333334,5.445,10.701333333333332,23.75833321,170.8379669,381,68.66218567
+CDRS_57139,CDRS,57139,Herbarium,2016,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Mina,7.056129032258065,3.8529032258064517,5.083548387096775,10.096451612903225,23.22500038,172.5148315,428,63.65643311
+CDRS_57140,CDRS,57140,Herbarium,2016,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Botadero,7.384,3.608,5.332,12.234666666666666,23.22500038,172.5148315,428,63.65643311
+CDRS_57141,CDRS,57141,Herbarium,2016,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Cementery,6.288181818181818,3.2196969696969697,4.994545454545454,10.540909090909091,23.52083397,172.30336,405,66.9630661
+CDRS_57142,CDRS,57142,Herbarium,2016,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Tourist Trail,5.822666666666667,3.446,4.753666666666667,9.1033333333333335,24.38041878,154.809433,119.1609955,110.5748062
+CDRS_57144,CDRS,57144,Herbarium,2016,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Loberia,6.749333333333333,3.6856666666666666,5.230666666666667,9.438333333333333,24,173.5196991,546,85.71057892
+CDRS_57145,CDRS,57145,Herbarium,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Academy Bay,7.1651612903225805,3.3496774193548386,3.6493548387096775,10.448709677419355,23.77499962,184.0392761,275,85.82701111
+CDRS_6215,CDRS,6215,Herbarium,1994,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Loberia,6.958,3.644,5.208,8.04,22.29166603,177.8001099,583,69.85607147
+CDRS_9051,CDRS,9051,Herbarium,1998,South America,island,Galapagos,Galapagos,Fernandina,1,Ecuador,Cabo Douglas,5.166666666666667,3.216,4.529333333333334,0.538,24.48333359,128.3874512,223,93.84077454
+CDRS_92,CDRS,92,Herbarium,1963,South America,island,Galapagos,Galapagos,Darwin,1,Ecuador,Culpepper,4.5,1.91,3.21,7.61,24.950000760000002,122.3445053,790,75.03526306
+CDRS_9431,CDRS,9431,Herbarium,1999,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Punta Cevallos,6.21375,2.9,4.89,6.53,23.762500760000002,180.6569672,497,78.00688934
+CDRS_9780,CDRS,9780,Herbarium,1999,South America,island,Galapagos,Galapagos,Daphne Mayor,1,Ecuador,Crater,5.6,2.8600000000000003,4.76,6.6625,24.35833359,164.7012787,137,102.7628937
+CDRS_9850,CDRS,9850,Herbarium,1999,South America,island,Galapagos,Galapagos,Guy Fawkes Oeste,1,Ecuador,NA,5.876,2.81,4.564,5.52,24.19918251,157.9533844,159.1986084,104.7648544
+CDRS_9961,CDRS,9961,Herbarium,1999,South America,island,Galapagos,Galapagos,Plaza Norte,1,Ecuador,NA,7.0600000000000005,2.81,4.4399999999999995,5.855,24.44219017,168.9272461,189.1096039,107.4477463
+Daniel_1,Daniel,1,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Dump,8.084,4.0896,NA,NA,23.22500038,172.5148315,428,63.65643311
+Daniel_10,Daniel,10,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Road Breeding Center,5.7829,3.2862,NA,NA,24.00833321,158.6710968,313,84.30728149
+Daniel_11,Daniel,11,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Road Sierra Negra,4.4869,3.1322,NA,8.3986,24.09166718,160.2389221,338,85.93011475
+Daniel_12,Daniel,12,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Sierra Negra NW,6.1942990654205605,3.57607476635514,5.001775700934579,NA,24.04166603,159.5851593,329,81.97440338
+Daniel_13,Daniel,13,Natural Population,2018,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Loberia,6.047,3.2366,NA,NA,24,173.5196991,546,85.71057892
+Daniel_14,Daniel,14,Natural Population,2018,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Park,5.8837,2.6865,NA,NA,23.91250038,169.3989868,551,87.18533325
+Daniel_15,Daniel,15,Natural Population,2018,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Playa Oro,7.2432,3.282,4.6888,NA,23.81997681,170.223053,542.3508301,86.84463501
+Daniel_16,Daniel,16,Natural Population,2018,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,USFQ,7.2387,3.114,NA,NA,23.81997681,170.223053,542.3508301,86.84463501
+Daniel_18,Daniel,18,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Academy Bay,6.8806,3.0189,NA,NA,23.77499962,184.0392761,275,85.82701111
+Daniel_19,Daniel,19,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Close to Itabaca,6.8936,2.8803,NA,NA,24.60833359,154.2553101,144,109.1805267
+Daniel_2,Daniel,2,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Heliport,7.9030000000000005,3.8930000000000002,6.2808,12.8732,23.52083397,172.30336,405,66.9630661
+Daniel_20,Daniel,20,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Dump,7.0786999999999995,3.0846,NA,12.4892,22.32083321,170.2732544,239,97.56349945
+Daniel_21,Daniel,21,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,El Garrapatero,7.1783,3.3854,NA,13.2672,24.012500760000002,178.5564117,268,93.68759155
+Daniel_22,Daniel,22,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,El Garrapatero Alto,5.9757,3.3118,NA,10.91656,23.69583321,181.7272797,278,89.30532074
+Daniel_23,Daniel,23,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Itabaca Channel,6.779,2.9357,4.711,12.0592,24.60833359,154.2553101,144,109.1805267
+Daniel_24,Daniel,24,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Mine,7.1629,2.9282,4.6801,11.8725,22.81666756,167.8247528,231,96.95592499
+Daniel_25,Daniel,25,Natural Population,2018,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Tortuga Bay,7.183645833333333,3.1894791666666666,NA,NA,23.75416756,184.9749146,277,84.71658325
+Daniel_3,Daniel,3,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Mine,7.5136,3.5898,5.7812,13.1864,23.22500038,172.5148315,428,63.65643311
+Daniel_4,Daniel,4,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Playa Negra,7.1922,3.3810000000000002,NA,NA,23.75833321,170.8379669,381,68.66218567
+Daniel_5,Daniel,5,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,West of Cementery,NA,3.5096,NA,NA,23.52083397,172.30336,405,66.9630661
+Daniel_6,Daniel,6,Natural Population,2018,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,West of Cementery II,6.2252,3.3869,NA,NA,23.52083397,172.30336,405,66.9630661
+Daniel_7,Daniel,7,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Airport,6.4955,4.0038,NA,NA,24.20416641,158.5797577,355,83.2046814
+Daniel_8,Daniel,8,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Breeding Center,4.721,3.2053,NA,8.7608,24.03750038,159.3327637,339,86.10949707
+Daniel_9,Daniel,9,Natural Population,2018,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Crossroad,4.6454,3.2931,NA,NA,24.01666641,158.7212219,334,85.07987976
+Expedition_100,Expedition,100,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.5104,2.6592,3.798,0.294,23.6875,173.1542206,417,61.40105057
+Expedition_101,Expedition,101,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.28,2.5512,3.7668,0.8008,23.44166756,178.6417694,414,68.58551788
+Expedition_102,Expedition,102,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,5.3503448275862064,2.714137931034483,4.530689655172414,7.405172413793103,23.74166679,179.7831268,501,73.1336441
+Expedition_103,Expedition,103,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,5.349230769230769,2.670384615384615,4.466538461538462,7.556153846153846,23.74166679,179.7831268,501,73.1336441
+Expedition_104,Expedition,104,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,4.467333333333333,2.4446666666666665,3.9873333333333334,6.4126666666666665,23.74166679,179.7831268,501,73.1336441
+Expedition_105,Expedition,105,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,6.6259999999999994,2.922,4.667,9.402000000000001,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_106,Expedition,106,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,7.281333333333333,3.487,5.4126666666666665,11.922666666666666,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_107,Expedition,107,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,9.190333333333333,4.129666666666667,5.942,10.741666666666667,24.44223976,169.4238281,206.3900909,104.7651215
+Expedition_108,Expedition,108,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,6.4484,2.7344,4.4876000000000005,8.4736,24.44223976,169.4238281,206.3900909,104.7651215
+Expedition_109,Expedition,109,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,6.2075,2.950357142857143,4.587142857142857,8.842857142857143,24.44223976,169.4238281,206.3900909,104.7651215
+Expedition_110,Expedition,110,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Cuevas,6.765,3.415,5.1899999999999995,0,23.44166756,178.6417694,414,68.58551788
+Expedition_111,Expedition,111,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,3.824,2.128,3.402,3.732,23.44166756,178.6417694,414,68.58551788
+Expedition_112,Expedition,112,Natural Population,2017,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,5.599,2.399,4.818,6.789,23.75833321,175.4841919,365,65.91323853
+Expedition_113,Expedition,113,Natural Population,2017,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,6.223,2.749,4.766,7.691,23.75833321,175.4841919,365,65.91323853
+Expedition_114,Expedition,114,Natural Population,2017,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,5.324,2.442,4.7829999999999995,7.47,23.75833321,175.4841919,365,65.91323853
+Expedition_115,Expedition,115,Natural Population,2017,South America,island,Galapagos,Galapagos,Genovesa,1,Ecuador,Salvaje de Corazon,6.41,3.502,5.08,8.734,24.33749962,148.1879272,261,79.10144806
+Expedition_116,Expedition,116,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.076666666666667,3.518333333333333,5.293333333333333,9.931666666666667,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_47,Expedition,47,Natural Population,2017,South America,island,Galapagos,Galapagos,Fernandina,1,Ecuador,Cabo Douglas,5.600476190476191,3.1342857142857143,4.37952380952381,0,24.44572449,128.6454468,251.672226,90.26016235
+Expedition_48,Expedition,48,Natural Population,2017,South America,island,Galapagos,Galapagos,Fernandina,1,Ecuador,Cabo Douglas,5.386428571428572,3.150714285714286,4.627142857142857,0,24.44572449,128.6454468,251.672226,90.26016235
+Expedition_49,Expedition,49,Natural Population,2017,South America,island,Galapagos,Galapagos,Fernandina,1,Ecuador,Cabo Douglas,5.978666666666666,2.816,4.524666666666667,0.31666666666666665,24.44572449,128.6454468,251.672226,90.26016235
+Expedition_50,Expedition,50,Natural Population,2017,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Punta Vicente Roca,5.4265,3.2665,4.232,0,23.512500760000002,128.666687,261,87.77462006
+Expedition_51,Expedition,51,Natural Population,2017,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Punta Vicente Roca,4.711666666666667,3.2766666666666664,4.27,6.625,23.512500760000002,128.666687,261,87.77462006
+Expedition_52,Expedition,52,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,7.18,4.29,5.58,10.03,24.22916603,149.1408386,171,107.3898468
+Expedition_53,Expedition,53,Natural Population,2017,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Bahia Seymour,6.193333333333333,2.778888888888889,4.618888888888889,10.684444444444445,24.38041878,154.809433,119.1609955,110.5748062
+Expedition_54,Expedition,54,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,6.315,3.4175,4.842499999999999,11.3325,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_55,Expedition,55,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,7.5275,3.6325,5.525,11.48,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_56,Expedition,56,Natural Population,2017,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,4.955,2.242,4.302,6.777,23.75833321,175.4841919,365,65.91323853
+Expedition_57,Expedition,57,Natural Population,2017,South America,island,Galapagos,Galapagos,Campeon,0,Ecuador,Campeon,6.521,3.292,5.591,9.328,23.75833321,175.4841919,365,65.91323853
+Expedition_58,Expedition,58,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,5.279090909090909,2.8772727272727274,4.533636363636363,6.233636363636363,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_59,Expedition,59,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,6.525454545454545,3.4918181818181817,5.572727272727272,8.477272727272727,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_60,Expedition,60,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,6.315555555555555,3.433333333333333,5.118888888888889,8.596666666666668,24.22916603,149.1408386,171,107.3898468
+Expedition_61,Expedition,61,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,8.056,4.098,5.8580000000000005,12.99,24.22916603,149.1408386,171,107.3898468
+Expedition_62,Expedition,62,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,5.816666666666666,3.1,4.278333333333333,7.923333333333334,24.18661118,148.4244232,184.7118225,104.24897
+Expedition_63,Expedition,63,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,7.114,3.182,4.95,8.954,24.18661118,148.4244232,184.7118225,104.24897
+Expedition_64,Expedition,64,Natural Population,2017,South America,island,Galapagos,Galapagos,Santiago,1,Ecuador,Puerto Egas,7.083285714285714,3.7914285714285714,5.097142857142857,9.944285714285714,24.18661118,148.4244232,184.7118225,104.24897
+Expedition_65,Expedition,65,Natural Population,2017,South America,island,Galapagos,Galapagos,Genovesa,1,Ecuador,Salvaje de corazon,6.608888888888889,3.741111111111111,5.118888888888889,9.124444444444444,24.33749962,148.1879272,261,79.10144806
+Expedition_66,Expedition,66,Natural Population,2017,South America,island,Galapagos,Galapagos,Genovesa,1,Ecuador,Salvaje de corazon,6.055,3.611666666666667,5.1033333333333335,8.415,24.33749962,148.1879272,261,79.10144806
+Expedition_67,Expedition,67,Natural Population,2017,South America,island,Galapagos,Galapagos,Genovesa,1,Ecuador,Salvaje de corazon,6.55,3.25,5.04,6.27,24.33749962,148.1879272,261,79.10144806
+Expedition_68,Expedition,68,Natural Population,2017,South America,island,Galapagos,Galapagos,Genovesa,1,Ecuador,Salvaje de corazon,6.04875,3.31875,4.90125,8.10625,24.33749962,148.1879272,261,79.10144806
+Expedition_69,Expedition,69,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.965,3.841,5.587,10.425,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_70,Expedition,70,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.108235294117647,3.3676470588235294,5.234705882352941,9.213529411764705,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_71,Expedition,71,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.602307692307693,3.2784615384615385,5.348461538461539,9.816923076923077,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_72,Expedition,72,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.099,3.302,5.141,9.966,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_73,Expedition,73,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.491333333333333,3.3586666666666667,5.126,7.83,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_74,Expedition,74,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.085333333333334,3.0933333333333333,5.025333333333333,8.888666666666667,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_75,Expedition,75,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.798461538461538,3.7015384615384614,5.428461538461538,8.875384615384615,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_76,Expedition,76,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,7.2989999999999995,3.522,5.281,10.672,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_77,Expedition,77,Natural Population,2017,South America,island,Galapagos,Galapagos,Rabida,1,Ecuador,Playa Roja,8.287333333333333,3.496,5.309333333333333,9.514,24.01310921,158.3755646,163.9609222,103.9820709
+Expedition_78,Expedition,78,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,7.557777777777778,3.91,5.64,10.541111111111112,23.64365005,179.6233673,471.0172119,80.98109436
+Expedition_79,Expedition,79,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,6.431666666666667,3.4375,4.5841666666666665,7.9383333333333335,23.64365005,179.6233673,471.0172119,80.98109436
+Expedition_80,Expedition,80,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,6.505,3.2976923076923077,5.051153846153846,8.73076923076923,23.64365005,179.6233673,471.0172119,80.98109436
+Expedition_81,Expedition,81,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,6.35375,3.3783333333333334,4.881666666666667,8.86125,23.74166679,179.7831268,501,73.1336441
+Expedition_82,Expedition,82,Natural Population,2017,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Bahia Gardner,5.825555555555556,3.187777777777778,4.9622222222222225,8.252222222222223,23.74166679,179.7831268,501,73.1336441
+Expedition_83,Expedition,83,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,4.229230769230769,2.5015384615384617,4.063846153846153,5.0576923076923075,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_84,Expedition,84,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,4.690666666666667,2.712666666666667,4.200666666666667,6.362,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_85,Expedition,85,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,4.8825,2.6,5.0575,4.785,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_86,Expedition,86,Natural Population,2017,South America,island,Galapagos,Galapagos,San Cristobal,0,Ecuador,Punta Pitt,4.92,2.9,3.8733333333333335,5.823333333333333,24.035326,168.7123108,480.6109314,85.1667099
+Expedition_87,Expedition,87,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,7.951666666666666,3.6,5.653333333333333,12.216666666666667,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_88,Expedition,88,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,7.618571428571428,3.34,5.404285714285714,10.541428571428572,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_89,Expedition,89,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,5.4125,2.6575,4.3,9.1075,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_90,Expedition,90,Natural Population,2017,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Plazas,6.611,2.914,4.986,9.557,24.44219017,168.9272461,189.1096039,107.4477463
+Expedition_91,Expedition,91,Natural Population,2017,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Bahia Seymour,6.846,3.004,4.843,9.008,24.38041878,154.809433,119.1609955,110.5748062
+Expedition_92,Expedition,92,Natural Population,2017,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Bahia Seymour,5.483333333333333,2.75,4.163333333333333,6.866666666666667,24.38041878,154.809433,119.1609955,110.5748062
+Expedition_93,Expedition,93,Natural Population,2017,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Bahia Seymour,6.211,3.723333333333333,5.251666666666667,10.170666666666666,24.38041878,154.809433,119.1609955,110.5748062
+Expedition_94,Expedition,94,Natural Population,2017,South America,island,Galapagos,Galapagos,Seymour Norte,1,Ecuador,Bahia Seymour,5.813225806451613,3.3216129032258066,4.892258064516129,9.427741935483871,24.38041878,154.809433,119.1609955,110.5748062
+Expedition_95,Expedition,95,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,5.481,3.343,4.618,6.823,23.6875,173.1542206,417,61.40105057
+Expedition_96,Expedition,96,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.27,2.7466666666666666,3.453333333333333,5.775555555555555,23.6875,173.1542206,417,61.40105057
+Expedition_97,Expedition,97,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.023,2.848,3.758,5.258,23.6875,173.1542206,417,61.40105057
+Expedition_98,Expedition,98,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.7785714285714285,2.8649999999999998,3.7764285714285712,2.0335714285714284,23.6875,173.1542206,417,61.40105057
+Expedition_99,Expedition,99,Natural Population,2017,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,Post Office,4.64375,2.8449999999999998,4.03625,4.76375,23.6875,173.1542206,417,61.40105057
+Grant collection_117,Grant collection,117,Natural Population,1977,South America,island,Galapagos,Galapagos,Daphne Mayor,1,Ecuador,sector 5D,6.575,3.1041666666666665,5.102777777777778,6.4875,24.35833359,164.7012787,137,102.7628937
+Grant collection_118,Grant collection,118,Natural Population,1977,South America,island,Galapagos,Galapagos,Daphne Mayor,1,Ecuador,sector 20D,4.76595744680851,2.998936170212766,4.445744680851064,NA,24.35833359,164.7012787,137,102.7628937
+Grant collection_119,Grant collection,119,Natural Population,1972,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,130,6.775,3.3625,6.21875,12.2,23.25,179.684082,547,76.27940369
+Grant collection_120,Grant collection,120,Natural Population,1979,South America,island,Galapagos,Galapagos,Espanola,0,Ecuador,Punta Cevallos,6.948387096774193,3.5370967741935484,5.279032258064516,NA,23.762500760000002,180.6569672,497,78.00688934
+Grant collection_121,Grant collection,121,Natural Population,1979,South America,island,Galapagos,Galapagos,Daphne Menor,1,Ecuador,Top of Daphne,6.295238095238095,3.1154761904761905,5.071428571428571,NA,24.36010361,160.3347321,127.6933975,106.6044846
+HUH_1730,HUH,1730,Herbarium,1905,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,NA,6.35,3.4,5.008,NA,24.24369621,129.8865662,245.5090027,92.62779236
+HUH_291,HUH,291,Herbarium,1930,South America,island,Galapagos,Galapagos,Daphne Mayor,1,Ecuador,NA,7.46,3.56,5.02,10,24.35833359,164.7012787,137,102.7628937
+HUH_400,HUH,400,Herbarium,1899,South America,island,Galapagos,Galapagos,Floreana,0,Ecuador,NA,6.32,3.66,5.29,11.45,21.97916603,178.1656189,519,46.81369019
+HUH_54,HUH,54,Herbarium,1923,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,NA,5.5425,4.0575,5.22,0,24.35000038,155.2710266,188,96.07951355
+MOBot_1984525,MOBot,1984525,Herbarium,1964,South America,island,Galapagos,Galapagos,Santa Cruz,1,Ecuador,Academy Bay,6.472,2.786,4.118,10.288,23.87083435,182.3141632,279,86.23344421
+MOBot_2014235,MOBot,2014235,Herbarium,1932,South America,island,Galapagos,Galapagos,Isabela,1,Ecuador,Puerto Villamil,5.58,2.71,4.53,9.78,24.09583282,158.6083984,318,84.72167206
+Sofia_210,Sofia,210,Natural Population,2016,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,Baltra Airport,6.137868852459016,3.2644262295081967,NA,NA,24.31666756,154.6599579,163,104.3817749
+Sofia_212,Sofia,212,Natural Population,2016,South America,island,Galapagos,Galapagos,Baltra,0,Ecuador,Bus stop,5.736868686868687,3.2812121212121212,NA,NA,24.46666718,153.5094299,165,104.6763763
+Florida_215,Florida,215,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,4.796,2.49,3.663,7.66,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_216,Florida,216,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,4.965714285714285,2.664285714285714,3.8842857142857143,8.812857142857144,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_217,Florida,217,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,5.264444444444444,2.1733333333333333,3.9677777777777776,6.941111111111111,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_218,Florida,218,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,4.763333333333334,2.39,3.4766666666666666,8.18,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_219,Florida,219,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,5.576666666666667,2.783333333333333,4.093333333333334,9.6466666666666665,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_220,Florida,220,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,4.897142857142857,2.5985714285714288,3.394285714285714,7.46,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_221,Florida,221,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,6.914666666666667,3.138,4.233333333333333,10.141333333333334,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_222,Florida,222,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,6.565,2.9450000000000003,4.1275,8.3125,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_223,Florida,223,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,5.581578947368421,2.7663157894736843,3.82,7.08421052631579,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_224,Florida,224,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Titusville,5.57,2.89,3.623333333333333,6.7299999999999995,21.89459038,445.8631897,1287.855835,44.63819122
+Florida_225,Florida,225,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,6.007727272727273,2.7304545454545455,4.1463636363636365,7.632727272727273,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_226,Florida,226,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,5.578695652173913,2.9656521739130435,3.917391304347826,8.287826086956521,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_226,Florida,226,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.475,2.898,4.357,8.131,22.95833397,439.7666321,1287,60.65375137
+Florida_227,Florida,227,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,5.342105263157895,2.785263157894737,3.4589473684210525,8.068947368421053,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_227,Florida,227,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.452,2.532,3.958,6.468,22.95833397,439.7666321,1287,60.65375137
+Florida_228,Florida,228,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,4.567777777777778,2.5955555555555554,3.58,5.894444444444445,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_228,Florida,228,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,4.648,2.425,3.884,7.141,22.95833397,439.7666321,1287,60.65375137
+Florida_229,Florida,229,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,5.0975,2.6475,3.9075,8.432500000000001,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_229,Florida,229,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.594,3.175,4.78,8.578,22.95833397,439.7666321,1287,60.65375137
+Florida_230,Florida,230,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,5.88,2.8533333333333335,4.022777777777778,9.961666666666666,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_230,Florida,230,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.202857142857143,2.547142857142857,3.7128571428571426,6.392857142857143,22.95833397,439.7666321,1287,60.65375137
+Florida_231,Florida,231,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Cocoa,4.902,3.126,3.774,7.256,22.42149925,437.4285889,1211.580322,45.12945938
+Florida_231,Florida,231,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.485,3.12,4.2379999999999995,7.664,22.95833397,439.7666321,1287,60.65375137
+Florida_232,Florida,232,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,4.671,2.303,3.502,5.79,22.95833397,439.7666321,1287,60.65375137
+Florida_233,Florida,233,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,4.641,2.189,3.415,6.395,22.95833397,439.7666321,1287,60.65375137
+Florida_234,Florida,234,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,5.728,2.761,4.441,8.682,22.95833397,439.7666321,1287,60.65375137
+Florida_235,Florida,235,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,6.13,2.577,4.154,7.009,22.95833397,439.7666321,1287,60.65375137
+Florida_236,Florida,236,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasoto,6.430000000000001,2.68,4.556666666666667,8.866666666666667,22.95833397,439.7666321,1287,60.65375137
+Florida_237,Florida,237,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,4.432,2.481,3.933,7.636,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_238,Florida,238,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,5.578,3.269,4.31,9.443999999999999,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_239,Florida,239,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,5.663,2.76,4.137,7.657,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_240,Florida,240,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,4.153333333333333,2.535555555555556,3.422222222222222,6.362222222222222,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_241,Florida,241,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,6.189090909090909,3.6472727272727274,5.009090909090909,12.098181818181818,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_242,Florida,242,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,5.21,3.164,4.134,9.595,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_243,Florida,243,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,4.598,3.055,4.322,7.919,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_244,Florida,244,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,4.796,2.7720000000000002,3.782,8.515,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_245,Florida,245,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,5.046,3.173,3.7399999999999998,8.728,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_246,Florida,246,Natural Population,2016,North_Central America,island,other,Boca Grande,NA,NA,USA,Boca Grande,5.361,3.308,4.268,8.885,22.99737358,432.3907776,1245.891846,62.0927887
+Florida_247,Florida,247,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.18,2.815,4.187,7.436999999999999,22.77916718,399.0697021,1285,44.2688179
+Florida_248,Florida,248,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,6.22,2.872,4.297,7.151,22.77916718,399.0697021,1285,44.2688179
+Florida_249,Florida,249,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.813,3.164,4.162,7.397,22.77916718,399.0697021,1285,44.2688179
+Florida_250,Florida,250,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.808,2.876,4.102,7.762,22.77916718,399.0697021,1285,44.2688179
+Florida_251,Florida,251,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.169,3.271,4.273,8.935,22.77916718,399.0697021,1285,44.2688179
+Florida_252,Florida,252,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,6.4879999999999995,3.65,4.828,9.754,22.77916718,399.0697021,1285,44.2688179
+Florida_253,Florida,253,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,6.072,2.63,4.142,8.022,22.77916718,399.0697021,1285,44.2688179
+Florida_254,Florida,254,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.455,3.185,4.164,8.577,22.77916718,399.0697021,1285,44.2688179
+Florida_255,Florida,255,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.268,2.998,4.292,8.284,22.77916718,399.0697021,1285,44.2688179
+Florida_256,Florida,256,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,6.3180000000000005,3.612,4.632,8.906,22.77916718,399.0697021,1285,44.2688179
+Florida_257,Florida,257,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,4.312,2.396,3.789,6.277,22.77916718,399.0697021,1285,44.2688179
+Florida_258,Florida,258,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,6.131,2.739,4.159,8.781,22.77916718,399.0697021,1285,44.2688179
+Florida_259,Florida,259,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Vero Beach,5.468,3.098,4.31,9.384,22.77916718,399.0697021,1285,44.2688179
+Florida_260,Florida,260,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,4.836,2.546,3.984,5.4879999999999995,25.09583282,310.1865845,1120,57.33357239
+Florida_261,Florida,261,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,6.133,2.7640000000000002,4.452,9.683,25.09583282,310.1865845,1120,57.33357239
+Florida_262,Florida,262,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,6.654,3.774,5.207,10.629999999999999,25.09583282,310.1865845,1120,57.33357239
+Florida_263,Florida,263,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,5.6475,2.7475,4.122,7.5005,25.09583282,310.1865845,1120,57.33357239
+Florida_264,Florida,264,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,7.042,3.874,5.054,10.376,25.09583282,310.1865845,1120,57.33357239
+Florida_265,Florida,265,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,5.076,2.769,4.453,8.312,25.09583282,310.1865845,1120,57.33357239
+Florida_266,Florida,266,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,6.779,2.996,4.708,8.826,25.09583282,310.1865845,1120,57.33357239
+Florida_267,Florida,267,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,5.73,2.744,3.94,10.326,25.09583282,310.1865845,1120,57.33357239
+Florida_268,Florida,268,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,5.958,3.338,4.856,8.038,25.09583282,310.1865845,1120,57.33357239
+Florida_269,Florida,269,Natural Population,2016,North_Central America,island,other,Marathon,NA,NA,USA,Marathon,6.764,3.629,4.922,9.962,25.09583282,310.1865845,1120,57.33357239
+Florida_270,Florida,270,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,6.265,3.521,4.769,7.963,23.71249962,361.0535583,1444,42.88787079
+Florida_271,Florida,271,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,4.372,2.565,3.387,7.007,23.71249962,361.0535583,1444,42.88787079
+Florida_272,Florida,272,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,6.357,3.083,4.123,8.178,23.71249962,361.0535583,1444,42.88787079
+Florida_273,Florida,273,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,5.625,3.126,4.045,7.882,23.71249962,361.0535583,1444,42.88787079
+Florida_274,Florida,274,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,6.916,3.198,4.825,9.849,23.71249962,361.0535583,1444,42.88787079
+Florida_275,Florida,275,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,5.224,3.159,4.33,7.9479999999999995,23.71249962,361.0535583,1444,42.88787079
+Florida_276,Florida,276,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,5.554,3.758,4.028,9.868,23.71249962,361.0535583,1444,42.88787079
+Florida_277,Florida,277,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,7.0600000000000005,2.794,4.316,7.53,23.71249962,361.0535583,1444,42.88787079
+Florida_278,Florida,278,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,5.027,2.755,3.872,8.219,23.71249962,361.0535583,1444,42.88787079
+Florida_279,Florida,279,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,6.008,3.252,4.25,10.282,23.71249962,361.0535583,1444,42.88787079
+Florida_280,Florida,280,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,5.668,3.057,4.284,7.727,23.71249962,361.0535583,1444,42.88787079
+Florida_281,Florida,281,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Jupiter,6.612,3.222,4.832,9.438,23.71249962,361.0535583,1444,42.88787079
+Florida_282,Florida,282,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.049,2.687,3.814,8.466000000000001,22.95833397,439.7666321,1287,60.65375137
+Florida_283,Florida,283,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,7.259,3.362,4.382,8.874,22.95833397,439.7666321,1287,60.65375137
+Florida_284,Florida,284,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.104,2.554,3.902,8.763,22.95833397,439.7666321,1287,60.65375137
+Florida_285,Florida,285,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,7.27,3.057,4.533,9.003,22.95833397,439.7666321,1287,60.65375137
+Florida_286,Florida,286,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,5.2940000000000005,2.749,3.88,7.65,22.95833397,439.7666321,1287,60.65375137
+Florida_287,Florida,287,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.767,3.258,4.644,10.551,22.95833397,439.7666321,1287,60.65375137
+Florida_288,Florida,288,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.33,2.859,4.267,8.186,22.95833397,439.7666321,1287,60.65375137
+Florida_289,Florida,289,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.9719999999999995,3.438,4.727,9.279,22.95833397,439.7666321,1287,60.65375137
+Florida_290,Florida,290,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,6.822,2.874,4.225,8.334,22.95833397,439.7666321,1287,60.65375137
+Florida_291,Florida,291,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Sarasota,7.7940000000000005,3.1590000000000003,4.631,8.956,22.95833397,439.7666321,1287,60.65375137
+Florida_292,Florida,292,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,5.558,3.444,4.424,10.088000000000001,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_293,Florida,293,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,5.981,2.778,4.178,8.314,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_294,Florida,294,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,4.622,2.646,4.486,9.234,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_295,Florida,295,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,6.184,3.3735,4.593,9.7035,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_296,Florida,296,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,5.629,2.9699999999999998,4.126,8.26,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_297,Florida,297,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,5.164,2.7279999999999998,3.81,8.412,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_298,Florida,298,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,6.232,3.87,4.847,10.992,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_299,Florida,299,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,5.241,2.863,4.249,8.812,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_300,Florida,300,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Melbourne,6.066,3.616,4.505,11.448,22.61961174,424.1726379,1170.227783,44.43006134
+Florida_301,Florida,301,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Boca Raton,5.236,2.833,3.907,8.322,23.71249962,361.0535583,1444,42.88787079
+Florida_302,Florida,302,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Boca Raton,5.534,2.846,4.476,7.646,23.71249962,361.0535583,1444,42.88787079
+Florida_303,Florida,303,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Boca Raton,5.01,2.8844444444444446,4.197777777777778,9.8966666666666665,23.71249962,361.0535583,1444,42.88787079
+Florida_304,Florida,304,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Boca Raton,5.717,3.204,4.665,8.879,23.71249962,361.0535583,1444,42.88787079
+Florida_305,Florida,305,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.233,2.951,4.2219999999999995,7.276,24.77916718,308.4230957,1172,57.23734665
+Florida_306,Florida,306,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.944,3.321,4.651,8.926,24.77916718,308.4230957,1172,57.23734665
+Florida_307,Florida,307,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.695,2.7760000000000002,4.318,7.167,24.77916718,308.4230957,1172,57.23734665
+Florida_308,Florida,308,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,6.095,3.262,5.1288,9.113,24.77916718,308.4230957,1172,57.23734665
+Florida_309,Florida,309,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.523,3.245,4.479,8.547,24.77916718,308.4230957,1172,57.23734665
+Florida_310,Florida,310,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,7.03,4.168,5.083,10.068,24.77916718,308.4230957,1172,57.23734665
+Florida_311,Florida,311,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.895,2.989,4.355,7.641,24.77916718,308.4230957,1172,57.23734665
+Florida_312,Florida,312,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.726,3.243,4.538,8.515,24.77916718,308.4230957,1172,57.23734665
+Florida_313,Florida,313,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,6.383,3.047,4.53,8.309,24.77916718,308.4230957,1172,57.23734665
+Florida_314,Florida,314,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Travernier,5.182,2.902,4.255,8.445,24.77916718,308.4230957,1172,57.23734665
+Florida_315,Florida,315,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,6.05,3.657,5.087,10.161,23.12083435,380.9942627,1347,41.84912872
+Florida_316,Florida,316,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.414,2.92,4.26,7.74,23.12083435,380.9942627,1347,41.84912872
+Florida_317,Florida,317,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.029,2.8890000000000002,3.906,7.941,23.12083435,380.9942627,1347,41.84912872
+Florida_318,Florida,318,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.633,2.847,4.442,7.058,23.12083435,380.9942627,1347,41.84912872
+Florida_319,Florida,319,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.769,2.683,3.903,7.601,23.12083435,380.9942627,1347,41.84912872
+Florida_320,Florida,320,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,7.172000000000001,3.0869999999999997,4.925,9.358,23.12083435,380.9942627,1347,41.84912872
+Florida_321,Florida,321,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,6.685,2.9939999999999998,4.223,8.355,23.12083435,380.9942627,1347,41.84912872
+Florida_322,Florida,322,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.891,3.041,4.524,8.209,23.12083435,380.9942627,1347,41.84912872
+Florida_323,Florida,323,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.623,2.982,4.217,7.529,23.12083435,380.9942627,1347,41.84912872
+Florida_324,Florida,324,Natural Population,2016,North_Central America,mainland,NA,NA,NA,NA,USA,Fort Pierce,5.467,2.375,3.618,7.079,23.12083435,380.9942627,1347,41.84912872
+MOBot_5035926,MOBot,5035926,Herbarium,1993,South America,mainland,NA,NA,NA,NA,Colombia,Palmira,5.62,2.65,3.57,6.55,23.450000760000002,28.68321991,2015,35.80854416
+MOBot_5035926,MOBot,5035926,Herbarium,1993,South America,mainland,NA,NA,NA,NA,Colombia,Palmira,5.75,2.06,3.51,6.19,23.450000760000002,28.68321991,2015,35.80854416
+MOBot_5035926,MOBot,5035926,Herbarium,1993,South America,mainland,NA,NA,NA,NA,Colombia,Palmira,5.68,2.54,3.72,6.7,23.450000760000002,28.68321991,2015,35.80854416
+MOBot_5035926,MOBot,5035926,Herbarium,1993,South America,mainland,NA,NA,NA,NA,Colombia,Palmira,5.46,2.38,3.46,5.97,23.450000760000002,28.68321991,2015,35.80854416
+MOBot_5035926,MOBot,5035926,Herbarium,1993,South America,mainland,NA,NA,NA,NA,Colombia,Palmira,5.51,2.34,3.47,6.13,23.450000760000002,28.68321991,2015,35.80854416
+MOBot_2916321,MOBot,2916321,Herbarium,1973,South America,mainland,NA,NA,NA,NA,Venezuela,"Maracay, Aragua",6.91,2.88,4.78,9.09,24.89583397,64.47193146,973,36.3166008
+MOBot_2916321,MOBot,2916321,Herbarium,1973,South America,mainland,NA,NA,NA,NA,Venezuela,"Maracay, Aragua",7.47,3.42,4.66,10.72,24.89583397,64.47193146,973,36.3166008
+MOBot_2916321,MOBot,2916321,Herbarium,1973,South America,mainland,NA,NA,NA,NA,Venezuela,"Maracay, Aragua",5.93,2.4,4.12,8.76,24.89583397,64.47193146,973,36.3166008
+MOBot_2916321,MOBot,2916321,Herbarium,1973,South America,mainland,NA,NA,NA,NA,Venezuela,"Maracay, Aragua",7.62,2.88,4.49,9.41,24.89583397,64.47193146,973,36.3166008
+MOBot_2916321,MOBot,2916321,Herbarium,1973,South America,mainland,NA,NA,NA,NA,Venezuela,"Maracay, Aragua",7.34,3.04,4.7,10.45,24.89583397,64.47193146,973,36.3166008
+MOBot_3335114,MOBot,3335114,Herbarium,1982,South America,mainland,NA,NA,NA,NA,Venezuela,"Quibor, Lara",4.96,2.87,4.45,6.09,24.66250038,48.3888092,1002,63.78268051
+MOBot_3335114,MOBot,3335114,Herbarium,1982,South America,mainland,NA,NA,NA,NA,Venezuela,"Quibor, Lara",4.25,2.56,3.99,5.33,24.66250038,48.3888092,1002,63.78268051
+MOBot_3335114,MOBot,3335114,Herbarium,1982,South America,mainland,NA,NA,NA,NA,Venezuela,"Quibor, Lara",4.57,2.8,4.22,5.65,24.66250038,48.3888092,1002,63.78268051
+MOBot_3335114,MOBot,3335114,Herbarium,1982,South America,mainland,NA,NA,NA,NA,Venezuela,"Quibor, Lara",3.83,1.92,3.47,4.19,24.66250038,48.3888092,1002,63.78268051
+MOBot_3335114,MOBot,3335114,Herbarium,1982,South America,mainland,NA,NA,NA,NA,Venezuela,"Quibor, Lara",4.59,2.61,4.1,5.49,24.66250038,48.3888092,1002,63.78268051
+MOBot_3335112,MOBot,3335112,Herbarium,1975,South America,mainland,NA,NA,NA,NA,Venezuela,Distrito Federal,4.62,2.42,3.35,6.85,21.012500760000002,83.85932159,902,50.61662292
+MOBot_3335112,MOBot,3335112,Herbarium,1975,South America,mainland,NA,NA,NA,NA,Venezuela,Distrito Federal,4.94,3.26,3.26,7.71,21.012500760000002,83.85932159,902,50.61662292
+MOBot_3335112,MOBot,3335112,Herbarium,1975,South America,mainland,NA,NA,NA,NA,Venezuela,Distrito Federal,6.13,3.04,4.36,NA,21.012500760000002,83.85932159,902,50.61662292
+MOBot_3335112,MOBot,3335112,Herbarium,1975,South America,mainland,NA,NA,NA,NA,Venezuela,Distrito Federal,5.77,2.69,4.25,8.7,21.012500760000002,83.85932159,902,50.61662292
+MOBot_3335112,MOBot,3335112,Herbarium,1975,South America,mainland,NA,NA,NA,NA,Venezuela,Distrito Federal,5.23,2.23,2.87,6.24,21.012500760000002,83.85932159,902,50.61662292
+MOBot_2926391,MOBot,2926391,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Peninsula de Araya, Sucre",6.88,3.5,5.32,12.45,27.0625,73.55040741,662,73.54502106
+MOBot_2926391,MOBot,2926391,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Peninsula de Araya, Sucre",7.77,3.87,5.56,13.1,27.0625,73.55040741,662,73.54502106
+MOBot_2926391,MOBot,2926391,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Peninsula de Araya, Sucre",4.87,2.45,4.27,NA,27.0625,73.55040741,662,73.54502106
+MOBot_2926391,MOBot,2926391,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Peninsula de Araya, Sucre",6.3,3.74,4.97,11.76,27.0625,73.55040741,662,73.54502106
+MOBot_2926391,MOBot,2926391,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Peninsula de Araya, Sucre",7.02,3.22,4.05,14.97,27.0625,73.55040741,662,73.54502106
+MOBot_2777229,MOBot,2777229,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,Estado Tachira,5.36,3.35,5.22,8.98,17.387500760000002,52.48918915,1244,43.68263626
+MOBot_2777229,MOBot,2777229,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,Estado Tachira,5.32,3.01,4.75,9.18,17.387500760000002,52.48918915,1244,43.68263626
+MOBot_2777229,MOBot,2777229,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,Estado Tachira,5.33,2.54,4.73,9.26,17.387500760000002,52.48918915,1244,43.68263626
+MOBot_2777229,MOBot,2777229,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,Estado Tachira,5.28,3.24,4.54,9.32,17.387500760000002,52.48918915,1244,43.68263626
+MOBot_2777229,MOBot,2777229,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,Estado Tachira,4.45,2.47,4.23,7.88,17.387500760000002,52.48918915,1244,43.68263626
+MOBot_2168414,MOBot,2168414,Herbarium,1966,South America,island,other,Isla de Salamanca,NA,NA,Colombia,Isla de Salamanca,4.95,2.83,3.71,6.92,28.075000760000002,45.8009758,795,70.08271027
+MOBot_2168414,MOBot,2168414,Herbarium,1966,South America,island,other,Isla de Salamanca,NA,NA,Colombia,Isla de Salamanca,4.04,1.9,2.98,3.71,28.075000760000002,45.8009758,795,70.08271027
+MOBot_2168414,MOBot,2168414,Herbarium,1966,South America,island,other,Isla de Salamanca,NA,NA,Colombia,Isla de Salamanca,2.54,1.84,2.56,4.63,28.075000760000002,45.8009758,795,70.08271027
+MOBot_2168414,MOBot,2168414,Herbarium,1966,South America,island,other,Isla de Salamanca,NA,NA,Colombia,Isla de Salamanca,3.18,1.91,3.16,4.69,28.075000760000002,45.8009758,795,70.08271027
+MOBot_2168414,MOBot,2168414,Herbarium,1966,South America,island,other,Isla de Salamanca,NA,NA,Colombia,Isla de Salamanca,3.35,1.82,2.82,4.67,28.075000760000002,45.8009758,795,70.08271027
+MOBot_2918132,MOBot,2918132,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Peru,"Chilete-Magdalena, Cajamarca",6.6,2.45,4.31,8.51,20.737499239999998,110.6412048,226,116.370903
+MOBot_2918132,MOBot,2918132,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Peru,"Chilete-Magdalena, Cajamarca",6.59,2.55,4.72,6.06,20.737499239999998,110.6412048,226,116.370903
+MOBot_2918132,MOBot,2918132,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Peru,"Chilete-Magdalena, Cajamarca",5.21,1.98,3.58,7.31,20.737499239999998,110.6412048,226,116.370903
+MOBot_2918132,MOBot,2918132,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Peru,"Chilete-Magdalena, Cajamarca",4.81,1.61,3.19,NA,20.737499239999998,110.6412048,226,116.370903
+MOBot_1974312,MOBot,1974312,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Colombia,"Dept Atlántico, Sabanilla",5.39,2.53,3.97,7.8,27.887500760000002,53.7301712,852,79.2164917
+MOBot_1974312,MOBot,1974312,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Colombia,"Dept Atlántico, Sabanilla",5.13,1.98,3.83,6.34,27.887500760000002,53.7301712,852,79.2164917
+MOBot_1974312,MOBot,1974312,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Colombia,"Dept Atlántico, Sabanilla",4.91,2.23,3.78,7.41,27.887500760000002,53.7301712,852,79.2164917
+MOBot_1974312,MOBot,1974312,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Colombia,"Dept Atlántico, Sabanilla",5.02,2.37,4.09,7.6,27.887500760000002,53.7301712,852,79.2164917
+MOBot_1974312,MOBot,1974312,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Colombia,"Dept Atlántico, Sabanilla",4.86,2.38,3.77,5.56,27.887500760000002,53.7301712,852,79.2164917
+MOBot_2473269,MOBot,2473269,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Venezuela,36km SW of Mérida,5.99,2.78,4.6,7.28,20.55416679,48.31049347,1229,46.87062073
+MOBot_2473269,MOBot,2473269,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Venezuela,36km SW of Mérida,6.86,2.93,5.15,8.43,20.55416679,48.31049347,1229,46.87062073
+MOBot_2473269,MOBot,2473269,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Venezuela,36km SW of Mérida,5.62,2.73,4.46,7.19,20.55416679,48.31049347,1229,46.87062073
+MOBot_2473269,MOBot,2473269,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Venezuela,36km SW of Mérida,6.5,3.18,5.03,9.26,20.55416679,48.31049347,1229,46.87062073
+MOBot_2473269,MOBot,2473269,Herbarium,1963,South America,mainland,NA,NA,NA,NA,Venezuela,36km SW of Mérida,6.44,2.89,4.41,7.46,20.55416679,48.31049347,1229,46.87062073
+MOBot_3761078,MOBot,3761078,Herbarium,1989,South America,mainland,NA,NA,NA,NA,Venezuela,"Mun. Vargas, Distrito Federal",4.69,2.43,3.8,5.67,22.15416718,94.25445557,1081,56.90304565
+MOBot_3761078,MOBot,3761078,Herbarium,1989,South America,mainland,NA,NA,NA,NA,Venezuela,"Mun. Vargas, Distrito Federal",3.92,2.4,3.19,6.22,22.15416718,94.25445557,1081,56.90304565
+MOBot_3761078,MOBot,3761078,Herbarium,1989,South America,mainland,NA,NA,NA,NA,Venezuela,"Mun. Vargas, Distrito Federal",4.6,2.56,3.73,5.9,22.15416718,94.25445557,1081,56.90304565
+MOBot_3655817,MOBot,3655817,Herbarium,1984,South America,mainland,NA,NA,NA,NA,Venezuela,"Dtt Federal, Dpto Vargas",6.04,3.12,4.33,NA,22.15416718,94.25445557,1081,56.90304565
+MOBot_3655817,MOBot,3655817,Herbarium,1984,South America,mainland,NA,NA,NA,NA,Venezuela,"Dtt Federal, Dpto Vargas",6.88,3.24,3.03,NA,22.15416718,94.25445557,1081,56.90304565
+MOBot_3655817,MOBot,3655817,Herbarium,1984,South America,mainland,NA,NA,NA,NA,Venezuela,"Dtt Federal, Dpto Vargas",6.48,2.24,4.67,7.94,22.15416718,94.25445557,1081,56.90304565
+MOBot_3903343,MOBot,3903343,Herbarium,1980,South America,mainland,NA,NA,NA,NA,Venezuela,Cerro Chichiriviche,4.78,2.62,3.5,10.19,27.0625,58.93467712,734,54.8670311
+MOBot_3903343,MOBot,3903343,Herbarium,1980,South America,mainland,NA,NA,NA,NA,Venezuela,Cerro Chichiriviche,3.27,1.97,3.32,7.84,27.0625,58.93467712,734,54.8670311
+MOBot_3903343,MOBot,3903343,Herbarium,1980,South America,mainland,NA,NA,NA,NA,Venezuela,Cerro Chichiriviche,5.45,2.67,3.83,10.92,27.0625,58.93467712,734,54.8670311
+MOBot_3903343,MOBot,3903343,Herbarium,1980,South America,mainland,NA,NA,NA,NA,Venezuela,Cerro Chichiriviche,5.42,2.65,3.75,9.76,27.0625,58.93467712,734,54.8670311
+MOBot_3903343,MOBot,3903343,Herbarium,1980,South America,mainland,NA,NA,NA,NA,Venezuela,Cerro Chichiriviche,4.43,2.18,2.97,9.02,27.0625,58.93467712,734,54.8670311
+MOBot_3655802,MOBot,3655802,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto Federal, Los Chaguaramos",5.83,3.29,3.95,10.54,21.96666718,86.45371246,782,52.82732773
+MOBot_3655802,MOBot,3655802,Herbarium,1981,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto Federal, Los Chaguaramos",5.87,2.73,3.63,7.56,21.96666718,86.45371246,782,52.82732773
+MOBot_5695338,MOBot,5695338,Herbarium,1984,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto Federo, Dpto Vargas",4.72,3.35,4.26,8.43,22.15416718,94.25445557,1081,56.90304565
+MOBot_5695338,MOBot,5695338,Herbarium,1984,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto Federo, Dpto Vargas",5.63,3.83,4.22,8.61,22.15416718,94.25445557,1081,56.90304565
+MOBot_2920135,MOBot,2920135,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto. Mara, Lago de Maracaibo",6.41,3.27,5.5,7.9,28.03333282,73.43312073,825,80.02126312
+MOBot_2920135,MOBot,2920135,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto. Mara, Lago de Maracaibo",4.78,2.48,3.68,NA,28.03333282,73.43312073,825,80.02126312
+MOBot_2920135,MOBot,2920135,Herbarium,1979,South America,mainland,NA,NA,NA,NA,Venezuela,"Dto. Mara, Lago de Maracaibo",5.82,3.23,4.92,NA,28.03333282,73.43312073,825,80.02126312
+MOBot_2809643,MOBot,2809643,Herbarium,1975,North_Central America,island,other,"Munro Co., Big Coppett Key, Monroe Co",NA,NA,USA,"Munro Co., Big Coppett Key, Monroe Co",9.83,4.35,6.48,12.01,25.19583321,299.3208923,1039,46.96662903
+MOBot_2809643,MOBot,2809643,Herbarium,1975,North_Central America,island,other,"Munro Co., Big Coppett Key, Monroe Co",NA,NA,USA,"Munro Co., Big Coppett Key, Monroe Co",5.39,2.24,3.99,4.95,25.19583321,299.3208923,1039,46.96662903
+MOBot_2809643,MOBot,2809643,Herbarium,1975,North_Central America,island,other,"Munro Co., Big Coppett Key, Monroe Co",NA,NA,USA,"Munro Co., Big Coppett Key, Monroe Co",9.53,4.03,6.23,12.58,25.19583321,299.3208923,1039,46.96662903
+MOBot_2809643,MOBot,2809643,Herbarium,1975,North_Central America,island,other,"Munro Co., Big Coppett Key, Monroe Co",NA,NA,USA,"Munro Co., Big Coppett Key, Monroe Co",7.94,3.37,5.54,11.8,25.19583321,299.3208923,1039,46.96662903
+MOBot_2809643,MOBot,2809643,Herbarium,1975,North_Central America,island,other,"Munro Co., Big Coppett Key, Monroe Co",NA,NA,USA,"Munro Co., Big Coppett Key, Monroe Co",6.33,2.46,4.69,7.61,25.19583321,299.3208923,1039,46.96662903
+MOBot_1734712,MOBot,1734712,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,Florida,5.99,3.35,4.17,8.99,22.41666603,438.5530701,1230,58.85218048
+MOBot_1734712,MOBot,1734712,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,Florida,4.16,2.05,2.97,2.9,22.41666603,438.5530701,1230,58.85218048
+MOBot_1734712,MOBot,1734712,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,Florida,6.64,3.44,4.73,9.95,22.41666603,438.5530701,1230,58.85218048
+MOBot_1734712,MOBot,1734712,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,Florida,5.72,3.17,4.31,9.1,22.41666603,438.5530701,1230,58.85218048
+MOBot_1734712,MOBot,1734712,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,Florida,5.94,2.96,4.22,6.44,22.41666603,438.5530701,1230,58.85218048
+MOBot_1974094,MOBot,1974094,Herbarium,1968,North_Central America,island,other,"Key Biscayne, Dade Co, Florida",NA,NA,USA,"Key Biscayne, Dade Co, Florida",4.61,2.31,4.2,5.96,24.08333397,316.8763428,1463,57.11738205
+MOBot_1974094,MOBot,1974094,Herbarium,1968,North_Central America,island,other,"Key Biscayne, Dade Co, Florida",NA,NA,USA,"Key Biscayne, Dade Co, Florida",6.54,2.8,3.92,8.52,24.08333397,316.8763428,1463,57.11738205
+MOBot_1974094,MOBot,1974094,Herbarium,1968,North_Central America,island,other,"Key Biscayne, Dade Co, Florida",NA,NA,USA,"Key Biscayne, Dade Co, Florida",6.8,3.79,4.72,9.25,24.08333397,316.8763428,1463,57.11738205
+MOBot_1974094,MOBot,1974094,Herbarium,1968,North_Central America,island,other,"Key Biscayne, Dade Co, Florida",NA,NA,USA,"Key Biscayne, Dade Co, Florida",5.97,3.78,4.72,NA,24.08333397,316.8763428,1463,57.11738205
+MOBot_2088230,MOBot,2088230,Herbarium,1971,North_Central America,mainland,NA,NA,NA,NA,USA,"Palmetto Park, Palm Beach, Florida",6.08,3.18,4.06,8.65,24.25,317.4185486,1462,60.0095787
+MOBot_2088230,MOBot,2088230,Herbarium,1971,North_Central America,mainland,NA,NA,NA,NA,USA,"Palmetto Park, Palm Beach, Florida",8.87,3.83,5.38,10.72,24.25,317.4185486,1462,60.0095787
+MOBot_2088230,MOBot,2088230,Herbarium,1971,North_Central America,mainland,NA,NA,NA,NA,USA,"Palmetto Park, Palm Beach, Florida",5.65,2.23,4.39,8.89,24.25,317.4185486,1462,60.0095787
+MOBot_2088230,MOBot,2088230,Herbarium,1971,North_Central America,mainland,NA,NA,NA,NA,USA,"Palmetto Park, Palm Beach, Florida",7.56,2.74,4.25,9.5,24.25,317.4185486,1462,60.0095787
+MOBot_2088230,MOBot,2088230,Herbarium,1971,North_Central America,mainland,NA,NA,NA,NA,USA,"Palmetto Park, Palm Beach, Florida",6.1,2.74,3.5,5.7,24.25,317.4185486,1462,60.0095787
+MOBot_1895319,MOBot,1895319,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Key West, Florida",10.37,3.19,5.84,12.47,25.12916565,303.071106,1018,44.26023102
+MOBot_1895319,MOBot,1895319,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Key West, Florida",6.69,2.65,3.86,NA,25.12916565,303.071106,1018,44.26023102
+MOBot_1895319,MOBot,1895319,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Key West, Florida",9.83,3.1,5.84,10.15,25.12916565,303.071106,1018,44.26023102
+MOBot_1895319,MOBot,1895319,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Key West, Florida",5.71,1.83,3.48,6.45,25.12916565,303.071106,1018,44.26023102
+MOBot_1895319,MOBot,1895319,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Key West, Florida",7.29,2.33,3.87,NA,25.12916565,303.071106,1018,44.26023102
+MOBot_2574392,MOBot,2574392,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Dar es Salaam, Ras Chokir",4.88,2.77,5.22,12.44,25.86666679,151.8272705,1081,72.9471283
+MOBot_2574392,MOBot,2574392,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Dar es Salaam, Ras Chokir",5.02,3.48,5.59,12.24,25.86666679,151.8272705,1081,72.9471283
+MOBot_2574392,MOBot,2574392,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Dar es Salaam, Ras Chokir",5.41,5.27,5.85,12.15,25.86666679,151.8272705,1081,72.9471283
+MOBot_2574392,MOBot,2574392,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Dar es Salaam, Ras Chokir",5.31,5.11,6.51,13.57,25.86666679,151.8272705,1081,72.9471283
+MOBot_2574392,MOBot,2574392,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Dar es Salaam, Ras Chokir",6.72,3.57,5.8,11.84,25.86666679,151.8272705,1081,72.9471283
+MOBot_2574435,MOBot,2574435,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Mbigiri, South of Mto Kama",7.17,5.75,6.95,14.11,20.64999962,172.4818878,649,88.2899704
+MOBot_2574435,MOBot,2574435,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Mbigiri, South of Mto Kama",6.1,5.15,6.45,13.94,20.64999962,172.4818878,649,88.2899704
+MOBot_2574435,MOBot,2574435,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Mbigiri, South of Mto Kama",7.07,5.27,7.18,13.7,20.64999962,172.4818878,649,88.2899704
+MOBot_2574435,MOBot,2574435,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Mbigiri, South of Mto Kama",7.69,5.46,7.07,15.05,20.64999962,172.4818878,649,88.2899704
+MOBot_2574435,MOBot,2574435,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,"Mbigiri, South of Mto Kama",7.6,6.18,7.41,14.53,20.64999962,172.4818878,649,88.2899704
+MOBot_1621366,MOBot,1621366,Herbarium,1873,Africa,island,other,Cape Verde Islands,NA,NA,Cape Verde Islands,Cape Verde Islands,8.28,3.68,5.26,6.04,22.29166603,149.9520264,273,156.8783875
+MOBot_1621366,MOBot,1621366,Herbarium,1873,Africa,island,other,Cape Verde Islands,NA,NA,Cape Verde Islands,Cape Verde Islands,7.26,4.19,5.36,6.73,22.29166603,149.9520264,273,156.8783875
+MOBot_1621366,MOBot,1621366,Herbarium,1873,Africa,island,other,Cape Verde Islands,NA,NA,Cape Verde Islands,Cape Verde Islands,7.69,4.07,5.66,NA,22.29166603,149.9520264,273,156.8783875
+MOBot_2265147,MOBot,2265147,Herbarium,1970,Africa,mainland,NA,NA,NA,NA,Sudan,SE Extreme Ilemi Triangle,2.82,2.18,2.85,4.36,26.42083359,80.74817657,1078,40.40622711
+MOBot_1648141,MOBot,1648141,Herbarium,1952,Africa,mainland,NA,NA,NA,NA,Uganda,Karamoga,5.19,2.81,4.21,8.69,23.01666641,101.429184,760,56.4405899
+MOBot_1648141,MOBot,1648141,Herbarium,1952,Africa,mainland,NA,NA,NA,NA,Uganda,Karamoga,5.53,2.93,4.08,9.13,23.01666641,101.429184,760,56.4405899
+MOBot_1648141,MOBot,1648141,Herbarium,1952,Africa,mainland,NA,NA,NA,NA,Uganda,Karamoga,6.05,3.53,4.89,9.29,23.01666641,101.429184,760,56.4405899
+MOBot_1648141,MOBot,1648141,Herbarium,1952,Africa,mainland,NA,NA,NA,NA,Uganda,Karamoga,5.64,2.76,4.23,8.98,23.01666641,101.429184,760,56.4405899
+MOBot_1648141,MOBot,1648141,Herbarium,1952,Africa,mainland,NA,NA,NA,NA,Uganda,Karamoga,5.54,2.79,4.04,7.6,23.01666641,101.429184,760,56.4405899
+MOBot_1608800,MOBot,1608800,Herbarium,1950,Africa,mainland,NA,NA,NA,NA,Sierra Leone,NA,5.11,3.42,5.61,10.76,26.174999239999998,100.3969193,2775,88.71559906
+MOBot_1608800,MOBot,1608800,Herbarium,1950,Africa,mainland,NA,NA,NA,NA,Sierra Leone,NA,5.76,5.46,6.78,14.04,26.174999239999998,100.3969193,2775,88.71559906
+MOBot_1608800,MOBot,1608800,Herbarium,1950,Africa,mainland,NA,NA,NA,NA,Sierra Leone,NA,6.78,5.48,6.54,15.82,26.174999239999998,100.3969193,2775,88.71559906
+MOBot_1608800,MOBot,1608800,Herbarium,1950,Africa,mainland,NA,NA,NA,NA,Sierra Leone,NA,6.63,4.55,5.92,13.3,26.174999239999998,100.3969193,2775,88.71559906
+MOBot_1608800,MOBot,1608800,Herbarium,1950,Africa,mainland,NA,NA,NA,NA,Sierra Leone,NA,6.14,3.75,5.47,9.32,26.174999239999998,100.3969193,2775,88.71559906
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.9,1.3,1.94,6.07,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.9,1.3,1.94,6.07,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.9,1.3,1.94,6.07,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",6.01,2.84,4.65,8.9,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",6.01,2.84,4.65,8.9,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",6.01,2.84,4.65,8.9,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",3.49,2.01,2.75,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",3.49,2.01,2.75,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",3.49,2.01,2.75,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.26,2.11,3.41,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.26,2.11,3.41,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.26,2.11,3.41,6.14,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.55,2.18,3.05,6.89,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.55,2.18,3.05,6.89,28.125,51.2790947,718,74.13956451
+HUH_1275,HUH,1275,Herbarium,1946,South America,mainland,NA,NA,NA,NA,Colombia,"Magdelana, Santa Marta, sea level",4.55,2.18,3.05,6.89,28.125,51.2790947,718,74.13956451
+HUH_10180,HUH,10180,Herbarium,1922,South America,mainland,NA,NA,NA,NA,Venezuela,Playa de Cabo Blanco,8.29,2.6,4.71,9.62,27.06666756,81.80721283,765,42.28556442
+HUH_10180,HUH,10180,Herbarium,1922,South America,mainland,NA,NA,NA,NA,Venezuela,Playa de Cabo Blanco,8.29,2.6,4.71,9.62,27.06666756,81.80721283,765,42.28556442
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",8.57,2.47,5.24,NA,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",8.57,2.47,5.24,NA,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",10.29,2.31,5.42,10.56,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",10.29,2.31,5.42,10.56,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",9.17,3.37,4.93,10.47,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",9.17,3.37,4.93,10.47,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",10.68,3.23,5.91,NA,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",10.68,3.23,5.91,NA,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",9.05,2.86,5.1,11.1,25.137500760000002,302.3327942,1017,44.99079895
+HUH_5654,HUH,5654,Herbarium,1896,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",9.05,2.86,5.1,11.1,25.137500760000002,302.3327942,1017,44.99079895
+HUH_2177758,HUH,2177758,Herbarium,1877,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",6.69,2.88,5.06,5.51,25.12916565,303.071106,1018,44.26023102
+HUH_2177758,HUH,2177758,Herbarium,1877,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",9.12,5.34,6.85,8.18,25.12916565,303.071106,1018,44.26023102
+HUH_2177758,HUH,2177758,Herbarium,1877,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",7.44,3.36,5.38,5.68,25.12916565,303.071106,1018,44.26023102
+HUH_2177758,HUH,2177758,Herbarium,1877,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",8.65,4.91,6.74,8.88,25.12916565,303.071106,1018,44.26023102
+HUH_2177758,HUH,2177758,Herbarium,1877,North_Central America,island,other,"Key West, Florida",NA,NA,USA,"Florida, Key West",7.95,4.02,5.85,8.1,25.12916565,303.071106,1018,44.26023102
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",6.92,3.91,4.69,10.02,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",6.92,3.91,4.69,10.02,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",6.92,3.91,4.69,10.02,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",7.49,4.04,5.53,10.88,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",7.49,4.04,5.53,10.88,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",7.49,4.04,5.53,10.88,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",8.46,3.89,5.22,10.57,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",8.46,3.89,5.22,10.57,13.57916641,753.930481,1573,16.02948189
+HUH_28603,HUH,28603,Herbarium,1948,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Dade County",8.46,3.89,5.22,10.57,13.57916641,753.930481,1573,16.02948189
+HUH_4776,HUH,4776,Herbarium,1956,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach County",4.9,2.45,4.01,6.96,24.06666565,350.2228699,1495,43.52888489
+HUH_4776,HUH,4776,Herbarium,1956,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach County",7.38,3.23,4.71,8.67,24.06666565,350.2228699,1495,43.52888489
+HUH_4776,HUH,4776,Herbarium,1956,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach County",7.38,3.06,4.78,9.1,24.06666565,350.2228699,1495,43.52888489
+HUH_4776,HUH,4776,Herbarium,1956,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach County",4.95,2.81,4.26,6.51,24.06666565,350.2228699,1495,43.52888489
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",5.97,4.04,4.93,10.14,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",5.97,4.04,4.93,10.14,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",5.97,4.04,4.93,10.14,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.46,4,5.53,11.74,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.46,4,5.53,11.74,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.46,4,5.53,11.74,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.19,3.57,4.95,10.33,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.19,3.57,4.95,10.33,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.19,3.57,4.95,10.33,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.95,4.55,6.57,15.5,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.95,4.55,6.57,15.5,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",6.95,4.55,6.57,15.5,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",8.11,4.3,5.45,12.16,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",8.11,4.3,5.45,12.16,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_415,HUH,415,Herbarium,1950,North_Central America,island,other,"Florida, India Key",NA,NA,USA,"Florida, India Key",8.11,4.3,5.45,12.16,23.78600693,354.2579041,1266.578125,71.10723877
+HUH_24953,HUH,24953,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach Co., Juno Beach",5.45,3.31,4.68,10.62,23.71249962,357.3267212,1456,43.75651932
+HUH_24953,HUH,24953,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach Co., Juno Beach",7.38,3.7,5.16,10.85,23.71249962,357.3267212,1456,43.75651932
+HUH_24953,HUH,24953,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach Co., Juno Beach",5.04,2.79,3.85,8.02,23.71249962,357.3267212,1456,43.75651932
+HUH_24953,HUH,24953,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,USA,"Florida, Palm Beach Co., Juno Beach",4.6,3.49,4.63,10.62,23.71249962,357.3267212,1456,43.75651932
+HUH_3818,HUH,3818,Herbarium,1903,North_Central America,mainland,NA,NA,NA,NA,Mexico,Merida de Yucatan,7.51,2.6,4.28,NA,26.44583321,193.2315826,960,68.49551392
+HUH_3818,HUH,3818,Herbarium,1903,North_Central America,mainland,NA,NA,NA,NA,Mexico,Merida de Yucatan,7.44,2.92,4.59,NA,26.44583321,193.2315826,960,68.49551392
+HUH_3818,HUH,3818,Herbarium,1903,North_Central America,mainland,NA,NA,NA,NA,Mexico,Merida de Yucatan,8.12,3.51,4.96,7.84,26.44583321,193.2315826,960,68.49551392
+HUH_497,HUH,497,Herbarium,1940,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Michoacan, Rio Apatzingan,2mi. S of Apatzingan",5.46,2.49,3.75,5.17,26.02916718,161.5473328,936,108.0508881
+HUH_497,HUH,497,Herbarium,1940,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Michoacan, Rio Apatzingan,2mi. S of Apatzingan",4.59,1.59,2.89,3.3,26.02916718,161.5473328,936,108.0508881
+HUH_497,HUH,497,Herbarium,1940,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Michoacan, Rio Apatzingan,2mi. S of Apatzingan",5.09,1.62,2.54,4.32,26.02916718,161.5473328,936,108.0508881
+HUH_497,HUH,497,Herbarium,1940,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Michoacan, Rio Apatzingan,2mi. S of Apatzingan",5.48,2.55,4.1,5.95,26.02916718,161.5473328,936,108.0508881
+HUH_497,HUH,497,Herbarium,1940,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Michoacan, Rio Apatzingan,2mi. S of Apatzingan",5.5,2.36,3.98,6.46,26.02916718,161.5473328,936,108.0508881
+HUH_393,HUH,393,Herbarium,1897,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,9.4,4.88,7.45,15.01,20.68333435,218.9887238,490,103.4655075
+HUH_393,HUH,393,Herbarium,1897,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.08,3.51,5.44,9.04,20.68333435,218.9887238,490,103.4655075
+HUH_393,HUH,393,Herbarium,1897,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.92,4.27,6.1,NA,20.68333435,218.9887238,490,103.4655075
+HUH_393,HUH,393,Herbarium,1897,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,10.3,4.26,6.69,NA,20.68333435,218.9887238,490,103.4655075
+HUH_393,HUH,393,Herbarium,1897,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,9.19,4.02,5.78,12.31,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.04,3.45,5.65,7.62,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.04,3.45,5.65,7.62,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.04,3.45,5.65,7.62,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.03,3.71,5.46,7.49,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.03,3.71,5.46,7.49,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.03,3.71,5.46,7.49,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.99,4.12,6.06,10.84,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.99,4.12,6.06,10.84,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.99,4.12,6.06,10.84,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.83,4.33,6.44,11.61,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.83,4.33,6.44,11.61,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,6.83,4.33,6.44,11.61,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.64,4.63,6.88,11.15,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.64,4.63,6.88,11.15,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.64,4.63,6.88,11.15,20.68333435,218.9887238,490,103.4655075
+HUH_1318,HUH,1318,Herbarium,1963,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Estado de Guerrero, upper part of Cañon del Zopilote",6.65,2.94,4.84,NA,27.39583397,160.4320831,1187,112.6011734
+HUH_1318,HUH,1318,Herbarium,1963,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Estado de Guerrero, upper part of Cañon del Zopilote",6.73,3.76,5.04,6.36,27.39583397,160.4320831,1187,112.6011734
+HUH_1318,HUH,1318,Herbarium,1963,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Estado de Guerrero, upper part of Cañon del Zopilote",7.41,3.42,5.1,8.34,27.39583397,160.4320831,1187,112.6011734
+HUH_1318,HUH,1318,Herbarium,1963,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Estado de Guerrero, upper part of Cañon del Zopilote",6.82,2.1,3.66,NA,27.39583397,160.4320831,1187,112.6011734
+HUH_1318,HUH,1318,Herbarium,1963,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Estado de Guerrero, upper part of Cañon del Zopilote",6.27,2.35,3.88,5.32,27.39583397,160.4320831,1187,112.6011734
+HUH_1460,HUH,1460,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Vera Cruz, N of port in sand dunes",7.4,4.03,5.68,9.51,25.57499886,222.3991089,1423,98.06166077
+HUH_1460,HUH,1460,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Vera Cruz, N of port in sand dunes",5.39,3.17,4.03,9.51,25.57499886,222.3991089,1423,98.06166077
+HUH_1460,HUH,1460,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Vera Cruz, N of port in sand dunes",6.33,3.7,4.92,9.13,25.57499886,222.3991089,1423,98.06166077
+HUH_1460,HUH,1460,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Vera Cruz, N of port in sand dunes",7.85,4.2,5.82,8.63,25.57499886,222.3991089,1423,98.06166077
+HUH_1460,HUH,1460,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Vera Cruz, N of port in sand dunes",7.41,4.04,5.82,9.28,25.57499886,222.3991089,1423,98.06166077
+HUH_895,HUH,895,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Veracruz, Veracruz",6.23,2.03,3.56,NA,25.76666641,226.8894043,1495,100.4749985
+HUH_895,HUH,895,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Veracruz, Veracruz",7.59,3.62,4.98,NA,25.76666641,226.8894043,1495,100.4749985
+HUH_895,HUH,895,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Veracruz, Veracruz",4.79,2.46,3.65,5.23,25.76666641,226.8894043,1495,100.4749985
+HUH_895,HUH,895,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Veracruz, Veracruz",4.72,2.3,3.75,4.44,25.76666641,226.8894043,1495,100.4749985
+HUH_895,HUH,895,Herbarium,1962,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Veracruz, Veracruz",6.5,3.9,4.73,NA,25.76666641,226.8894043,1495,100.4749985
+HUH_1996,HUH,1996,Herbarium,1993,North_Central America,mainland,NA,NA,NA,NA,Guatemala,"Depto. De Zacapa, Entre Teculután y Rio Hondo",4.92,3.19,4.47,6.41,27.25833321,118.6253357,1101,89.37989807
+HUH_1996,HUH,1996,Herbarium,1993,North_Central America,mainland,NA,NA,NA,NA,Guatemala,"Depto. De Zacapa, Entre Teculután y Rio Hondo",4.65,2.76,4.27,5.62,27.25833321,118.6253357,1101,89.37989807
+HUH_1996,HUH,1996,Herbarium,1993,North_Central America,mainland,NA,NA,NA,NA,Guatemala,"Depto. De Zacapa, Entre Teculután y Rio Hondo",5.07,3.19,4.67,6.58,27.25833321,118.6253357,1101,89.37989807
+HUH_171,HUH,171,Herbarium,1996,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Yucatán, Municipio Celstún, 1.5km N de Dumac",6.12,3.37,5.06,9.58,26.52916718,175.1033173,735,80.07885742
+HUH_171,HUH,171,Herbarium,1996,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Yucatán, Municipio Celstún, 1.5km N de Dumac",7.23,3.91,5.75,9.68,26.52916718,175.1033173,735,80.07885742
+HUH_171,HUH,171,Herbarium,1996,North_Central America,mainland,NA,NA,NA,NA,Mexico,"Yucatán, Municipio Celstún, 1.5km N de Dumac",6.74,4.39,5.06,9.47,26.52916718,175.1033173,735,80.07885742
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,5.24,3.33,4.67,8.34,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,5.24,3.33,4.67,8.34,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,5.24,3.33,4.67,8.34,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,4.87,2.56,4.4,7.75,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,4.87,2.56,4.4,7.75,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1492,HUH,1492,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Terr. Baja California Sur. Silty,4.87,2.56,4.4,7.75,17.075000760000002,182.9120636,848,95.677566529999993
+HUH_1448,HUH,1448,Herbarium,1964,North_Central America,mainland,NA,NA,NA,NA,Mexico,Estado de Puebla,5.68,2.58,4.16,7.09,20.11666679,221.4962769,600,89.04559326
+HUH_410,HUH,410,Herbarium,1925,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,7.86,4.68,6.68,12.43,24.29583359,426.9790955,146,103.976944
+HUH_410,HUH,410,Herbarium,1925,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,8.2,5.83,8.27,11.9,24.29583359,426.9790955,146,103.976944
+HUH_410,HUH,410,Herbarium,1925,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,7.13,4.38,6.35,11.76,24.29583359,426.9790955,146,103.976944
+HUH_410,HUH,410,Herbarium,1925,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,6.01,3.38,6.01,10.11,24.29583359,426.9790955,146,103.976944
+HUH_410,HUH,410,Herbarium,1925,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,8.5,6.98,8.55,12.58,24.29583359,426.9790955,146,103.976944
+HUH_8352,HUH,8352,Herbarium,1932,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,7.38,5.31,6.74,10.21,24.50416756,418.4194336,144,103.0988388
+HUH_8352,HUH,8352,Herbarium,1932,North_Central America,island,other,Clarion Island,NA,NA,Mexico,Clarion Island,7.13,4.77,6.87,9.74,24.50416756,418.4194336,144,103.0988388
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,5.82,2.16,4.87,9.69,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,5.82,2.16,4.87,9.69,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,5.82,2.16,4.87,9.69,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.75,4.17,6.19,10.07,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.75,4.17,6.19,10.07,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.75,4.17,6.19,10.07,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.49,3.7,6.14,10.09,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.49,3.7,6.14,10.09,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,7.49,3.7,6.14,10.09,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.87,3.3,5.36,9.17,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.87,3.3,5.36,9.17,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.87,3.3,5.36,9.17,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.94,5.45,7.32,11.85,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.94,5.45,7.32,11.85,20.68333435,218.9887238,490,103.4655075
+HUH_200,HUH,200,Herbarium,1903,North_Central America,island,other,Socorro Island,NA,NA,Mexico,Socorro Island,8.94,5.45,7.32,11.85,20.68333435,218.9887238,490,103.4655075
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.93,2.79,4.05,6.06,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.93,2.79,4.05,6.06,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.93,2.79,4.05,6.06,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.88,2.58,3.88,5.33,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.88,2.58,3.88,5.33,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.88,2.58,3.88,5.33,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.74,3.01,4.08,6.4,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.74,3.01,4.08,6.4,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.74,3.01,4.08,6.4,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.79,2.86,4.05,5.92,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.79,2.86,4.05,5.92,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,4.79,2.86,4.05,5.92,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.08,2.7,3.94,6.39,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.08,2.7,3.94,6.39,27.40833282,118.4144211,871,94.92079163
+HUH_6350,HUH,6350,Herbarium,1909,North_Central America,mainland,NA,NA,NA,NA,Guatemala,Zacapa,5.08,2.7,3.94,6.39,27.40833282,118.4144211,871,94.92079163
+HUH_1874,HUH,1874,Herbarium,1896,North_Central America,mainland,NA,NA,NA,NA,Mexico,Yucatan,5.97,2.98,3.24,7.45,25.75416756,198.9684601,1034,69.27173615
+HUH_1874,HUH,1874,Herbarium,1896,North_Central America,mainland,NA,NA,NA,NA,Mexico,Yucatan,6.39,4.09,4.94,9.02,25.75416756,198.9684601,1034,69.27173615
+HUH_1874,HUH,1874,Herbarium,1896,North_Central America,mainland,NA,NA,NA,NA,Mexico,Yucatan,5.47,2.97,3.65,7.35,25.75416756,198.9684601,1034,69.27173615
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.56,6.28,7.22,12.85,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.56,6.28,7.22,12.85,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.56,6.28,7.22,12.85,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,5.94,6.33,6.68,NA,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,5.94,6.33,6.68,NA,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,5.94,6.33,6.68,NA,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.05,6.86,7.86,14.6,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.05,6.86,7.86,14.6,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.05,6.86,7.86,14.6,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.86,6.7,7.23,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.86,6.7,7.23,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.86,6.7,7.23,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.32,6.51,7.75,13.84,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.32,6.51,7.75,13.84,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,7.32,6.51,7.75,13.84,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.97,6.87,7.48,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.97,6.87,7.48,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_1117,HUH,1117,Herbarium,1974,Africa,mainland,NA,NA,NA,NA,Tanzania,Mbigiri (Zanzitari) S of Mto Kama,6.97,6.87,7.48,13.86,27.69583321,48.45138931,770,72.30458069
+HUH_21,HUH,21,Herbarium,1974,Africa,island,other,Shungu-Mbili Island,NA,NA,Tanzania,Shungu-Mbili Island,5.74,3.26,5.05,NA,26.9,NA,1578,87
+HUH_21,HUH,21,Herbarium,1974,Africa,island,other,Shungu-Mbili Island,NA,NA,Tanzania,Shungu-Mbili Island,5.8,4.05,5.79,10.55,26.9,NA,1578,87
+HUH_21,HUH,21,Herbarium,1974,Africa,island,other,Shungu-Mbili Island,NA,NA,Tanzania,Shungu-Mbili Island,7.32,5.25,6.7,10.95,26.9,NA,1578,87
+HUH_21,HUH,21,Herbarium,1974,Africa,island,other,Shungu-Mbili Island,NA,NA,Tanzania,Shungu-Mbili Island,6.35,3.84,6.59,12.02,26.9,NA,1578,87
+HUH_21,HUH,21,Herbarium,1974,Africa,island,other,Shungu-Mbili Island,NA,NA,Tanzania,Shungu-Mbili Island,5.38,3.46,5.33,10.81,26.9,NA,1578,87
