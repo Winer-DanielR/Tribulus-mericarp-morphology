@@ -2,7 +2,18 @@
 # By: Daniel Reyes Corral
 
 # This script uses the individual datasets per trait from script 02 to run the models
-# Models are organized by group comparisons and datasets.
+# Models are organized by group comparisons and datasets. All models uses bioclim data
+
+# We got lat/long information for each location and extracted bioclimate variables from WorldClim (https://worldclim.org/). 
+# We used variables bio1, bio4, bio12, bio15. 
+# We projected the data in Qgis to fill gaps for island locations, 
+# we also used (Weigelt et al., 2013) dataset as equivalent for locations closer to ours.
+# 
+# Bio1 =  Annual Mean Temperature - Temp
+# Bio4 = Temperature Seasonality (Standard Dev. x 100) - Temp_S
+# Bio12 = Annual precipitation - Prec
+# Bio15 = Precipitation Seasonality (coefficient of variation) - varP
+
 # Model 1 compares mainland and island populations (used for mericarps and flowers)
 # Model 2 compares Galapagos with the other island systems (used for flowers)
 # For each trait I test model assumptions and transform data accordingly for convergence
@@ -53,7 +64,7 @@ meri_length_m3<- lmer(sqrt(length) ~ mainland_island +
 #### ANOVA type II test ####
 # Use the Anova function from the car package
 
-#ANOVA_length_m1 <-as.data.frame(Anova(meri_length_m1))
+Anova(meri_length_m1)
 #summary(meri_length_m1)
 
 #### Model Diagnostics ####
@@ -62,16 +73,16 @@ meri_length_m3<- lmer(sqrt(length) ~ mainland_island +
 # and outlier tests. 
 
 # Diagnostic custom function
-#par(mfrow = c(1, 3))
+# par(mfrow = c(1, 3))
 # Residual histograms distributions
-#diagnostic(resid(meri_length_m1))
-#diagnostic(resid(meri_length_m2))
-#diagnostic(resid(meri_length_m3))
+# diagnostic(resid(meri_length_m1))
+# diagnostic(resid(meri_length_m2))
+# diagnostic(resid(meri_length_m3))
 
 # Diagnostics with DHARMA
-#testResiduals(meri_length_m1)
-#testResiduals(meri_length_m2)
-#testResiduals(meri_length_m3)
+# testResiduals(meri_length_m1)
+# testResiduals(meri_length_m2)
+# testResiduals(meri_length_m3)
 
 # After selecting the data transformation that converged the most I decided to
 # only show the output of that model.
@@ -87,7 +98,7 @@ pwpp(EM_length)
 ((6.15/5.75 - 1)* 100) # Mericarps ~ 7% longer on islands
 
 ## Width ####
-# For width, squared transformed seemed the best
+# For width, log transformed seemed the best
 #### Raw data ####
 meri_width_m1 <- lmer(width ~ mainland_island +
                         year_collected +
@@ -119,21 +130,21 @@ meri_width_m3 <- lmer(sqrt(width) ~ mainland_island +
                       data = meri_width, 
                       REML = F)
 #### ANOVA type II test ####
- Anova(meri_width_m3)
+# Anova(meri_width_m2)
 
 #### Model Diagnostics ####
 # Residual histogram distributions
-# diagnostic(resid(meri_width_m1))
-# diagnostic(resid(meri_width_m2))
-# diagnostic(resid(meri_width_m3))
+ # diagnostic(resid(meri_width_m1))
+ # diagnostic(resid(meri_width_m2))
+ # diagnostic(resid(meri_width_m3))
 
 # # DHARMa
-# testResiduals(meri_width_m1)
-# testResiduals(meri_width_m2)
-# testResiduals(meri_width_m3)
+ # testResiduals(meri_width_m1)
+ # testResiduals(meri_width_m2)
+ # testResiduals(meri_width_m3)
 
 ## Emmean estimates: Width ####
-EM_width <- emmeans(meri_width_m3, ~ mainland_island, type = "response")
+EM_width <- emmeans(meri_width_m2, ~ mainland_island, type = "response")
 ### Emmean plot: Width ####
 plot(EM_width, comparisons = T) + labs(title = "Mericarp Width")
 pwpp(EM_width)
@@ -174,20 +185,20 @@ meri_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
                       data=meri_depth, 
                       REML = F)
 #### ANOVA type II test ####
-Anova(meri_depth_m1)
+# Anova(meri_depth_m1)
 
 #### Model Diagnostics ####
 # hist(resid(meri_depth_m1), breaks = 20)
 
 # # Residual histograms
 # diagnostic(resid(meri_depth_m1))
-# diagnostic(resid(meri_depth_m2))
-# diagnostic(resid(meri_depth_m3))
+#  diagnostic(resid(meri_depth_m2))
+#  diagnostic(resid(meri_depth_m3))
 # 
 # # DHARMa
-# testResiduals(meri_depth_m1)
-# testResiduals(meri_depth_m2)
-# testResiduals(meri_depth_m3)
+ # testResiduals(meri_depth_m1)
+ # testResiduals(meri_depth_m2)
+ # testResiduals(meri_depth_m3)
 
 ## Emmeans estimates: Depth ####
 EM_depth <- emmeans(meri_depth_m1, ~ mainland_island)
@@ -202,34 +213,33 @@ pwpp(EM_depth)
 # This includes mericarps without upper spines (Spine tip distance=0)
 
 ##### Models with all mericarps ####
-# Raw data looks the best
-meri_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
-                               year_collected +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
-                               (1|ID),
-                             data=meri_tip_distance,REML=F)
-
-meri_tip_distance_m2 <- lmer(log(tip_distance + 1) ~ mainland_island +
-                               year_collected +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
-                               (1|ID),
-                             data=meri_tip_distance,REML=F)
-
-meri_tip_distance_m3 <- lmer(sqrt(tip_distance) ~ mainland_island +
-                               year_collected +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
-                               (1|ID),
-                             data=meri_tip_distance,REML=F)
-
+# meri_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
+#                                year_collected +
+#                                Temp +
+#                                Temp_S +
+#                                Prec +
+#                                varP +
+#                                (1|ID),
+#                              data=meri_tip_distance,REML=F)
+# 
+# meri_tip_distance_m2 <- lmer(log(tip_distance + 1) ~ mainland_island +
+#                                year_collected +
+#                                Temp +
+#                                Temp_S +
+#                                Prec +
+#                                varP +
+#                                (1|ID),
+#                              data=meri_tip_distance,REML=F)
+# 
+# meri_tip_distance_m3 <- lmer(sqrt(tip_distance) ~ mainland_island +
+#                                year_collected +
+#                                Temp +
+#                                Temp_S +
+#                                Prec +
+#                                varP +
+#                                (1|ID),
+#                              data=meri_tip_distance,REML=F)
+# 
 
 # ANOVA type II test
 # Anova(meri_tip_distance_m1)
@@ -289,21 +299,21 @@ meri_tip_distance_m6 <- lmer(sqrt(tip_distance) ~ mainland_island +
 Anova(meri_tip_distance_m4)
 
 # Model Diagnostics
-# diagnostic(resid(meri_tip_distance_m4))
-# diagnostic(resid(meri_tip_distance_m5))
-# diagnostic(resid(meri_tip_distance_m6))
+ diagnostic(resid(meri_tip_distance_m4))
+ diagnostic(resid(meri_tip_distance_m5))
+ diagnostic(resid(meri_tip_distance_m6))
 
 # The residual distribution showed some outliers. 
 # Check residual distributions after removing mericarps without spines.
 # I included the residual column into the dataset
 meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_m4)
-# hist(resid(meri_tip_distance_m4), breaks = 20)
-# hist(meri_tip_distance_wozero$tip_distance, breaks = 20)
+ # hist(resid(meri_tip_distance_m4), breaks = 20)
+ # hist(meri_tip_distance_wozero$tip_distance, breaks = 20)
 
 # # DHARMa
-# testResiduals(meri_tip_distance_m1)
-# testResiduals(meri_tip_distance_m2)
-# testResiduals(meri_tip_distance_m3)
+ # testResiduals(meri_tip_distance_m4)
+ # testResiduals(meri_tip_distance_m5)
+ # testResiduals(meri_tip_distance_m6)
 
 
 # Based on the residual distributions and the trait distributions I filter the data
@@ -355,12 +365,12 @@ meri_tip_distance_m9 <- lmer(sqrt(tip_distance) ~ mainland_island +
 
 
 # Diagnostic
-# diagnostic(resid(meri_tip_distance_m7))
-# diagnostic(resid(meri_tip_distance_m8))
-# diagnostic(resid(meri_tip_distance_m9))
+ # diagnostic(resid(meri_tip_distance_m7))
+ # diagnostic(resid(meri_tip_distance_m8))
+ # diagnostic(resid(meri_tip_distance_m9))
 
 #Anova
-Anova(meri_tip_distance_m7)
+# Anova(meri_tip_distance_m7)
 
 # DHARMa
 # testResiduals(meri_tip_distance_m7)
@@ -383,6 +393,7 @@ pwpp(EM_tip_dist)
 #                              family = "binomial")
 
 meri_lower_spines_m1_glmm <- glmmTMB(factor(lower_spines) ~ mainland_island +
+                                       year_collected +
                                        Temp +
                                        Temp_S +
                                        Prec +
@@ -392,12 +403,11 @@ meri_lower_spines_m1_glmm <- glmmTMB(factor(lower_spines) ~ mainland_island +
                                      family = binomial)
 # str(meri_lower_spines)
 ### ANOVA Type II test ####
-# Anova(meri_lower_spines_m1)
-# Anova(meri_lower_spines_m1_glmm)
+Anova(meri_lower_spines_m1_glmm)
 
 ### Model Diagnostics ####
 # # Residual histograms
-#diagnostic(resid(meri_lower_spines_m1_glmm))
+# diagnostic(resid(meri_lower_spines_m1_glmm))
 
 ## Emmeans estimates: Lower spines ####
 #Glmm
@@ -573,8 +583,7 @@ flower_m1 <- lmer(petal_length ~ mainland_island +
                     varP +
                     (1|ID),
                   data=flower,
-                  na.action = na.exclude,
-                  REML=F)
+                    REML=F)
 ### Log transformed ####
 flower_m2 <- lmer(log(petal_length) ~ mainland_island +
                     year_collected +
@@ -600,58 +609,65 @@ flower_m3 <- lmer(sqrt(petal_length) ~ mainland_island +
 Anova(flower_m1)
 
 ### Model diagnostics ####
-# hist(flower$petal_length, breaks = 20)
+#  hist(flower$petal_length, breaks = 20)
+# diagnostic(resid(flower_m1))
+# 
+# testResiduals(flower_m1)
+# testResiduals(flower_m2)
+# testResiduals(flower_m3)
+
 # The distribution of petal length have some outliers.
 
-# Create a column with model residuals to filter the dataset
-flower$residuals <- resid(flower_m1) 
-hist(resid(flower_m1), breaks = 20)
-# Filter residuals outside -5 and 5
-flower_filter <- filter(flower, !is.na(residuals))
-flower_filter <- filter(flower_filter, !residuals >=5)
-flower_filter <- filter(flower_filter, !residuals <= -5)
-hist(flower_filter$residuals, breaks = 20)
 
-# This filter removed specimens 240, 351, 320 (<-5) and
-# 454, 319, 207, 249, 340 (>5)
-
-# Filtered model
-# Raw data works best in the filter model
-flower_m4 <- lmer(petal_length ~ mainland_island +
-                    year_collected +
-                    Temp +
-                    Temp_S +
-                    Prec +
-                    varP +
-                    (1|ID),
-                  data=flower_filter,
-                  na.action = na.exclude,
-                  REML=F)
-
-flower_m5 <- lmer(log(petal_length) ~ mainland_island +
-                    year_collected +
-                    Temp +
-                    Temp_S +
-                    Prec +
-                    varP +
-                    (1|ID),
-                  data=flower_filter,
-                  na.action = na.exclude,
-                  REML=F)
-
-flower_m6 <- lmer(sqrt(petal_length) ~ mainland_island +
-                    year_collected +
-                    Temp +
-                    Temp_S +
-                    Prec +
-                    varP +
-                    (1|ID),
-                  data=flower_filter,
-                  na.action = na.exclude,
-                  REML=F)
-
-# #type III test using lmertest
-Anova(flower_m4)
+# # Create a column with model residuals to filter the dataset
+# flower$residuals <- resid(flower_m1) 
+# hist(resid(flower_m1), breaks = 20)
+# # Filter residuals outside -5 and 5
+# flower_filter <- filter(flower, !is.na(residuals))
+# flower_filter <- filter(flower_filter, !residuals >=5)
+# flower_filter <- filter(flower_filter, !residuals <= -5)
+# hist(flower_filter$residuals, breaks = 20)
+# 
+# # This filter removed specimens 240, 351, 320 (<-5) and
+# # 454, 319, 207, 249, 340 (>5)
+# 
+# # Filtered model
+# # Raw data works best in the filter model
+# flower_m4 <- lmer(petal_length ~ mainland_island +
+#                     year_collected +
+#                     Temp +
+#                     Temp_S +
+#                     Prec +
+#                     varP +
+#                     (1|ID),
+#                   data=flower_filter,
+#                   na.action = na.exclude,
+#                   REML=F)
+# 
+# flower_m5 <- lmer(log(petal_length) ~ mainland_island +
+#                     year_collected +
+#                     Temp +
+#                     Temp_S +
+#                     Prec +
+#                     varP +
+#                     (1|ID),
+#                   data=flower_filter,
+#                   na.action = na.exclude,
+#                   REML=F)
+# 
+# flower_m6 <- lmer(sqrt(petal_length) ~ mainland_island +
+#                     year_collected +
+#                     Temp +
+#                     Temp_S +
+#                     Prec +
+#                     varP +
+#                     (1|ID),
+#                   data=flower_filter,
+#                   na.action = na.exclude,
+#                   REML=F)
+# 
+# # #type III test using lmertest
+# Anova(flower_m4)
 
 # # Residual histograms
 # diagnostic(resid(flower_m1))
@@ -668,7 +684,7 @@ Anova(flower_m4)
 #testResiduals(flower_m4)
 
 ## Emmean estimates: Petal length ####
-EM_flower <- emmeans(flower_m4, ~ mainland_island)
+EM_flower <- emmeans(flower_m1, ~ mainland_island)
 ### Emmean plot: Petal length ####
 plot(EM_flower, comparisons = T) + labs(title = "Flower Length")
 pwpp(EM_flower)
@@ -932,7 +948,7 @@ pwpp(EM_lower_mainland_gal)
 # 03_03_01 Flower dataset ####
 ## Petal length data ####
 # I used the flower filter data from before
-# The squared data seems to work best
+# The raw data seems to work best
 ### Raw data ####
 flower_m7 <- lmer(petal_length ~ galapagos_other +
                     year_collected +
@@ -941,7 +957,7 @@ flower_m7 <- lmer(petal_length ~ galapagos_other +
                     Prec +
                     varP +
                     (1|ID),
-                  data=flower_filter,
+                  data=flower_galapagos_other,
                   REML=F)
 ### Log transformed ####
 flower_m8 <- lmer(log(petal_length) ~ galapagos_other +
@@ -951,7 +967,7 @@ flower_m8 <- lmer(log(petal_length) ~ galapagos_other +
                     Prec +
                     varP +
                     (1|ID),
-                  data=flower_filter,
+                  data=flower_galapagos_other,
                   REML=F)
 ### Square root transformed ####
 flower_m9 <- lmer(sqrt(petal_length) ~ galapagos_other +
@@ -961,25 +977,25 @@ flower_m9 <- lmer(sqrt(petal_length) ~ galapagos_other +
                     Prec +
                     varP +
                     (1|ID),
-                  data=flower_filter,
+                  data=flower_galapagos_other,
                   REML=F)
 
 ### ANOVA type II test ####
-Anova(flower_m9)
+Anova(flower_m7)
 
 ### Model Diagnostics ####
 # # Residual histograms
-# diagnostic(resid(flower_m7))
-# diagnostic(resid(flower_m8))
-#diagnostic(resid(flower_m9))
+ # diagnostic(resid(flower_m7))
+ # diagnostic(resid(flower_m8))
+ # diagnostic(resid(flower_m9))
 # 
 # # DHARMa
-# testResiduals(flower_m7)
-# testResiduals(flower_m8)
-# testResiduals(flower_m9)
+ # testResiduals(flower_m7)
+ # testResiduals(flower_m8)
+ # testResiduals(flower_m9)
 
 ## Emmean estimates: Petal length ####
-EM_flower2 <- emmeans(flower_m9, ~ galapagos_other, type = "response")
+EM_flower2 <- emmeans(flower_m7, ~ galapagos_other, type = "response")
 ### Emmean plot: Petal length ####
 plot(EM_flower2, comparisons = T) + labs(title = "Flower Length")
 pwpp(EM_flower2)
