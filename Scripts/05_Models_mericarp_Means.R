@@ -61,6 +61,7 @@ meri_tip_distance0_ind <- dplyr::filter(meri_tip_distance_ind, !tip_distance == 
 #### Raw data ####
 ind_length_m1 <- lmer(length ~ mainland_island +
                         year_collected + 
+                        Herbarium +
                         Temp +
                         Temp_S +
                         Prec +
@@ -75,7 +76,7 @@ Anova(ind_length_m1)
 # Temp_S is significant, year too.
 
 ### Model diagnostics (DHARMA) ####
-testResiduals(ind_length_m1)
+#testResiduals(ind_length_m1)
 
 ## Emmeans estimates: Length ####
 EM_length_ind <- emmeans(ind_length_m1, ~ mainland_island)
@@ -87,28 +88,29 @@ pwpp(EM_length_ind)
 ## Width ####
 # For width, squared transformed seemed the best
 #### Raw data ####
-ind_width_m1 <- lmer(width ~ mainland_island +
-                        year_collected +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
-                        (1|ID),
-                      data = meri_width_ind, 
-                      REML = F)
+# ind_width_m1 <- lmer(width ~ mainland_island +
+#                         year_collected +
+#                         Temp +
+#                         Temp_S +
+#                         Prec +
+#                         varP +
+#                         (1|ID),
+#                       data = meri_width_ind, 
+#                       REML = F)
 #### Log transformed ####
-ind_width_m2 <- lmer(log(width) ~ mainland_island +
-                        year_collected +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
-                        (1|ID),
-                      data = meri_width_ind, 
-                      REML = F)
+# ind_width_m2 <- lmer(log(width) ~ mainland_island +
+#                         year_collected +
+#                         Temp +
+#                         Temp_S +
+#                         Prec +
+#                         varP +
+#                         (1|ID),
+#                       data = meri_width_ind, 
+#                       REML = F)
 #### Square-root transformed ####
 ind_width_m3 <- lmer(sqrt(width) ~ mainland_island +
                         year_collected +
+                       Herbarium +
                         Temp +
                         Temp_S +
                         Prec +
@@ -145,6 +147,7 @@ pwpp(EM_width_ind)
 #### Raw data ####
 ind_depth_m1 <- lmer(depth ~ mainland_island +
                         year_collected +
+                       Herbarium +
                         Temp +
                         Temp_S +
                         Prec +
@@ -153,26 +156,26 @@ ind_depth_m1 <- lmer(depth ~ mainland_island +
                       data=meri_depth_ind, 
                       REML = F)
 #### Log transformed data ####
-ind_depth_m2 <- lmer(log(depth) ~ mainland_island +
-                        year_collected +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
-                        (1|ID),
-                      data=meri_depth_ind, 
-                      REML = F)
+# ind_depth_m2 <- lmer(log(depth) ~ mainland_island +
+#                         year_collected +
+#                         Temp +
+#                         Temp_S +
+#                         Prec +
+#                         varP +
+#                         (1|ID),
+#                       data=meri_depth_ind, 
+#                       REML = F)
 
 #### Square-root transformed data ####
-ind_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
-                        year_collected +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
-                        (1|ID),
-                      data=meri_depth_ind, 
-                      REML = F)
+# ind_depth_m3 <- lmer(sqrt(depth) ~ mainland_island +
+#                         year_collected +
+#                         Temp +
+#                         Temp_S +
+#                         Prec +
+#                         varP +
+#                         (1|ID),
+#                       data=meri_depth_ind, 
+#                       REML = F)
 
 ### Anova (car package) ####
 Anova(ind_depth_m1)
@@ -208,6 +211,7 @@ pwpp(EM_depth_ind)
 ###### Raw data ####
 ind_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
                                year_collected +
+                              Herbarium +
                                Temp +
                                Temp_S +
                                Prec +
@@ -216,25 +220,25 @@ ind_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
                              na.action = na.exclude,
                              data=meri_tip_distance0_ind,REML=F)
 ###### Log transformed data ####
-ind_tip_distance_m2 <- lmer(log(tip_distance) ~ mainland_island +
-                               year_collected +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=meri_tip_distance0_ind,REML=F)
+# ind_tip_distance_m2 <- lmer(log(tip_distance) ~ mainland_island +
+#                                year_collected +
+#                                Temp +
+#                                Temp_S +
+#                                Prec +
+#                                varP +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=meri_tip_distance0_ind,REML=F)
 ###### Squared-root data ####
-ind_tip_distance_m3 <- lmer(sqrt(tip_distance) ~ mainland_island +
-                               year_collected +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=meri_tip_distance0_ind,REML=F)
+# ind_tip_distance_m3 <- lmer(sqrt(tip_distance) ~ mainland_island +
+#                                year_collected +
+#                                Temp +
+#                                Temp_S +
+#                                Prec +
+#                                varP +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=meri_tip_distance0_ind,REML=F)
 
 
 # Diagnostic
@@ -250,9 +254,9 @@ Anova(ind_tip_distance_m1)
 # Tip distance is not significant for any variable.
 
 ### Model diagnostics DHARMa ####
-testResiduals(ind_tip_distance_m1)
-testResiduals(ind_tip_distance_m2)
-testResiduals(ind_tip_distance_m3)
+# testResiduals(ind_tip_distance_m1)
+# testResiduals(ind_tip_distance_m2)
+# testResiduals(ind_tip_distance_m3)
 
 ## Emmeans estimates: Spine tip distance ####
 # Zero filter data
@@ -277,7 +281,7 @@ ind_ggplot_length <- ggplot(plot_length, aes(x = mainland_island, y = the.emmean
         plot.title = element_text(size = 12, face = "bold"),
         text = element_text(family = "Noto Sans"),
         panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Length (P = 0.055622)"))) +
+  labs(title = expression(paste("Length (P = 0.06015)"))) +
   labs(x = "Population", y = "Mean Length (mm)")
 
 ### Width ####
@@ -295,7 +299,7 @@ ind_ggplot_width <- ggplot(plot_width, aes(x = mainland_island, y = the.emmean))
         plot.title = element_text(size = 12, face = "bold"),
         text = element_text(family = "Noto Sans"),
         panel.background = element_rect(fill = NA)) +
-  labs(title = expression(paste("Width (P = 0.11316)"))) +
+  labs(title = expression(paste("Width (P = 0.09625)"))) +
   labs(x = "Population", y = "Mean Width (mm)")
 
 
@@ -314,7 +318,7 @@ ind_ggplot_depth <- ggplot(plot_depth, aes(x = mainland_island, y = the.emmean))
         plot.title = element_text(size = 12, face = "bold"),
         text = element_text(family = "Noto Sans"),
         panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Depth (P = 0.01335)"))) +
+  labs(title = expression(paste("Depth (P = 0.01462)"))) +
   labs(x = "Population", y = "Mean Depth (mm)")
 
 
@@ -333,7 +337,7 @@ ind_ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean))
         plot.title = element_text(size = 12, face = "bold"),
         text = element_text(family = "Noto Sans"),
         panel.background = element_rect(fill = NA)) +
-  labs(title = expression(paste("Tip distance (P = 0.651)"))) +
+  labs(title = expression(paste("Tip distance (P = 0.68236)"))) +
   labs(x = "Population", y = "Spine Tip Distance (mm)")
 
 ## Individual traits figure ####
