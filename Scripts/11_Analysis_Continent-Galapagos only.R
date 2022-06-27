@@ -247,3 +247,98 @@
 # pwpp(EM_lower_mainland_gal)
 # ### Percentage difference ####
 # ((0.407/0.998 - 1)*100)
+
+# PLOTS ####
+#### Mainland Galapos plot ####
+# EM_length_mainland_gal
+# plot_length_mainland_gal <- plot(EM_length_mainland_gal, comparisons = T, plotit = F)
+# 
+# ggplot_length_mainland_gal <- ggplot(plot_length_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+#   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+#   geom_point(size = 6) + 
+#   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+#         axis.title = element_text(size = 12, face = "bold"), 
+#         axis.text = element_text(size = 10), 
+#         axis.text.x = element_text(size = 11), 
+#         plot.title = element_text(size = 12, face = "bold"),
+#         text = element_text(family = "Noto Sans"),
+#         panel.background = element_rect(fill = NA)) + 
+#   labs(title = expression(paste("Length (P = <0.001)"))) +
+#   labs(x = "Population", y = "Mean Length (mm)") 
+
+#### Width ####
+# EM_width_mainland_gal
+# plot_width_mainland_gal <- plot(EM_width_mainland_gal, comparisons = T, plotit = F)
+# 
+# ggplot_width_mainland_gal <- ggplot(plot_width_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+#   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+#   geom_point(size = 6) + 
+#   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+#         axis.title = element_text(size = 12, face = "bold"), 
+#         axis.text = element_text(size = 10), 
+#         axis.text.x = element_text(size = 11), 
+#         plot.title = element_text(size = 12, face = "bold"),
+#         text = element_text(family = "Noto Sans"),
+#         panel.background = element_rect(fill = NA)) +
+#   labs(title = expression(paste("Width (P = <0.001)"))) +
+#   labs(x = "Population", y = "Mean Width (mm)")
+
+#### Depth ####
+# plot_depth_mainland_gal <- plot(EM_depth_mainland_gal, comparisons = T, plotit = F)
+# 
+# ggplot_depth_mainland_gal <- ggplot(plot_depth_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+#   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+#   geom_point(size = 6) + 
+#   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+#         axis.title = element_text(size = 12, face = "bold"), 
+#         axis.text = element_text(size = 10), 
+#         axis.text.x = element_text(size = 11), 
+#         plot.title = element_text(size = 12, face = "bold"),
+#         text = element_text(family = "Noto Sans"),
+#         panel.background = element_rect(fill = NA)) + 
+#   labs(title = expression(paste("Depth (P = <0.001)"))) +
+#   labs(x = "Population", y = "Mean Depth (mm)")
+
+#### Spine Tip Distance ####
+# plot_spine_mainland_gal <- plot(EM_tip_dist_mainland_gal, comparisons = T, plotit = F)
+# 
+# ggplot_spine_mainland_gal <- ggplot(plot_spine_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+#   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
+#   geom_point(size = 6) + 
+#   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+#         axis.title = element_text(size = 12, face = "bold"), 
+#         axis.text = element_text(size = 10), 
+#         axis.text.x = element_text(size = 11), 
+#         plot.title = element_text(size = 12, face = "bold"),
+#         text = element_text(family = "Noto Sans"),
+#         panel.background = element_rect(fill = NA)) +
+#   labs(title = expression(paste("Tip distance (P = 0.0270)"))) +
+#   labs(x = "Population", y = "Spine Tip Distance (mm)")
+
+#### Lower Spines ####
+# plot_lower_mainland_gal <- plot(EM_lower_mainland_gal, comparisons = T, plotit = F)
+# 
+# ggplot_lower_mainland_gal <- ggplot(plot_lower_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
+#   geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
+#   geom_point(size = 6) + 
+#   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
+#         axis.title = element_text(size = 12, face = "bold"), 
+#         axis.text = element_text(size = 10), 
+#         axis.text.x = element_text(size = 11), 
+#         plot.title = element_text(size = 13, face = "bold"),
+#         text = element_text(family = "Noto Sans"),
+#         panel.background = element_rect(fill = NA)) +
+#   labs(title = expression(paste("Lower spines (P = 0.001)"))) +
+#   labs(x = "Population", y = "Lower spines")
+# 
+# # # 11_09 Mainland Galapagos Island plots summary ####
+# figure_mericarp_mainland_gal <- ggarrange(ggplot_length_mainland_gal,
+#                                           ggplot_width_mainland_gal,
+#                                           ggplot_depth_mainland_gal,
+#                                           ggplot_spine_mainland_gal,
+#                                           ggplot_lower_mainland_gal,
+#                                           labels = c("A", "B", "C", "D","E"),
+#                                           ncol = 3,
+#                                           nrow = 2) + 
+#   theme(text = element_text(family = "Noto Sans"))
+# 
