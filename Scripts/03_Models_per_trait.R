@@ -743,6 +743,7 @@ hist(meri_tip_distance_lower_filter$tip_dist_residuals, breaks = 20)
 ###### Raw data ####
 meri_tip_distance_lower7 <- lmer(tip_distance ~ lower_spines +
                                year_collected +
+                                 Herbarium +
                                  #Temp +
                                  #Temp_S + 
                                  #Prec +
@@ -770,7 +771,7 @@ meri_tip_distance_lower9 <- lmer(sqrt(tip_distance) ~ lower_spines +
  diagnostic(resid(meri_tip_distance_lower9))
 
 #Anova
- Anova(meri_tip_distance_lower7)
+Anova(meri_tip_distance_lower7)
 
 # DHARMa
  testResiduals(meri_tip_distance_lower7)

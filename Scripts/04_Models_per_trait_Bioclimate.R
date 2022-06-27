@@ -543,6 +543,7 @@ pwpp(EM_flower2_bioclim)
 ###### Raw data ####
 meri_tip_distance_lower_bioclim <- lmer(tip_distance ~ lower_spines +
                                    year_collected +
+                                     Herbarium +
                                      Temp +
                                      Temp_S + 
                                      Prec +
