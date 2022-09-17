@@ -116,10 +116,10 @@ biplot1 <- fviz_pca_biplot(mean_mericarp_pca,
                         pointshape = c(21),
                         pointsize = 3,
                         stroke = 1.5,
-                        fill.ind = mean_mericarp_NA$mainland_island,
+                        fill.ind = mean_mericarp_NA$continent,
                         col.ind = "black",
                         # Color variable by groups
-                        legend.title = "Population",
+                        legend.title = "Island Group",
                         repel = T,
                         col.var = "black",
                         labelsize = 5,
@@ -135,8 +135,8 @@ biplot1 <- fviz_pca_biplot(mean_mericarp_pca,
         axis.text.x = element_text(size = 11), 
         plot.title = element_text(size = 16, face = "bold", hjust = 0),
         text = element_text(family = "Noto Sans"),
-        legend.text = element_text(size = 12, face = "bold"), 
-        legend.title = element_text(size = 14, face = "bold"),
+        legend.text = element_text(size = 6.5, face = "bold"), 
+        legend.title = element_text(size = 10, face = "bold"),
         legend.position = "bottom",
         legend.background = element_rect(fill = NA, size = 0))
 
@@ -254,11 +254,23 @@ Anova(meri_PC1_bioclim)
 #testResiduals(meri_PC1_m1)
 #testResiduals(meri_PC1_m2)
 
-## Emmeans estimates: Length ####
+## Emmeans estimates: means PCA  ####
+EM_PC1_mean <- emmeans(meri_PC1_mean, ~ mainland_island)
+EM_PC1_mean_bioclim <- emmeans(meri_PC1_mean_bioclim, ~ mainland_island)
+
+### Emmean plot: means PCA ####
+plot(EM_PC1_mean, comparisons = TRUE) + labs(title = "Mericarp Size")
+pwpp(EM_PC1)
+
+plot(EM_PC1_mean_bioclim, comparisons = TRUE) + labs(title = "Mericarp Size")
+pwpp(EM_PC1_bioclim)
+
+
+## Emmeans estimates: PCA  ####
 EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island)
 EM_PC1_bioclim <- emmeans(meri_PC1_bioclim, ~ mainland_island)
 
-### Emmean plot: Length ####
+### Emmean plot: PCA ####
 plot(EM_PC1, comparisons = TRUE) + labs(title = "Mericarp Size")
 pwpp(EM_PC1)
 
