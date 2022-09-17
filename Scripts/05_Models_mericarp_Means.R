@@ -346,7 +346,8 @@ figure_mericarp_ind_traits <- ggarrange(ind_ggplot_length,
                                         ind_ggplot_width,
                                         ind_ggplot_depth,
                                         ind_ggplot_spine,
-                                        labels = c("A", "B", "C", "D"),
+                                        ggplot_PC1_mean,
+                                        labels = c("A", "B", "C", "D", "E"),
                                         ncol = 3,
                                         nrow = 2) + 
   theme(text = element_text(family = "Noto Sans"))
