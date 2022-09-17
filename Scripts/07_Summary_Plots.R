@@ -418,6 +418,16 @@ ggplot_PC1 <- my_emmean_barplot(plot_PC1, plot_PC1$mainland_island,
                                     "Population",
                                     "PC1 Scores")
 
+## Mean bioclimate variables ####
+EM_PC1_mean_bioclim
+plot_PC1_mean_bioclim <- plot(EM_PC1_mean_bioclim, comparisons = T,
+                              plotit = F)
+
+ggplot_PC1_mean <- my_emmean_barplot2(plot_PC1_mean_bioclim, plot_PC1_mean_bioclim$mainland_island,
+                                      "Mericarp Size (P = 0.231)",
+                                      "Population",
+                                      "PC1 Scores")
+
 ## Including bioclimate variables #####
 EM_PC1_bioclim
 plot_PC1_bioclim <- plot(EM_PC1_bioclim, comparisons = T, plotit = F)
@@ -426,6 +436,8 @@ ggplot_PC1_bioclim <- my_emmean_barplot(plot_PC1_bioclim, plot_PC1_bioclim$mainl
                                 "Mericarp Size (P = 0.222)",
                                 "Population",
                                 "PC1 Scores")
+
+
 
 # 06_06 Mainland Island plots summary ####
 ## Mericarps ####
