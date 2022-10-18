@@ -25,6 +25,8 @@ my_emmean_barplot2 <- function(emmean_plot, x, title, lab_x, lab_y){
   ggplot(emmean_plot, aes(x = x, y = the.emmean)) +
     geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
     geom_point(size = 6) +
+    scale_y_continuous(breaks = seq(-20,20,1/4)) +
+    scale_x_discrete(name = " ") +
     theme(axis.line = element_line(linetype = "solid", size = 1.5),
           axis.title = element_text(size = 12, face = "bold"),
           axis.text = element_text(size = 10),
