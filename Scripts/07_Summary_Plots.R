@@ -43,8 +43,8 @@ my_emmean_barplot2 <- function(emmean_plot, x, title, lab_x, lab_y){
 EM_length
 plot_length <- plot(EM_length, comparisons = T, plotit = F)
 
-ggplot_length <- my_emmean_barplot(plot_length, plot_length$mainland_island,
-                  "Length (P = <0.001)",
+ggplot_length <- my_emmean_barplot2(plot_length, plot_length$other_mainland,
+                  "Length (P = 0.784)",
                   "Population",
                   "Length (mm)")
 
@@ -58,7 +58,7 @@ ggplot_length_bioclim <- my_emmean_barplot(plot_length_bioclim, plot_length_bioc
                                    "Length (mm)")
 
 #### Violing plot ####
-length_violin <- ggplot(meri_length, aes(x = mainland_island, y = length, fill = mainland_island)) + 
+length_violin <- ggplot(meri_length, aes(x = other_mainland, y = length, fill = other_mainland)) + 
     geom_violin(size = 1.5, trim = T) +
     scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
         theme(axis.line = element_line(linetype = "solid", size = 1.5), 
@@ -77,8 +77,8 @@ EM_width
 plot_width <- plot(EM_width, comparisons = T, plotit = F)
 
 #### No bioclimate variables ####
-ggplot_width <- my_emmean_barplot(plot_width, plot_width$mainland_island,
-                                   "Width (P = <0.001)",
+ggplot_width <- my_emmean_barplot2(plot_width, plot_width$other_mainland,
+                                   "Width (P = 0.12)",
                                    "Population",
                                    "Width (mm)")
 
@@ -91,7 +91,7 @@ ggplot_width_bioclim <- my_emmean_barplot(plot_width_bioclim, plot_width_bioclim
                                            "Population",
                                            "Width (mm)")
 #### Violin plot ####
-width_violin <- ggplot(meri_width, aes(x = mainland_island, y = width, fill = mainland_island)) + 
+width_violin <- ggplot(meri_width, aes(x = other_mainland, y = width, fill = other_mainland)) + 
     geom_violin(size = 1.5, trim = T) +
     scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
@@ -109,8 +109,8 @@ width_violin <- ggplot(meri_width, aes(x = mainland_island, y = width, fill = ma
 EM_depth
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
-ggplot_depth <- my_emmean_barplot(plot_depth, plot_depth$mainland_island,
-                                  "Depth (P = <0.001)",
+ggplot_depth <- my_emmean_barplot2(plot_depth, plot_depth$other_mainland,
+                                  "Depth (P = 0.023)",
                                   "Population",
                                   "Depth (mm)")
 
@@ -124,7 +124,7 @@ ggplot_depth_bioclim <- my_emmean_barplot(plot_depth_bioclim, plot_depth_bioclim
                                   "Depth (mm)")
 
 #### Violin plot ####
-depth_violin <- ggplot(meri_depth, aes(x = mainland_island, y = depth, fill = mainland_island)) + 
+depth_violin <- ggplot(meri_depth, aes(x = other_mainland, y = depth, fill = other_mainland)) + 
     geom_violin(size = 1.5, trim = T) +
     scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
@@ -142,8 +142,8 @@ depth_violin <- ggplot(meri_depth, aes(x = mainland_island, y = depth, fill = ma
 EM_tip_dist
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
-ggplot_spine <- my_emmean_barplot(plot_spine, plot_spine$mainland_island,
-                                  "Spine Tip Distance (P = 0.015)",
+ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$other_mainland,
+                                  "Spine Tip Distance (P = 0.055)",
                                   "Population",
                                   "Tip Distance (mm)")
 
@@ -157,7 +157,7 @@ ggplot_spine_bioclim <- my_emmean_barplot(plot_spine_bioclim, plot_spine_bioclim
                                   "Tip Distance (mm)")
 
 #### Violin plot ####
-tip_distance_violin <- ggplot(meri_tip_distance, aes(x = mainland_island, y = tip_distance, fill = mainland_island)) + 
+tip_distance_violin <- ggplot(meri_tip_distance, aes(x = other_mainland, y = tip_distance, fill = other_mainland)) + 
     geom_violin(size = 1.5, trim = T) +
     scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
     theme(axis.line = element_line(linetype = "solid", size = 1.5), 
@@ -194,8 +194,8 @@ ggplot_spine_lower_bioclim <- my_emmean_barplot(plot_tip_lower_bioclim, plot_tip
 EM_lower
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
-ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$mainland_island,
-                                   "Lower Spines (P = <0.001)",
+ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$other_mainland,
+                                   "Lower Spines (P = 0.312)",
                                    "Population",
                                    "Lower Spines")
 
@@ -535,9 +535,9 @@ violin_plots <- ggarrange(length_violin,
                           depth_violin,
                           tip_distance_violin,
                           #lower_spines_violin,
-                          flower_violin,
-                          flower_violin2,
-                          labels = c("A", "B", "C", "D","E", "F", "G"),
-                          ncol = 3,
+                          #flower_violin,
+                          #flower_violin2,
+                          labels = c("A", "B", "C", "D"),
+                          ncol = 2,
                           nrow = 2) + 
   theme(text = element_text(family = "Noto Sans"))
