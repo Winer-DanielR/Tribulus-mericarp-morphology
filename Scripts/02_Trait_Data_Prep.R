@@ -12,6 +12,7 @@
 mericarp <- read_csv("~/Vault of Ideas/20 - 29 Tribulus Research/22 Chapter. Tribulus phenotypic variation in mainland and island populations/22.03 R code/Tribulus-mericarp-morphology/Data/Processed/Tribulus_mericarp_data_clean.csv")
 mericarp <- mericarp %>% mutate_at(vars(ID,
                                               Herbarium,
+                                              Herb_Location,
                                               continent,
                                               country,
                                               island_group,
