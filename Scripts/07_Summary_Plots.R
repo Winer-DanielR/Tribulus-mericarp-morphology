@@ -357,7 +357,7 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            pointshape = c(21),
                            pointsize = 4,
                            stroke = 0.5,
-                           fill.ind = mericarp_NA_wozero$mainland_island,
+                           fill.ind = mericarp_NA_wozero$other_mainland,
                            col.ind = "black",
                            # Color variable by groups
                            legend.title = "Islands",
@@ -413,8 +413,8 @@ var2
 EM_PC1
 plot_PC1 <- plot(EM_PC1, comparisons = T, plotit = F)
 
-ggplot_PC1 <- my_emmean_barplot(plot_PC1, plot_PC1$mainland_island,
-                                    "Mericarp Size (P = <0.001)",
+ggplot_PC1 <- my_emmean_barplot2(plot_PC1, plot_PC1$other_mainland,
+                                    "Mericarp Size (P = 0.053)",
                                     "Population",
                                     "PC1 Scores")
 

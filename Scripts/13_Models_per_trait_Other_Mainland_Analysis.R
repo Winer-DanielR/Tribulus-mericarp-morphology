@@ -363,7 +363,7 @@ plot(EM_lower, comparisons = T) + labs(title = "Mericarp Lower Spines")
 pwpp(EM_lower)
 
 # The plot is very interesting because it shows that other islands mostly have
-# Lower spines??
+# Lower
 
 # Other traits models (removed from analysis) ####
 ## Spine length (removed from analysis) ####
@@ -522,7 +522,7 @@ pwpp(EM_lower)
 ## Petal length ####
 # The raw data works best
 ### Raw data ####
-flower_m1 <- lmer(petal_length ~ mainland_island +
+flower_m1 <- lmer(petal_length ~ other_mainland +
                           year_collected +
                           (1|ID),
                   data=flower,
@@ -606,7 +606,9 @@ EM_flower <- emmeans(flower_m4, ~ mainland_island)
 plot(EM_flower, comparisons = T) + labs(title = "Flower Length")
 pwpp(EM_flower)
 ### Percentange difference ####
-((16.3/16.7 - 1)*100) # Flowers are -2% smaller on islands
+((17.4/16.7 - 1)*100) # Flowers are 4% larger on islands
+
+# This is intersting, but not significant
 
 # 03_02 Model 2: Galapagos - Other Islands ####
 # Is there an effect between tribulus in galapagos compared to other island systems
@@ -631,7 +633,7 @@ pwpp(EM_flower)
 flower_m9 <- lmer(sqrt(petal_length) ~ galapagos_other +
                     year_collected +
                     (1|ID),
-                  data=flower_filter,
+                  data=flower_galapagos_other,
                   REML=F)
 
 ### ANOVA type II test ####
