@@ -80,11 +80,12 @@ meri_lower_spines <- filter(meri_lower_spines, !is.na(Temp_S))
 # Tribulus_flower_data_clean.csv
 flower <- read_csv("~/Vault of Ideas/20 - 29 Tribulus Research/22 Chapter. Tribulus phenotypic variation in mainland and island populations/22.03 R code/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
 flower <- flower %>% mutate_at(vars(ID,
-                                        Herbarium,
+                                        #Herbarium,
                                         continent,
                                         country,
                                         island_group,
                                         mainland_island,
+                                        other_mainland,
                                         galapagos_other,
                                         island_group,
                                         galapagos_island,
