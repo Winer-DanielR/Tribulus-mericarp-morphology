@@ -19,7 +19,7 @@ colSums(is.na(mericarp_NA))
 
 # 11_02 Scale traits used for PCA ####
 # Select the traits for the PCA
-mericarp_traits <- dplyr::select(mericarp_NA, 1, 14:16,18)
+mericarp_traits <- dplyr::select(mericarp_NA, 1, 16:18,20)
 # Filter upper spines remove zeroes
 mericarp_traits <- dplyr::filter(mericarp_traits, !tip_distance == 0)
 
@@ -217,7 +217,7 @@ meri_PC1_mean_bioclim <- lmer(PC1 ~ mainland_island +
                         REML = F)
 
 ## INDIVIDUAL Model mainland island ####
-meri_PC1_m1<- lmer(PC1 ~ mainland_island +
+meri_PC1_m1<- lmer(PC1 ~ other_mainland +
                         year_collected +
                      Herbarium +
                         (1|ID),
@@ -267,7 +267,7 @@ pwpp(EM_PC1_bioclim)
 
 
 ## Emmeans estimates: PCA  ####
-EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island)
+EM_PC1 <- emmeans(meri_PC1_m1, ~ other_mainland)
 EM_PC1_bioclim <- emmeans(meri_PC1_bioclim, ~ mainland_island)
 
 ### Emmean plot: PCA ####
