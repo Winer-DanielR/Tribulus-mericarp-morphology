@@ -1,19 +1,12 @@
 # Script 03.Univariate models with year as covariate ####
 # By: Daniel Reyes Corral
 
-# This script uses the individual datasets per trait from script 02 to run the models
-# Models are organized by group comparisons and datasets.
-# Model 1 compares mainland and island populations (used for mericarps and flowers)
-# Model 2 compares Galapagos with the other island systems (used for flowers)
-# For each trait I test model assumptions and transform data accordingly for convergence
-# Data transformations are either log or squared roots.
-# I made some of the outputs comments because I do need the models for making the plots
-# but model comparisons were done before.
-# Emmeans estimates:
-# Use emmeans package for this_ Using "response" allows me to compare on the original scale for transformed data_
-# This gives me an idea of how much change there is between the factors of interest_
-# Using the that that worked best for each trait and model
-# the following estimates LS means for the mainland_island effect for each response
+# This script was created as a complement of the main analysis.
+# To demostrate that our effects are due to continent/island differences
+# and not unbalanced sampling we removed Galapagos samples (n=3000)
+# from the island dataset and compared the remaining islands (n=200)
+# to the mainland mericarps and flowers.
+
 
 # 03_01 Model 1: Mainland - Island ####
 # 03_01_01 Mericarp data ####
