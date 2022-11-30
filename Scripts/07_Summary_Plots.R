@@ -330,7 +330,7 @@ fviz_eig(mericarp_ind_pca)
 
 ### Individual PCA ####
 # It uses mericarp_NA as habillage because lower spines there is a factor.
-fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_NA$mainland_island, palette = NULL,
+fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_NA_wozero$mainland_island, palette = NULL,
              addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
              alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
              select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
@@ -342,10 +342,11 @@ fviz_pca_var(mericarp_ind_pca,
 )
 fviz_pca_biplot(mericarp_ind_pca, repel = T,
                 geom = c("point"),
-                habillage = mericarp_NA$mainland_island,
+                habillage = mericarp_NA_wozero$other_mainland,
                 col.var = "black",
                 addEllipses = T
 )
+
 
 ## Theme individual Biplot ####
 ### Mainland island comparison ####
