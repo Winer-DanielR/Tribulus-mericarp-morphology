@@ -143,7 +143,7 @@ EM_tip_dist
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
 ggplot_spine <- my_emmean_barplot(plot_spine, plot_spine$mainland_island,
-                                  "Spine Tip Distance (P = 0.015)",
+                                  "Spine Tip Distance (P = 0.007)",
                                   "Population",
                                   "Tip Distance (mm)")
 
