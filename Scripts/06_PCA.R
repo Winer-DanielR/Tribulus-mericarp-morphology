@@ -224,7 +224,7 @@ meri_PC1_m1<- lmer(PC1 ~ other_mainland +
                       data = mericarp_scaled_PC,
                       REML = F)
 ## Bioclimate model ####
-meri_PC1_bioclim <- lmer(PC1 ~ mainland_island +
+meri_PC1_bioclim <- lmer(PC1 ~ other_mainland +
                      year_collected +
                      Herbarium +
                      Temp +
