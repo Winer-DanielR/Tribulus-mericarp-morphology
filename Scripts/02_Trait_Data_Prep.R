@@ -6,6 +6,11 @@
 # Convert columns into factors
 # Export datasets into processed data folder
 
+# EXTRA: For this analysis, we removed samples from islands from Africa: Cape Verde
+# and Shungo-Mbili islands (n=8). Given that these sample come from single plant vouchers
+# and are not representative of the whole island system they come from.
+# This only concern the mericarp database. 
+
 ## 02_01 Mericarp dataset: ####
 # Tribulus_mericarp_data_clean.csv
 
@@ -20,8 +25,13 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
                                               island_group,
                                               galapagos_island,
                                               finch_beak,
-                                              lower_spines), list(factor))
+                                              lower_spines,
+                                              location), list(factor))
 str(mericarp)
+
+## Remove of African samples ####
+mericarp <-mericarp[!(mericarp$location=="Cape Verde Islands" | mericarp$location=="Shungu-Mbili Island"),]
+
 
 # Separate each trait, remove NAs
 
@@ -58,6 +68,8 @@ meri_lower_spines <- filter(meri_lower_spines, !is.na(Temp_S))
 
 
 ## Traits not used in the analysis ####
+
+
 ### Spine length #####
 # Spine length was another trait we collected but we did not had for all samples.
 # Herbarium data was collected by Marc and during that time we did not measured spine length.
@@ -76,29 +88,29 @@ meri_lower_spines <- filter(meri_lower_spines, !is.na(Temp_S))
 
 # 02_02 Flower dataset ####
 # Tribulus_flower_data_clean.csv
-flower <- read_csv("~/Vault of Ideas/20 - 29 Tribulus Research/22 Chapter. Tribulus phenotypic variation in mainland and island populations/22.03 R code/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
-flower <- flower %>% mutate_at(vars(ID,
-                                        Herbarium,
-                                        continent,
-                                        country,
-                                        island_group,
-                                        mainland_island,
-                                        galapagos_other,
-                                        island_group,
-                                        galapagos_island,
-                                        finch_beak), list(factor))
-str(flower)
-flower <- rename(flower, Temp = Bio_1,
-                 Temp_S = Bio_4,
-                 Prec = Bio_12,
-                 varP = Bio_15)
-
-# Remove NAs Petal length
-flower <- filter(flower, !is.na(petal_length))
-flower <- filter(flower, !is.na(Temp_S))
-
-### Flower for Galapagos and Other Islands ####
-flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
+# flower <- read_csv("~/Vault of Ideas/20 - 29 Tribulus Research/22 Chapter. Tribulus phenotypic variation in mainland and island populations/22.03 R code/Tribulus-mericarp-morphology/Data/Processed/Tribulus_flower_data_clean.csv")
+# flower <- flower %>% mutate_at(vars(ID,
+#                                         Herbarium,
+#                                         continent,
+#                                         country,
+#                                         island_group,
+#                                         mainland_island,
+#                                         galapagos_other,
+#                                         island_group,
+#                                         galapagos_island,
+#                                         finch_beak), list(factor))
+# str(flower)
+# flower <- rename(flower, Temp = Bio_1,
+#                  Temp_S = Bio_4,
+#                  Prec = Bio_12,
+#                  varP = Bio_15)
+# 
+# # Remove NAs Petal length
+# flower <- filter(flower, !is.na(petal_length))
+# flower <- filter(flower, !is.na(Temp_S))
+# 
+# ### Flower for Galapagos and Other Islands ####
+# flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
 
 # Other analysis subsets ####
 # 02_03 Galapagos only with mainland data ####
