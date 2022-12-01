@@ -13,7 +13,7 @@
 ## Length ####
 # For length, the untransformed data seems the best
 #### Raw data ####
-meri_length_m1<- lmer(length ~ other_mainland +
+meri_length_m1<- lmer(length ~ mainland_island +
                        year_collected +
                         Herbarium +
                         # Temp +

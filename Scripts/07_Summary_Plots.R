@@ -25,6 +25,8 @@ my_emmean_barplot2 <- function(emmean_plot, x, title, lab_x, lab_y){
   ggplot(emmean_plot, aes(x = x, y = the.emmean)) +
     geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
     geom_point(size = 6) +
+    scale_y_continuous(breaks = seq(-20,20,1/4)) +
+    scale_x_discrete(name = " ") +
     theme(axis.line = element_line(linetype = "solid", size = 1.5),
           axis.title = element_text(size = 12, face = "bold"),
           axis.text = element_text(size = 10),
@@ -43,7 +45,7 @@ my_emmean_barplot2 <- function(emmean_plot, x, title, lab_x, lab_y){
 EM_length
 plot_length <- plot(EM_length, comparisons = T, plotit = F)
 
-ggplot_length <- my_emmean_barplot2(plot_length, plot_length$other_mainland,
+ggplot_length <- my_emmean_barplot2(plot_length, plot_length$mainland_island,
                   "Length (P = 0.784)",
                   "Population",
                   "Length (mm)")
@@ -52,7 +54,7 @@ ggplot_length <- my_emmean_barplot2(plot_length, plot_length$other_mainland,
 EM_length_bioclim
 plot_length_bioclim <- plot(EM_length_bioclim, comparisons = T, plotit = F)
 
-ggplot_length_bioclim <- my_emmean_barplot(plot_length_bioclim, plot_length_bioclim$mainland_island,
+ggplot_length_bioclim <- my_emmean_barplot2(plot_length_bioclim, plot_length_bioclim$mainland_island,
                                    "Length (P = 0.414)",
                                    "Population",
                                    "Length (mm)")
@@ -77,7 +79,7 @@ EM_width
 plot_width <- plot(EM_width, comparisons = T, plotit = F)
 
 #### No bioclimate variables ####
-ggplot_width <- my_emmean_barplot2(plot_width, plot_width$other_mainland,
+ggplot_width <- my_emmean_barplot2(plot_width, plot_width$mainland_island,
                                    "Width (P = 0.12)",
                                    "Population",
                                    "Width (mm)")
@@ -86,7 +88,7 @@ ggplot_width <- my_emmean_barplot2(plot_width, plot_width$other_mainland,
 EM_width_bioclim
 plot_width_bioclim <- plot(EM_width_bioclim, comparisons = T, plotit = F)
 
-ggplot_width_bioclim <- my_emmean_barplot(plot_width_bioclim, plot_width_bioclim$mainland_island,
+ggplot_width_bioclim <- my_emmean_barplot2(plot_width_bioclim, plot_width_bioclim$mainland_island,
                                            "Width (P = 0.137)",
                                            "Population",
                                            "Width (mm)")
@@ -109,7 +111,7 @@ width_violin <- ggplot(meri_width, aes(x = other_mainland, y = width, fill = oth
 EM_depth
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
-ggplot_depth <- my_emmean_barplot2(plot_depth, plot_depth$other_mainland,
+ggplot_depth <- my_emmean_barplot2(plot_depth, plot_depth$mainland_island,
                                   "Depth (P = 0.023)",
                                   "Population",
                                   "Depth (mm)")
@@ -142,7 +144,7 @@ depth_violin <- ggplot(meri_depth, aes(x = other_mainland, y = depth, fill = oth
 EM_tip_dist
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
-ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$other_mainland,
+ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$mainland_island,
                                   "Spine Tip Distance (P = 0.055)",
                                   "Population",
                                   "Tip Distance (mm)")
@@ -170,31 +172,31 @@ tip_distance_violin <- ggplot(meri_tip_distance, aes(x = other_mainland, y = tip
           panel.background = element_rect(fill = NA)) + 
     labs(x = "Population", y = "Spinte tip distance (mm)", title = "Spine Tip Distance")
 
-#### Tip distance Lower spines comparison ####
-##### No bioclimate variables #####
-EM_tip_dist_lower
-plot_tip_lower <- plot(EM_tip_dist_lower, comparisons = T, plotit = F)
-
-ggplot_spine_lower <- my_emmean_barplot(plot_tip_lower, plot_tip_lower$lower_spines,
-                                          "Spine Tip Distance (P = <0.001)",
-                                          "Lower Spines",
-                                          "Tip Distance (mm)")
-
-##### Bioclimate Variables #####
-EM_tip_dist_lower_bioclim
-plot_tip_lower_bioclim <- plot(EM_tip_dist_lower_bioclim, comparisons = T, plotit = F)
-
-ggplot_spine_lower_bioclim <- my_emmean_barplot(plot_tip_lower_bioclim, plot_tip_lower_bioclim$lower_spines,
-                                        "Spine Tip Distance (P = <0.001)",
-                                        "Lower Spines",
-                                        "Tip Distance (mm)")
+# #### Tip distance Lower spines comparison ####
+# ##### No bioclimate variables #####
+# EM_tip_dist_lower
+# plot_tip_lower <- plot(EM_tip_dist_lower, comparisons = T, plotit = F)
+# 
+# ggplot_spine_lower <- my_emmean_barplot(plot_tip_lower, plot_tip_lower$lower_spines,
+#                                           "Spine Tip Distance (P = <0.001)",
+#                                           "Lower Spines",
+#                                           "Tip Distance (mm)")
+# 
+# ##### Bioclimate Variables #####
+# EM_tip_dist_lower_bioclim
+# plot_tip_lower_bioclim <- plot(EM_tip_dist_lower_bioclim, comparisons = T, plotit = F)
+# 
+# ggplot_spine_lower_bioclim <- my_emmean_barplot(plot_tip_lower_bioclim, plot_tip_lower_bioclim$lower_spines,
+#                                         "Spine Tip Distance (P = <0.001)",
+#                                         "Lower Spines",
+#                                         "Tip Distance (mm)")
 
 ### Lower spines ####
 #### No bioclimate variables ####
 EM_lower
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
-ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$other_mainland,
+ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$mainland_island,
                                    "Lower Spines (P = 0.312)",
                                    "Population",
                                    "Lower Spines")
@@ -342,7 +344,7 @@ fviz_pca_var(mericarp_ind_pca,
 )
 fviz_pca_biplot(mericarp_ind_pca, repel = T,
                 geom = c("point"),
-                habillage = mericarp_NA_wozero$other_mainland,
+                habillage = mericarp_NA_wozero$Herb_Location,
                 col.var = "black",
                 addEllipses = T
 )
@@ -358,7 +360,7 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            pointshape = c(21),
                            pointsize = 4,
                            stroke = 0.5,
-                           fill.ind = mericarp_NA_wozero$other_mainland,
+                           fill.ind = mericarp_NA_wozero$mainland_island,
                            col.ind = "black",
                            # Color variable by groups
                            legend.title = "Islands",
@@ -366,10 +368,10 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            col.var = "black", 
                            labelsize = 5,
                            addEllipses = T,
-                           palette = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73"),
+                           palette = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73", '#E69F00'),
                            
 ) + theme_transparent() + 
-  scale_color_manual(values = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73")) +
+  scale_color_manual(values = c("#a95aa1", "#85c0f9", "#f5793a",  "#0f2080", "#009e73", "#E69F00")) +
   # PCA theme, adds custom font and sizes that matches the other plots    
   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
         axis.title = element_text(size = 14, face = "bold"), 
@@ -414,7 +416,7 @@ var2
 EM_PC1
 plot_PC1 <- plot(EM_PC1, comparisons = T, plotit = F)
 
-ggplot_PC1 <- my_emmean_barplot2(plot_PC1, plot_PC1$other_mainland,
+ggplot_PC1 <- my_emmean_barplot2(plot_PC1, plot_PC1$mainland_island,
                                     "Mericarp Size (P = 0.053)",
                                     "Population",
                                     "PC1 Scores")
@@ -433,7 +435,7 @@ ggplot_PC1_mean <- my_emmean_barplot2(plot_PC1_mean_bioclim, plot_PC1_mean_biocl
 EM_PC1_bioclim
 plot_PC1_bioclim <- plot(EM_PC1_bioclim, comparisons = T, plotit = F)
 
-ggplot_PC1_bioclim <- my_emmean_barplot(plot_PC1_bioclim, plot_PC1_bioclim$mainland_island,
+ggplot_PC1_bioclim <- my_emmean_barplot2(plot_PC1_bioclim, plot_PC1_bioclim$mainland_island,
                                 "Mericarp Size (P = 0.222)",
                                 "Population",
                                 "PC1 Scores")
@@ -542,3 +544,4 @@ violin_plots <- ggarrange(length_violin,
                           ncol = 2,
                           nrow = 2) + 
   theme(text = element_text(family = "Noto Sans"))
+
