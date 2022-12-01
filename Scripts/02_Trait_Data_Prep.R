@@ -26,6 +26,9 @@ mericarp <- mericarp %>% mutate_at(vars(ID,
 str(mericarp)
 
 # Separate each trait, remove NAs
+# Removed Africa islands samples, perhaps the effect of removal is stronger if we also remove Galapagos
+mericarp <-mericarp[!(mericarp$location=="Cape Verde Islands" | mericarp$location=="Shungu-Mbili Island"),]
+mericarp <-filter(mericarp, !is.na(other_mainland))
 
 ### Length ####
 meri_length <- dplyr::select(mericarp, ind_num:mericarp_num, length, country:varP)
@@ -100,8 +103,13 @@ flower <- rename(flower, Temp = Bio_1,
 flower <- filter(flower, !is.na(petal_length))
 flower <- filter(flower, !is.na(Temp_S))
 
+# Filter other islands and mainland for flowers
+flower <-filter(flower, !is.na(other_mainland))
+
+
+
 ### Flower for Galapagos and Other Islands ####
-flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
+#flower_galapagos_other <- filter(flower, !galapagos_other == "mainland")
 
 # Other analysis subsets ####
 # 02_03 Galapagos only with mainland data ####
