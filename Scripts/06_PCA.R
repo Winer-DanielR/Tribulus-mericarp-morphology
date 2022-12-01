@@ -217,14 +217,14 @@ meri_PC1_mean_bioclim <- lmer(PC1 ~ mainland_island +
                         REML = F)
 
 ## INDIVIDUAL Model mainland island ####
-meri_PC1_m1<- lmer(PC1 ~ other_mainland +
+meri_PC1_m1<- lmer(PC1 ~ mainland_island +
                         year_collected +
                      Herbarium +
                         (1|ID),
                       data = mericarp_scaled_PC,
                       REML = F)
 ## Bioclimate model ####
-meri_PC1_bioclim <- lmer(PC1 ~ other_mainland +
+meri_PC1_bioclim <- lmer(PC1 ~ mainland_island +
                      year_collected +
                      Herbarium +
                      Temp +
@@ -267,7 +267,7 @@ pwpp(EM_PC1_bioclim)
 
 
 ## Emmeans estimates: PCA  ####
-EM_PC1 <- emmeans(meri_PC1_m1, ~ other_mainland)
+EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island)
 EM_PC1_bioclim <- emmeans(meri_PC1_bioclim, ~ mainland_island)
 
 ### Emmean plot: PCA ####
