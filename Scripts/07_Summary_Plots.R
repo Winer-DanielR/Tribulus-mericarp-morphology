@@ -55,7 +55,7 @@ EM_length_bioclim
 plot_length_bioclim <- plot(EM_length_bioclim, comparisons = T, plotit = F)
 
 ggplot_length_bioclim <- my_emmean_barplot2(plot_length_bioclim, plot_length_bioclim$mainland_island,
-                                   "Length (P = 0.414)",
+                                   "Length (P = 0.898)",
                                    "Population",
                                    "Length (mm)")
 
@@ -80,7 +80,7 @@ plot_width <- plot(EM_width, comparisons = T, plotit = F)
 
 #### No bioclimate variables ####
 ggplot_width <- my_emmean_barplot2(plot_width, plot_width$mainland_island,
-                                   "Width (P = 0.12)",
+                                   "Width (P = 0.094)",
                                    "Population",
                                    "Width (mm)")
 
@@ -89,7 +89,7 @@ EM_width_bioclim
 plot_width_bioclim <- plot(EM_width_bioclim, comparisons = T, plotit = F)
 
 ggplot_width_bioclim <- my_emmean_barplot2(plot_width_bioclim, plot_width_bioclim$mainland_island,
-                                           "Width (P = 0.137)",
+                                           "Width (P = 0.302)",
                                            "Population",
                                            "Width (mm)")
 #### Violin plot ####
@@ -112,7 +112,7 @@ EM_depth
 plot_depth <- plot(EM_depth, comparisons = T, plotit = F)
 
 ggplot_depth <- my_emmean_barplot2(plot_depth, plot_depth$mainland_island,
-                                  "Depth (P = 0.023)",
+                                  "Depth (P = 0.015)",
                                   "Population",
                                   "Depth (mm)")
 
@@ -120,8 +120,8 @@ ggplot_depth <- my_emmean_barplot2(plot_depth, plot_depth$mainland_island,
 EM_depth_bioclim
 plot_depth_bioclim <- plot(EM_depth_bioclim, comparisons = T, plotit = F)
 
-ggplot_depth_bioclim <- my_emmean_barplot(plot_depth_bioclim, plot_depth_bioclim$mainland_island,
-                                  "Depth (P = 0.017)",
+ggplot_depth_bioclim <- my_emmean_barplot2(plot_depth_bioclim, plot_depth_bioclim$mainland_island,
+                                  "Depth (P = 0.190)",
                                   "Population",
                                   "Depth (mm)")
 
@@ -144,8 +144,8 @@ depth_violin <- ggplot(meri_depth, aes(x = other_mainland, y = depth, fill = oth
 EM_tip_dist
 plot_spine <- plot(EM_tip_dist, comparisons = T, plotit = F)
 
-ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$mainland_island,
-                                  "Spine Tip Distance (P = 0.055)",
+ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$other_mainland,
+                                  "Spine Tip Distance (P = 0.032)",
                                   "Population",
                                   "Tip Distance (mm)")
 
@@ -153,8 +153,8 @@ ggplot_spine <- my_emmean_barplot2(plot_spine, plot_spine$mainland_island,
 EM_tip_dist_bioclim
 plot_spine_bioclim <- plot(EM_tip_dist_bioclim, comparisons = T, plotit = F)
 
-ggplot_spine_bioclim <- my_emmean_barplot(plot_spine_bioclim, plot_spine_bioclim$mainland_island,
-                                  "Spine Tip Distance (P = 0.439)",
+ggplot_spine_bioclim <- my_emmean_barplot2(plot_spine_bioclim, plot_spine_bioclim$mainland_island,
+                                  "Spine Tip Distance (P = 0.083)",
                                   "Population",
                                   "Tip Distance (mm)")
 
@@ -196,8 +196,8 @@ tip_distance_violin <- ggplot(meri_tip_distance, aes(x = other_mainland, y = tip
 EM_lower
 plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
-ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$mainland_island,
-                                   "Lower Spines (P = 0.312)",
+ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$other_mainland,
+                                   "Lower Spines (P = 0.246)",
                                    "Population",
                                    "Lower Spines")
 
@@ -206,7 +206,7 @@ EM_lower_bioclim
 plot_lower_bioclim <- plot(EM_lower_bioclim, comparisons = T, plotit = F)
 
 ggplot_lower_bioclim <- my_emmean_barplot2(plot_lower_bioclim, plot_lower_bioclim$mainland_island,
-                                   "Lower Spines (P = 0.216)",
+                                   "Lower Spines (P = 0.435)",
                                    "Population",
                                    "Lower Spines")
 
@@ -217,7 +217,7 @@ EM_flower
 plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
 ggplot_flower <- my_emmean_barplot2(plot_flower, plot_flower$mainland_island,
-                                    "Model 1 (P = 0.239)",
+                                    "Model 1 (P = 0.118)",
                                     "Population",
                                     "Petal Length (mm)")
 
@@ -226,7 +226,7 @@ EM_flower_bioclim
 plot_flower_bioclim <- plot(EM_flower_bioclim, comparisons = T, plotit = F)
 
 ggplot_flower_bioclim <- my_emmean_barplot2(plot_flower_bioclim, plot_flower_bioclim$mainland_island,
-                                    "Model 1 (P = 0.001)",
+                                    "Model 1 (P = 0.947)",
                                     "Population",
                                     "Petal Length (mm)")
 #### Violin plot ####
@@ -243,88 +243,6 @@ flower_violin <- ggplot(flower, aes(x = mainland_island, y = petal_length, fill 
           panel.background = element_rect(fill = NA)) + 
     labs(x = "Population", y = "Petal Length (mm)", title = "Petal Length")
 
-# 06_02 Model 2: Galapagos and other islands ####
-## 06_02_01 Flower ####
-### Petal length ####
-#### No bioclimate variables ####
-EM_flower2
-plot_flower2 <- plot(EM_flower2, comparisons = T, plotit = F)
-ggplot_flower2 <- my_emmean_barplot2(plot_flower2, plot_flower2$galapagos_other,
-                                    "Model 2 (P = <0.001)",
-                                    "Population",
-                                    "Petal Length (mm)")
-
-#### Including bioclimate variables ####
-EM_flower2_bioclim
-plot_flower2_bioclim <- plot(EM_flower2_bioclim, comparisons = T, plotit = F)
-ggplot_flower2_bioclim <- my_emmean_barplot2(plot_flower2_bioclim, plot_flower2_bioclim$galapagos_other,
-                                     "Model 2 (P = <0.001)",
-                                     "Population",
-                                     "Petal Length (mm)")
-#### Violin plot ####
-flower_violin2 <- ggplot(flower_galapagos_other, aes(x = galapagos_other, y = petal_length, fill = galapagos_other)) + 
-    geom_violin(size = 1.5, trim = F) +
-    scale_fill_manual(values = c("#85c0f9", "#009e73")) +
-    theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-          axis.title = element_text(size = 12, face = "bold"), 
-          axis.text = element_text(size = 10), 
-          axis.text.x = element_text(size = 11), 
-          plot.title = element_text(size = 12, face = "bold"),
-          text = element_text(family = "Noto Sans"),
-          legend.position = "none",
-          panel.background = element_rect(fill = NA)) + 
-    labs(x = "Population", y = "Petal Length (mm)", title = "Petal Length")
-
-
-# 06_03 Model PCA plots ####
-
-## Summary plots ####
-#### Mainland Galapos plot ####
-EM_PC1
-plot_PC1 <- plot(EM_PC1, comparisons = T, plotit = F)
-
-ggplot_PC1 <- ggplot(plot_PC1, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Mericarp Size (P = <0.001)"))) +
-  labs(x = "Population", y = "Mericarp Size (PC1)") 
-
-EM_PC1
-plot_PC2 <- plot(EM_PC_climate, comparisons = T, plotit = F)
-
-ggplot_PC2 <- ggplot(plot_PC2, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Mericarp Size (P = <0.001)"))) +
-  labs(x = "Population", y = "Mericarp Size (PC1)") 
-
-#### Violing plot ####
-PC1_violin <- ggplot(mericarp_scaled_PC, aes(x = mainland_island, y = PC1, fill = mainland_island)) + 
-  geom_violin(size = 1.5, trim = T) +
-  scale_fill_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        legend.position = "none",
-        panel.background = element_rect(fill = NA)) + 
-  labs(x = "Population", y = "Mericarp Size (PC1)", title = "Mericarp Size")
 
 # 06_04 PCA plots ####
 ### Eigenvalues plot ####
@@ -360,10 +278,10 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            pointshape = c(21),
                            pointsize = 4,
                            stroke = 0.5,
-                           fill.ind = mericarp_NA_wozero$mainland_island,
+                           fill.ind = mericarp_NA_wozero$Herb_Location,
                            col.ind = "black",
                            # Color variable by groups
-                           legend.title = "Islands",
+                           legend.title = "Locations",
                            repel = T,
                            col.var = "black", 
                            labelsize = 5,
@@ -417,26 +335,16 @@ EM_PC1
 plot_PC1 <- plot(EM_PC1, comparisons = T, plotit = F)
 
 ggplot_PC1 <- my_emmean_barplot2(plot_PC1, plot_PC1$mainland_island,
-                                    "Mericarp Size (P = 0.053)",
+                                    "Mericarp Size (P = 0.071)",
                                     "Population",
                                     "PC1 Scores")
-
-## Mean bioclimate variables ####
-EM_PC1_mean_bioclim
-plot_PC1_mean_bioclim <- plot(EM_PC1_mean_bioclim, comparisons = T,
-                              plotit = F)
-
-ggplot_PC1_mean <- my_emmean_barplot2(plot_PC1_mean_bioclim, plot_PC1_mean_bioclim$mainland_island,
-                                      "Mericarp Size (P = 0.231)",
-                                      "Population",
-                                      "PC1 Scores")
 
 ## Including bioclimate variables #####
 EM_PC1_bioclim
 plot_PC1_bioclim <- plot(EM_PC1_bioclim, comparisons = T, plotit = F)
 
 ggplot_PC1_bioclim <- my_emmean_barplot2(plot_PC1_bioclim, plot_PC1_bioclim$mainland_island,
-                                "Mericarp Size (P = 0.222)",
+                                "Mericarp Size (P = 0.311)",
                                 "Population",
                                 "PC1 Scores")
 
@@ -475,11 +383,11 @@ figure_PC1_lower_complete <- ggarrange(figure_mericarp_PC1_lower,
 ## Flowers ####
 # Flowers have model 1 and 2
 figure_flower <- ggarrange(ggplot_flower,
-                           ggplot_flower2,
+                           #ggplot_flower2,
                            #ggplot_flower_bioclim,
                            #ggplot_flower2_bioclim,
                            labels = c("A", "B"),
-                           ncol = 2,
+                           ncol = 1,
                            nrow = 1)
 
 figure_flower <- annotate_figure(figure_flower,
@@ -487,9 +395,9 @@ figure_flower <- annotate_figure(figure_flower,
                                                  color = "black", face = "bold", size = 16))
 
 figure_flower_bioclim <- ggarrange(ggplot_flower_bioclim,
-                           ggplot_flower2_bioclim,
+                           #ggplot_flower2_bioclim,
                            labels = c("C", "D"),
-                           ncol = 2,
+                           ncol = 1,
                            nrow = 1)
 
 figure_flower_bioclim <- annotate_figure(figure_flower_bioclim, 
@@ -498,8 +406,8 @@ figure_flower_bioclim <- annotate_figure(figure_flower_bioclim,
 
 figure_flower_complete <- ggarrange(figure_flower,
                                     figure_flower_bioclim,
-                                    ncol = 1,
-                                    nrow = 2)
+                                    ncol = 2,
+                                    nrow = 1)
 
 ## Individual traits figure ####
 # Supplemental figure with individual mericarp traits. From the PCA.
