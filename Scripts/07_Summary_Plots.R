@@ -55,7 +55,7 @@ EM_length_bioclim
 plot_length_bioclim <- plot(EM_length_bioclim, comparisons = T, plotit = F)
 
 ggplot_length_bioclim <- my_emmean_barplot(plot_length_bioclim, plot_length_bioclim$mainland_island,
-                                   "Length (P = 0.414)",
+                                   "Length (P = 0.317)",
                                    "Population",
                                    "Length (mm)")
 
@@ -80,7 +80,7 @@ plot_width <- plot(EM_width, comparisons = T, plotit = F)
 
 #### No bioclimate variables ####
 ggplot_width <- my_emmean_barplot(plot_width, plot_width$mainland_island,
-                                   "Width (P = <0.001)",
+                                   "Width (P = 0.078)",
                                    "Population",
                                    "Width (mm)")
 
@@ -89,7 +89,7 @@ EM_width_bioclim
 plot_width_bioclim <- plot(EM_width_bioclim, comparisons = T, plotit = F)
 
 ggplot_width_bioclim <- my_emmean_barplot(plot_width_bioclim, plot_width_bioclim$mainland_island,
-                                           "Width (P = 0.137)",
+                                           "Width (P = 0.078)",
                                            "Population",
                                            "Width (mm)")
 #### Violin plot ####
@@ -121,7 +121,7 @@ EM_depth_bioclim
 plot_depth_bioclim <- plot(EM_depth_bioclim, comparisons = T, plotit = F)
 
 ggplot_depth_bioclim <- my_emmean_barplot(plot_depth_bioclim, plot_depth_bioclim$mainland_island,
-                                  "Depth (P = 0.017)",
+                                  "Depth (P = 0.001)",
                                   "Population",
                                   "Depth (mm)")
 
@@ -154,7 +154,7 @@ EM_tip_dist_bioclim
 plot_spine_bioclim <- plot(EM_tip_dist_bioclim, comparisons = T, plotit = F)
 
 ggplot_spine_bioclim <- my_emmean_barplot(plot_spine_bioclim, plot_spine_bioclim$mainland_island,
-                                  "Spine Tip Distance (P = 0.439)",
+                                  "Spine Tip Distance (P = 0.796)",
                                   "Population",
                                   "Tip Distance (mm)")
 
@@ -193,8 +193,8 @@ ggplot_spine_lower_bioclim <- my_emmean_barplot(plot_tip_lower_bioclim, plot_tip
 
 ### Lower spines ####
 #### No bioclimate variables ####
-EM_lower
-plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
+EM_lower_mainland_gal
+plot_lower <- plot(EM_lower_mainland_gal, comparisons = T, plotit = F)
 
 ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$mainland_island,
                                    "Lower Spines (P = <0.001)",
@@ -206,7 +206,7 @@ EM_lower_bioclim
 plot_lower_bioclim <- plot(EM_lower_bioclim, comparisons = T, plotit = F)
 
 ggplot_lower_bioclim <- my_emmean_barplot2(plot_lower_bioclim, plot_lower_bioclim$mainland_island,
-                                   "Lower Spines (P = 0.216)",
+                                   "Lower Spines (P = <0.001)",
                                    "Population",
                                    "Lower Spines")
 
@@ -226,7 +226,7 @@ EM_flower_bioclim
 plot_flower_bioclim <- plot(EM_flower_bioclim, comparisons = T, plotit = F)
 
 ggplot_flower_bioclim <- my_emmean_barplot2(plot_flower_bioclim, plot_flower_bioclim$mainland_island,
-                                    "Model 1 (P = 0.001)",
+                                    "Model 1 (P = <0.001)",
                                     "Population",
                                     "Petal Length (mm)")
 #### Violin plot ####
@@ -297,7 +297,7 @@ ggplot_PC1 <- ggplot(plot_PC1, aes(x = mainland_island, y = the.emmean)) +
   labs(x = "Population", y = "Mericarp Size (PC1)") 
 
 EM_PC1
-plot_PC2 <- plot(EM_PC_climate, comparisons = T, plotit = F)
+plot_PC2 <- plot(EM_PC1_bioclim, comparisons = T, plotit = F)
 
 ggplot_PC2 <- ggplot(plot_PC2, aes(x = mainland_island, y = the.emmean)) + 
   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
@@ -332,7 +332,7 @@ fviz_eig(mericarp_ind_pca)
 
 ### Individual PCA ####
 # It uses mericarp_NA as habillage because lower spines there is a factor.
-fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_NA$mainland_island, palette = NULL,
+fviz_pca_ind(mericarp_ind_pca, repel = T, geom = c("point"), habillage = mericarp_NA_wozero$mainland_island, palette = NULL,
              addEllipses = T, col.ind = "blue", col.ind.sup = "darkblue",
              alpha.ind = 1, shape.ind = 19, col.quali.var = "black",
              select.ind = list(name = NULL, cos2 = NULL, contrib = NULL),
@@ -353,7 +353,7 @@ fviz_pca_biplot(mericarp_ind_pca, repel = T,
 ### Mainland island comparison ####
 biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            # Fill individuals by groups
-                           title = "Mericarps
+                           title = "Mericarps Galapagos-Continent
                            ",
                            geom.ind = "point",
                            pointshape = c(21),
@@ -420,22 +420,12 @@ ggplot_PC1 <- my_emmean_barplot(plot_PC1, plot_PC1$mainland_island,
                                     "Population",
                                     "PC1 Scores")
 
-## Mean bioclimate variables ####
-EM_PC1_mean_bioclim
-plot_PC1_mean_bioclim <- plot(EM_PC1_mean_bioclim, comparisons = T,
-                              plotit = F)
-
-ggplot_PC1_mean <- my_emmean_barplot2(plot_PC1_mean_bioclim, plot_PC1_mean_bioclim$mainland_island,
-                                      "Mericarp Size (P = 0.231)",
-                                      "Population",
-                                      "PC1 Scores")
-
 ## Including bioclimate variables #####
 EM_PC1_bioclim
 plot_PC1_bioclim <- plot(EM_PC1_bioclim, comparisons = T, plotit = F)
 
 ggplot_PC1_bioclim <- my_emmean_barplot(plot_PC1_bioclim, plot_PC1_bioclim$mainland_island,
-                                "Mericarp Size (P = 0.222)",
+                                "Mericarp Size (P = 0.178)",
                                 "Population",
                                 "PC1 Scores")
 
