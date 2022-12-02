@@ -96,7 +96,7 @@ plot(EM_length_bioclim, comparisons = TRUE) + labs(title = "Mericarp Length")
 pwpp(EM_length_bioclim)
 ### Percentage difference ####
 # ((island mean/mainland mean)-1)*100%
-((6.15/6 - 1)* 100) # Mericarps ~ 2.5% longer on islands
+((6.30/5.86 - 1)* 100) # Mericarps ~ 7.50% longer on Galapagos
 
 ## Width ####
 # For width, log transformed seemed the best
@@ -120,7 +120,7 @@ meri_width_bioclim <- lmer(log(width) ~ mainland_island +
                         Prec +
                         varP +
                         (1|ID),
-                      data = meri_width, 
+                      data = meri_width_mainland_gal, 
                       REML = F)
 #### Square-root transformed ####
 # meri_width_m3 <- lmer(sqrt(width) ~ mainland_island +
@@ -152,7 +152,7 @@ EM_width_bioclim <- emmeans(meri_width_bioclim, ~ mainland_island, type = "respo
 plot(EM_width_bioclim, comparisons = T) + labs(title = "Mericarp Width")
 pwpp(EM_width_bioclim)
 ### Percentage difference ####
-((3.11/2.97 - 1)*100) # Mericarps ~ 4.71% wider on islands
+((3.14/2.89 - 1)*100) # Mericarps ~ 8.65% wider on Galapagos
 
 ## Depth ####
 # For depth untransformed data seems to work the best
@@ -165,7 +165,7 @@ meri_depth_bioclim <- lmer(depth ~ mainland_island +
                         Prec +
                         varP +
                         (1|ID),
-                      data=meri_depth, 
+                      data=meri_depth_mainland_gal, 
                       REML = F)
 #### Log transformed data ####
 # meri_depth_m2 <- lmer(log(depth) ~ mainland_island +
@@ -209,7 +209,7 @@ EM_depth_bioclim <- emmeans(meri_depth_bioclim, ~ mainland_island)
 plot(EM_depth_bioclim, comparisons = T) + labs(title = "Mericarp Depth")
 pwpp(EM_depth_bioclim)
 ### Percentage difference ####
-((4.71/4.43 - 1)*100) # Mericarps ~ 6% deeper on islands
+((4.80/4.23 - 1)*100) # Mericarps ~ 13% deeper on Galapagos
 
 ## Spine Tip distance ####
 # For spine tip distance I ran models with all the samples.
@@ -277,7 +277,7 @@ meri_tip_distance_bioclim4 <- lmer(tip_distance ~ mainland_island +
                                varP +
                                (1|ID),
                              na.action = na.exclude,
-                             data=meri_tip_distance_wozero,REML=F)
+                             data=meri_tip_distance_mainland_gal,REML=F)
 
 # meri_tip_distance_bioclim5 <- lmer(log(tip_distance + 1) ~ mainland_island +
 #                                year_collected +
@@ -309,7 +309,7 @@ meri_tip_distance_bioclim4 <- lmer(tip_distance ~ mainland_island +
 # The residual distribution showed some outliers. 
 # Check residual distributions after removing mericarps without spines.
 # I included the residual column into the dataset
-meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_bioclim4)
+meri_tip_distance_wozero_mainland_gal$residuals <- resid(meri_tip_distance_bioclim4)
  # hist(resid(meri_tip_distance_m4), breaks = 20)
  # hist(meri_tip_distance_wozero$tip_distance, breaks = 20)
 
@@ -323,9 +323,9 @@ meri_tip_distance_wozero$residuals <- resid(meri_tip_distance_bioclim4)
 
 ##### Filter residuals (used in analysis) ####
 # I filter residuals that are lower than -5 and larger than 5.
-meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero,
+meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero_mainland_gal,
                                           !residuals < -5)
-meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero_filter,
+meri_tip_distance_wozero_filter <- filter(meri_tip_distance_wozero_mainland_gal,
                                           !residuals > 5)
 
 # This removes specimen no.383
@@ -386,7 +386,7 @@ EM_tip_dist_bioclim <- emmeans(meri_tip_distance_bioclim7, ~ mainland_island)
 plot(EM_tip_dist_bioclim, comparisons = T) + labs(title = "Mericarp Tip distance")
 pwpp(EM_tip_dist_bioclim)
 ### Percentage difference ####
-((8.85/8.56 - 1)*100) # Mericarps ~ 3.38% more separated on islands
+((8.79/8.63 - 1)*100) # Mericarps ~ 2% more separated on Galapagos
 
 ## Lower spines ####
 # I tried to fit a glm
@@ -404,7 +404,7 @@ meri_lower_spines_bioclim <- glmmTMB(factor(lower_spines) ~ mainland_island +
                                        Prec +
                                        varP +
                                        (1|ID),
-                                     data = meri_lower_spines,
+                                     data = meri_lower_spines_mainland_gal,
                                      family = binomial)
 # str(meri_lower_spines)
 ### ANOVA Type II test ####
@@ -472,122 +472,7 @@ EM_flower_bioclim <- emmeans(flower_bioclim, ~ mainland_island)
 plot(EM_flower_bioclim, comparisons = T) + labs(title = "Flower Length")
 pwpp(EM_flower_bioclim)
 ### Percentange difference ####
-((17.3/15.8 - 1)*100) # Flowers are 9.49% smaller on islands
-
-# 04_03 Model 2: Galapagos - Other Islands ####
-# Is there an effect between tribulus in galapagos compared to other island systems
-# This comparison is possible with flower and leaf datasets
-# 04_03_01 Flower dataset ####
-## Petal length data ####
-# I used the flower filter data from before
-# The raw data seems to work best
-### Raw data ####
-flower_bioclim2 <- lmer(petal_length ~ galapagos_other +
-                    year_collected +
-                    Temp +
-                    Temp_S +
-                    Prec +
-                    varP +
-                    (1|ID),
-                  data=flower_galapagos_other,
-                  REML=F)
-### Log transformed ####
-# flower_m8 <- lmer(log(petal_length) ~ galapagos_other +
-#                     year_collected +
-#                     Temp +
-#                     Temp_S +
-#                     Prec +
-#                     varP +
-#                     (1|ID),
-#                   data=flower_galapagos_other,
-#                   REML=F)
-### Square root transformed ####
-# flower_m9 <- lmer(sqrt(petal_length) ~ galapagos_other +
-#                     year_collected +
-#                     Temp +
-#                     Temp_S +
-#                     Prec +
-#                     varP +
-#                     (1|ID),
-#                   data=flower_galapagos_other,
-#                   REML=F)
-
-### ANOVA type II test ####
-Anova(flower_bioclim2)
-
-### Model Diagnostics ####
-# # Residual histograms
- # diagnostic(resid(flower_m7))
- # diagnostic(resid(flower_m8))
- # diagnostic(resid(flower_m9))
-# 
-# # DHARMa
- # testResiduals(flower_m7)
- # testResiduals(flower_m8)
- # testResiduals(flower_m9)
-
-## Emmean estimates: Petal length ####
-EM_flower2_bioclim <- emmeans(flower_bioclim2, ~ galapagos_other, type = "response")
-### Emmean plot: Petal length ####
-plot(EM_flower2_bioclim, comparisons = T) + labs(title = "Flower Length")
-pwpp(EM_flower2_bioclim)
-### Percentage difference ####
-((8.62/17.45 - 1)*100) #FLowers in Galapagos are 50% shorter than other islands
-
-# 03_04 Spine tip distance compared between lower spines ####
-## Spine Tip distance ####
-# For spine tip distance I ran models with all the samples.
-# This includes mericarps without upper spines (Spine tip distance=0)
-
-# Ran the models with this filter data and raw data works best
-###### Raw data ####
-meri_tip_distance_lower_bioclim <- lmer(tip_distance ~ lower_spines +
-                                   year_collected +
-                                     Herbarium +
-                                     Temp +
-                                     Temp_S + 
-                                     Prec +
-                                     varP +
-                                   (1|ID),
-                                 na.action = na.exclude,
-                                 data=meri_tip_distance_lower_filter,REML=F)
-###### Log transformed data ####
-# meri_tip_distance_lower8 <- lmer(log(tip_distance) ~ lower_spines +
-#                                    year_collected +
-#                                    (1|ID),
-#                                  na.action = na.exclude,
-#                                  data=meri_tip_distance_lower_filter,REML=F)
-###### Squared-root data ####
-# meri_tip_distance_lower9 <- lmer(sqrt(tip_distance) ~ lower_spines +
-#                                    year_collected +
-#                                    (1|ID),
-#                                  na.action = na.exclude,
-#                                  data=meri_tip_distance_lower_filter,REML=F)
-
-
-# Diagnostic
-# diagnostic(resid(meri_tip_distance_lower7))
-# diagnostic(resid(meri_tip_distance_lower8))
-# diagnostic(resid(meri_tip_distance_lower9))
-
-#Anova
-Anova(meri_tip_distance_lower_bioclim)
-
-# DHARMa
-# testResiduals(meri_tip_distance_lower7)
-
-## Emmeans estimates: Spine tip distance ####
-# Zero filter data
-EM_tip_dist_lower_bioclim <- emmeans(meri_tip_distance_lower_bioclim, ~ lower_spines)
-### Emmeans plot: Spine tip distance ####
-plot(EM_tip_dist_lower_bioclim, comparisons = T) + labs(title = "Mericarp Tip distance")
-pwpp(EM_tip_dist_lower_bioclim)
-### Percentage difference ####
-((9.16/8.38 - 1)*100) # Mericarps ~ 9% more separated on mericarps with lower spines
-
-
-
-
+((16.70/9.66 - 1)*100) # Flowers are 72% smaller on islands
 
 
 
