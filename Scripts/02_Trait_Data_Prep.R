@@ -84,25 +84,25 @@ str(mericarp_mainland_gal)
  
  
 ##### Length ####
-meri_length_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, length)
+meri_length_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, length, 28:31)
 meri_length_mainland_gal <- filter(meri_length_mainland_gal, !is.na(length))
  
 # ##### Width ####
-meri_width_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, width)
+meri_width_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, width, 28:31)
 meri_width_mainland_gal <- filter(meri_width_mainland_gal, !is.na(width))
  
 # ##### Depth ####
-meri_depth_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, depth)
+meri_depth_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, depth, 28:31)
 meri_depth_mainland_gal <- filter(meri_depth_mainland_gal, !is.na(depth))
  
 # ##### Spine tip distance ####
-meri_tip_distance_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, tip_distance) #Has zeroes in the data
+meri_tip_distance_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, tip_distance, 28:31) #Has zeroes in the data
 meri_tip_distance_mainland_gal <- filter(meri_tip_distance_mainland_gal, !is.na(tip_distance))
  
 # ##### Spine tip distance without zero ####
 meri_tip_distance_wozero_mainland_gal <- dplyr::filter(meri_tip_distance_mainland_gal, !tip_distance == 0)
 # 
 # ##### Lower spines ####
-meri_lower_spines_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, lower_spines) #As factor
+meri_lower_spines_mainland_gal <- dplyr::select(mericarp_mainland_gal, ind_num:mericarp_num, lower_spines, 28:31) #As factor
 meri_lower_spines_mainland_gal <- filter(meri_lower_spines_mainland_gal, !is.na(lower_spines))
 
