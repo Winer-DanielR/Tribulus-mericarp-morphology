@@ -70,14 +70,14 @@ Anova(meri_length_m1)
 # only show the output of that model.
 
 ## Emmeans estimates: Length ####
-EM_length <- emmeans(meri_length_m1, ~ other_mainland)
+EM_length <- emmeans(meri_length_m1, ~ mainland_island)
 
 ### Emmean plot: Length ####
 plot(EM_length, comparisons = TRUE) + labs(title = "Mericarp Length")
 pwpp(EM_length)
 ### Percentage difference ####
 # ((island mean/mainland mean)-1)*100%
-((5.57/5.10 - 1)* 100) # Mericarps ~ 9% longer on other islands.
+((5.53/5.49 - 1)* 100) # Mericarps ~ 0.72% longer on other islands.
 
 
 ## Width ####
@@ -95,7 +95,7 @@ pwpp(EM_length)
 #                       data = meri_width, 
 #                       REML = F)
 #### Square-root transformed ####
-meri_width_m3 <- lmer(sqrt(width) ~ other_mainland +
+meri_width_m3 <- lmer(sqrt(width) ~ mainland_island +
                               year_collected +
                         Herbarium +
                               (1|ID),
@@ -118,7 +118,7 @@ Anova(meri_width_m3)
 # testResiduals(meri_width_m3)
 
 ## Emmean estimates: Width ####
-EM_width <- emmeans(meri_width_m3, ~ other_mainland, type = "response")
+EM_width <- emmeans(meri_width_m3, ~ mainland_island, type = "response")
 ### Emmean plot: Width ####
 plot(EM_width, comparisons = T) + labs(title = "Mericarp Width")
 pwpp(EM_width)
@@ -126,13 +126,13 @@ pwpp(EM_width)
 # So far, the results show a lot of spread from the other islands
 
 ### Percentage difference ####
-((3.14/2.96 - 1)*100) # Mericarps ~ 6% wider on islands
+((3.15/2.96 - 1)*100) # Mericarps ~ 6% wider on islands
 
 
 ## Depth ####
 # For depth untransformed data seems to work the best
 #### Raw data ####
-meri_depth_m1 <- lmer(depth ~ other_mainland +
+meri_depth_m1 <- lmer(depth ~ mainland_island +
                               year_collected +
                         Herbarium +
                               (1|ID),
@@ -170,12 +170,12 @@ Anova(meri_depth_m1)
 # testResiduals(meri_depth_m3)
 
 ## Emmeans estimates: Depth ####
-EM_depth <- emmeans(meri_depth_m1, ~ other_mainland)
+EM_depth <- emmeans(meri_depth_m1, ~ mainland_island)
 ### Emmeans plot: Depth ####
 plot(EM_depth, comparisons = T) + labs(title = "Mericarp Depth")
 pwpp(EM_depth)
 ### Percentage difference ####
-((4.56/4.27 - 1)*100) # Mericarps ~ 6.79% deeper on islands
+((4.56/4.25 - 1)*100) # Mericarps ~ 7% deeper on islands
 
 ## Spine Tip distance ####
 # For spine tip distance I ran models with all the samples.
@@ -322,7 +322,7 @@ EM_tip_dist <- emmeans(meri_tip_distance_m7, ~ other_mainland)
 plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
 pwpp(EM_tip_dist)
 ### Percentage difference ####
-((9.14/8.50 - 1)*100) # Mericarps ~ 7.52% more separated on islands
+((9.1/8.40 - 1)*100) # Mericarps ~ 8% more separated on islands
 
 ## Lower spines ####
 # I tried to fit a glm
@@ -602,54 +602,6 @@ pwpp(EM_flower)
 ((17.4/16.7 - 1)*100) # Flowers are 4% larger on islands
 
 # This is intersting, but not significant
-
-# 03_02 Model 2: Galapagos - Other Islands ####
-# Is there an effect between tribulus in galapagos compared to other island systems
-# This comparison is possible with flower and leaf datasets
-# 03_02_01 Flower dataset ####
-## Petal length data ####
-# I used the flower filter data from before
-# The squared data seems to work best
-### Raw data ####
-# flower_m7 <- lmer(petal_length ~ galapagos_other +
-#                     year_collected +
-#                     (1|ID),
-#                   data=flower_filter,
-#                   REML=F)
-### Log transformed ####
-# flower_m8 <- lmer(log(petal_length) ~ galapagos_other +
-#                     year_collected +
-#                     (1|ID),
-#                   data=flower_filter,
-#                   REML=F)
-### Square root transformed ####
-flower_m9 <- lmer(sqrt(petal_length) ~ galapagos_other +
-                    year_collected +
-                    (1|ID),
-                  data=flower_galapagos_other,
-                  REML=F)
-
-### ANOVA type II test ####
-Anova(flower_m9)
-
-### Model Diagnostics ####
-# # Residual histograms
-# diagnostic(resid(flower_m7))
-# diagnostic(resid(flower_m8))
-#diagnostic(resid(flower_m9))
-# 
-# # DHARMa
-# testResiduals(flower_m7)
-# testResiduals(flower_m8)
-# testResiduals(flower_m9)
-
-## Emmean estimates: Petal length ####
-EM_flower2 <- emmeans(flower_m9, ~ galapagos_other, type = "response")
-### Emmean plot: Petal length ####
-plot(EM_flower2, comparisons = T) + labs(title = "Flower Length")
-pwpp(EM_flower2)
-### Percentage difference ####
-((9.18/17.06 - 1)*100) #FLowers in Galapagos are 46% shorter than other islands
 
 # 03_04 Spine tip distance compared between lower spines ####
 # I think we can include this as a way to explain the
