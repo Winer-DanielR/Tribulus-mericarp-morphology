@@ -51,7 +51,7 @@ mean_mericarp_traits <- dplyr::select(mean_mericarp_NA, 1, 14:17)
 mean_mericarp_traits <- dplyr::filter(mean_mericarp_traits, !tip_distance == 0)
 
 mean_mericarp_traits <- select(mean_mericarp_traits, !c(ID))
-
+ 
 # Scaled all mericarp traits first
 mean_mericarp_traits <- scale(mean_mericarp_traits)
 mean_mericarp_traits <- as_tibble(mean_mericarp_traits)
@@ -182,7 +182,7 @@ mericarp_NA_wozero <- dplyr::filter(mericarp_NA, !tip_distance == 0)
 mericarp_NA <- filter(mericarp_NA, !is.na(spine_length))
 mericarp_size_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
 
-#### Mericarp individual data. PCA ####
+ #### Mericarp individual data. PCA ####
 # Remove NAs, from spine length
 #mericarp_traits <- filter(mericarp_traits, !is.na(spine_length))
 mericarp_ind_pca <- prcomp(mericarp_traits, scale = T)
@@ -196,25 +196,6 @@ mericarp_ind_pca <- prcomp(mericarp_traits, scale = T)
 mericarp_scaled_PC <- cbind(mericarp_NA_wozero, mericarp_ind_pca$x)
 mericarp_mean_scaled_PC <- cbind(mean_mericarp_NA, mean_mericarp_pca$x)
 
-# 11_07 Model testing using the PC1 axis ####
-## MEAN Model mainland island ####
-meri_PC1_mean <- lmer(PC1 ~ mainland_island +
-                        year_collected +
-                        Herbarium +
-                        (1|ID),
-                      data = mericarp_mean_scaled_PC,
-                      REML = F)
-
-meri_PC1_mean_bioclim <- lmer(PC1 ~ mainland_island +
-                          year_collected +
-                          Herbarium +
-                          Temp +
-                          Temp_S +
-                          Prec +
-                          varP +
-                          (1|ID),
-                        data = mericarp_mean_scaled_PC,
-                        REML = F)
 
 ## INDIVIDUAL Model mainland island ####
 meri_PC1_m1<- lmer(PC1 ~ mainland_island +
@@ -236,9 +217,6 @@ meri_PC1_bioclim <- lmer(PC1 ~ mainland_island +
                    REML = F)
 
 ## ANOVA type II test ####
-# Use the Anova function from the car package
-Anova(meri_PC1_mean)
-Anova(meri_PC1_mean_bioclim)
 Anova(meri_PC1_m1)
 Anova(meri_PC1_bioclim)
 
