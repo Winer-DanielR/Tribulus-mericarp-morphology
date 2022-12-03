@@ -209,7 +209,7 @@ EM_depth_bioclim <- emmeans(meri_depth_bioclim, ~ mainland_island)
 plot(EM_depth_bioclim, comparisons = T) + labs(title = "Mericarp Depth")
 pwpp(EM_depth_bioclim)
 ### Percentage difference ####
-((4.71/4.43 - 1)*100) # Mericarps ~ 6% deeper on islands
+((4.71/4.52 - 1)*100) # Mericarps ~ 4.2% deeper on islands
 
 ## Spine Tip distance ####
 # For spine tip distance I ran models with all the samples.
@@ -386,7 +386,7 @@ EM_tip_dist_bioclim <- emmeans(meri_tip_distance_bioclim7, ~ mainland_island)
 plot(EM_tip_dist_bioclim, comparisons = T) + labs(title = "Mericarp Tip distance")
 pwpp(EM_tip_dist_bioclim)
 ### Percentage difference ####
-((8.85/8.56 - 1)*100) # Mericarps ~ 3.38% more separated on islands
+((8.95/8.912 - 1)*100) # Mericarps ~ 0.42% more separated on islands
 
 ## Lower spines ####
 # I tried to fit a glm
@@ -538,63 +538,4 @@ pwpp(EM_flower2_bioclim)
 ## Spine Tip distance ####
 # For spine tip distance I ran models with all the samples.
 # This includes mericarps without upper spines (Spine tip distance=0)
-
-# Ran the models with this filter data and raw data works best
-###### Raw data ####
-meri_tip_distance_lower_bioclim <- lmer(tip_distance ~ lower_spines +
-                                   year_collected +
-                                     Herbarium +
-                                     Temp +
-                                     Temp_S + 
-                                     Prec +
-                                     varP +
-                                   (1|ID),
-                                 na.action = na.exclude,
-                                 data=meri_tip_distance_lower_filter,REML=F)
-###### Log transformed data ####
-# meri_tip_distance_lower8 <- lmer(log(tip_distance) ~ lower_spines +
-#                                    year_collected +
-#                                    (1|ID),
-#                                  na.action = na.exclude,
-#                                  data=meri_tip_distance_lower_filter,REML=F)
-###### Squared-root data ####
-# meri_tip_distance_lower9 <- lmer(sqrt(tip_distance) ~ lower_spines +
-#                                    year_collected +
-#                                    (1|ID),
-#                                  na.action = na.exclude,
-#                                  data=meri_tip_distance_lower_filter,REML=F)
-
-
-# Diagnostic
-# diagnostic(resid(meri_tip_distance_lower7))
-# diagnostic(resid(meri_tip_distance_lower8))
-# diagnostic(resid(meri_tip_distance_lower9))
-
-#Anova
-Anova(meri_tip_distance_lower_bioclim)
-
-# DHARMa
-# testResiduals(meri_tip_distance_lower7)
-
-## Emmeans estimates: Spine tip distance ####
-# Zero filter data
-EM_tip_dist_lower_bioclim <- emmeans(meri_tip_distance_lower_bioclim, ~ lower_spines)
-### Emmeans plot: Spine tip distance ####
-plot(EM_tip_dist_lower_bioclim, comparisons = T) + labs(title = "Mericarp Tip distance")
-pwpp(EM_tip_dist_lower_bioclim)
-### Percentage difference ####
-((9.16/8.38 - 1)*100) # Mericarps ~ 9% more separated on mericarps with lower spines
-
-
-
-
-
-
-
-
-
-
-
-
-
 
