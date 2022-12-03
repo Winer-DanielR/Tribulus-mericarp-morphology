@@ -634,156 +634,156 @@ pwpp(EM_flower2)
 ### Percentage difference ####
 ((9.18/17.06 - 1)*100) #FLowers in Galapagos are 46% shorter than other islands
 
-# 03_04 Spine tip distance compared between lower spines ####
-# I think we can include this as a way to explain the
-# potential outcomes of lower spines?
-# This is still significant even with the bioclimate variables
-
-## Spine Tip distance ####
-# For spine tip distance I ran models with all the samples.
-# This includes mericarps without upper spines (Spine tip distance=0)
-
-##### Models with all mericarps ####
-# Raw data looks the best
-meri_tip_distance_lower1 <- lmer(tip_distance ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             data=mericarp,REML=F)
-
-meri_tip_distance_lower2 <- lmer(log(tip_distance + 1) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             data=mericarp,REML=F)
-
-meri_tip_distance_lower3 <- lmer(sqrt(tip_distance) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             data=mericarp,REML=F)
-
-
-# ANOVA type II test
-Anova(meri_tip_distance_lower1)
-Anova(meri_tip_distance_lower2)
-Anova(meri_tip_distance_lower3)
-
-# Model Diagnostics
-# Residual distributions
-hist(resid(meri_tip_distance_lower1), breaks = 20)
-# Spine tip distance distribution
-hist(meri_tip_distance$tip_distance, breaks = 20)
-
-# # Residual histograms
-diagnostic(resid(meri_tip_distance_lower1))
-diagnostic(resid(meri_tip_distance_lower2))
-diagnostic(resid(meri_tip_distance_lower3))
-
+# # 03_04 Spine tip distance compared between lower spines ####
+# # I think we can include this as a way to explain the
+# # potential outcomes of lower spines?
+# # This is still significant even with the bioclimate variables
+# 
+# ## Spine Tip distance ####
+# # For spine tip distance I ran models with all the samples.
+# # This includes mericarps without upper spines (Spine tip distance=0)
+# 
+# ##### Models with all mericarps ####
+# # Raw data looks the best
+# meri_tip_distance_lower1 <- lmer(tip_distance ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              data=mericarp,REML=F)
+# 
+# meri_tip_distance_lower2 <- lmer(log(tip_distance + 1) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              data=mericarp,REML=F)
+# 
+# meri_tip_distance_lower3 <- lmer(sqrt(tip_distance) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              data=mericarp,REML=F)
+# 
+# 
+# # ANOVA type II test
+# Anova(meri_tip_distance_lower1)
+# Anova(meri_tip_distance_lower2)
+# Anova(meri_tip_distance_lower3)
+# 
+# # Model Diagnostics
+# # Residual distributions
+# hist(resid(meri_tip_distance_lower1), breaks = 20)
+# # Spine tip distance distribution
+# hist(meri_tip_distance$tip_distance, breaks = 20)
+# 
+# # # Residual histograms
+# diagnostic(resid(meri_tip_distance_lower1))
+# diagnostic(resid(meri_tip_distance_lower2))
+# diagnostic(resid(meri_tip_distance_lower3))
+# 
+# # # DHARMa
+# testResiduals(meri_tip_distance_lower1)
+# testResiduals(meri_tip_distance_lower2)
+# testResiduals(meri_tip_distance_lower3)
+# 
+# 
+# ##### Removed Zero Tip distance ####
+# # Then, I tried the models again. This time, removing the mericarps with
+# # spine tip distance of 0.
+# mericarp_wozero <- dplyr::filter(mericarp, !tip_distance == 0)
+# # This model did not converged well. There are some outliers.
+# # Raw data looks the best
+# meri_tip_distance_lower4 <- lmer(tip_distance ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=mericarp_wozero,REML=F)
+# 
+# meri_tip_distance_lower5 <- lmer(log(tip_distance + 1) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              data=mericarp_wozero,REML=F)
+# 
+# meri_tip_distance_lower6 <- lmer(sqrt(tip_distance) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              data=mericarp_wozero,REML=F)
+# 
+# 
+# # ANOVA type II test
+# Anova(meri_tip_distance_lower4)
+# Anova(meri_tip_distance_lower5)
+# Anova(meri_tip_distance_lower6)
+# 
+# # Model Diagnostics
+# diagnostic(resid(meri_tip_distance_lower4))
+# diagnostic(resid(meri_tip_distance_lower5))
+# diagnostic(resid(meri_tip_distance_lower6))
+# 
+# # The residual distribution showed some outliers. 
+# # Check residual distributions after removing mericarps without spines.
+# # I included the residual column into the dataset
+# mericarp_wozero$tip_dist_residuals <- resid(meri_tip_distance_lower4)
+# hist(resid(meri_tip_distance_lower4), breaks = 20)
+# 
+# 
+# # # DHARMa
+#  testResiduals(meri_tip_distance_lower4)
+#  testResiduals(meri_tip_distance_lower5)
+#  testResiduals(meri_tip_distance_lower6)
+# 
+# 
+# # Based on the residual distributions and the trait distributions I filter the data
+# 
+# ##### Filter residuals (used in analysis) ####
+# # I filter residuals that are lower than -5 and larger than 5.
+# meri_tip_distance_lower_filter <- filter(mericarp_wozero,
+#                                           !tip_dist_residuals < -5)
+# meri_tip_distance_lower_filter <- filter(mericarp_wozero,
+#                                           !tip_dist_residuals > 5)
+# 
+# hist(meri_tip_distance_lower_filter$tip_dist_residuals, breaks = 20)
+# # Ran the models with this filter data and raw data works best
+# ###### Raw data ####
+# meri_tip_distance_lower7 <- lmer(tip_distance ~ lower_spines +
+#                                year_collected +
+#                                  Herbarium +
+#                                  #Temp +
+#                                  #Temp_S + 
+#                                  #Prec +
+#                                  #varP +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=meri_tip_distance_lower_filter,REML=F)
+# ###### Log transformed data ####
+# meri_tip_distance_lower8 <- lmer(log(tip_distance) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=meri_tip_distance_lower_filter,REML=F)
+# ###### Squared-root data ####
+# meri_tip_distance_lower9 <- lmer(sqrt(tip_distance) ~ lower_spines +
+#                                year_collected +
+#                                (1|ID),
+#                              na.action = na.exclude,
+#                              data=meri_tip_distance_lower_filter,REML=F)
+# 
+# 
+# # Diagnostic
+#  diagnostic(resid(meri_tip_distance_lower7))
+#  diagnostic(resid(meri_tip_distance_lower8))
+#  diagnostic(resid(meri_tip_distance_lower9))
+# 
+# #Anova
+# Anova(meri_tip_distance_lower7)
+# 
 # # DHARMa
-testResiduals(meri_tip_distance_lower1)
-testResiduals(meri_tip_distance_lower2)
-testResiduals(meri_tip_distance_lower3)
-
-
-##### Removed Zero Tip distance ####
-# Then, I tried the models again. This time, removing the mericarps with
-# spine tip distance of 0.
-mericarp_wozero <- dplyr::filter(mericarp, !tip_distance == 0)
-# This model did not converged well. There are some outliers.
-# Raw data looks the best
-meri_tip_distance_lower4 <- lmer(tip_distance ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=mericarp_wozero,REML=F)
-
-meri_tip_distance_lower5 <- lmer(log(tip_distance + 1) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             data=mericarp_wozero,REML=F)
-
-meri_tip_distance_lower6 <- lmer(sqrt(tip_distance) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             data=mericarp_wozero,REML=F)
-
-
-# ANOVA type II test
-Anova(meri_tip_distance_lower4)
-Anova(meri_tip_distance_lower5)
-Anova(meri_tip_distance_lower6)
-
-# Model Diagnostics
-diagnostic(resid(meri_tip_distance_lower4))
-diagnostic(resid(meri_tip_distance_lower5))
-diagnostic(resid(meri_tip_distance_lower6))
-
-# The residual distribution showed some outliers. 
-# Check residual distributions after removing mericarps without spines.
-# I included the residual column into the dataset
-mericarp_wozero$tip_dist_residuals <- resid(meri_tip_distance_lower4)
-hist(resid(meri_tip_distance_lower4), breaks = 20)
-
-
-# # DHARMa
- testResiduals(meri_tip_distance_lower4)
- testResiduals(meri_tip_distance_lower5)
- testResiduals(meri_tip_distance_lower6)
-
-
-# Based on the residual distributions and the trait distributions I filter the data
-
-##### Filter residuals (used in analysis) ####
-# I filter residuals that are lower than -5 and larger than 5.
-meri_tip_distance_lower_filter <- filter(mericarp_wozero,
-                                          !tip_dist_residuals < -5)
-meri_tip_distance_lower_filter <- filter(mericarp_wozero,
-                                          !tip_dist_residuals > 5)
-
-hist(meri_tip_distance_lower_filter$tip_dist_residuals, breaks = 20)
-# Ran the models with this filter data and raw data works best
-###### Raw data ####
-meri_tip_distance_lower7 <- lmer(tip_distance ~ lower_spines +
-                               year_collected +
-                                 Herbarium +
-                                 #Temp +
-                                 #Temp_S + 
-                                 #Prec +
-                                 #varP +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=meri_tip_distance_lower_filter,REML=F)
-###### Log transformed data ####
-meri_tip_distance_lower8 <- lmer(log(tip_distance) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=meri_tip_distance_lower_filter,REML=F)
-###### Squared-root data ####
-meri_tip_distance_lower9 <- lmer(sqrt(tip_distance) ~ lower_spines +
-                               year_collected +
-                               (1|ID),
-                             na.action = na.exclude,
-                             data=meri_tip_distance_lower_filter,REML=F)
-
-
-# Diagnostic
- diagnostic(resid(meri_tip_distance_lower7))
- diagnostic(resid(meri_tip_distance_lower8))
- diagnostic(resid(meri_tip_distance_lower9))
-
-#Anova
-Anova(meri_tip_distance_lower7)
-
-# DHARMa
- testResiduals(meri_tip_distance_lower7)
-
-## Emmeans estimates: Spine tip distance ####
-# Zero filter data
-EM_tip_dist_lower <- emmeans(meri_tip_distance_lower7, ~ lower_spines)
-### Emmeans plot: Spine tip distance ####
-plot(EM_tip_dist_lower, comparisons = T) + labs(title = "Mericarp Tip distance")
-pwpp(EM_tip_dist_lower)
-### Percentage difference ####
-((9.16/8.38 - 1)*100) # Mericarps ~ 9% more separated on mericarps with lower spines than without.
+#  testResiduals(meri_tip_distance_lower7)
+# 
+# ## Emmeans estimates: Spine tip distance ####
+# # Zero filter data
+# EM_tip_dist_lower <- emmeans(meri_tip_distance_lower7, ~ lower_spines)
+# ### Emmeans plot: Spine tip distance ####
+# plot(EM_tip_dist_lower, comparisons = T) + labs(title = "Mericarp Tip distance")
+# pwpp(EM_tip_dist_lower)
+# ### Percentage difference ####
+# ((9.16/8.38 - 1)*100) # Mericarps ~ 9% more separated on mericarps with lower spines than without.
 
 
 
