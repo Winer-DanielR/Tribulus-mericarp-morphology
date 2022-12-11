@@ -25,7 +25,7 @@ my_emmean_barplot2 <- function(emmean_plot, x, title, lab_x, lab_y){
   ggplot(emmean_plot, aes(x = x, y = the.emmean)) +
     geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
     geom_point(size = 6) +
-    scale_y_continuous(breaks = seq(-20,20,1/4)) +
+    #scale_y_continuous(breaks = seq(-20,20,1/4)) +
     scale_x_discrete(name = " ") +
     theme(axis.line = element_line(linetype = "solid", size = 1.5),
           axis.title = element_text(size = 12, face = "bold"),
@@ -172,29 +172,11 @@ tip_distance_violin <- ggplot(meri_tip_distance, aes(x = mainland_island, y = ti
           panel.background = element_rect(fill = NA)) + 
     labs(x = "Population", y = "Spinte tip distance (mm)", title = "Spine Tip Distance")
 
-#### Tip distance Lower spines comparison ####
-##### No bioclimate variables #####
-EM_tip_dist_lower
-plot_tip_lower <- plot(EM_tip_dist_lower, comparisons = T, plotit = F)
-
-ggplot_spine_lower <- my_emmean_barplot(plot_tip_lower, plot_tip_lower$lower_spines,
-                                          "Spine Tip Distance (P = <0.001)",
-                                          "Lower Spines",
-                                          "Tip Distance (mm)")
-
-##### Bioclimate Variables #####
-EM_tip_dist_lower_bioclim
-plot_tip_lower_bioclim <- plot(EM_tip_dist_lower_bioclim, comparisons = T, plotit = F)
-
-ggplot_spine_lower_bioclim <- my_emmean_barplot(plot_tip_lower_bioclim, plot_tip_lower_bioclim$lower_spines,
-                                        "Spine Tip Distance (P = <0.001)",
-                                        "Lower Spines",
-                                        "Tip Distance (mm)")
 
 ### Lower spines ####
 #### No bioclimate variables ####
-EM_lower_mainland_gal
-plot_lower <- plot(EM_lower_mainland_gal, comparisons = T, plotit = F)
+EM_lower
+plot_lower <- plot(EM_lower, comparisons = T, plotit = F)
 
 ggplot_lower <- my_emmean_barplot2(plot_lower, plot_lower$mainland_island,
                                    "Lower Spines (P = <0.001)",
@@ -217,7 +199,7 @@ EM_flower
 plot_flower <- plot(EM_flower, comparisons = T, plotit = F)
 
 ggplot_flower <- my_emmean_barplot2(plot_flower, plot_flower$mainland_island,
-                                    "Model 1 (P = 0.239)",
+                                    "Model 1 (P = <0.001)",
                                     "Population",
                                     "Petal Length (mm)")
 
@@ -362,7 +344,7 @@ biplot2 <- fviz_pca_biplot(mericarp_size_pca,
                            fill.ind = mericarp_NA_wozero$mainland_island,
                            col.ind = "black",
                            # Color variable by groups
-                           legend.title = "Islands",
+                           legend.title = "Populations",
                            repel = T,
                            col.var = "black", 
                            labelsize = 5,
@@ -464,8 +446,8 @@ figure_PC1_lower_complete <- ggarrange(figure_mericarp_PC1_lower,
 ## Flowers ####
 # Flowers have model 1 and 2
 figure_flower <- ggarrange(ggplot_flower,
-                           ggplot_flower2,
-                           #ggplot_flower_bioclim,
+                           #ggplot_flower2,
+                           ggplot_flower_bioclim,
                            #ggplot_flower2_bioclim,
                            labels = c("A", "B"),
                            ncol = 2,
