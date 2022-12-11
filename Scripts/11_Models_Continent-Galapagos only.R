@@ -43,10 +43,10 @@ Anova(meri_mainland_gal_length_m1)
 # # only show the output of that model.
 # 
 # ## Emmean estimates: Length ####
-EM_length_mainland_gal <- emmeans(meri_mainland_gal_length_m1, ~ mainland_island)
+EM_length <- emmeans(meri_mainland_gal_length_m1, ~ mainland_island)
 # ### Emmean plot: Length ####
-plot(EM_length_mainland_gal, comparisons = TRUE) + labs(title = "Mericarp Length")
-pwpp(EM_length_mainland_gal)
+plot(EM_length, comparisons = TRUE) + labs(title = "Mericarp Length")
+pwpp(EM_length)
 # ### Percentage difference #####
 # # ((island mean/mainland mean)-1)*100%
 ((6.27/5.80 - 1)* 100) # Mericarps ~ 8% longer on Galapagos
@@ -88,10 +88,10 @@ Anova(meri_width_mainland_gal_m2)
 # 
 # ## Emmean estimates: Width ####
 # # Log transformed
-EM_width_mainland_gal <- emmeans(meri_width_mainland_gal_m2, ~ mainland_island, type = "response")
+EM_width <- emmeans(meri_width_mainland_gal_m2, ~ mainland_island, type = "response")
 # ### Emmean plot: Width ####
-plot(EM_width_mainland_gal, comparisons = T) + labs(title = "Mericarp Width")
-pwpp(EM_width_mainland_gal)
+plot(EM_width, comparisons = T) + labs(title = "Mericarp Width")
+pwpp(EM_width)
 # ### Percentage difference ####
 ((3.13/2.93 - 1)*100) # Mericarps ~ 6.82% wider on Galapagos
 # 
@@ -133,10 +133,10 @@ Anova(meri_depth_mainland_gal_m1)
 # # testResiduals(meri_depth_mainland_gal_m3)
 # 
 # ## Emmeans: Depth ####
-EM_depth_mainland_gal <- emmeans(meri_depth_mainland_gal_m1, ~ mainland_island)
+EM_depth <- emmeans(meri_depth_mainland_gal_m1, ~ mainland_island)
 # ### Emmeans plot: Depth #####
-plot(EM_depth_mainland_gal, comparisons = T) + labs(title = "Mericarp Depth")
-pwpp(EM_depth_mainland_gal)
+plot(EM_depth, comparisons = T) + labs(title = "Mericarp Depth")
+pwpp(EM_depth)
 # ### Porcentage difference ####
 ((4.81/4.26 - 1)*100) # Mericarps ~ 13% deeper on Galapagos
 # 
@@ -227,10 +227,10 @@ pwpp(EM_depth_mainland_gal)
 # 
 # ## Emmeans estimates: Spine tip distance ####
 # # Zero filter data
-  EM_tip_dist_mainland_gal <- emmeans(meri_tip_distance_mainland_gal_m7, ~ mainland_island)
+  EM_tip_dist <- emmeans(meri_tip_distance_mainland_gal_m7, ~ mainland_island)
 # ### Emmean plot: Spine tip distance ####
- plot(EM_tip_dist_mainland_gal, comparisons = T) + labs(title = "Mericarp Tip distance")
- pwpp(EM_tip_dist_mainland_gal)
+ plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
+ pwpp(EM_tip_dist)
 # ### Percentage difference ####
  ((8.87/8.31 - 1)*100) # Mericarps ~ 6.73% more separated on Galapagos
 # 
@@ -245,111 +245,7 @@ pwpp(EM_depth_mainland_gal)
 # 
 # ## Emmeans estimates: Lower Spines ####
 # #Glmm
- EM_lower_mainland_gal <- emmeans(meri_lower_spines_mainland_gal_glmm, ~ mainland_island, type = "response")
+ EM_lower <- emmeans(meri_lower_spines_mainland_gal_glmm, ~ mainland_island, type = "response")
 # ### Emmean plot: Lower spines ####
- plot(EM_lower_mainland_gal, comparisons = T) + labs(title = "Mericarp Lower Spines")
-
-# PLOTS ####
-#### Mainland Galapos plot ####
- EM_length_mainland_gal
- plot_length_mainland_gal <- plot(EM_length_mainland_gal, comparisons = T, plotit = F)
-# 
- ggplot_length_mainland_gal <- ggplot(plot_length_mainland_gal, aes(x = mainland_island, y = the.emmean)) + 
-   geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-   geom_point(size = 6) + 
-   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-         axis.title = element_text(size = 12, face = "bold"), 
-         axis.text = element_text(size = 10), 
-         axis.text.x = element_text(size = 11), 
-         plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-   scale_y_continuous(breaks = seq(-20,20,1/4)) +
-   scale_x_discrete(name = " ") +
-  labs(title = expression(paste("Length (P = <0.001)"))) +
-  labs(x = "Population", y = "Mean Length (mm)")
-
-#### Width ####
-EM_width_mainland_gal
-plot_width_mainland_gal <- plot(EM_width_mainland_gal, comparisons = T, plotit = F)
-
-ggplot_width_mainland_gal <- ggplot(plot_width_mainland_gal, aes(x = mainland_island, y = the.emmean)) +
-  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-  geom_point(size = 6) +
-  theme(axis.line = element_line(linetype = "solid", size = 1.5),
-        axis.title = element_text(size = 12, face = "bold"),
-        axis.text = element_text(size = 10),
-        axis.text.x = element_text(size = 11),
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  scale_y_continuous(breaks = seq(-20,20,1/4)) +
-  scale_x_discrete(name = " ") +
-  labs(title = expression(paste("Width (P = <0.001)"))) +
-  labs(x = "Population", y = "Mean Width (mm)")
-
-#### Depth ####
-plot_depth_mainland_gal <- plot(EM_depth_mainland_gal, comparisons = T, plotit = F)
-
-ggplot_depth_mainland_gal <- ggplot(plot_depth_mainland_gal, aes(x = mainland_island, y = the.emmean)) +
-  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-  geom_point(size = 6) +
-  theme(axis.line = element_line(linetype = "solid", size = 1.5),
-        axis.title = element_text(size = 12, face = "bold"),
-        axis.text = element_text(size = 10),
-        axis.text.x = element_text(size = 11),
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  scale_y_continuous(breaks = seq(-20,20,1/4)) +
-  scale_x_discrete(name = " ") +
-  labs(title = expression(paste("Depth (P = <0.001)"))) +
-  labs(x = "Population", y = "Mean Depth (mm)")
-
-#### Spine Tip Distance ####
-plot_spine_mainland_gal <- plot(EM_tip_dist_mainland_gal, comparisons = T, plotit = F)
-
-ggplot_spine_mainland_gal <- ggplot(plot_spine_mainland_gal, aes(x = mainland_island, y = the.emmean)) +
-  geom_errorbar(size = 1.5, aes(ymax = asymp.UCL, ymin = asymp.LCL, width = 0.2)) +
-  geom_point(size = 6) +
-  theme(axis.line = element_line(linetype = "solid", size = 1.5),
-        axis.title = element_text(size = 12, face = "bold"),
-        axis.text = element_text(size = 10),
-        axis.text.x = element_text(size = 11),
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  scale_y_continuous(breaks = seq(-20,20,1/4)) +
-  scale_x_discrete(name = " ") +
-  labs(title = expression(paste("Tip distance (P = 0.0240)"))) +
-  labs(x = "Population", y = "Spine Tip Distance (mm)")
-
-#### Lower Spines ####
-plot_lower_mainland_gal <- plot(EM_lower_mainland_gal, comparisons = T, plotit = F)
-
-ggplot_lower_mainland_gal <- ggplot(plot_lower_mainland_gal, aes(x = mainland_island, y = the.emmean)) +
-  geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-  geom_point(size = 6) +
-  theme(axis.line = element_line(linetype = "solid", size = 1.5),
-        axis.title = element_text(size = 12, face = "bold"),
-        axis.text = element_text(size = 10),
-        axis.text.x = element_text(size = 11),
-        plot.title = element_text(size = 13, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  scale_y_continuous(breaks = seq(-20,20,1/4)) +
-  scale_x_discrete(name = " ") +
-  labs(title = expression(paste("Lower spines (P = <0.001)"))) +
-  labs(x = "Population", y = "Lower spines")
-
-# # # 11_09 Mainland Galapagos Island plots summary ####
-figure_mericarp_mainland_gal <- ggarrange(ggplot_length_mainland_gal,
-                                          ggplot_width_mainland_gal,
-                                          ggplot_depth_mainland_gal,
-                                          ggplot_spine_mainland_gal,
-                                          ggplot_lower_mainland_gal,
-                                          labels = c("A", "B", "C", "D","E"),
-                                          ncol = 3,
-                                          nrow = 2) +
-  theme(text = element_text(family = "Noto Sans"))
+ plot(EM_lower, comparisons = T) + labs(title = "Mericarp Lower Spines")
 
