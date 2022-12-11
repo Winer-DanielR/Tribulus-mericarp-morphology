@@ -503,7 +503,7 @@ pwpp(EM_lower)
 flower_m1 <- lmer(petal_length ~ mainland_island +
                           year_collected +
                           (1|ID),
-                  data=flower,
+                  data=flower_galapagos_mainland,
                   na.action = na.exclude,
                   REML=F)
 ### Log transformed ####
@@ -579,12 +579,12 @@ Anova(flower_m4)
 #testResiduals(flower_m4)
 
 ## Emmean estimates: Petal length ####
-EM_flower <- emmeans(flower_m4, ~ mainland_island)
+EM_flower <- emmeans(flower_m1, ~ mainland_island)
 ### Emmean plot: Petal length ####
 plot(EM_flower, comparisons = T) + labs(title = "Flower Length")
 pwpp(EM_flower)
 ### Percentange difference ####
-((16.3/16.7 - 1)*100) # Flowers are -2% smaller on islands
+((9.39/16.7 - 1)*100) # Flowers are -2% smaller on islands
 
 # 03_02 Model 2: Galapagos - Other Islands ####
 # Is there an effect between tribulus in galapagos compared to other island systems
