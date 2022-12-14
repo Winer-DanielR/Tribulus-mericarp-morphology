@@ -116,7 +116,7 @@ biplot1 <- fviz_pca_biplot(mean_mericarp_pca,
                         pointshape = c(21),
                         pointsize = 3,
                         stroke = 1.5,
-                        fill.ind = mean_mericarp_NA$continent,
+                        fill.ind = mean_mericarp_NA$galapagos_other,
                         col.ind = "black",
                         # Color variable by groups
                         legend.title = "Island Group",
@@ -124,10 +124,10 @@ biplot1 <- fviz_pca_biplot(mean_mericarp_pca,
                         col.var = "black",
                         labelsize = 5,
                         addEllipses = T,
-                        palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
+                        #palette = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73"),
                         
 ) + theme_transparent() + 
-  scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
+  #scale_color_manual(values = c("#f5793a", "#a95aa1", "#85c0f9", "#0f2080", "#009e73")) +
   # PCA theme, adds custom font and sizes that matches the other plots    
   theme(axis.line = element_line(linetype = "solid", size = 1.5), 
         axis.title = element_text(size = 14, face = "bold"), 
@@ -135,8 +135,8 @@ biplot1 <- fviz_pca_biplot(mean_mericarp_pca,
         axis.text.x = element_text(size = 11), 
         plot.title = element_text(size = 16, face = "bold", hjust = 0),
         text = element_text(family = "Noto Sans"),
-        legend.text = element_text(size = 6.5, face = "bold"), 
-        legend.title = element_text(size = 10, face = "bold"),
+        legend.text = element_text(size = 12, face = "bold"), 
+        legend.title = element_text(size = 14, face = "bold"),
         legend.position = "bottom",
         legend.background = element_rect(fill = NA, size = 0))
 
@@ -167,33 +167,12 @@ var1 <- fviz_pca_var(mean_mericarp_pca,
 var1
 
 
-# 11_06 Individual PCA - Test modeling ####
-# Length, depth and width of mericarps all differ between island and mainland samples. 
-# The three dimensions probably covary strongly. This should be mentioned and correlation coefficients supplied. 
-# I recommend performing PCA on these three dimensions and using PC1 as a size factor to document the difference between Galapagos and mainland. 
-# The results of analyzing the dimensions separately could be put in the Supplement
-
-## INDIVIDUAL PCA ####
-
-#### Mericarp size PCA excludes lower spines and only uses length, width, depth
-# and spine tip distance.
-# Mericarp scaled removed upper spines zeroes:
-mericarp_NA_wozero <- dplyr::filter(mericarp_NA, !tip_distance == 0)
-mericarp_NA <- filter(mericarp_NA, !is.na(spine_length))
-mericarp_size_pca <- prcomp(dplyr::select(mericarp_traits, c(1:4)), scale = T)
-
-#### Mericarp individual data. PCA ####
-# Remove NAs, from spine length
-#mericarp_traits <- filter(mericarp_traits, !is.na(spine_length))
-mericarp_ind_pca <- prcomp(mericarp_traits, scale = T)
-
 # PC1 Models ####
 # Adding PC scores into MEAN mericarp dataset
 
 
 
 # Adding PC scores into individual mericarp dataset
-mericarp_scaled_PC <- cbind(mericarp_NA_wozero, mericarp_ind_pca$x)
 mericarp_mean_scaled_PC <- cbind(mean_mericarp_NA, mean_mericarp_pca$x)
 
 # 11_07 Model testing using the PC1 axis ####
@@ -216,31 +195,11 @@ meri_PC1_mean_bioclim <- lmer(PC1 ~ mainland_island +
                         data = mericarp_mean_scaled_PC,
                         REML = F)
 
-## INDIVIDUAL Model mainland island ####
-meri_PC1_m1<- lmer(PC1 ~ mainland_island +
-                        year_collected +
-                     Herbarium +
-                        (1|ID),
-                      data = mericarp_scaled_PC,
-                      REML = F)
-## Bioclimate model ####
-meri_PC1_bioclim <- lmer(PC1 ~ mainland_island +
-                     year_collected +
-                     Herbarium +
-                     Temp +
-                     Temp_S +
-                     Prec +
-                     varP +
-                     (1|ID),
-                   data = mericarp_scaled_PC,
-                   REML = F)
 
 ## ANOVA type II test ####
 # Use the Anova function from the car package
 Anova(meri_PC1_mean)
 Anova(meri_PC1_mean_bioclim)
-Anova(meri_PC1_m1)
-Anova(meri_PC1_bioclim)
 
 #summary(meri_PC1_m1)
 #summary(meri_PC1_m2)
@@ -255,24 +214,12 @@ Anova(meri_PC1_bioclim)
 #testResiduals(meri_PC1_m2)
 
 ## Emmeans estimates: means PCA  ####
-EM_PC1_mean <- emmeans(meri_PC1_mean, ~ mainland_island)
-EM_PC1_mean_bioclim <- emmeans(meri_PC1_mean_bioclim, ~ mainland_island)
+EM_PC1_mean <- emmeans(meri_PC1_mean, ~ mainland_island, type = "response")
+EM_PC1_mean_bioclim <- emmeans(meri_PC1_mean_bioclim, ~ mainland_island, type = "response")
 
 ### Emmean plot: means PCA ####
 plot(EM_PC1_mean, comparisons = TRUE) + labs(title = "Mericarp Size")
-pwpp(EM_PC1)
+pwpp(EM_PC1_mean)
 
 plot(EM_PC1_mean_bioclim, comparisons = TRUE) + labs(title = "Mericarp Size")
-pwpp(EM_PC1_bioclim)
-
-
-## Emmeans estimates: PCA  ####
-EM_PC1 <- emmeans(meri_PC1_m1, ~ mainland_island)
-EM_PC1_bioclim <- emmeans(meri_PC1_bioclim, ~ mainland_island)
-
-### Emmean plot: PCA ####
-plot(EM_PC1, comparisons = TRUE) + labs(title = "Mericarp Size")
-pwpp(EM_PC1)
-
-plot(EM_PC1_bioclim, comparisons = TRUE) + labs(title = "Mericarp Size")
-pwpp(EM_PC1_bioclim)
+pwpp(EM_PC1_mean_bioclim)
