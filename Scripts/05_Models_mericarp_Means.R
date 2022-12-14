@@ -59,18 +59,18 @@ meri_tip_distance0_ind <- dplyr::filter(meri_tip_distance_ind, !tip_distance == 
 
 ## Length ####
 #### Raw data ####
-ind_length_m1 <- lmer(length ~ mainland_island +
+length_m1 <- lmer(length ~ mainland_island +
                         year_collected + 
                         Herbarium +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
+                        # Temp +
+                        # Temp_S +
+                        # Prec +
+                        # varP +
                         (1|ID),
                       data = meri_length_ind,
                       REML = F)
 ### Anova (car package) ####
-Anova(ind_length_m1)
+Anova(length_m1)
 
 # The results are differnt this time, mainland island is barely significant
 # Temp_S is significant, year too.
@@ -79,11 +79,11 @@ Anova(ind_length_m1)
 #testResiduals(ind_length_m1)
 
 ## Emmeans estimates: Length ####
-EM_length_ind <- emmeans(ind_length_m1, ~ mainland_island)
+EM_length <- emmeans(ind_length_m1, ~ mainland_island)
 
 ### Emmean plot: Length ####
-plot(EM_length_ind, comparisons = TRUE) + labs(title = "Mericarp Length")
-pwpp(EM_length_ind)
+plot(EM_length, comparisons = TRUE) + labs(title = "Mericarp Length")
+pwpp(EM_length)
 
 ## Width ####
 # For width, squared transformed seemed the best
@@ -111,10 +111,10 @@ pwpp(EM_length_ind)
 ind_width_m3 <- lmer(sqrt(width) ~ mainland_island +
                         year_collected +
                        Herbarium +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
+                        # Temp +
+                        # Temp_S +
+                        # Prec +
+                        # varP +
                         (1|ID),
                       data = meri_width_ind, 
                       REML = F)
@@ -137,21 +137,21 @@ Anova(ind_width_m3)
 #  hist(resid(ind_width_m3), breaks = 20)
 
 ## Emmeans estimates: Width ####
-EM_width_ind <- emmeans(ind_width_m3, ~ mainland_island)
+EM_width <- emmeans(ind_width_m3, ~ mainland_island)
 
 ### Emmean plot: Width ####
-plot(EM_width_ind, comparisons = TRUE) + labs(title = "Mericarp Width")
-pwpp(EM_width_ind)
+plot(EM_width, comparisons = TRUE) + labs(title = "Mericarp Width")
+pwpp(EM_width)
 
 ## Depth ####
 #### Raw data ####
 ind_depth_m1 <- lmer(depth ~ mainland_island +
                         year_collected +
                        Herbarium +
-                        Temp +
-                        Temp_S +
-                        Prec +
-                        varP +
+                        # Temp +
+                        # Temp_S +
+                        # Prec +
+                        # varP +
                         (1|ID),
                       data=meri_depth_ind, 
                       REML = F)
@@ -201,10 +201,10 @@ Anova(ind_depth_m1)
 # testResiduals(ind_depth_m3)
 
 ## Emmeans estimates: Depth ####
-EM_depth_ind <- emmeans(ind_depth_m1, ~ mainland_island)
+EM_depth <- emmeans(ind_depth_m1, ~ mainland_island)
 ### Emmeans plot: Depth ####
-plot(EM_depth_ind, comparisons = T) + labs(title = "Mericarp Depth")
-pwpp(EM_depth_ind)
+plot(EM_depth, comparisons = T) + labs(title = "Mericarp Depth")
+pwpp(EM_depth)
 
 ## Tip distance ####
 # Filter tip distance without zero
@@ -212,10 +212,10 @@ pwpp(EM_depth_ind)
 ind_tip_distance_m1 <- lmer(tip_distance ~ mainland_island +
                                year_collected +
                               Herbarium +
-                               Temp +
-                               Temp_S +
-                               Prec +
-                               varP +
+                               # Temp +
+                               # Temp_S +
+                               # Prec +
+                               # varP +
                                (1|ID),
                              na.action = na.exclude,
                              data=meri_tip_distance0_ind,REML=F)
@@ -260,95 +260,8 @@ Anova(ind_tip_distance_m1)
 
 ## Emmeans estimates: Spine tip distance ####
 # Zero filter data
-EM_tip_dist_ind <- emmeans(ind_tip_distance_m1, ~ mainland_island)
+EM_tip_dist <- emmeans(ind_tip_distance_m1, ~ mainland_island)
 ### Emmeans plot: Spine tip distance ####
-plot(EM_tip_dist_ind, comparisons = T) + labs(title = "Mericarp Tip distance")
-pwpp(EM_tip_dist_ind)
-
-# PLOTS ####
-### Length ####
-#### Model plot ####
-EM_length_ind
-plot_length <- plot(EM_length_ind, comparisons = T, plotit = F)
-
-ind_ggplot_length <- ggplot(plot_length, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Length (P = 0.06015)"))) +
-  labs(x = "Population", y = "Mean Length (mm)")
-
-### Width ####
-#### Model plot ####
-EM_width_ind
-plot_width <- plot(EM_width_ind, comparisons = T, plotit = F)
-
-ind_ggplot_width <- ggplot(plot_width, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  labs(title = expression(paste("Width (P = 0.09625)"))) +
-  labs(x = "Population", y = "Mean Width (mm)")
-
-
-### Depth ####
-
-#### Model plot ####
-plot_depth <- plot(EM_depth_ind, comparisons = T, plotit = F)
-
-ind_ggplot_depth <- ggplot(plot_depth, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) + 
-  labs(title = expression(paste("Depth (P = 0.01462)"))) +
-  labs(x = "Population", y = "Mean Depth (mm)")
-
-
-### Tip distance ####
-
-#### Model plot ####
-plot_spine <- plot(EM_tip_dist_ind, comparisons = T, plotit = F)
-
-ind_ggplot_spine <- ggplot(plot_spine, aes(x = mainland_island, y = the.emmean)) + 
-  geom_errorbar(size = 1.5, aes(ymax = upper.CL, ymin = lower.CL, width = 0.2)) +
-  geom_point(size = 6) + 
-  theme(axis.line = element_line(linetype = "solid", size = 1.5), 
-        axis.title = element_text(size = 12, face = "bold"), 
-        axis.text = element_text(size = 10), 
-        axis.text.x = element_text(size = 11), 
-        plot.title = element_text(size = 12, face = "bold"),
-        text = element_text(family = "Noto Sans"),
-        panel.background = element_rect(fill = NA)) +
-  labs(title = expression(paste("Tip distance (P = 0.68236)"))) +
-  labs(x = "Population", y = "Spine Tip Distance (mm)")
-
-## Individual traits figure ####
-# Supplemental figure with individual mericarp traits. From the PCA.
-figure_mericarp_ind_traits <- ggarrange(ind_ggplot_length,
-                                        ind_ggplot_width,
-                                        ind_ggplot_depth,
-                                        ind_ggplot_spine,
-                                        ggplot_PC1_mean,
-                                        labels = c("A", "B", "C", "D", "E"),
-                                        ncol = 3,
-                                        nrow = 2) + 
-  theme(text = element_text(family = "Noto Sans"))
+plot(EM_tip_dist, comparisons = T) + labs(title = "Mericarp Tip distance")
+pwpp(EM_tip_dist)
 
